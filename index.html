@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Catálogo de máscaras de Halloween de Kalú Accesorios."
+    />
+    <title>Kalú Accesorios | Halloween</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0b0212;
+        --violet: #42115e;
+        --purple: #74206e;
+        --fuchsia: #a71c65;
+        --orange: #f15a0b;
+        --yellow: #ffbd18;
+        --blue: #68246f;
+        --green: #9b3920;
+        --paper: #11031b;
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: #fff;
+        background: var(--paper);
+        font-family: "Montserrat", Arial, sans-serif;
+      }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+
+      .shell { overflow: hidden; }
+      .nav {
+        position: absolute;
+        top: 0;
+        left: 6px;
+        right: 6px;
+        z-index: 30;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        height: 58px;
+        padding: 2px clamp(18px, 4vw, 48px);
+        border: 0;
+        border-radius: 0 0 12px 12px;
+        color: var(--ink);
+        background: rgba(255, 250, 252, 0.98);
+        box-shadow: 0 5px 16px rgba(31, 0, 41, .24);
+      }
+      .nav img { width: 156px; height: 74px; object-fit: contain; display: block; }
+      .nav-links { display: flex; gap: clamp(12px, 1.8vw, 26px); align-items: center; font-size: 0.7rem; font-weight: 800; }
+      .nav-links a:hover { color: var(--orange); }
+
+      .hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        min-height: 560px;
+        display: grid;
+        grid-template-columns: minmax(300px, 1.08fr) minmax(310px, .72fr);
+        align-items: center;
+        gap: 28px;
+        padding: 110px clamp(18px, 8vw, 128px) 64px;
+        color: #fff;
+        background: linear-gradient(111deg, #ff9f14 0 48%, #e8007e 48.2% 70%, #5a075f 70.2% 100%);
+      }
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .hero::before { left: 42%; top: -8%; width: 25%; height: 118%; background: linear-gradient(130deg, rgba(255, 188, 22, .18), rgba(255,255,255,0) 52%); transform: rotate(9deg); }
+      .hero::after { display: none; }
+      .hero-copy-block { position: relative; z-index: 4; max-width: 510px; }
+      .hero-copy-block::after { display: none; }
+      .hero-bats { display: none; }
+      @keyframes bat-drift { 0%,100% { translate: 0 0; } 50% { translate: 8px -6px; } }
+      @media (prefers-reduced-motion: reduce) { .hero-bats, .hero-art img.hero-logo { animation: none; } }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 12px;
+        color: #4d055f;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before { content: "✦"; color: #4d055f; font-size: .9rem; }
+      h1, h2, h3 { font-family: "Baloo 2", Arial, sans-serif; }
+      h1 {
+        max-width: 650px;
+        margin: 0;
+        font-size: clamp(3rem, 5.2vw, 4.85rem);
+        line-height: 0.92;
+        letter-spacing: -0.06em;
+      }
+      h1 em { color: #51065e; font-style: normal; }
+      .hero-copy { max-width: 390px; margin: 14px 0 21px; color: #fff; font-size: .86rem; line-height: 1.46; }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 43px;
+        padding: 10px 18px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-weight: 800;
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      }
+      .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.18); }
+      .button-primary { background: #5a075f; color: #fff; box-shadow: 0 6px 0 rgba(82, 4, 90, .2); }
+      .button-light { border-color: rgba(255,255,255,.74); color: #fff; background: rgba(255, 113, 18, .36); }
+      .hero-art { position: relative; z-index: 3; justify-self: center; width: min(100%, 295px); aspect-ratio: .81; display: grid; place-items: center; overflow: hidden; padding: 12px; border: 3px solid #fff; border-radius: 20px; background: #fff; transform: rotate(6deg); box-shadow: 0 0 0 3px #ff2f91, 0 10px 24px rgba(50,0,56,.34); }
+      .hero-art::before, .hero-art::after { display: none; }
+      .hero-art img { display: block; width: 100%; max-width: 100%; height: 100%; object-fit: contain; transform: rotate(-6deg) scale(1.06); margin: 0; filter: drop-shadow(0 10px 8px rgba(44,0,45,.2)); }
+      .hero-art img.hero-logo { width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; animation: none; }
+      .hero-sticker { position: absolute; z-index: 3; display: block; object-fit: contain; pointer-events: none; filter: drop-shadow(0 5px 3px rgba(68, 0, 60, .18)); }
+      .sticker-pumpkin { left: 7%; bottom: -16px; width: clamp(70px, 11vw, 140px); transform: rotate(-7deg); }
+      .sticker-candy { left: 49%; bottom: 35px; width: clamp(42px, 6vw, 74px); transform: rotate(-12deg); }
+      .sticker-skull { left: 1.5%; bottom: 38px; width: clamp(40px, 5vw, 62px); transform: rotate(-11deg); }
+      .sticker-eye { left: 57%; top: 62px; width: clamp(34px, 4.5vw, 58px); transform: rotate(12deg); }
+
+      .catalog { padding: 84px clamp(18px, 7vw, 110px); background: radial-gradient(ellipse at 90% 0, rgba(109,29,101,.4), transparent 32%), linear-gradient(145deg, #16031e, #0b0212 67%); }
+      .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; max-width: 1250px; margin: 0 auto 34px; }
+      .section-heading p { margin: 0 0 5px; color: var(--orange); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter-spacing: -.04em; }
+      .section-heading > span { max-width: 330px; color: #d8c3d5; font-size: .95rem; line-height: 1.5; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: 1250px; margin: auto; }
+      .card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid rgba(255, 137, 22, .46);
+        border-radius: 18px;
+        background: #1a0824;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, .3);
+        transition: transform .22s ease, box-shadow .22s ease;
+      }
+      .card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+      .image-wrap { position: relative; overflow: hidden; aspect-ratio: 1 / .9; background: radial-gradient(circle at 50% 25%, #3d174e, #110218 72%); }
+      .image-wrap img { width: 100%; height: 100%; padding: 8px; object-fit: contain; object-position: center; transition: transform .35s ease; }
+      .card:hover .image-wrap img { transform: scale(1.025); }
+      .code { position: absolute; left: 15px; top: 15px; padding: 7px 11px; border-radius: 100px; background: var(--orange); color: #fff; font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+      .card:nth-child(2) .image-wrap { background: radial-gradient(circle at 50% 25%, #4b1b5d, #110218 72%); }
+      .card:nth-child(3) .image-wrap { background: radial-gradient(circle at 50% 25%, #56301b, #110218 72%); }
+      .card:nth-child(4) .image-wrap { background: radial-gradient(circle at 50% 25%, #4c1646, #110218 72%); }
+      .card:nth-child(5) .image-wrap { background: radial-gradient(circle at 50% 25%, #402050, #110218 72%); }
+      .details { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 18px 18px 19px; }
+      .details h3 { margin: 0; color: #fff; font-size: 1.45rem; line-height: .95; }
+      .details p { margin: 7px 0 0; color: #d1b6cd; font-size: .81rem; line-height: 1.35; }
+      .mini-button { width: 43px; height: 43px; border: 0; border-radius: 12px; color: #16031e; background: var(--yellow); font-size: 1.35rem; font-weight: 800; cursor: pointer; }
+      .mini-button:hover { background: var(--orange); color: #fff; }
+      .card:nth-child(3) { grid-column: span 1; }
+      .card:nth-child(5) { grid-column: 2 / span 1; }
+
+      .categories { padding: 78px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
+      .categories .section-heading { margin-bottom: 30px; }
+      .categories .section-heading p { color: var(--yellow); }
+      .categories .section-heading > span { color: rgba(255,255,255,.74); }
+      .category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17px; max-width: 1250px; margin: auto; }
+      .category-card {
+        position: relative;
+        min-height: 235px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+        padding: 21px;
+        border: 2px solid rgba(255,255,255,.22);
+        border-radius: 22px;
+        color: #fff;
+        background: linear-gradient(145deg, #7c185c, #341047);
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,.18), 0 12px 24px rgba(0,0,0,.24);
+        transition: transform .22s ease, border-color .22s ease;
+      }
+      .category-card:hover { transform: translateY(-6px); border-color: var(--yellow); }
+      .category-card:nth-child(2) { background: linear-gradient(145deg, #2b1246, #6a1b5a); }
+      .category-card:nth-child(3) { background: linear-gradient(145deg, #8b2d16, #4e1435); }
+      .category-card:nth-child(4) { background: linear-gradient(145deg, #49213d, #8c310e); }
+      .category-card::before { position: absolute; right: 12px; top: -14px; color: rgba(255,255,255,.22); font-size: 8.2rem; line-height: 1; }
+      .category-card:nth-child(1)::before { content: "✦"; }
+      .category-card:nth-child(2)::before { content: "🦇"; }
+      .category-card:nth-child(3)::before { content: "★"; }
+      .category-card:nth-child(4)::before { content: "🎩"; }
+      .category-card .soon { align-self: flex-start; margin-bottom: auto; padding: 6px 9px; border-radius: 100px; background: rgba(15,6,27,.35); font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+      .category-card h3 { position: relative; margin: 0; font-size: 1.7rem; line-height: .9; }
+      .category-card p { position: relative; margin: 8px 0 0; font-size: .82rem; line-height: 1.45; }
+
+      .contact {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 28px;
+        margin: 0 clamp(18px, 7vw, 110px) 82px;
+        padding: clamp(25px, 5vw, 44px);
+        border-radius: 26px;
+        color: #fff;
+        border: 1px solid rgba(255, 138, 20, .52);
+        background: radial-gradient(circle at 90% 15%, rgba(239, 76, 10, .34), transparent 28%), linear-gradient(100deg, #15031e, #290628 56%, #16031e);
+        box-shadow: 0 18px 45px rgba(0,0,0,.46), inset 0 0 36px rgba(111, 23, 96, .28);
+      }
+      .contact-icon { display: grid; place-items: center; width: 64px; height: 64px; border: 3px solid rgba(255, 181, 33, .88); border-radius: 50%; font-size: 2rem; box-shadow: 0 0 20px rgba(255, 93, 11, .36); }
+      .contact h2 { font-size: clamp(2rem, 3vw, 3rem); }
+      .contact p { margin: 6px 0 0; line-height: 1.45; }
+      .contact .button { background: var(--yellow); color: var(--ink); white-space: nowrap; }
+
+      footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
+      footer img { width: 150px; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
+      footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
+
+      dialog { width: min(92vw, 860px); padding: 0; border: 1px solid rgba(255, 143, 20, .55); border-radius: 24px; overflow: hidden; color: #fff; box-shadow: 0 28px 80px rgba(0,0,0,.58); }
+      dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px); }
+      .modal { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; background: linear-gradient(135deg, #190522, #0d0214); }
+      .modal img { width: 100%; height: 100%; padding: 12px; object-fit: contain; object-position: center; background: radial-gradient(circle, #3f103c, #100218 68%); }
+      .modal-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 58px); }
+      .modal-copy .eyebrow { color: var(--orange); }
+      .modal-copy h2 { margin-bottom: 16px; }
+      .modal-copy p { color: #decce0; line-height: 1.6; }
+      .modal-copy .button { align-self: flex-start; margin-top: 14px; }
+      .close { position: absolute; right: 13px; top: 13px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
+
+      @media (max-width: 860px) {
+        .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 92px; padding-bottom: 60px; }
+        .hero-art { width: min(72vw, 330px); }
+        .sticker-eye { left: auto; right: 8%; top: 72px; }
+        .sticker-candy { left: auto; right: 19%; bottom: 24px; }
+        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .card:nth-child(5) { grid-column: auto; }
+        .contact { grid-template-columns: auto 1fr; }
+        .contact .button { grid-column: 1 / -1; }
+        .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 570px) {
+        .nav { height: 50px; padding: 0 14px; }
+        .nav img { width: 126px; height: 62px; }
+        .nav-links a:not(:last-child) { display: none; }
+        .nav-links { gap: 12px; font-size: .75rem; }
+        .hero { padding: 82px 20px 52px; }
+        .hero-art { width: min(78vw, 282px); }
+        .sticker-eye, .sticker-skull { display: none; }
+        .sticker-pumpkin { left: 2%; bottom: -16px; }
+        .sticker-candy { right: 7%; bottom: 13px; }
+        .grid { grid-template-columns: 1fr; }
+        .section-heading { display: block; }
+        .section-heading > span { display: block; margin-top: 18px; }
+        .contact { grid-template-columns: 1fr; gap: 15px; margin-bottom: 52px; }
+        .modal { grid-template-columns: 1fr; }
+        .modal img { max-height: 370px; }
+        .category-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#inicio" aria-label="Inicio Kalú Accesorios"><img src="kalu-logo.png" alt="Kalú Accesorios" /></a>
+        <div class="nav-links">
+          <a href="#mascaras">Máscaras</a>
+          <a href="#pelucas">Pelucas</a>
+          <a href="#ninos">Niños</a>
+          <a href="#ninas">Niñas</a>
+          <a href="#sombreros">Sombreros</a>
+          <a href="#pedidos">Cómo pedir</a>
+          <a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
+        </div>
+      </nav>
+
+      <main>
+        <section class="hero" id="inicio">
+          <img class="hero-sticker sticker-pumpkin" src="sticker-pumpkin.png" alt="" aria-hidden="true" />
+          <img class="hero-sticker sticker-candy" src="sticker-candy.png" alt="" aria-hidden="true" />
+          <img class="hero-sticker sticker-skull" src="sticker-skull.png" alt="" aria-hidden="true" />
+          <img class="hero-sticker sticker-eye" src="sticker-eye.png" alt="" aria-hidden="true" />
+          <div class="hero-copy-block">
+            <p class="eyebrow">Halloween</p>
+            <h1>Tu personaje <em>empieza</em> en Kalú.</h1>
+            <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
+            <div class="actions">
+              <a class="button button-primary" href="#mascaras">Explorar catálogo</a>
+              <a class="button button-light" href="#categorias-title">Ver categorías</a>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Máscara de terror con sombrero">
+            <img src="mask-sombrero.png" alt="Máscara de terror con sombrero" />
+          </div>
+        </section>
+
+        <section class="catalog" id="mascaras" aria-labelledby="mascaras-title">
+          <div class="section-heading">
+            <div>
+              <p>Elige tu personaje</p>
+              <h2 id="mascaras-title">Máscaras que no pasan desapercibidas</h2>
+            </div>
+            <span>Toca el botón <strong>+</strong> para ver cada máscara en grande y pedirla por WhatsApp.</span>
+          </div>
+
+          <div class="grid">
+            <article class="card" data-name="Máscara de terror con sombrero" data-code="M-01" data-image="mask-sombrero.png" data-desc="Una pieza de terror con sombrero, perfecta para un disfraz impactante.">
+              <div class="image-wrap"><img src="mask-sombrero.png" alt="Máscara de terror con sombrero" /><span class="code">M-01</span></div>
+              <div class="details"><div><h3>Terror con sombrero</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Terror con sombrero">+</button></div>
+            </article>
+            <article class="card" data-name="Máscara de gorila" data-code="M-02" data-image="mask-gorila.png" data-desc="Una máscara de gorila en negro, con detalles rojos para un look salvaje.">
+              <div class="image-wrap"><img src="mask-gorila.png" alt="Máscara de gorila negra con detalles rojos" /><span class="code">M-02</span></div>
+              <div class="details"><div><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Gorila salvaje">+</button></div>
+            </article>
+            <article class="card" data-name="Máscara criatura del bosque" data-code="M-03" data-image="mask-bosque.png" data-desc="Una criatura del bosque de textura marcada y mirada hipnótica.">
+              <div class="image-wrap"><img src="mask-bosque.png" alt="Máscara de criatura del bosque color café" /><span class="code">M-03</span></div>
+              <div class="details"><div><h3>Criatura del bosque</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Criatura del bosque">+</button></div>
+            </article>
+            <article class="card" data-name="Máscara de payaso fucsia" data-code="M-04" data-image="mask-clown-fuchsia.png" data-desc="Una máscara de payaso fucsia y morada con una peluca brillante y divertida.">
+              <div class="image-wrap"><img src="mask-clown-fuchsia.png" alt="Máscara de payaso fucsia con peluca morada" /><span class="code">M-04</span></div>
+              <div class="details"><div><h3>Payaso fucsia</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso fucsia">+</button></div>
+            </article>
+            <article class="card" data-name="Máscara de payaso siniestro" data-code="M-05" data-image="mask-clown-black.png" data-desc="El toque oscuro para Halloween: sonrisa inquietante y sombrero negro.">
+              <div class="image-wrap"><img src="mask-clown-black.png" alt="Máscara de payaso siniestro con sombrero negro" /><span class="code">M-05</span></div>
+              <div class="details"><div><h3>Payaso siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso siniestro">+</button></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="categories" aria-labelledby="categorias-title">
+          <div class="section-heading">
+            <div>
+              <p>Próximamente en Kalú</p>
+              <h2 id="categorias-title">Todo para crear tu personaje</h2>
+            </div>
+            <span>Estas secciones ya quedan preparadas para agregar fotos, códigos, precios y disponibilidad.</span>
+          </div>
+          <div class="category-grid">
+            <a class="category-card" id="pelucas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20las%20pelucas." target="_blank" rel="noopener">
+              <span class="soon">Muy pronto</span><h3>Pelucas</h3><p>Colores, estilos y personajes para completar tu look.</p>
+            </a>
+            <a class="category-card" id="ninos" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1os." target="_blank" rel="noopener">
+              <span class="soon">Muy pronto</span><h3>Accesorios para niños</h3><p>Detalles divertidos para los pequeños de la casa.</p>
+            </a>
+            <a class="category-card" id="ninas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">
+              <span class="soon">Muy pronto</span><h3>Accesorios para niñas</h3><p>Ideas mágicas, coloridas y llenas de brillo.</p>
+            </a>
+            <a class="category-card" id="sombreros" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">
+              <span class="soon">Muy pronto</span><h3>Sombreros</h3><p>El toque final para celebrar con mucho estilo.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
+          <div class="contact-icon" aria-hidden="true">☏</div>
+          <div><h2 id="pedidos-title">¿Encontraste tu favorita?</h2><p>Escríbenos, menciona el código de la máscara y te confirmamos precio y disponibilidad.</p></div>
+          <a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20una%20m%C3%A1scara%20de%20Halloween." target="_blank" rel="noopener">Hablar con Kalú</a>
+        </section>
+      </main>
+
+      <footer>
+        <img src="kalu-logo.png" alt="Kalú Accesorios" />
+        <p>Accesorios para celebrar, crear y destacar. · WhatsApp 321 505 5733</p>
+      </footer>
+    </div>
+
+    <dialog id="product-modal" aria-labelledby="modal-title">
+      <div class="modal">
+        <button class="close" id="close-modal" aria-label="Cerrar detalle">×</button>
+        <img id="modal-image" src="" alt="" />
+        <div class="modal-copy">
+          <p class="eyebrow" id="modal-code"></p>
+          <h2 id="modal-title"></h2>
+          <p id="modal-desc"></p>
+          <a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      const modal = document.getElementById("product-modal");
+      const modalImage = document.getElementById("modal-image");
+      const modalTitle = document.getElementById("modal-title");
+      const modalCode = document.getElementById("modal-code");
+      const modalDesc = document.getElementById("modal-desc");
+      const modalWhatsapp = document.getElementById("modal-whatsapp");
+
+      document.querySelectorAll(".card").forEach((card) => {
+        card.querySelector(".mini-button").addEventListener("click", () => {
+          const { name, code, image, desc } = card.dataset;
+          modalImage.src = image;
+          modalImage.alt = name;
+          modalTitle.textContent = name;
+          modalCode.textContent = code;
+          modalDesc.textContent = desc;
+          modalWhatsapp.href = `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por ${name} (${code}).`)}`;
+          modal.showModal();
+        });
+      });
+
+      document.getElementById("close-modal").addEventListener("click", () => modal.close());
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) modal.close();
+      });
+    </script>
+  </body>
+</html>
