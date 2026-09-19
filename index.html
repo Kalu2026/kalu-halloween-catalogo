@@ -1,817 +1,773 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Catálogo de máscaras de Halloween de Kalú Accesorios."
-    />
-    <title>Kalú Accesorios | Halloween</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --ink: #0b0212;
-        --violet: #42115e;
-        --purple: #74206e;
-        --fuchsia: #a71c65;
-        --orange: #f15a0b;
-        --yellow: #ffbd18;
-        --blue: #68246f;
-        --green: #9b3920;
-        --paper: #11031b;
-        --shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
-      }
-
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        color: #fff;
-        background: var(--paper);
-        font-family: "Montserrat", Arial, sans-serif;
-      }
-      a { color: inherit; text-decoration: none; }
-      button { font: inherit; }
-
-      .shell { overflow: hidden; }
-      .nav {
-        position: absolute;
-        top: 0;
-        left: 6px;
-        right: 6px;
-        z-index: 30;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 24px;
-        height: 58px;
-        padding: 2px clamp(18px, 4vw, 48px);
-        border: 0;
-        border-radius: 0 0 12px 12px;
-        color: var(--ink);
-        background: rgba(255, 250, 252, 0.98);
-        box-shadow: 0 5px 16px rgba(31, 0, 41, .24);
-      }
-      .nav img { width: 156px; height: 74px; object-fit: contain; display: block; }
-      .nav-links { display: flex; gap: clamp(12px, 1.8vw, 26px); align-items: center; font-size: 0.7rem; font-weight: 800; }
-      .nav-links a:hover { color: var(--orange); }
-
-      .hero {
-        position: relative;
-        isolation: isolate;
-        overflow: hidden;
-        min-height: 560px;
-        display: grid;
-        grid-template-columns: minmax(300px, 1.08fr) minmax(310px, .72fr);
-        align-items: center;
-        gap: 28px;
-        padding: 110px clamp(18px, 8vw, 128px) 64px;
-        color: #fff;
-        background: linear-gradient(111deg, #ff9f14 0 48%, #e8007e 48.2% 70%, #5a075f 70.2% 100%);
-      }
-      .hero::before,
-      .hero::after {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        pointer-events: none;
-      }
-      .hero::before { left: 42%; top: -8%; width: 25%; height: 118%; background: linear-gradient(130deg, rgba(255, 188, 22, .18), rgba(255,255,255,0) 52%); transform: rotate(9deg); }
-      .hero::after { display: none; }
-      .hero-copy-block { position: relative; z-index: 4; width: 100%; max-width: 510px; }
-      .hero-copy-block::after { display: none; }
-      .hero-bats {
-        position: absolute;
-        z-index: 2;
-        right: 30%;
-        bottom: 22px;
-        width: clamp(230px, 23vw, 350px);
-        height: auto;
-        opacity: .96;
-        pointer-events: none;
-        filter: brightness(1.2) saturate(1.16) drop-shadow(0 10px 10px rgba(0,0,0,.48)) drop-shadow(0 0 12px rgba(116, 55, 176, .32));
-        animation: bat-drift 4.6s ease-in-out infinite;
-      }
-      @keyframes bat-drift { 0%,100% { transform: rotate(-4deg) translate(0, 0); } 50% { transform: rotate(-2deg) translate(-5px, -7px); } }
-      @media (prefers-reduced-motion: reduce) {
-        .hero-bats, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide { animation: none; }
-        .hero-carousel .hero-slide { opacity: 0; }
-        .hero-carousel .hero-slide:first-child { opacity: 1; }
-      }
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin: 0 0 12px;
-        color: #4d055f;
-        font-size: 1.02rem;
-        font-weight: 800;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-      }
-      .eyebrow::before { content: "✦"; color: #4d055f; font-size: .9rem; }
-      h1, h2, h3 { font-family: "Baloo 2", Arial, sans-serif; }
-      h1 {
-        max-width: 650px;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        font-size: clamp(3rem, 5.2vw, 4.85rem);
-        line-height: 0.92;
-        letter-spacing: -0.06em;
-        text-align: center;
-      }
-      h1 em { color: #51065e; font-style: normal; }
-      .headline-line {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        white-space: nowrap;
-      }
-      .headline-closing { gap: 0.1em; font-size: .86em; }
-      .headline-logo-line { padding-top: .04em; }
-      .headline-logo {
-        display: inline-block;
-        width: clamp(188px, 19vw, 278px);
-        height: auto;
-        margin: 0;
-        filter: drop-shadow(0 7px 7px rgba(62, 0, 71, .22));
-        animation: logo-float 3.8s ease-in-out infinite;
-      }
-      @keyframes logo-float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-5px); }
-      }
-      .hero-copy { max-width: 420px; margin: 16px 0 22px; color: #fff; font-size: 1.02rem; line-height: 1.48; }
-      .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 43px;
-        padding: 10px 18px;
-        border: 2px solid transparent;
-        border-radius: 10px;
-        font-weight: 800;
-        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      }
-      .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.18); }
-      .button-primary { background: #5a075f; color: #fff; box-shadow: 0 6px 0 rgba(82, 4, 90, .2); }
-      .button-light { border-color: rgba(255,255,255,.74); color: #fff; background: rgba(255, 113, 18, .36); }
-      .button-secondary { border-color: rgba(255,255,255,.6); color: #fff; background: rgba(255,255,255,.08); cursor: pointer; }
-      .button-secondary:disabled { opacity: .62; cursor: default; transform: none; box-shadow: none; }
-      .hero-art { position: relative; z-index: 3; justify-self: center; width: min(100%, 310px); aspect-ratio: .86; display: grid; place-items: center; overflow: hidden; padding: 8px; border: 3px solid #fff; border-radius: 20px; background: radial-gradient(circle at 50% 22%, #fff8fb 0%, #f7d9f5 45%, #f8bd7e 100%); transform: rotate(6deg); box-shadow: 0 0 0 3px #ff2f91, 0 10px 24px rgba(50,0,56,.34); }
-      .hero-art::before, .hero-art::after { display: none; }
-      .hero-art img { display: block; width: 100%; max-width: 100%; height: 100%; object-fit: contain; transform: rotate(-6deg) scale(1.06); margin: 0; filter: drop-shadow(0 10px 8px rgba(44,0,45,.2)); }
-      .hero-art img.hero-logo { width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; animation: none; }
-      .hero-carousel .hero-slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        max-width: none;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        object-fit: contain;
-        object-position: center;
-        opacity: 0;
-        pointer-events: none;
-        transform: rotate(-6deg) scale(var(--product-scale, 1));
-        animation: hero-product-cycle 3s linear infinite;
-      }
-      .hero-carousel .hero-slide:nth-child(1) { --product-scale: 1.03; animation-delay: 0s; }
-      .hero-carousel .hero-slide:nth-child(2) { --product-scale: 1; animation-delay: -2s; }
-      .hero-carousel .hero-slide:nth-child(3) { --product-scale: 1.02; animation-delay: -1s; }
-      @keyframes hero-product-cycle {
-        0%, 33.32% { opacity: 1; }
-        33.33%, 100% { opacity: 0; }
-      }
-      .hero-sticker { position: absolute; z-index: 3; display: block; object-fit: contain; pointer-events: none; filter: drop-shadow(0 5px 3px rgba(68, 0, 60, .18)); }
-      .sticker-pumpkin { left: 7%; bottom: -16px; width: clamp(70px, 11vw, 140px); transform: rotate(-7deg); }
-      .sticker-candy { left: 49%; bottom: 35px; width: clamp(42px, 6vw, 74px); transform: rotate(-12deg); }
-      .sticker-skull { left: 1.5%; bottom: 38px; width: clamp(40px, 5vw, 62px); transform: rotate(-11deg); }
-      .sticker-eye { left: 57%; top: 62px; width: clamp(34px, 4.5vw, 58px); transform: rotate(12deg); }
-
-      .catalog { padding: 84px clamp(18px, 7vw, 110px); background: radial-gradient(ellipse at 90% 0, rgba(109,29,101,.4), transparent 32%), linear-gradient(145deg, #16031e, #0b0212 67%); }
-      .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; max-width: 1250px; margin: 0 auto 34px; }
-      .section-heading p { margin: 0 0 5px; color: var(--orange); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-      h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter-spacing: -.04em; }
-      .section-heading > span { max-width: 330px; color: #d8c3d5; font-size: .95rem; line-height: 1.5; }
-      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: 1250px; margin: auto; }
-      .card {
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        border: 1px solid rgba(255, 137, 22, .46);
-        border-radius: 18px;
-        background: #1a0824;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, .3);
-        transition: transform .22s ease, box-shadow .22s ease;
-      }
-      .card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
-      .image-wrap { position: relative; overflow: hidden; aspect-ratio: 1 / .9; background: radial-gradient(circle at 50% 25%, #3d174e, #110218 72%); }
-      .image-wrap img { width: 100%; height: 100%; padding: 8px; object-fit: contain; object-position: center; transform: scale(1.09); transition: transform .35s ease; }
-      .image-wrap::after {
-        content: "";
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        right: 0;
-        width: clamp(96px, 10vw, 122px);
-        aspect-ratio: 4 / 3;
-        background: url("assets/kalu-logo.png") right top / contain no-repeat;
-        pointer-events: none;
-        filter: drop-shadow(0 3px 4px rgba(32, 0, 38, .22));
-      }
-      .card:hover .image-wrap img { transform: scale(1.13); }
-      .code { position: absolute; left: 15px; top: 15px; padding: 7px 11px; border-radius: 100px; background: var(--orange); color: #fff; font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
-      .card:nth-child(2) .image-wrap { background: radial-gradient(circle at 50% 25%, #4b1b5d, #110218 72%); }
-      .card:nth-child(3) .image-wrap { background: radial-gradient(circle at 50% 25%, #56301b, #110218 72%); }
-      .card:nth-child(4) .image-wrap { background: radial-gradient(circle at 50% 25%, #4c1646, #110218 72%); }
-      .card:nth-child(5) .image-wrap { background: radial-gradient(circle at 50% 25%, #402050, #110218 72%); }
-      .details { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 18px 18px 19px; }
-      .details h3 { margin: 0; color: #fff; font-size: 1.45rem; line-height: .95; }
-      .details p { margin: 7px 0 0; color: #d1b6cd; font-size: .81rem; line-height: 1.35; }
-      .mini-button { width: 43px; height: 43px; border: 0; border-radius: 12px; color: #16031e; background: var(--yellow); font-size: 1.35rem; font-weight: 800; cursor: pointer; }
-      .mini-button:hover { background: var(--orange); color: #fff; }
-      .latex-card .image-wrap { background: #fff; }
-      .latex-card .image-wrap img { padding: 0; }
-
-      .material-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
-      .material-catalog .section-heading { margin-bottom: 36px; }
-      .material-catalog .section-heading p { color: #ff84c8; }
-      .plush-card { max-width: 390px; }
-      .plush-card .image-wrap { background: #fff; }
-      .plush-card .image-wrap img { padding: 0; object-fit: contain; transform: scale(1.17); }
-      .plush-card:hover .image-wrap img { transform: scale(1.21); }
-
-      .accessory-catalog { padding: 78px clamp(18px, 7vw, 110px) 84px; color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
-      .accessory-catalog .section-heading p { color: var(--yellow); }
-      .prop-card { max-width: 390px; }
-      .prop-card .image-wrap { background: linear-gradient(145deg, #fff, #eae6df); }
-      .prop-card .image-wrap img { padding: 0; object-fit: contain; transform: scale(1.2); }
-      .prop-card:hover .image-wrap img { transform: scale(1.24); }
-
-      .wig-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
-      .wig-catalog .section-heading { margin-bottom: 36px; }
-      .wig-catalog .section-heading p { color: #50a2ff; }
-      .wig-groups { max-width: 1250px; margin: auto; }
-      .wig-group + .wig-group { margin-top: 48px; }
-      .wig-group-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 0 18px; }
-      .wig-group-heading h3 { margin: 0; color: #fff; font-size: clamp(1.7rem, 2.7vw, 2.35rem); line-height: .95; }
-      .wig-group-heading p { margin: 0; color: #d8c3d5; font-size: .88rem; }
-      .wig-card { max-width: 390px; }
-      .wig-card .image-wrap { background: linear-gradient(145deg, #ffffff, #eaf2ff); }
-      .wig-card .image-wrap img { padding: 0; object-fit: contain; object-position: center; transform: scale(1.2); }
-      .wig-card:hover .image-wrap img { transform: scale(1.24); }
-      .wig-empty { min-height: 182px; display: grid; place-items: center; padding: 28px; border: 1px dashed rgba(80, 162, 255, .64); border-radius: 18px; color: #d8c3d5; text-align: center; background: linear-gradient(135deg, rgba(38, 15, 64, .76), rgba(12, 5, 22, .9)); }
-      .wig-empty strong { display: block; margin-bottom: 8px; color: #fff; font-size: 1.24rem; }
-
-      .categories { padding: 78px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
-      .categories .section-heading { margin-bottom: 30px; }
-      .categories .section-heading p { color: var(--yellow); }
-      .categories .section-heading > span { color: rgba(255,255,255,.74); }
-      .category-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 17px; max-width: 1250px; margin: auto; }
-      .category-card {
-        position: relative;
-        min-height: 235px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        overflow: hidden;
-        padding: 21px;
-        border: 2px solid rgba(255,255,255,.22);
-        border-radius: 22px;
-        color: #fff;
-        background: linear-gradient(145deg, #7c185c, #341047);
-        box-shadow: inset 0 0 0 1px rgba(0,0,0,.18), 0 12px 24px rgba(0,0,0,.24);
-        transition: transform .22s ease, border-color .22s ease;
-      }
-      .category-card:hover { transform: translateY(-6px); border-color: var(--yellow); }
-      .category-card:nth-child(2) { background: linear-gradient(145deg, #2b1246, #6a1b5a); }
-      .category-card:nth-child(3) { background: linear-gradient(145deg, #8b2d16, #4e1435); }
-      .category-card:nth-child(4) { background: linear-gradient(145deg, #49213d, #8c310e); }
-      .category-card:nth-child(5) { background: linear-gradient(145deg, #31415c, #6b1f55); }
-      .category-card::before { position: absolute; right: 12px; top: -14px; color: rgba(255,255,255,.22); font-size: 8.2rem; line-height: 1; }
-      .category-card:nth-child(1)::before { content: "☠"; }
-      .category-card:nth-child(2)::before { content: "✦"; }
-      .category-card:nth-child(3)::before { content: "🦇"; }
-      .category-card:nth-child(4)::before { content: "★"; }
-      .category-card:nth-child(5)::before { content: "🎩"; }
-      .category-card .soon { align-self: flex-start; margin-bottom: auto; padding: 6px 9px; border-radius: 100px; background: rgba(15,6,27,.35); font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
-      .category-card h3 { position: relative; margin: 0; font-size: 1.7rem; line-height: .9; }
-      .category-card p { position: relative; margin: 8px 0 0; font-size: .82rem; line-height: 1.45; }
-
-      .contact {
-        position: relative;
-        isolation: isolate;
-        overflow: visible;
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        align-items: center;
-        gap: 28px;
-        margin: 0 clamp(18px, 7vw, 110px) 82px;
-        padding: clamp(25px, 5vw, 44px);
-        border-radius: 26px;
-        color: #fff;
-        border: 1px solid rgba(255, 138, 20, .52);
-        background: radial-gradient(circle at 90% 15%, rgba(239, 76, 10, .34), transparent 28%), linear-gradient(100deg, #15031e, #290628 56%, #16031e);
-        box-shadow: 0 18px 45px rgba(0,0,0,.46), inset 0 0 36px rgba(111, 23, 96, .28);
-      }
-      .contact > * { position: relative; z-index: 1; }
-      .contact-icon { display: grid; place-items: center; width: 64px; height: 64px; border: 3px solid rgba(255, 181, 33, .88); border-radius: 50%; font-size: 2rem; box-shadow: 0 0 20px rgba(255, 93, 11, .36); }
-      .contact h2 { font-size: clamp(2rem, 3vw, 3rem); }
-      .contact p { margin: 6px 0 0; line-height: 1.45; }
-      .contact .button { background: var(--yellow); color: var(--ink); white-space: nowrap; }
-
-      .mask-return { padding: 72px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(135deg, #2d0a3a, #13021d 62%, #2a061d); }
-      .mask-return-inner { max-width: 1250px; margin: auto; padding: clamp(26px, 4vw, 42px); border: 1px solid rgba(255, 189, 24, .52); border-radius: 24px; background: radial-gradient(circle at 88% 14%, rgba(255, 111, 12, .33), transparent 28%), rgba(19, 3, 29, .76); box-shadow: var(--shadow); }
-      .mask-return p { margin: 0 0 7px; color: var(--yellow); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-      .mask-return h2 { max-width: 750px; }
-      .mask-return-copy { margin: 15px 0 0; max-width: 620px; color: #decce0; line-height: 1.55; }
-      .return-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-      .return-actions .button { cursor: pointer; }
-
-      .selection-fab { position: fixed; right: 22px; bottom: 22px; z-index: 25; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 9px 13px 9px 17px; border: 0; border-radius: 999px; color: var(--ink); background: var(--yellow); box-shadow: 0 12px 28px rgba(0,0,0,.38); font-weight: 800; cursor: pointer; }
-      .selection-fab:hover { background: #ffcf42; transform: translateY(-2px); }
-      .selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
-
-      footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
-      footer img { width: 150px; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
-      footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
-
-      dialog { width: min(92vw, 860px); padding: 0; border: 1px solid rgba(255, 143, 20, .55); border-radius: 24px; overflow: hidden; color: #fff; box-shadow: 0 28px 80px rgba(0,0,0,.58); }
-      dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px); }
-      .modal { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; background: linear-gradient(135deg, #190522, #0d0214); }
-      .modal img { width: 100%; height: 100%; padding: 12px; object-fit: contain; object-position: center; background: radial-gradient(circle, #3f103c, #100218 68%); }
-      .modal-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 58px); }
-      .modal-copy .eyebrow { color: var(--orange); }
-      .modal-copy h2 { margin-bottom: 16px; }
-      .modal-copy p { color: #decce0; line-height: 1.6; }
-      .modal-copy .button { align-self: flex-start; margin-top: 14px; }
-      .close { position: absolute; right: 13px; top: 13px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
-      .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-      .modal-copy .modal-actions .button { align-self: auto; margin-top: 0; }
-
-      .selection-dialog { width: min(92vw, 580px); }
-      .selection-panel { position: relative; padding: clamp(28px, 5vw, 42px); color: #fff; background: linear-gradient(135deg, #190522, #0d0214); }
-      .selection-panel h2 { margin: 6px 0 10px; }
-      .selection-panel > p { margin: 0; color: #decce0; line-height: 1.5; }
-      .selection-list { display: grid; gap: 10px; margin: 24px 0; padding: 0; list-style: none; }
-      .selection-item { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 14px; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; background: rgba(255,255,255,.06); }
-      .selection-item strong { display: block; font-family: "Baloo 2", Arial, sans-serif; font-size: 1.15rem; line-height: 1; }
-      .selection-item span { display: block; margin-top: 4px; color: var(--yellow); font-size: .75rem; font-weight: 800; letter-spacing: .06em; }
-      .remove-selection { border: 0; color: #fff; background: transparent; font-size: .83rem; font-weight: 800; text-decoration: underline; cursor: pointer; }
-      .selection-empty { margin: 24px 0; padding: 17px; border: 1px dashed rgba(255,255,255,.28); border-radius: 12px; color: #decce0; text-align: center; }
-      .selection-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-      .selection-actions .button { cursor: pointer; }
-      .selection-actions .button:disabled { opacity: .55; cursor: default; }
-      .selection-actions a[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
-
-      @media (max-width: 860px) {
-        .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 92px; padding-bottom: 60px; }
-        .hero-art { width: min(72vw, 330px); }
-        .hero-bats { right: 8%; bottom: 34px; width: min(44vw, 280px); }
-        .sticker-eye { left: auto; right: 8%; top: 72px; }
-        .sticker-candy { left: auto; right: 19%; bottom: 24px; }
-        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .wig-card { max-width: none; }
-        .plush-card, .prop-card { max-width: none; }
-        .card:nth-child(5) { grid-column: auto; }
-        .contact { grid-template-columns: auto 1fr; }
-        .contact .button { grid-column: 1 / -1; }
-        .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      }
-      @media (max-width: 570px) {
-        .nav { height: 50px; padding: 0 14px; }
-        .nav img { width: 126px; height: 62px; }
-        .nav-links a:not(:last-child) { display: none; }
-        .nav-links { gap: 12px; font-size: .75rem; }
-        .hero { padding: 82px 20px 52px; }
-        h1 { font-size: clamp(2.55rem, 12.4vw, 3.1rem); }
-        .headline-closing { font-size: .82em; }
-        .headline-logo { width: clamp(170px, 54vw, 242px); }
-        .hero-art { width: min(78vw, 282px); }
-        .hero-bats { right: -7%; bottom: 25px; width: min(62vw, 285px); }
-        .sticker-eye, .sticker-skull { display: none; }
-        .sticker-pumpkin { left: 2%; bottom: -16px; }
-        .sticker-candy { right: 7%; bottom: 13px; }
-        .grid { grid-template-columns: 1fr; }
-        .wig-group-heading { align-items: flex-start; flex-direction: column; gap: 7px; }
-        .section-heading { display: block; }
-        .section-heading > span { display: block; margin-top: 18px; }
-        .contact { grid-template-columns: 1fr; gap: 15px; margin-bottom: 52px; }
-        .modal { grid-template-columns: 1fr; }
-        .modal img { max-height: 370px; }
-        .category-grid { grid-template-columns: 1fr; }
-        .selection-fab { right: 12px; bottom: 12px; }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="shell">
-      <nav class="nav" aria-label="Navegación principal">
-        <a href="#inicio" aria-label="Inicio Kalú Accesorios"><img src="kalu-logo.png" alt="Kalú Accesorios" /></a>
-        <div class="nav-links">
-          <a href="#mascaras">Máscaras</a>
-          <a href="#pelucas">Pelucas</a>
-          <a href="#accesorios">Accesorios</a>
-          <a href="#ninas">Niñas</a>
-          <a href="#sombreros">Sombreros</a>
-          <a href="#pedidos">Cómo pedir</a>
-          <a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
-        </div>
-      </nav>
-
-      <main>
-        <section class="hero" id="inicio">
-          <img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" />
-          <img class="hero-sticker sticker-pumpkin" src="sticker-pumpkin.png" alt="" aria-hidden="true" />
-          <img class="hero-sticker sticker-candy" src="sticker-candy.png" alt="" aria-hidden="true" />
-          <img class="hero-sticker sticker-skull" src="sticker-skull.png" alt="" aria-hidden="true" />
-          <img class="hero-sticker sticker-eye" src="sticker-eye.png" alt="" aria-hidden="true" />
-          <div class="hero-copy-block">
-            <p class="eyebrow">Halloween</p>
-            <h1>
-              <span class="headline-line">Tu personaje</span>
-              <span class="headline-line headline-closing"><em>Empieza</em> en</span>
-              <span class="headline-line headline-logo-line"><img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" /></span>
-            </h1>
-            <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
-            <div class="actions">
-              <a class="button button-primary" href="#mascaras">Explorar catálogo</a>
-              <a class="button button-light" href="#categorias-title">Ver categorías</a>
-            </div>
-          </div>
-          <div class="hero-art hero-carousel" aria-label="Productos destacados de Kalú Accesorios">
-            <img class="hero-slide" src="assets/hero-clown-costume.png" alt="Disfraz de payaso de terror" />
-            <img class="hero-slide" src="assets/hero-ghost-costume.png" alt="Disfraz negro con máscara de fantasma" />
-            <img class="hero-slide" src="assets/hero-wizard-costume.png" alt="Capa y accesorios de mago" />
-          </div>
-        </section>
-
-        <section class="categories" id="categorias" aria-labelledby="categorias-title">
-          <div class="section-heading">
-            <div>
-              <p>Explora Kalú</p>
-              <h2 id="categorias-title">Todo para crear tu personaje</h2>
-            </div>
-            <span>Elige una categoría para ir directo a sus productos y encontrar tu look de Halloween.</span>
-          </div>
-          <div class="category-grid">
-            <a class="category-card" href="#mascaras">
-              <span class="soon">Disponible</span><h3>Máscaras</h3><p>Modelos de látex y peluche para destacar.</p>
-            </a>
-            <a class="category-card" href="#pelucas">
-              <span class="soon">Disponible</span><h3>Pelucas</h3><p>Estilos largos y próximamente también cortos.</p>
-            </a>
-            <a class="category-card" href="#accesorios">
-              <span class="soon">Disponible</span><h3>Accesorios de personaje</h3><p>Utilería para completar tu disfraz.</p>
-            </a>
-            <a class="category-card" id="ninas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">
-              <span class="soon">Muy pronto</span><h3>Accesorios para niñas</h3><p>Ideas mágicas, coloridas y llenas de brillo.</p>
-            </a>
-            <a class="category-card" id="sombreros" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">
-              <span class="soon">Muy pronto</span><h3>Sombreros</h3><p>El toque final para celebrar con mucho estilo.</p>
-            </a>
-          </div>
-        </section>
-
-        <section class="catalog" id="mascaras" aria-labelledby="mascaras-title">
-          <div class="section-heading">
-            <div>
-              <p>Máscaras de látex</p>
-              <h2 id="mascaras-title">Personajes que no pasan desapercibidos</h2>
-            </div>
-            <span>Elige tu favorita, revisa el código y toca <strong>+</strong> para ver el detalle, agregarla a tu selección o pedirla por WhatsApp.</span>
-          </div>
-
-          <div class="grid">
-            <article class="card latex-card" data-name="Máscara de látex Payaso bicolor" data-code="ML-01" data-image="assets/latex-01.jpg" data-desc="Payaso de terror bicolor con sombrero rojo y cabello en colores intensos.">
-              <div class="image-wrap"><img src="assets/latex-01.jpg" alt="Máscara de látex de payaso bicolor con sombrero rojo" /><span class="code">ML-01</span></div>
-              <div class="details"><div><h3>Payaso bicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso bicolor">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Monja siniestra" data-code="ML-02" data-image="assets/latex-02.jpg" data-desc="Máscara de terror con hábito blanco y negro, detalles agrietados y sonrisa inquietante.">
-              <div class="image-wrap"><img src="assets/latex-02.jpg" alt="Máscara de látex de monja siniestra" /><span class="code">ML-02</span></div>
-              <div class="details"><div><h3>Monja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Monja siniestra">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Payaso rojo" data-code="ML-03" data-image="assets/latex-03.jpg" data-desc="Payaso de terror de rostro claro, cabello rojo y sonrisa intensa.">
-              <div class="image-wrap"><img src="assets/latex-03.jpg" alt="Máscara de látex de payaso rojo" /><span class="code">ML-03</span></div>
-              <div class="details"><div><h3>Payaso rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso rojo">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Payaso triste" data-code="ML-04" data-image="assets/latex-04.jpg" data-desc="Máscara de payaso de terror con sombrero negro, mirada triste y sonrisa afilada.">
-              <div class="image-wrap"><img src="assets/latex-04.jpg" alt="Máscara de látex de payaso triste con sombrero negro" /><span class="code">ML-04</span></div>
-              <div class="details"><div><h3>Payaso triste</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso triste">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Payaso de cono" data-code="ML-05" data-image="assets/latex-05.jpg" data-desc="Máscara de payaso siniestro con sombrero de cono negro y dientes marcados.">
-              <div class="image-wrap"><img src="assets/latex-05.jpg" alt="Máscara de látex de payaso con cono negro" /><span class="code">ML-05</span></div>
-              <div class="details"><div><h3>Payaso de cono</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso de cono">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Payaso espiral" data-code="ML-06" data-image="assets/latex-06.jpg" data-desc="Payaso en tonos morados y rosados con nariz en espiral y cabello multicolor.">
-              <div class="image-wrap"><img src="assets/latex-06.jpg" alt="Máscara de látex de payaso espiral multicolor" /><span class="code">ML-06</span></div>
-              <div class="details"><div><h3>Payaso espiral</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso espiral">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Criatura del bosque" data-code="ML-07" data-image="assets/latex-07.jpg" data-desc="Criatura de textura de madera, mirada verde y expresión amenazante.">
-              <div class="image-wrap"><img src="assets/latex-07.jpg" alt="Máscara de látex de criatura del bosque" /><span class="code">ML-07</span></div>
-              <div class="details"><div><h3>Criatura del bosque</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Criatura del bosque">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Gorila salvaje" data-code="ML-08" data-image="assets/latex-08.jpg" data-desc="Máscara de gorila negro con detalles rojos y pelaje para un personaje impactante.">
-              <div class="image-wrap"><img src="assets/latex-08.jpg" alt="Máscara de látex de gorila negro con detalles rojos" /><span class="code">ML-08</span></div>
-              <div class="details"><div><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Gorila salvaje">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Terror con sombrero" data-code="ML-09" data-image="assets/latex-09.jpg" data-desc="Rostro de terror desgastado con sombrero oscuro y sonrisa escalofriante.">
-              <div class="image-wrap"><img src="assets/latex-09.jpg" alt="Máscara de látex de terror con sombrero" /><span class="code">ML-09</span></div>
-              <div class="details"><div><h3>Terror con sombrero</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Terror con sombrero">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Lobo feroz" data-code="ML-10" data-image="assets/latex-10.jpg" data-desc="Máscara de lobo feroz con pelaje castaño y gesto amenazante.">
-              <div class="image-wrap"><img src="assets/latex-10.jpg" alt="Máscara de látex de lobo feroz" /><span class="code">ML-10</span></div>
-              <div class="details"><div><h3>Lobo feroz</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Lobo feroz">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Títere siniestro" data-code="ML-11" data-image="assets/latex-11.jpg" data-desc="Máscara blanca de títere con espirales rojas y cabello oscuro.">
-              <div class="image-wrap"><img src="assets/latex-11.jpg" alt="Máscara de látex de títere siniestro" /><span class="code">ML-11</span></div>
-              <div class="details"><div><h3>Títere siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Títere siniestro">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Zombie herido" data-code="ML-12" data-image="assets/latex-12.jpg" data-desc="Máscara de zombie herido con dientes expuestos y detalles de terror.">
-              <div class="image-wrap"><img src="assets/latex-12.jpg" alt="Máscara de látex de zombie herido" /><span class="code">ML-12</span></div>
-              <div class="details"><div><h3>Zombie herido</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Zombie herido">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Payaso fucsia" data-code="ML-13" data-image="assets/latex-13.jpg" data-desc="Payaso de terror en tonos fucsia y morado con una sonrisa llena de dientes.">
-              <div class="image-wrap"><img src="assets/latex-13.jpg" alt="Máscara de látex de payaso fucsia" /><span class="code">ML-13</span></div>
-              <div class="details"><div><h3>Payaso fucsia</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso fucsia">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Payaso azul" data-code="ML-14" data-image="assets/latex-14.jpg" data-desc="Payaso de terror azul con cabello naranja y rosado, perfecto para destacar.">
-              <div class="image-wrap"><img src="assets/latex-14.jpg" alt="Máscara de látex de payaso azul" /><span class="code">ML-14</span></div>
-              <div class="details"><div><h3>Payaso azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso azul">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Bruja siniestra" data-code="ML-15" data-image="assets/latex-15.jpg" data-desc="Máscara de bruja de nariz alargada y cabello oscuro para un look clásico de Halloween.">
-              <div class="image-wrap"><img src="assets/latex-15.jpg" alt="Máscara de látex de bruja siniestra" /><span class="code">ML-15</span></div>
-              <div class="details"><div><h3>Bruja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Bruja siniestra">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Calavera grito" data-code="ML-16" data-image="assets/latex-16.jpg" data-desc="Calavera agrietada con expresión de grito y acabados de terror.">
-              <div class="image-wrap"><img src="assets/latex-16.jpg" alt="Máscara de látex de calavera grito" /><span class="code">ML-16</span></div>
-              <div class="details"><div><h3>Calavera grito</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Calavera grito">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Bicolor clásica" data-code="ML-17" data-image="assets/latex-17.jpg" data-desc="Máscara clásica bicolor con cabello castaño y acabado envejecido.">
-              <div class="image-wrap"><img src="assets/latex-17.jpg" alt="Máscara de látex bicolor clásica" /><span class="code">ML-17</span></div>
-              <div class="details"><div><h3>Bicolor clásica</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Bicolor clásica">+</button></div>
-            </article>
-            <article class="card latex-card" data-name="Máscara de látex Payaso rizado" data-code="ML-18" data-image="assets/latex-18.jpg" data-desc="Payaso de terror con cabello rizado amarillo y rojo, mirada intensa y nariz espiral.">
-              <div class="image-wrap"><img src="assets/latex-18.jpg" alt="Máscara de látex de payaso rizado amarillo y rojo" /><span class="code">ML-18</span></div>
-              <div class="details"><div><h3>Payaso rizado</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso rizado">+</button></div>
-            </article>
-          </div>
-        </section>
-
-        <section class="material-catalog" id="mascaras-peluche" aria-labelledby="peluche-title">
-          <div class="section-heading">
-            <div>
-              <p>Máscaras de peluche</p>
-              <h2 id="peluche-title">Terror con textura</h2>
-            </div>
-            <span>Máscaras suaves y llamativas para complementar tu personaje.</span>
-          </div>
-          <div class="grid">
-            <article class="card plush-card" data-name="Máscara de peluche Conejo siniestro" data-code="MPe-01" data-image="assets/plush-mask-rabbit.jpg" data-desc="Máscara de peluche negro con orejas largas, ojos amarillos y sonrisa de terror.">
-              <div class="image-wrap"><img src="assets/plush-mask-rabbit.jpg" alt="Máscara de peluche de conejo negro siniestro" /><span class="code">MPe-01</span></div>
-              <div class="details"><div><h3>Conejo siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara de peluche Conejo siniestro">+</button></div>
-            </article>
-          </div>
-        </section>
-
-        <section class="accessory-catalog" id="accesorios" aria-labelledby="accesorios-title">
-          <div class="section-heading">
-            <div>
-              <p>Accesorios de personaje</p>
-              <h2 id="accesorios-title">Utilería para tu disfraz</h2>
-            </div>
-            <span>Encuentra machetes de utilería, katanas, motosierras, varitas y más accesorios para completar el look.</span>
-          </div>
-          <div class="grid">
-            <article class="card prop-card" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
-              <div class="image-wrap"><img src="assets/prop-machete.jpg" alt="Machete de utilería con mango envuelto y detalles rojos" /><span class="code">AP-01</span></div>
-              <div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver machete de utilería">+</button></div>
-            </article>
-          </div>
-        </section>
-
-        <section class="wig-catalog" id="pelucas" aria-labelledby="pelucas-title">
-          <div class="section-heading">
-            <div>
-              <p>Pelucas</p>
-              <h2 id="pelucas-title">Elige tu nuevo look</h2>
-            </div>
-            <span>Explora las pelucas por largo y toca <strong>+</strong> para ver el detalle, agregarlas a tu selección o pedir una de inmediato.</span>
-          </div>
-
-          <div class="wig-groups">
-            <section class="wig-group" aria-labelledby="pelucas-largas-title">
-              <div class="wig-group-heading">
-                <h3 id="pelucas-largas-title">Pelucas largas</h3>
-                <p>Color, estilo y diversión para tu personaje.</p>
-              </div>
-              <div class="grid">
-                <article class="card wig-card" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue-corner.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
-                  <div class="image-wrap"><img src="assets/wig-long-blue-corner.png" alt="Peluca larga azul con coletas y lazos rojos" /><span class="code">PL-01</span></div>
-                  <div class="details"><div><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver peluca larga azul">+</button></div>
-                </article>
-              </div>
-            </section>
-
-            <section class="wig-group" aria-labelledby="pelucas-cortas-title">
-              <div class="wig-group-heading">
-                <h3 id="pelucas-cortas-title">Pelucas cortas</h3>
-                <p>Esta sección queda lista para las próximas pelucas.</p>
-              </div>
-              <div class="wig-empty"><div><strong>Muy pronto</strong>Agrega aquí las fotos de las pelucas cortas para mantenerlas separadas de las largas.</div></div>
-            </section>
-          </div>
-        </section>
-
-        <section class="mask-return" aria-labelledby="volver-mascaras-title">
-          <div class="mask-return-inner">
-            <p>¿Quieres seguir explorando?</p>
-            <h2 id="volver-mascaras-title">Encuentra la máscara perfecta para tu personaje</h2>
-            <div class="mask-return-copy">Vuelve a las máscaras de látex o descubre los modelos de peluche. Puedes agregar varias a tu selección y pedirlas juntas por WhatsApp.</div>
-            <div class="return-actions">
-              <a class="button button-primary" href="#mascaras">Ver máscaras de látex</a>
-              <a class="button button-secondary" href="#mascaras-peluche">Ver máscaras de peluche</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
-          <div class="contact-icon" aria-hidden="true">☏</div>
-          <div><h2 id="pedidos-title">¿Ya tienes tu selección?</h2><p>Pide un producto de inmediato desde su detalle o reúne varios artículos en <strong>Mi selección</strong> y envíalos juntos por WhatsApp.</p></div>
-          <a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo." target="_blank" rel="noopener">Hablar con Kalú</a>
-        </section>
-      </main>
-
-      <footer>
-        <img src="kalu-logo.png" alt="Kalú Accesorios" />
-        <p>Accesorios para celebrar, crear y destacar. · WhatsApp 321 505 5733</p>
-        <p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
-      </footer>
-    </div>
-
-    <button class="selection-fab" id="selection-button" type="button" aria-haspopup="dialog" aria-label="Abrir mi selección">
-      Mi selección <span class="selection-count" id="selection-count">0</span>
-    </button>
-
-    <dialog id="product-modal" aria-labelledby="modal-title">
-      <div class="modal">
-        <button class="close" id="close-modal" aria-label="Cerrar detalle">×</button>
-        <img id="modal-image" src="" alt="" />
-        <div class="modal-copy">
-          <p class="eyebrow" id="modal-code"></p>
-          <h2 id="modal-title"></h2>
-          <p id="modal-desc"></p>
-          <div class="modal-actions">
-            <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
-            <a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir solo este producto</a>
-          </div>
-        </div>
-      </div>
-    </dialog>
-
-    <dialog class="selection-dialog" id="selection-modal" aria-labelledby="selection-title">
-      <div class="selection-panel">
-        <button class="close" id="close-selection" type="button" aria-label="Cerrar mi selección">×</button>
-        <p class="eyebrow">Mi selección</p>
-        <h2 id="selection-title">Productos elegidos</h2>
-        <p>Revisa tus productos antes de enviar la consulta. Kalú te confirmará precio y disponibilidad.</p>
-        <ul class="selection-list" id="selection-list"></ul>
-        <p class="selection-empty" id="selection-empty">Aún no has agregado productos. Abre un artículo con el botón + para empezar.</p>
-        <div class="selection-actions">
-          <a class="button button-primary" id="selection-whatsapp" target="_blank" rel="noopener">Pedir mi selección por WhatsApp</a>
-          <button class="button button-secondary" id="clear-selection" type="button">Vaciar selección</button>
-        </div>
-      </div>
-    </dialog>
-
-    <script>
-      const modal = document.getElementById("product-modal");
-      const modalImage = document.getElementById("modal-image");
-      const modalTitle = document.getElementById("modal-title");
-      const modalCode = document.getElementById("modal-code");
-      const modalDesc = document.getElementById("modal-desc");
-      const modalWhatsapp = document.getElementById("modal-whatsapp");
-      const modalAddSelection = document.getElementById("modal-add-selection");
-      const selectionModal = document.getElementById("selection-modal");
-      const selectionButton = document.getElementById("selection-button");
-      const selectionCount = document.getElementById("selection-count");
-      const selectionList = document.getElementById("selection-list");
-      const selectionEmpty = document.getElementById("selection-empty");
-      const selectionWhatsapp = document.getElementById("selection-whatsapp");
-      const clearSelection = document.getElementById("clear-selection");
-      let activeProduct = null;
-      let selectedProducts = [];
-
-      try {
-        const savedSelection = JSON.parse(window.localStorage.getItem("kalu-selection"));
-        if (Array.isArray(savedSelection)) selectedProducts = savedSelection;
-      } catch {
-        selectedProducts = [];
-      }
-
-      const saveSelection = () => {
-        try {
-          window.localStorage.setItem("kalu-selection", JSON.stringify(selectedProducts));
-        } catch {
-          // La selección seguirá funcionando durante esta visita si el navegador bloquea el guardado.
-        }
-      };
-
-      const isSelected = (product) => product && selectedProducts.some((item) => item.code === product.code);
-
-      const updateModalSelectionButton = () => {
-        const alreadyAdded = isSelected(activeProduct);
-        modalAddSelection.disabled = alreadyAdded;
-        modalAddSelection.textContent = alreadyAdded ? "Ya está en mi selección" : "Agregar a mi selección";
-      };
-
-      const updateSelection = () => {
-        const hasProducts = selectedProducts.length > 0;
-        selectionCount.textContent = selectedProducts.length;
-        selectionButton.setAttribute("aria-label", `Abrir mi selección: ${selectedProducts.length} productos`);
-        selectionList.hidden = !hasProducts;
-        selectionEmpty.hidden = hasProducts;
-        selectionList.innerHTML = selectedProducts.map((product) => `
-          <li class="selection-item">
-            <div><strong>${product.name}</strong><span>${product.code}</span></div>
-            <button class="remove-selection" type="button" data-remove-code="${product.code}" aria-label="Quitar ${product.name}">Quitar</button>
-          </li>
-        `).join("");
-        clearSelection.disabled = !hasProducts;
-        selectionWhatsapp.href = hasProducts
-          ? `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por estos productos:\n${selectedProducts.map((product) => `• ${product.name} (${product.code})`).join("\n")}`)}`
-          : "#";
-        selectionWhatsapp.setAttribute("aria-disabled", String(!hasProducts));
-      };
-
-      document.querySelectorAll(".card").forEach((card) => {
-        card.querySelector(".mini-button").addEventListener("click", () => {
-          const { name, code, image, desc } = card.dataset;
-          activeProduct = { name, code, image, desc };
-          modalImage.src = image;
-          modalImage.alt = name;
-          modalTitle.textContent = name;
-          modalCode.textContent = code;
-          modalDesc.textContent = desc;
-          modalWhatsapp.href = `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por ${name} (${code}).`)}`;
-          updateModalSelectionButton();
-          modal.showModal();
-        });
-      });
-
-      modalAddSelection.addEventListener("click", () => {
-        if (!activeProduct || isSelected(activeProduct)) return;
-        selectedProducts.push(activeProduct);
-        saveSelection();
-        updateSelection();
-        updateModalSelectionButton();
-      });
-
-      selectionButton.addEventListener("click", () => selectionModal.showModal());
-      document.getElementById("close-selection").addEventListener("click", () => selectionModal.close());
-      selectionModal.addEventListener("click", (event) => {
-        if (event.target === selectionModal) selectionModal.close();
-      });
-
-      selectionList.addEventListener("click", (event) => {
-        const removeButton = event.target.closest("[data-remove-code]");
-        if (!removeButton) return;
-        selectedProducts = selectedProducts.filter((product) => product.code !== removeButton.dataset.removeCode);
-        saveSelection();
-        updateSelection();
-        updateModalSelectionButton();
-      });
-
-      clearSelection.addEventListener("click", () => {
-        selectedProducts = [];
-        saveSelection();
-        updateSelection();
-        updateModalSelectionButton();
-      });
-
-      selectionWhatsapp.addEventListener("click", (event) => {
-        if (!selectedProducts.length) event.preventDefault();
-      });
-
-      document.getElementById("close-modal").addEventListener("click", () => modal.close());
-      modal.addEventListener("click", (event) => {
-        if (event.target === modal) modal.close();
-      });
-
-      updateSelection();
-    </script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Catálogo de máscaras de Halloween de Kalú Accesorios."
+/>
+<title>Kalú Accesorios | Halloween</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+:root {
+  --ink: #0b0212;
+  --violet: #42115e;
+  --purple: #74206e;
+  --fuchsia: #a71c65;
+  --orange: #f15a0b;
+  --yellow: #ffbd18;
+  --blue: #68246f;
+  --green: #9b3920;
+  --paper: #11031b;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: #fff;
+  background: var(--paper);
+  font-family: "Montserrat", Arial, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.shell { overflow: hidden; }
+.nav {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  right: 6px;
+  z-index: 30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  height: 58px;
+  padding: 2px clamp(18px, 4vw, 48px);
+  border: 0;
+  border-radius: 0 0 12px 12px;
+  color: var(--ink);
+  background: rgba(255, 250, 252, 0.98);
+  box-shadow: 0 5px 16px rgba(31, 0, 41, .24);
+}
+.nav img { width: 156px; height: 74px; object-fit: contain; display: block; }
+.nav-links { display: flex; gap: clamp(12px, 1.8vw, 26px); align-items: center; font-size: 0.7rem; font-weight: 800; }
+.nav-links a:hover { color: var(--orange); }
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: minmax(300px, 1.08fr) minmax(310px, .72fr);
+  align-items: center;
+  gap: 28px;
+  padding: 110px clamp(18px, 8vw, 128px) 64px;
+  color: #fff;
+  background: linear-gradient(111deg, #ff9f14 0 48%, #e8007e 48.2% 70%, #5a075f 70.2% 100%);
+}
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+.hero::before { left: 42%; top: -8%; width: 25%; height: 118%; background: linear-gradient(130deg, rgba(255, 188, 22, .18), rgba(255,255,255,0) 52%); transform: rotate(9deg); }
+.hero::after { display: none; }
+.hero-copy-block { position: relative; z-index: 4; width: 100%; max-width: 510px; }
+.hero-copy-block::after { display: none; }
+.hero-bats {
+  position: absolute;
+  z-index: 2;
+  right: 30%;
+  bottom: 22px;
+  width: clamp(230px, 23vw, 350px);
+  height: auto;
+  opacity: .96;
+  pointer-events: none;
+  filter: brightness(1.2) saturate(1.16) drop-shadow(0 10px 10px rgba(0,0,0,.48)) drop-shadow(0 0 12px rgba(116, 55, 176, .32));
+  animation: bat-drift 4.6s ease-in-out infinite;
+}
+@keyframes bat-drift { 0%,100% { transform: rotate(-4deg) translate(0, 0); } 50% { transform: rotate(-2deg) translate(-5px, -7px); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-bats, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide { animation: none; }
+  .hero-carousel .hero-slide { opacity: 0; }
+  .hero-carousel .hero-slide:first-child { opacity: 1; }
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  color: #4d055f;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.eyebrow::before { content: "✦"; color: #4d055f; font-size: .9rem; }
+h1, h2, h3 { font-family: "Baloo 2", Arial, sans-serif; }
+h1 {
+  max-width: 650px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  font-size: clamp(3rem, 5.2vw, 4.85rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  text-align: center;
+}
+h1 em { color: #51065e; font-style: normal; }
+.headline-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  white-space: nowrap;
+}
+.headline-closing { gap: 0.1em; font-size: .86em; }
+.headline-logo-line { padding-top: .04em; }
+.headline-logo {
+  display: inline-block;
+  width: clamp(188px, 19vw, 278px);
+  height: auto;
+  margin: 0;
+  filter: drop-shadow(0 7px 7px rgba(62, 0, 71, .22));
+  animation: logo-float 3.8s ease-in-out infinite;
+}
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.hero-copy { max-width: 420px; margin: 16px 0 22px; color: #fff; font-size: 1.02rem; line-height: 1.48; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 43px;
+  padding: 10px 18px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-weight: 800;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.18); }
+.button-primary { background: #5a075f; color: #fff; box-shadow: 0 6px 0 rgba(82, 4, 90, .2); }
+.button-light { border-color: rgba(255,255,255,.74); color: #fff; background: rgba(255, 113, 18, .36); }
+.button-secondary { border-color: rgba(255,255,255,.6); color: #fff; background: rgba(255,255,255,.08); cursor: pointer; }
+.button-secondary:disabled { opacity: .62; cursor: default; transform: none; box-shadow: none; }
+.hero-art { position: relative; z-index: 3; justify-self: center; width: min(100%, 340px); aspect-ratio: .86; display: grid; place-items: center; }
+.hero-art::before, .hero-art::after { display: none; }
+.hero-art img { display: block; width: 100%; max-width: 100%; height: 100%; object-fit: contain; transform: none; margin: 0; filter: drop-shadow(0 12px 14px rgba(0,0,0,.32)); }
+.hero-art img.hero-logo { width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; animation: none; }
+.hero-carousel .hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: none;
+  animation: hero-product-cycle 3s linear infinite;
+}
+.hero-carousel .hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-carousel .hero-slide:nth-child(2) { animation-delay: -2s; }
+.hero-carousel .hero-slide:nth-child(3) { animation-delay: -1s; }
+@keyframes hero-product-cycle {
+  0%, 33.32% { opacity: 1; }
+  33.33%, 100% { opacity: 0; }
+}
+.hero-sticker { position: absolute; z-index: 3; display: block; object-fit: contain; pointer-events: none; filter: drop-shadow(0 5px 3px rgba(68, 0, 60, .18)); }
+.sticker-pumpkin { left: 7%; bottom: -16px; width: clamp(70px, 11vw, 140px); transform: rotate(-7deg); }
+.sticker-candy { left: 49%; bottom: 35px; width: clamp(42px, 6vw, 74px); transform: rotate(-12deg); }
+.sticker-skull { left: 1.5%; bottom: 38px; width: clamp(40px, 5vw, 62px); transform: rotate(-11deg); }
+.sticker-eye { left: 57%; top: 62px; width: clamp(34px, 4.5vw, 58px); transform: rotate(12deg); }
+.catalog { padding: 84px clamp(18px, 7vw, 110px); background: radial-gradient(ellipse at 90% 0, rgba(109,29,101,.4), transparent 32%), linear-gradient(145deg, #16031e, #0b0212 67%); }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; max-width: 1250px; margin: 0 auto 34px; }
+.section-heading p { margin: 0 0 5px; color: var(--orange); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter-spacing: -.04em; }
+.section-heading > span { max-width: 330px; color: #d8c3d5; font-size: .95rem; line-height: 1.5; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: 1250px; margin: auto; }
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 137, 22, .46);
+  border-radius: 18px;
+  background: #1a0824;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .3);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+.image-wrap { position: relative; overflow: hidden; aspect-ratio: 1 / .9; background: radial-gradient(circle at 50% 25%, #3d174e, #110218 72%); }
+.image-wrap img { width: 100%; height: 100%; padding: 8px; object-fit: contain; object-position: center; transform: scale(1.09); transition: transform .35s ease; }
+.image-wrap::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  width: clamp(96px, 10vw, 122px);
+  aspect-ratio: 4 / 3;
+  background: url("assets/kalu-logo.png") right top / contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 4px rgba(32, 0, 38, .22));
+}
+.card:hover .image-wrap img { transform: scale(1.13); }
+.code { position: absolute; left: 15px; top: 15px; padding: 7px 11px; border-radius: 100px; background: var(--orange); color: #fff; font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+.card:nth-child(2) .image-wrap { background: radial-gradient(circle at 50% 25%, #4b1b5d, #110218 72%); }
+.card:nth-child(3) .image-wrap { background: radial-gradient(circle at 50% 25%, #56301b, #110218 72%); }
+.card:nth-child(4) .image-wrap { background: radial-gradient(circle at 50% 25%, #4c1646, #110218 72%); }
+.card:nth-child(5) .image-wrap { background: radial-gradient(circle at 50% 25%, #402050, #110218 72%); }
+.details { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 18px 18px 19px; }
+.details h3 { margin: 0; color: #fff; font-size: 1.45rem; line-height: .95; }
+.details p { margin: 7px 0 0; color: #d1b6cd; font-size: .81rem; line-height: 1.35; }
+.mini-button { width: 43px; height: 43px; border: 0; border-radius: 12px; color: #16031e; background: var(--yellow); font-size: 1.35rem; font-weight: 800; cursor: pointer; }
+.mini-button:hover { background: var(--orange); color: #fff; }
+.latex-card .image-wrap { background: #fff; }
+.latex-card .image-wrap img { padding: 0; }
+.material-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
+.material-catalog .section-heading { margin-bottom: 36px; }
+.material-catalog .section-heading p { color: #ff84c8; }
+.plush-card { max-width: 390px; }
+.plush-card .image-wrap { background: #fff; }
+.plush-card .image-wrap img { padding: 0; object-fit: contain; transform: scale(1.17); }
+.plush-card:hover .image-wrap img { transform: scale(1.21); }
+.accessory-catalog { padding: 78px clamp(18px, 7vw, 110px) 84px; color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
+.accessory-catalog .section-heading p { color: var(--yellow); }
+.prop-card { max-width: 390px; }
+.prop-card .image-wrap { background: linear-gradient(145deg, #fff, #eae6df); }
+.prop-card .image-wrap img { padding: 0; object-fit: contain; transform: scale(1.2); }
+.prop-card:hover .image-wrap img { transform: scale(1.24); }
+.wig-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
+.wig-catalog .section-heading { margin-bottom: 36px; }
+.wig-catalog .section-heading p { color: #50a2ff; }
+.wig-groups { max-width: 1250px; margin: auto; }
+.wig-group + .wig-group { margin-top: 48px; }
+.wig-group-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 0 18px; }
+.wig-group-heading h3 { margin: 0; color: #fff; font-size: clamp(1.7rem, 2.7vw, 2.35rem); line-height: .95; }
+.wig-group-heading p { margin: 0; color: #d8c3d5; font-size: .88rem; }
+.wig-card { max-width: 390px; }
+.wig-card .image-wrap { background: linear-gradient(145deg, #ffffff, #eaf2ff); }
+.wig-card .image-wrap img { padding: 0; object-fit: contain; object-position: center; transform: scale(1.2); }
+.wig-card:hover .image-wrap img { transform: scale(1.24); }
+.wig-empty { min-height: 182px; display: grid; place-items: center; padding: 28px; border: 1px dashed rgba(80, 162, 255, .64); border-radius: 18px; color: #d8c3d5; text-align: center; background: linear-gradient(135deg, rgba(38, 15, 64, .76), rgba(12, 5, 22, .9)); }
+.wig-empty strong { display: block; margin-bottom: 8px; color: #fff; font-size: 1.24rem; }
+.categories { padding: 78px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
+.categories .section-heading { margin-bottom: 30px; }
+.categories .section-heading p { color: var(--yellow); }
+.categories .section-heading > span { color: rgba(255,255,255,.74); }
+.category-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 17px; max-width: 1250px; margin: auto; }
+.category-card {
+  position: relative;
+  min-height: 235px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 21px;
+  border: 2px solid rgba(255,255,255,.22);
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(145deg, #7c185c, #341047);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.18), 0 12px 24px rgba(0,0,0,.24);
+  transition: transform .22s ease, border-color .22s ease;
+}
+.category-card:hover { transform: translateY(-6px); border-color: var(--yellow); }
+.category-card:nth-child(2) { background: linear-gradient(145deg, #2b1246, #6a1b5a); }
+.category-card:nth-child(3) { background: linear-gradient(145deg, #8b2d16, #4e1435); }
+.category-card:nth-child(4) { background: linear-gradient(145deg, #49213d, #8c310e); }
+.category-card:nth-child(5) { background: linear-gradient(145deg, #31415c, #6b1f55); }
+.category-card::before { position: absolute; right: 12px; top: -14px; color: rgba(255,255,255,.22); font-size: 8.2rem; line-height: 1; }
+.category-card:nth-child(1)::before { content: "☠"; }
+.category-card:nth-child(2)::before { content: "✦"; }
+.category-card:nth-child(3)::before { content: "🦇"; }
+.category-card:nth-child(4)::before { content: "★"; }
+.category-card:nth-child(5)::before { content: "🎩"; }
+.category-card .soon { align-self: flex-start; margin-bottom: auto; padding: 6px 9px; border-radius: 100px; background: rgba(15,6,27,.35); font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.category-card h3 { position: relative; margin: 0; font-size: 1.7rem; line-height: .9; }
+.category-card p { position: relative; margin: 8px 0 0; font-size: .82rem; line-height: 1.45; }
+.contact {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+  margin: 0 clamp(18px, 7vw, 110px) 82px;
+  padding: clamp(25px, 5vw, 44px);
+  border-radius: 26px;
+  color: #fff;
+  border: 1px solid rgba(255, 138, 20, .52);
+  background: radial-gradient(circle at 90% 15%, rgba(239, 76, 10, .34), transparent 28%), linear-gradient(100deg, #15031e, #290628 56%, #16031e);
+  box-shadow: 0 18px 45px rgba(0,0,0,.46), inset 0 0 36px rgba(111, 23, 96, .28);
+}
+.contact > * { position: relative; z-index: 1; }
+.contact-icon { display: grid; place-items: center; width: 64px; height: 64px; border: 3px solid rgba(255, 181, 33, .88); border-radius: 50%; font-size: 2rem; box-shadow: 0 0 20px rgba(255, 93, 11, .36); }
+.contact h2 { font-size: clamp(2rem, 3vw, 3rem); }
+.contact p { margin: 6px 0 0; line-height: 1.45; }
+.contact .button { background: var(--yellow); color: var(--ink); white-space: nowrap; }
+.mask-return { padding: 72px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(135deg, #2d0a3a, #13021d 62%, #2a061d); }
+.mask-return-inner { max-width: 1250px; margin: auto; padding: clamp(26px, 4vw, 42px); border: 1px solid rgba(255, 189, 24, .52); border-radius: 24px; background: radial-gradient(circle at 88% 14%, rgba(255, 111, 12, .33), transparent 28%), rgba(19, 3, 29, .76); box-shadow: var(--shadow); }
+.mask-return p { margin: 0 0 7px; color: var(--yellow); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.mask-return h2 { max-width: 750px; }
+.mask-return-copy { margin: 15px 0 0; max-width: 620px; color: #decce0; line-height: 1.55; }
+.return-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.return-actions .button { cursor: pointer; }
+.selection-fab { position: fixed; right: 22px; bottom: 22px; z-index: 25; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 9px 13px 9px 17px; border: 0; border-radius: 999px; color: var(--ink); background: var(--yellow); box-shadow: 0 12px 28px rgba(0,0,0,.38); font-weight: 800; cursor: pointer; }
+.selection-fab:hover { background: #ffcf42; transform: translateY(-2px); }
+.selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
+footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
+footer img { width: 150px; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
+footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
+dialog { width: min(92vw, 860px); padding: 0; border: 1px solid rgba(255, 143, 20, .55); border-radius: 24px; overflow: hidden; color: #fff; box-shadow: 0 28px 80px rgba(0,0,0,.58); }
+dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px); }
+.modal { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; background: linear-gradient(135deg, #190522, #0d0214); }
+.modal img { width: 100%; height: 100%; padding: 12px; object-fit: contain; object-position: center; background: radial-gradient(circle, #3f103c, #100218 68%); }
+.modal-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 58px); }
+.modal-copy .eyebrow { color: var(--orange); }
+.modal-copy h2 { margin-bottom: 16px; }
+.modal-copy p { color: #decce0; line-height: 1.6; }
+.modal-copy .button { align-self: flex-start; margin-top: 14px; }
+.close { position: absolute; right: 13px; top: 13px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
+.modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.modal-copy .modal-actions .button { align-self: auto; margin-top: 0; }
+.selection-dialog { width: min(92vw, 580px); }
+.selection-panel { position: relative; padding: clamp(28px, 5vw, 42px); color: #fff; background: linear-gradient(135deg, #190522, #0d0214); }
+.selection-panel h2 { margin: 6px 0 10px; }
+.selection-panel > p { margin: 0; color: #decce0; line-height: 1.5; }
+.selection-list { display: grid; gap: 10px; margin: 24px 0; padding: 0; list-style: none; }
+.selection-item { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 14px; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; background: rgba(255,255,255,.06); }
+.selection-item strong { display: block; font-family: "Baloo 2", Arial, sans-serif; font-size: 1.15rem; line-height: 1; }
+.selection-item span { display: block; margin-top: 4px; color: var(--yellow); font-size: .75rem; font-weight: 800; letter-spacing: .06em; }
+.remove-selection { border: 0; color: #fff; background: transparent; font-size: .83rem; font-weight: 800; text-decoration: underline; cursor: pointer; }
+.selection-empty { margin: 24px 0; padding: 17px; border: 1px dashed rgba(255,255,255,.28); border-radius: 12px; color: #decce0; text-align: center; }
+.selection-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.selection-actions .button { cursor: pointer; }
+.selection-actions .button:disabled { opacity: .55; cursor: default; }
+.selection-actions a[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
+@media (max-width: 860px) {
+  .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 92px; padding-bottom: 60px; }
+  .hero-art { width: min(72vw, 330px); }
+  .hero-bats { right: 8%; bottom: 34px; width: min(44vw, 280px); }
+  .sticker-eye { left: auto; right: 8%; top: 72px; }
+  .sticker-candy { left: auto; right: 19%; bottom: 24px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wig-card { max-width: none; }
+  .plush-card, .prop-card { max-width: none; }
+  .card:nth-child(5) { grid-column: auto; }
+  .contact { grid-template-columns: auto 1fr; }
+  .contact .button { grid-column: 1 / -1; }
+  .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 570px) {
+  .nav { height: 50px; padding: 0 14px; }
+  .nav img { width: 126px; height: 62px; }
+  .nav-links a:not(:last-child) { display: none; }
+  .nav-links { gap: 12px; font-size: .75rem; }
+  .hero { padding: 82px 20px 52px; }
+  h1 { font-size: clamp(2.55rem, 12.4vw, 3.1rem); }
+  .headline-closing { font-size: .82em; }
+  .headline-logo { width: clamp(170px, 54vw, 242px); }
+  .hero-art { width: min(78vw, 282px); }
+  .hero-bats { right: -7%; bottom: 25px; width: min(62vw, 285px); }
+  .sticker-eye, .sticker-skull { display: none; }
+  .sticker-pumpkin { left: 2%; bottom: -16px; }
+  .sticker-candy { right: 7%; bottom: 13px; }
+  .grid { grid-template-columns: 1fr; }
+  .wig-group-heading { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .section-heading { display: block; }
+  .section-heading > span { display: block; margin-top: 18px; }
+  .contact { grid-template-columns: 1fr; gap: 15px; margin-bottom: 52px; }
+  .modal { grid-template-columns: 1fr; }
+  .modal img { max-height: 370px; }
+  .category-grid { grid-template-columns: 1fr; }
+  .selection-fab { right: 12px; bottom: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="nav" aria-label="Navegación principal">
+<a href="#inicio" aria-label="Inicio Kalú Accesorios"><img src="kalu-logo.png" alt="Kalú Accesorios" /></a>
+<div class="nav-links">
+<a href="#mascaras">Máscaras</a>
+<a href="#pelucas">Pelucas</a>
+<a href="#accesorios">Accesorios</a>
+<a href="#ninas">Niñas</a>
+<a href="#sombreros">Sombreros</a>
+<a href="#pedidos">Cómo pedir</a>
+<a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
+</div>
+</nav>
+<main>
+<section class="hero" id="inicio">
+<img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" />
+<img class="hero-sticker sticker-pumpkin" src="sticker-pumpkin.png" alt="" aria-hidden="true" />
+<img class="hero-sticker sticker-candy" src="sticker-candy.png" alt="" aria-hidden="true" />
+<img class="hero-sticker sticker-skull" src="sticker-skull.png" alt="" aria-hidden="true" />
+<img class="hero-sticker sticker-eye" src="sticker-eye.png" alt="" aria-hidden="true" />
+<div class="hero-copy-block">
+<p class="eyebrow">Halloween</p>
+<h1>
+<span class="headline-line">Tu personaje</span>
+<span class="headline-line headline-closing"><em>Empieza</em> en</span>
+<span class="headline-line headline-logo-line"><img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" /></span>
+</h1>
+<p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
+<div class="actions">
+<a class="button button-primary" href="#mascaras">Explorar catálogo</a>
+<a class="button button-light" href="#categorias-title">Ver categorías</a>
+</div>
+</div>
+<div class="hero-art hero-carousel" aria-label="Productos destacados de Kalú Accesorios">
+<img class="hero-slide" src="assets/hero-clown-costume.png" alt="Disfraz de payaso de terror" />
+<img class="hero-slide" src="assets/hero-ghost-costume.png" alt="Disfraz negro con máscara de fantasma" />
+<img class="hero-slide" src="assets/hero-wizard-costume.png" alt="Capa y accesorios de mago" />
+</div>
+</section>
+<section class="categories" id="categorias" aria-labelledby="categorias-title">
+<div class="section-heading">
+<div>
+<p>Explora Kalú</p>
+<h2 id="categorias-title">Todo para crear tu personaje</h2>
+</div>
+<span>Elige una categoría para ir directo a sus productos y encontrar tu look de Halloween.</span>
+</div>
+<div class="category-grid">
+<a class="category-card" href="#mascaras">
+<span class="soon">Disponible</span><h3>Máscaras</h3><p>Modelos de látex y peluche para destacar.</p>
+</a>
+<a class="category-card" href="#pelucas">
+<span class="soon">Disponible</span><h3>Pelucas</h3><p>Estilos largos y próximamente también cortos.</p>
+</a>
+<a class="category-card" href="#accesorios">
+<span class="soon">Disponible</span><h3>Accesorios de personaje</h3><p>Utilería para completar tu disfraz.</p>
+</a>
+<a class="category-card" id="ninas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">
+<span class="soon">Muy pronto</span><h3>Accesorios para niñas</h3><p>Ideas mágicas, coloridas y llenas de brillo.</p>
+</a>
+<a class="category-card" id="sombreros" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">
+<span class="soon">Muy pronto</span><h3>Sombreros</h3><p>El toque final para celebrar con mucho estilo.</p>
+</a>
+</div>
+</section>
+<section class="catalog" id="mascaras" aria-labelledby="mascaras-title">
+<div class="section-heading">
+<div>
+<p>Máscaras de látex</p>
+<h2 id="mascaras-title">Personajes que no pasan desapercibidos</h2>
+</div>
+<span>Elige tu favorita, revisa el código y toca <strong>+</strong> para ver el detalle, agregarla a tu selección o pedirla por WhatsApp.</span>
+</div>
+<div class="grid">
+<article class="card latex-card" data-name="Máscara de látex Payaso bicolor" data-code="ML-01" data-image="assets/latex-01.jpg" data-desc="Payaso de terror bicolor con sombrero rojo y cabello en colores intensos.">
+<div class="image-wrap"><img src="assets/latex-01.jpg" alt="Máscara de látex de payaso bicolor con sombrero rojo" /><span class="code">ML-01</span></div>
+<div class="details"><div><h3>Payaso bicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso bicolor">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Monja siniestra" data-code="ML-02" data-image="assets/latex-02.jpg" data-desc="Máscara de terror con hábito blanco y negro, detalles agrietados y sonrisa inquietante.">
+<div class="image-wrap"><img src="assets/latex-02.jpg" alt="Máscara de látex de monja siniestra" /><span class="code">ML-02</span></div>
+<div class="details"><div><h3>Monja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Monja siniestra">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Payaso rojo" data-code="ML-03" data-image="assets/latex-03.jpg" data-desc="Payaso de terror de rostro claro, cabello rojo y sonrisa intensa.">
+<div class="image-wrap"><img src="assets/latex-03.jpg" alt="Máscara de látex de payaso rojo" /><span class="code">ML-03</span></div>
+<div class="details"><div><h3>Payaso rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso rojo">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Payaso triste" data-code="ML-04" data-image="assets/latex-04.jpg" data-desc="Máscara de payaso de terror con sombrero negro, mirada triste y sonrisa afilada.">
+<div class="image-wrap"><img src="assets/latex-04.jpg" alt="Máscara de látex de payaso triste con sombrero negro" /><span class="code">ML-04</span></div>
+<div class="details"><div><h3>Payaso triste</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso triste">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Payaso de cono" data-code="ML-05" data-image="assets/latex-05.jpg" data-desc="Máscara de payaso siniestro con sombrero de cono negro y dientes marcados.">
+<div class="image-wrap"><img src="assets/latex-05.jpg" alt="Máscara de látex de payaso con cono negro" /><span class="code">ML-05</span></div>
+<div class="details"><div><h3>Payaso de cono</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso de cono">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Payaso espiral" data-code="ML-06" data-image="assets/latex-06.jpg" data-desc="Payaso en tonos morados y rosados con nariz en espiral y cabello multicolor.">
+<div class="image-wrap"><img src="assets/latex-06.jpg" alt="Máscara de látex de payaso espiral multicolor" /><span class="code">ML-06</span></div>
+<div class="details"><div><h3>Payaso espiral</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso espiral">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Criatura del bosque" data-code="ML-07" data-image="assets/latex-07.jpg" data-desc="Criatura de textura de madera, mirada verde y expresión amenazante.">
+<div class="image-wrap"><img src="assets/latex-07.jpg" alt="Máscara de látex de criatura del bosque" /><span class="code">ML-07</span></div>
+<div class="details"><div><h3>Criatura del bosque</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Criatura del bosque">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Gorila salvaje" data-code="ML-08" data-image="assets/latex-08.jpg" data-desc="Máscara de gorila negro con detalles rojos y pelaje para un personaje impactante.">
+<div class="image-wrap"><img src="assets/latex-08.jpg" alt="Máscara de látex de gorila negro con detalles rojos" /><span class="code">ML-08</span></div>
+<div class="details"><div><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Gorila salvaje">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Terror con sombrero" data-code="ML-09" data-image="assets/latex-09.jpg" data-desc="Rostro de terror desgastado con sombrero oscuro y sonrisa escalofriante.">
+<div class="image-wrap"><img src="assets/latex-09.jpg" alt="Máscara de látex de terror con sombrero" /><span class="code">ML-09</span></div>
+<div class="details"><div><h3>Terror con sombrero</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Terror con sombrero">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Lobo feroz" data-code="ML-10" data-image="assets/latex-10.jpg" data-desc="Máscara de lobo feroz con pelaje castaño y gesto amenazante.">
+<div class="image-wrap"><img src="assets/latex-10.jpg" alt="Máscara de látex de lobo feroz" /><span class="code">ML-10</span></div>
+<div class="details"><div><h3>Lobo feroz</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Lobo feroz">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Títere siniestro" data-code="ML-11" data-image="assets/latex-11.jpg" data-desc="Máscara blanca de títere con espirales rojas y cabello oscuro.">
+<div class="image-wrap"><img src="assets/latex-11.jpg" alt="Máscara de látex de títere siniestro" /><span class="code">ML-11</span></div>
+<div class="details"><div><h3>Títere siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Títere siniestro">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Zombie herido" data-code="ML-12" data-image="assets/latex-12.jpg" data-desc="Máscara de zombie herido con dientes expuestos y detalles de terror.">
+<div class="image-wrap"><img src="assets/latex-12.jpg" alt="Máscara de látex de zombie herido" /><span class="code">ML-12</span></div>
+<div class="details"><div><h3>Zombie herido</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Zombie herido">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Payaso fucsia" data-code="ML-13" data-image="assets/latex-13.jpg" data-desc="Payaso de terror en tonos fucsia y morado con una sonrisa llena de dientes.">
+<div class="image-wrap"><img src="assets/latex-13.jpg" alt="Máscara de látex de payaso fucsia" /><span class="code">ML-13</span></div>
+<div class="details"><div><h3>Payaso fucsia</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso fucsia">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Payaso azul" data-code="ML-14" data-image="assets/latex-14.jpg" data-desc="Payaso de terror azul con cabello naranja y rosado, perfecto para destacar.">
+<div class="image-wrap"><img src="assets/latex-14.jpg" alt="Máscara de látex de payaso azul" /><span class="code">ML-14</span></div>
+<div class="details"><div><h3>Payaso azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso azul">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Bruja siniestra" data-code="ML-15" data-image="assets/latex-15.jpg" data-desc="Máscara de bruja de nariz alargada y cabello oscuro para un look clásico de Halloween.">
+<div class="image-wrap"><img src="assets/latex-15.jpg" alt="Máscara de látex de bruja siniestra" /><span class="code">ML-15</span></div>
+<div class="details"><div><h3>Bruja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Bruja siniestra">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Calavera grito" data-code="ML-16" data-image="assets/latex-16.jpg" data-desc="Calavera agrietada con expresión de grito y acabados de terror.">
+<div class="image-wrap"><img src="assets/latex-16.jpg" alt="Máscara de látex de calavera grito" /><span class="code">ML-16</span></div>
+<div class="details"><div><h3>Calavera grito</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Calavera grito">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Bicolor clásica" data-code="ML-17" data-image="assets/latex-17.jpg" data-desc="Máscara clásica bicolor con cabello castaño y acabado envejecido.">
+<div class="image-wrap"><img src="assets/latex-17.jpg" alt="Máscara de látex bicolor clásica" /><span class="code">ML-17</span></div>
+<div class="details"><div><h3>Bicolor clásica</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Bicolor clásica">+</button></div>
+</article>
+<article class="card latex-card" data-name="Máscara de látex Payaso rizado" data-code="ML-18" data-image="assets/latex-18.jpg" data-desc="Payaso de terror con cabello rizado amarillo y rojo, mirada intensa y nariz espiral.">
+<div class="image-wrap"><img src="assets/latex-18.jpg" alt="Máscara de látex de payaso rizado amarillo y rojo" /><span class="code">ML-18</span></div>
+<div class="details"><div><h3>Payaso rizado</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso rizado">+</button></div>
+</article>
+</div>
+</section>
+<section class="material-catalog" id="mascaras-peluche" aria-labelledby="peluche-title">
+<div class="section-heading">
+<div>
+<p>Máscaras de peluche</p>
+<h2 id="peluche-title">Terror con textura</h2>
+</div>
+<span>Máscaras suaves y llamativas para complementar tu personaje.</span>
+</div>
+<div class="grid">
+<article class="card plush-card" data-name="Máscara de peluche Conejo siniestro" data-code="MPe-01" data-image="assets/plush-mask-rabbit.jpg" data-desc="Máscara de peluche negro con orejas largas, ojos amarillos y sonrisa de terror.">
+<div class="image-wrap"><img src="assets/plush-mask-rabbit.jpg" alt="Máscara de peluche de conejo negro siniestro" /><span class="code">MPe-01</span></div>
+<div class="details"><div><h3>Conejo siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara de peluche Conejo siniestro">+</button></div>
+</article>
+</div>
+</section>
+<section class="accessory-catalog" id="accesorios" aria-labelledby="accesorios-title">
+<div class="section-heading">
+<div>
+<p>Accesorios de personaje</p>
+<h2 id="accesorios-title">Utilería para tu disfraz</h2>
+</div>
+<span>Encuentra machetes de utilería, katanas, motosierras, varitas y más accesorios para completar el look.</span>
+</div>
+<div class="grid">
+<article class="card prop-card" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
+<div class="image-wrap"><img src="assets/prop-machete.jpg" alt="Machete de utilería con mango envuelto y detalles rojos" /><span class="code">AP-01</span></div>
+<div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver machete de utilería">+</button></div>
+</article>
+</div>
+</section>
+<section class="wig-catalog" id="pelucas" aria-labelledby="pelucas-title">
+<div class="section-heading">
+<div>
+<p>Pelucas</p>
+<h2 id="pelucas-title">Elige tu nuevo look</h2>
+</div>
+<span>Explora las pelucas por largo y toca <strong>+</strong> para ver el detalle, agregarlas a tu selección o pedir una de inmediato.</span>
+</div>
+<div class="wig-groups">
+<section class="wig-group" aria-labelledby="pelucas-largas-title">
+<div class="wig-group-heading">
+<h3 id="pelucas-largas-title">Pelucas largas</h3>
+<p>Color, estilo y diversión para tu personaje.</p>
+</div>
+<div class="grid">
+<article class="card wig-card" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue-corner.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
+<div class="image-wrap"><img src="assets/wig-long-blue-corner.png" alt="Peluca larga azul con coletas y lazos rojos" /><span class="code">PL-01</span></div>
+<div class="details"><div><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver peluca larga azul">+</button></div>
+</article>
+</div>
+</section>
+<section class="wig-group" aria-labelledby="pelucas-cortas-title">
+<div class="wig-group-heading">
+<h3 id="pelucas-cortas-title">Pelucas cortas</h3>
+<p>Esta sección queda lista para las próximas pelucas.</p>
+</div>
+<div class="wig-empty"><div><strong>Muy pronto</strong>Agrega aquí las fotos de las pelucas cortas para mantenerlas separadas de las largas.</div></div>
+</section>
+</div>
+</section>
+<section class="mask-return" aria-labelledby="volver-mascaras-title">
+<div class="mask-return-inner">
+<p>¿Quieres seguir explorando?</p>
+<h2 id="volver-mascaras-title">Encuentra la máscara perfecta para tu personaje</h2>
+<div class="mask-return-copy">Vuelve a las máscaras de látex o descubre los modelos de peluche. Puedes agregar varias a tu selección y pedirlas juntas por WhatsApp.</div>
+<div class="return-actions">
+<a class="button button-primary" href="#mascaras">Ver máscaras de látex</a>
+<a class="button button-secondary" href="#mascaras-peluche">Ver máscaras de peluche</a>
+</div>
+</div>
+</section>
+<section class="contact" id="pedidos" aria-labelledby="pedidos-title">
+<div class="contact-icon" aria-hidden="true">☏</div>
+<div><h2 id="pedidos-title">¿Ya tienes tu selección?</h2><p>Pide un producto de inmediato desde su detalle o reúne varios artículos en <strong>Mi selección</strong> y envíalos juntos por WhatsApp.</p></div>
+<a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo." target="_blank" rel="noopener">Hablar con Kalú</a>
+</section>
+</main>
+<footer>
+<img src="kalu-logo.png" alt="Kalú Accesorios" />
+<p>Accesorios para celebrar, crear y destacar. · WhatsApp 321 505 5733</p>
+<p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
+</footer>
+</div>
+<button class="selection-fab" id="selection-button" type="button" aria-haspopup="dialog" aria-label="Abrir mi selección">
+Mi selección <span class="selection-count" id="selection-count">0</span>
+</button>
+<dialog id="product-modal" aria-labelledby="modal-title">
+<div class="modal">
+<button class="close" id="close-modal" aria-label="Cerrar detalle">×</button>
+<img id="modal-image" src="" alt="" />
+<div class="modal-copy">
+<p class="eyebrow" id="modal-code"></p>
+<h2 id="modal-title"></h2>
+<p id="modal-desc"></p>
+<div class="modal-actions">
+<button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
+<a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir solo este producto</a>
+</div>
+</div>
+</div>
+</dialog>
+<dialog class="selection-dialog" id="selection-modal" aria-labelledby="selection-title">
+<div class="selection-panel">
+<button class="close" id="close-selection" type="button" aria-label="Cerrar mi selección">×</button>
+<p class="eyebrow">Mi selección</p>
+<h2 id="selection-title">Productos elegidos</h2>
+<p>Revisa tus productos antes de enviar la consulta. Kalú te confirmará precio y disponibilidad.</p>
+<ul class="selection-list" id="selection-list"></ul>
+<p class="selection-empty" id="selection-empty">Aún no has agregado productos. Abre un artículo con el botón + para empezar.</p>
+<div class="selection-actions">
+<a class="button button-primary" id="selection-whatsapp" target="_blank" rel="noopener">Pedir mi selección por WhatsApp</a>
+<button class="button button-secondary" id="clear-selection" type="button">Vaciar selección</button>
+</div>
+</div>
+</dialog>
+<script>
+const modal = document.getElementById("product-modal");
+const modalImage = document.getElementById("modal-image");
+const modalTitle = document.getElementById("modal-title");
+const modalCode = document.getElementById("modal-code");
+const modalDesc = document.getElementById("modal-desc");
+const modalWhatsapp = document.getElementById("modal-whatsapp");
+const modalAddSelection = document.getElementById("modal-add-selection");
+const selectionModal = document.getElementById("selection-modal");
+const selectionButton = document.getElementById("selection-button");
+const selectionCount = document.getElementById("selection-count");
+const selectionList = document.getElementById("selection-list");
+const selectionEmpty = document.getElementById("selection-empty");
+const selectionWhatsapp = document.getElementById("selection-whatsapp");
+const clearSelection = document.getElementById("clear-selection");
+let activeProduct = null;
+let selectedProducts = [];
+try {
+  const savedSelection = JSON.parse(window.localStorage.getItem("kalu-selection"));
+  if (Array.isArray(savedSelection)) selectedProducts = savedSelection;
+} catch {
+  selectedProducts = [];
+}
+const saveSelection = () => {
+  try {
+    window.localStorage.setItem("kalu-selection", JSON.stringify(selectedProducts));
+  } catch {
+    // La selección seguirá funcionando durante esta visita si el navegador bloquea el guardado.
+  }
+};
+const isSelected = (product) => product && selectedProducts.some((item) => item.code === product.code);
+const updateModalSelectionButton = () => {
+  const alreadyAdded = isSelected(activeProduct);
+  modalAddSelection.disabled = alreadyAdded;
+  modalAddSelection.textContent = alreadyAdded ? "Ya está en mi selección" : "Agregar a mi selección";
+};
+const updateSelection = () => {
+  const hasProducts = selectedProducts.length > 0;
+  selectionCount.textContent = selectedProducts.length;
+  selectionButton.setAttribute("aria-label", `Abrir mi selección: ${selectedProducts.length} productos`);
+  selectionList.hidden = !hasProducts;
+  selectionEmpty.hidden = hasProducts;
+  selectionList.innerHTML = selectedProducts.map((product) => `
+    <li class="selection-item">
+      <div><strong>${product.name}</strong><span>${product.code}</span></div>
+      <button class="remove-selection" type="button" data-remove-code="${product.code}" aria-label="Quitar ${product.name}">Quitar</button>
+    </li>
+  `).join("");
+  clearSelection.disabled = !hasProducts;
+  selectionWhatsapp.href = hasProducts
+    ? `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por estos productos:\n${selectedProducts.map((product) => `• ${product.name} (${product.code})`).join("\n")}`)}`
+    : "#";
+  selectionWhatsapp.setAttribute("aria-disabled", String(!hasProducts));
+};
+document.querySelectorAll(".card").forEach((card) => {
+  card.querySelector(".mini-button").addEventListener("click", () => {
+    const { name, code, image, desc } = card.dataset;
+    activeProduct = { name, code, image, desc };
+    modalImage.src = image;
+    modalImage.alt = name;
+    modalTitle.textContent = name;
+    modalCode.textContent = code;
+    modalDesc.textContent = desc;
+    modalWhatsapp.href = `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por ${name} (${code}).`)}`;
+    updateModalSelectionButton();
+    modal.showModal();
+  });
+});
+modalAddSelection.addEventListener("click", () => {
+  if (!activeProduct || isSelected(activeProduct)) return;
+  selectedProducts.push(activeProduct);
+  saveSelection();
+  updateSelection();
+  updateModalSelectionButton();
+});
+selectionButton.addEventListener("click", () => selectionModal.showModal());
+document.getElementById("close-selection").addEventListener("click", () => selectionModal.close());
+selectionModal.addEventListener("click", (event) => {
+  if (event.target === selectionModal) selectionModal.close();
+});
+selectionList.addEventListener("click", (event) => {
+  const removeButton = event.target.closest("[data-remove-code]");
+  if (!removeButton) return;
+  selectedProducts = selectedProducts.filter((product) => product.code !== removeButton.dataset.removeCode);
+  saveSelection();
+  updateSelection();
+  updateModalSelectionButton();
+});
+clearSelection.addEventListener("click", () => {
+  selectedProducts = [];
+  saveSelection();
+  updateSelection();
+  updateModalSelectionButton();
+});
+selectionWhatsapp.addEventListener("click", (event) => {
+  if (!selectedProducts.length) event.preventDefault();
+});
+document.getElementById("close-modal").addEventListener("click", () => modal.close());
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) modal.close();
+});
+updateSelection();
+</script>
+</body>
 </html>
