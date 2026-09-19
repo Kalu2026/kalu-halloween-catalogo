@@ -105,17 +105,26 @@
       h1 {
         max-width: 650px;
         margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.06em;
         font-size: clamp(3rem, 5.2vw, 4.85rem);
         line-height: 0.92;
         letter-spacing: -0.06em;
       }
       h1 em { color: #51065e; font-style: normal; }
+      .headline-line {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+      }
+      .headline-closing { gap: 0.14em; }
       .headline-logo {
         display: inline-block;
-        width: clamp(142px, 15vw, 228px);
+        width: clamp(132px, 14vw, 210px);
         height: auto;
-        margin: 0 0.03em 0 0.1em;
-        vertical-align: -0.16em;
+        margin: 0;
         filter: drop-shadow(0 7px 7px rgba(62, 0, 71, .22));
         animation: logo-float 3.8s ease-in-out infinite;
       }
@@ -265,6 +274,8 @@
         .nav-links a:not(:last-child) { display: none; }
         .nav-links { gap: 12px; font-size: .75rem; }
         .hero { padding: 82px 20px 52px; }
+        h1 { font-size: clamp(2.55rem, 12.4vw, 3.1rem); }
+        .headline-logo { width: clamp(118px, 39vw, 158px); }
         .hero-art { width: min(78vw, 282px); }
         .sticker-eye, .sticker-skull { display: none; }
         .sticker-pumpkin { left: 2%; bottom: -16px; }
@@ -302,7 +313,10 @@
           <img class="hero-sticker sticker-eye" src="sticker-eye.png" alt="" aria-hidden="true" />
           <div class="hero-copy-block">
             <p class="eyebrow">Halloween</p>
-            <h1>Tu personaje <em>empieza</em> en <img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" />.</h1>
+            <h1>
+              <span class="headline-line">Tu personaje</span>
+              <span class="headline-line headline-closing"><em>empieza</em> en <img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" />.</span>
+            </h1>
             <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
             <div class="actions">
               <a class="button button-primary" href="#mascaras">Explorar catálogo</a>
