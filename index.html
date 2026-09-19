@@ -243,6 +243,20 @@
       .wig-card { max-width: 390px; }
       .wig-card .image-wrap { background: linear-gradient(145deg, #ffffff, #eaf2ff); }
       .wig-card .image-wrap img { padding: 0; object-fit: contain; object-position: center; }
+      .wig-card .image-wrap .product-brand {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        width: clamp(96px, 10vw, 122px);
+        height: auto;
+        max-width: none;
+        padding: 0;
+        object-fit: contain;
+        pointer-events: none;
+        transform: none !important;
+        filter: drop-shadow(0 3px 4px rgba(32, 0, 38, .22));
+      }
       .wig-empty { min-height: 182px; display: grid; place-items: center; padding: 28px; border: 1px dashed rgba(80, 162, 255, .64); border-radius: 18px; color: #d8c3d5; text-align: center; background: linear-gradient(135deg, rgba(38, 15, 64, .76), rgba(12, 5, 22, .9)); }
       .wig-empty strong { display: block; margin-bottom: 8px; color: #fff; font-size: 1.24rem; }
 
@@ -445,8 +459,8 @@
                 <p>Color, estilo y diversión para tu personaje.</p>
               </div>
               <div class="grid">
-                <article class="card wig-card" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue-full.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
-                  <div class="image-wrap"><img src="assets/wig-long-blue-full.png" alt="Peluca larga azul con coletas y lazos rojos" /><span class="code">PL-01</span></div>
+                <article class="card wig-card" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue-corner.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
+                  <div class="image-wrap"><img src="assets/wig-long-blue-corner.png" alt="Peluca larga azul con coletas y lazos rojos" /><img class="product-brand" src="assets/kalu-logo.png" alt="" aria-hidden="true" /><span class="code">PL-01</span></div>
                   <div class="details"><div><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver peluca larga azul">+</button></div>
                 </article>
               </div>
