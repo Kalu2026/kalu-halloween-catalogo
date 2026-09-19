@@ -744,6 +744,7 @@ modalAddSelection.addEventListener("click", () => {
   saveSelection();
   updateSelection();
   updateModalSelectionButton();
+  modal.close();
 });
 selectionButton.addEventListener("click", () => selectionModal.showModal());
 document.getElementById("close-selection").addEventListener("click", () => selectionModal.close());
