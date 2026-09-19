@@ -84,12 +84,23 @@
       }
       .hero::before { left: 42%; top: -8%; width: 25%; height: 118%; background: linear-gradient(130deg, rgba(255, 188, 22, .18), rgba(255,255,255,0) 52%); transform: rotate(9deg); }
       .hero::after { display: none; }
-      .hero-copy-block { position: relative; z-index: 4; max-width: 510px; }
+      .hero-copy-block { position: relative; z-index: 4; width: 100%; max-width: 510px; }
       .hero-copy-block::after { display: none; }
-      .hero-bats { display: none; }
-      @keyframes bat-drift { 0%,100% { translate: 0 0; } 50% { translate: 8px -6px; } }
+      .hero-bats {
+        position: absolute;
+        z-index: 2;
+        right: 30%;
+        bottom: 22px;
+        width: clamp(230px, 23vw, 350px);
+        height: auto;
+        opacity: .96;
+        pointer-events: none;
+        filter: brightness(1.2) saturate(1.16) drop-shadow(0 10px 10px rgba(0,0,0,.48)) drop-shadow(0 0 12px rgba(116, 55, 176, .32));
+        animation: bat-drift 4.6s ease-in-out infinite;
+      }
+      @keyframes bat-drift { 0%,100% { transform: rotate(-4deg) translate(0, 0); } 50% { transform: rotate(-2deg) translate(-5px, -7px); } }
       @media (prefers-reduced-motion: reduce) {
-        .hero-bats, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide, .contact-bats { animation: none; }
+        .hero-bats, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide { animation: none; }
         .hero-carousel .hero-slide { opacity: 0; }
         .hero-carousel .hero-slide:first-child { opacity: 1; }
       }
@@ -111,22 +122,26 @@
         margin: 0;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 0;
         font-size: clamp(3rem, 5.2vw, 4.85rem);
         line-height: 0.92;
         letter-spacing: -0.06em;
+        text-align: center;
       }
       h1 em { color: #51065e; font-style: normal; }
       .headline-line {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
+        width: 100%;
         white-space: nowrap;
       }
-      .headline-closing { gap: 0.1em; padding-left: clamp(14px, 2vw, 32px); font-size: .86em; }
+      .headline-closing { gap: 0.1em; font-size: .86em; }
+      .headline-logo-line { padding-top: .04em; }
       .headline-logo {
         display: inline-block;
-        width: clamp(152px, 16vw, 238px);
+        width: clamp(188px, 19vw, 278px);
         height: auto;
         margin: 0;
         filter: drop-shadow(0 7px 7px rgba(62, 0, 71, .22));
@@ -266,24 +281,7 @@
         background: radial-gradient(circle at 90% 15%, rgba(239, 76, 10, .34), transparent 28%), linear-gradient(100deg, #15031e, #290628 56%, #16031e);
         box-shadow: 0 18px 45px rgba(0,0,0,.46), inset 0 0 36px rgba(111, 23, 96, .28);
       }
-      .contact > :not(.contact-bats) { position: relative; z-index: 3; }
-      .contact-bats {
-        position: absolute;
-        z-index: 2;
-        right: -26px;
-        bottom: -62px;
-        width: clamp(270px, 27vw, 390px);
-        height: auto;
-        opacity: 1;
-        pointer-events: none;
-        filter: brightness(1.22) saturate(1.18) drop-shadow(0 10px 10px rgba(0,0,0,.58)) drop-shadow(0 0 13px rgba(116, 55, 176, .38));
-        transform: rotate(-4deg);
-        animation: contact-bats-float 4.6s ease-in-out infinite;
-      }
-      @keyframes contact-bats-float {
-        0%, 100% { transform: rotate(-4deg) translate(0, 0); }
-        50% { transform: rotate(-2deg) translate(-4px, -6px); }
-      }
+      .contact > * { position: relative; z-index: 1; }
       .contact-icon { display: grid; place-items: center; width: 64px; height: 64px; border: 3px solid rgba(255, 181, 33, .88); border-radius: 50%; font-size: 2rem; box-shadow: 0 0 20px rgba(255, 93, 11, .36); }
       .contact h2 { font-size: clamp(2rem, 3vw, 3rem); }
       .contact p { margin: 6px 0 0; line-height: 1.45; }
@@ -307,13 +305,13 @@
       @media (max-width: 860px) {
         .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 92px; padding-bottom: 60px; }
         .hero-art { width: min(72vw, 330px); }
+        .hero-bats { right: 8%; bottom: 34px; width: min(44vw, 280px); }
         .sticker-eye { left: auto; right: 8%; top: 72px; }
         .sticker-candy { left: auto; right: 19%; bottom: 24px; }
         .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .card:nth-child(5) { grid-column: auto; }
         .contact { grid-template-columns: auto 1fr; }
         .contact .button { grid-column: 1 / -1; }
-        .contact-bats { right: -20px; bottom: -58px; width: clamp(230px, 34vw, 330px); }
         .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
       @media (max-width: 570px) {
@@ -323,9 +321,10 @@
         .nav-links { gap: 12px; font-size: .75rem; }
         .hero { padding: 82px 20px 52px; }
         h1 { font-size: clamp(2.55rem, 12.4vw, 3.1rem); }
-        .headline-closing { padding-left: 10px; font-size: .82em; }
-        .headline-logo { width: clamp(96px, 31vw, 166px); }
+        .headline-closing { font-size: .82em; }
+        .headline-logo { width: clamp(170px, 54vw, 242px); }
         .hero-art { width: min(78vw, 282px); }
+        .hero-bats { right: -7%; bottom: 25px; width: min(62vw, 285px); }
         .sticker-eye, .sticker-skull { display: none; }
         .sticker-pumpkin { left: 2%; bottom: -16px; }
         .sticker-candy { right: 7%; bottom: 13px; }
@@ -333,7 +332,6 @@
         .section-heading { display: block; }
         .section-heading > span { display: block; margin-top: 18px; }
         .contact { grid-template-columns: 1fr; gap: 15px; margin-bottom: 52px; }
-        .contact-bats { right: -26px; bottom: -50px; width: min(65vw, 270px); opacity: .92; }
         .modal { grid-template-columns: 1fr; }
         .modal img { max-height: 370px; }
         .category-grid { grid-template-columns: 1fr; }
@@ -357,6 +355,7 @@
 
       <main>
         <section class="hero" id="inicio">
+          <img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" />
           <img class="hero-sticker sticker-pumpkin" src="sticker-pumpkin.png" alt="" aria-hidden="true" />
           <img class="hero-sticker sticker-candy" src="sticker-candy.png" alt="" aria-hidden="true" />
           <img class="hero-sticker sticker-skull" src="sticker-skull.png" alt="" aria-hidden="true" />
@@ -365,7 +364,8 @@
             <p class="eyebrow">Halloween</p>
             <h1>
               <span class="headline-line">Tu personaje</span>
-              <span class="headline-line headline-closing"><em>Empieza</em> en <img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" />.</span>
+              <span class="headline-line headline-closing"><em>Empieza</em> en</span>
+              <span class="headline-line headline-logo-line"><img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" /></span>
             </h1>
             <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
             <div class="actions">
@@ -438,7 +438,6 @@
         </section>
 
         <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
-          <img class="contact-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" />
           <div class="contact-icon" aria-hidden="true">☏</div>
           <div><h2 id="pedidos-title">¿Encontraste tu favorita?</h2><p>Escríbenos, menciona el código de la máscara y te confirmamos precio y disponibilidad.</p></div>
           <a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20una%20m%C3%A1scara%20de%20Halloween." target="_blank" rel="noopener">Hablar con Kalú</a>
