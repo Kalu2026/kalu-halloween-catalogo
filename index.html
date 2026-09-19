@@ -245,11 +245,6 @@
       .mini-button:hover { background: var(--orange); color: #fff; }
       .latex-card .image-wrap { background: #fff; }
       .latex-card .image-wrap img { padding: 0; }
-      .mask-materials { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: 1250px; margin: 54px auto 0; }
-      .mask-material { min-height: 158px; padding: 22px; border: 1px solid rgba(255, 189, 24, .36); border-radius: 18px; background: linear-gradient(145deg, rgba(76, 18, 86, .74), rgba(19, 4, 30, .94)); }
-      .mask-material .material-code { display: inline-block; margin-bottom: 17px; padding: 6px 10px; border-radius: 100px; color: var(--ink); background: var(--yellow); font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
-      .mask-material h3 { margin: 0; color: #fff; font-size: 1.42rem; line-height: .96; }
-      .mask-material p { margin: 9px 0 0; color: #d8c3d5; font-size: .84rem; line-height: 1.4; }
 
       .material-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
       .material-catalog .section-heading { margin-bottom: 36px; }
@@ -285,7 +280,7 @@
       .categories .section-heading { margin-bottom: 30px; }
       .categories .section-heading p { color: var(--yellow); }
       .categories .section-heading > span { color: rgba(255,255,255,.74); }
-      .category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17px; max-width: 1250px; margin: auto; }
+      .category-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 17px; max-width: 1250px; margin: auto; }
       .category-card {
         position: relative;
         min-height: 235px;
@@ -305,11 +300,13 @@
       .category-card:nth-child(2) { background: linear-gradient(145deg, #2b1246, #6a1b5a); }
       .category-card:nth-child(3) { background: linear-gradient(145deg, #8b2d16, #4e1435); }
       .category-card:nth-child(4) { background: linear-gradient(145deg, #49213d, #8c310e); }
+      .category-card:nth-child(5) { background: linear-gradient(145deg, #31415c, #6b1f55); }
       .category-card::before { position: absolute; right: 12px; top: -14px; color: rgba(255,255,255,.22); font-size: 8.2rem; line-height: 1; }
-      .category-card:nth-child(1)::before { content: "✦"; }
-      .category-card:nth-child(2)::before { content: "🦇"; }
-      .category-card:nth-child(3)::before { content: "★"; }
-      .category-card:nth-child(4)::before { content: "🎩"; }
+      .category-card:nth-child(1)::before { content: "☠"; }
+      .category-card:nth-child(2)::before { content: "✦"; }
+      .category-card:nth-child(3)::before { content: "🦇"; }
+      .category-card:nth-child(4)::before { content: "★"; }
+      .category-card:nth-child(5)::before { content: "🎩"; }
       .category-card .soon { align-self: flex-start; margin-bottom: auto; padding: 6px 9px; border-radius: 100px; background: rgba(15,6,27,.35); font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
       .category-card h3 { position: relative; margin: 0; font-size: 1.7rem; line-height: .9; }
       .category-card p { position: relative; margin: 8px 0 0; font-size: .82rem; line-height: 1.45; }
@@ -389,7 +386,6 @@
         .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .wig-card { max-width: none; }
         .plush-card, .prop-card { max-width: none; }
-        .mask-materials { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .card:nth-child(5) { grid-column: auto; }
         .contact { grid-template-columns: auto 1fr; }
         .contact .button { grid-column: 1 / -1; }
@@ -411,7 +407,6 @@
         .sticker-candy { right: 7%; bottom: 13px; }
         .grid { grid-template-columns: 1fr; }
         .wig-group-heading { align-items: flex-start; flex-direction: column; gap: 7px; }
-        .mask-materials { grid-template-columns: 1fr; }
         .section-heading { display: block; }
         .section-heading > span { display: block; margin-top: 18px; }
         .contact { grid-template-columns: 1fr; gap: 15px; margin-bottom: 52px; }
@@ -461,6 +456,33 @@
             <img class="hero-slide" src="assets/hero-clown-costume.png" alt="Disfraz de payaso de terror" />
             <img class="hero-slide" src="assets/hero-ghost-costume.png" alt="Disfraz negro con máscara de fantasma" />
             <img class="hero-slide" src="assets/hero-wizard-costume.png" alt="Capa y accesorios de mago" />
+          </div>
+        </section>
+
+        <section class="categories" id="categorias" aria-labelledby="categorias-title">
+          <div class="section-heading">
+            <div>
+              <p>Explora Kalú</p>
+              <h2 id="categorias-title">Todo para crear tu personaje</h2>
+            </div>
+            <span>Elige una categoría para ir directo a sus productos y encontrar tu look de Halloween.</span>
+          </div>
+          <div class="category-grid">
+            <a class="category-card" href="#mascaras">
+              <span class="soon">Disponible</span><h3>Máscaras</h3><p>Modelos de látex y peluche para destacar.</p>
+            </a>
+            <a class="category-card" href="#pelucas">
+              <span class="soon">Disponible</span><h3>Pelucas</h3><p>Estilos largos y próximamente también cortos.</p>
+            </a>
+            <a class="category-card" href="#accesorios">
+              <span class="soon">Disponible</span><h3>Accesorios de personaje</h3><p>Utilería para completar tu disfraz.</p>
+            </a>
+            <a class="category-card" id="ninas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">
+              <span class="soon">Muy pronto</span><h3>Accesorios para niñas</h3><p>Ideas mágicas, coloridas y llenas de brillo.</p>
+            </a>
+            <a class="category-card" id="sombreros" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">
+              <span class="soon">Muy pronto</span><h3>Sombreros</h3><p>El toque final para celebrar con mucho estilo.</p>
+            </a>
           </div>
         </section>
 
@@ -547,11 +569,6 @@
               <div class="details"><div><h3>Payaso rizado</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso rizado">+</button></div>
             </article>
           </div>
-          <div class="mask-materials" aria-label="Próximas categorías de máscaras">
-            <article class="mask-material"><span class="material-code">ML</span><h3>Máscaras de látex</h3><p>Catálogo disponible con códigos ML-01, ML-02 y siguientes.</p></article>
-            <article class="mask-material"><span class="material-code">MP</span><h3>Máscaras de pasta</h3><p>Sección preparada para agregar próximamente los códigos MP-01 y siguientes.</p></article>
-            <article class="mask-material"><span class="material-code">MPe</span><h3>Máscaras de peluche</h3><p>Catálogo disponible con código MPe-01 y preparado para recibir más modelos.</p></article>
-          </div>
         </section>
 
         <section class="material-catalog" id="mascaras-peluche" aria-labelledby="peluche-title">
@@ -616,30 +633,6 @@
               </div>
               <div class="wig-empty"><div><strong>Muy pronto</strong>Agrega aquí las fotos de las pelucas cortas para mantenerlas separadas de las largas.</div></div>
             </section>
-          </div>
-        </section>
-
-        <section class="categories" aria-labelledby="categorias-title">
-          <div class="section-heading">
-            <div>
-              <p>Próximamente en Kalú</p>
-              <h2 id="categorias-title">Todo para crear tu personaje</h2>
-            </div>
-            <span>Estas secciones ya quedan preparadas para agregar fotos, códigos, precios y disponibilidad.</span>
-          </div>
-          <div class="category-grid">
-            <a class="category-card" href="#pelucas">
-              <span class="soon">Disponible</span><h3>Pelucas</h3><p>Encuentra estilos largos y próximamente también cortos.</p>
-            </a>
-            <a class="category-card" id="ninos" href="#accesorios">
-              <span class="soon">Disponible</span><h3>Accesorios de personaje</h3><p>Machetes de utilería, katanas, motosierras, varitas y más.</p>
-            </a>
-            <a class="category-card" id="ninas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">
-              <span class="soon">Muy pronto</span><h3>Accesorios para niñas</h3><p>Ideas mágicas, coloridas y llenas de brillo.</p>
-            </a>
-            <a class="category-card" id="sombreros" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">
-              <span class="soon">Muy pronto</span><h3>Sombreros</h3><p>El toque final para celebrar con mucho estilo.</p>
-            </a>
           </div>
         </section>
 
