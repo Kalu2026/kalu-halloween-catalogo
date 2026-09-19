@@ -167,6 +167,8 @@
       .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.18); }
       .button-primary { background: #5a075f; color: #fff; box-shadow: 0 6px 0 rgba(82, 4, 90, .2); }
       .button-light { border-color: rgba(255,255,255,.74); color: #fff; background: rgba(255, 113, 18, .36); }
+      .button-secondary { border-color: rgba(255,255,255,.6); color: #fff; background: rgba(255,255,255,.08); cursor: pointer; }
+      .button-secondary:disabled { opacity: .62; cursor: default; transform: none; box-shadow: none; }
       .hero-art { position: relative; z-index: 3; justify-self: center; width: min(100%, 310px); aspect-ratio: .86; display: grid; place-items: center; overflow: hidden; padding: 8px; border: 3px solid #fff; border-radius: 20px; background: radial-gradient(circle at 50% 22%, #fff8fb 0%, #f7d9f5 45%, #f8bd7e 100%); transform: rotate(6deg); box-shadow: 0 0 0 3px #ff2f91, 0 10px 24px rgba(50,0,56,.34); }
       .hero-art::before, .hero-art::after { display: none; }
       .hero-art img { display: block; width: 100%; max-width: 100%; height: 100%; object-fit: contain; transform: rotate(-6deg) scale(1.06); margin: 0; filter: drop-shadow(0 10px 8px rgba(44,0,45,.2)); }
@@ -334,6 +336,18 @@
       .contact p { margin: 6px 0 0; line-height: 1.45; }
       .contact .button { background: var(--yellow); color: var(--ink); white-space: nowrap; }
 
+      .mask-return { padding: 72px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(135deg, #2d0a3a, #13021d 62%, #2a061d); }
+      .mask-return-inner { max-width: 1250px; margin: auto; padding: clamp(26px, 4vw, 42px); border: 1px solid rgba(255, 189, 24, .52); border-radius: 24px; background: radial-gradient(circle at 88% 14%, rgba(255, 111, 12, .33), transparent 28%), rgba(19, 3, 29, .76); box-shadow: var(--shadow); }
+      .mask-return p { margin: 0 0 7px; color: var(--yellow); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      .mask-return h2 { max-width: 750px; }
+      .mask-return-copy { margin: 15px 0 0; max-width: 620px; color: #decce0; line-height: 1.55; }
+      .return-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+      .return-actions .button { cursor: pointer; }
+
+      .selection-fab { position: fixed; right: 22px; bottom: 22px; z-index: 25; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 9px 13px 9px 17px; border: 0; border-radius: 999px; color: var(--ink); background: var(--yellow); box-shadow: 0 12px 28px rgba(0,0,0,.38); font-weight: 800; cursor: pointer; }
+      .selection-fab:hover { background: #ffcf42; transform: translateY(-2px); }
+      .selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
+
       footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
       footer img { width: 150px; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
       footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
@@ -348,6 +362,23 @@
       .modal-copy p { color: #decce0; line-height: 1.6; }
       .modal-copy .button { align-self: flex-start; margin-top: 14px; }
       .close { position: absolute; right: 13px; top: 13px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
+      .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+      .modal-copy .modal-actions .button { align-self: auto; margin-top: 0; }
+
+      .selection-dialog { width: min(92vw, 580px); }
+      .selection-panel { position: relative; padding: clamp(28px, 5vw, 42px); color: #fff; background: linear-gradient(135deg, #190522, #0d0214); }
+      .selection-panel h2 { margin: 6px 0 10px; }
+      .selection-panel > p { margin: 0; color: #decce0; line-height: 1.5; }
+      .selection-list { display: grid; gap: 10px; margin: 24px 0; padding: 0; list-style: none; }
+      .selection-item { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 14px; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; background: rgba(255,255,255,.06); }
+      .selection-item strong { display: block; font-family: "Baloo 2", Arial, sans-serif; font-size: 1.15rem; line-height: 1; }
+      .selection-item span { display: block; margin-top: 4px; color: var(--yellow); font-size: .75rem; font-weight: 800; letter-spacing: .06em; }
+      .remove-selection { border: 0; color: #fff; background: transparent; font-size: .83rem; font-weight: 800; text-decoration: underline; cursor: pointer; }
+      .selection-empty { margin: 24px 0; padding: 17px; border: 1px dashed rgba(255,255,255,.28); border-radius: 12px; color: #decce0; text-align: center; }
+      .selection-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+      .selection-actions .button { cursor: pointer; }
+      .selection-actions .button:disabled { opacity: .55; cursor: default; }
+      .selection-actions a[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
 
       @media (max-width: 860px) {
         .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 92px; padding-bottom: 60px; }
@@ -387,6 +418,7 @@
         .modal { grid-template-columns: 1fr; }
         .modal img { max-height: 370px; }
         .category-grid { grid-template-columns: 1fr; }
+        .selection-fab { right: 12px; bottom: 12px; }
       }
     </style>
   </head>
@@ -438,7 +470,7 @@
               <p>Máscaras de látex</p>
               <h2 id="mascaras-title">Personajes que no pasan desapercibidos</h2>
             </div>
-            <span>Elige tu favorita, revisa el código y toca <strong>+</strong> para pedirla por WhatsApp.</span>
+            <span>Elige tu favorita, revisa el código y toca <strong>+</strong> para ver el detalle, agregarla a tu selección o pedirla por WhatsApp.</span>
           </div>
 
           <div class="grid">
@@ -560,7 +592,7 @@
               <p>Pelucas</p>
               <h2 id="pelucas-title">Elige tu nuevo look</h2>
             </div>
-            <span>Explora las pelucas por largo y toca <strong>+</strong> para pedir la tuya por WhatsApp.</span>
+            <span>Explora las pelucas por largo y toca <strong>+</strong> para ver el detalle, agregarlas a tu selección o pedir una de inmediato.</span>
           </div>
 
           <div class="wig-groups">
@@ -611,18 +643,35 @@
           </div>
         </section>
 
+        <section class="mask-return" aria-labelledby="volver-mascaras-title">
+          <div class="mask-return-inner">
+            <p>¿Quieres seguir explorando?</p>
+            <h2 id="volver-mascaras-title">Encuentra la máscara perfecta para tu personaje</h2>
+            <div class="mask-return-copy">Vuelve a las máscaras de látex o descubre los modelos de peluche. Puedes agregar varias a tu selección y pedirlas juntas por WhatsApp.</div>
+            <div class="return-actions">
+              <a class="button button-primary" href="#mascaras">Ver máscaras de látex</a>
+              <a class="button button-secondary" href="#mascaras-peluche">Ver máscaras de peluche</a>
+            </div>
+          </div>
+        </section>
+
         <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
           <div class="contact-icon" aria-hidden="true">☏</div>
-          <div><h2 id="pedidos-title">¿Encontraste tu favorita?</h2><p>Escríbenos, menciona el código de la máscara y te confirmamos precio y disponibilidad.</p></div>
-          <a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20una%20m%C3%A1scara%20de%20Halloween." target="_blank" rel="noopener">Hablar con Kalú</a>
+          <div><h2 id="pedidos-title">¿Ya tienes tu selección?</h2><p>Pide un producto de inmediato desde su detalle o reúne varios artículos en <strong>Mi selección</strong> y envíalos juntos por WhatsApp.</p></div>
+          <a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo." target="_blank" rel="noopener">Hablar con Kalú</a>
         </section>
       </main>
 
       <footer>
         <img src="kalu-logo.png" alt="Kalú Accesorios" />
         <p>Accesorios para celebrar, crear y destacar. · WhatsApp 321 505 5733</p>
+        <p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
       </footer>
     </div>
+
+    <button class="selection-fab" id="selection-button" type="button" aria-haspopup="dialog" aria-label="Abrir mi selección">
+      Mi selección <span class="selection-count" id="selection-count">0</span>
+    </button>
 
     <dialog id="product-modal" aria-labelledby="modal-title">
       <div class="modal">
@@ -632,7 +681,25 @@
           <p class="eyebrow" id="modal-code"></p>
           <h2 id="modal-title"></h2>
           <p id="modal-desc"></p>
-          <a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          <div class="modal-actions">
+            <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
+            <a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir solo este producto</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="selection-dialog" id="selection-modal" aria-labelledby="selection-title">
+      <div class="selection-panel">
+        <button class="close" id="close-selection" type="button" aria-label="Cerrar mi selección">×</button>
+        <p class="eyebrow">Mi selección</p>
+        <h2 id="selection-title">Productos elegidos</h2>
+        <p>Revisa tus productos antes de enviar la consulta. Kalú te confirmará precio y disponibilidad.</p>
+        <ul class="selection-list" id="selection-list"></ul>
+        <p class="selection-empty" id="selection-empty">Aún no has agregado productos. Abre un artículo con el botón + para empezar.</p>
+        <div class="selection-actions">
+          <a class="button button-primary" id="selection-whatsapp" target="_blank" rel="noopener">Pedir mi selección por WhatsApp</a>
+          <button class="button button-secondary" id="clear-selection" type="button">Vaciar selección</button>
         </div>
       </div>
     </dialog>
@@ -644,24 +711,114 @@
       const modalCode = document.getElementById("modal-code");
       const modalDesc = document.getElementById("modal-desc");
       const modalWhatsapp = document.getElementById("modal-whatsapp");
+      const modalAddSelection = document.getElementById("modal-add-selection");
+      const selectionModal = document.getElementById("selection-modal");
+      const selectionButton = document.getElementById("selection-button");
+      const selectionCount = document.getElementById("selection-count");
+      const selectionList = document.getElementById("selection-list");
+      const selectionEmpty = document.getElementById("selection-empty");
+      const selectionWhatsapp = document.getElementById("selection-whatsapp");
+      const clearSelection = document.getElementById("clear-selection");
+      let activeProduct = null;
+      let selectedProducts = [];
+
+      try {
+        const savedSelection = JSON.parse(window.localStorage.getItem("kalu-selection"));
+        if (Array.isArray(savedSelection)) selectedProducts = savedSelection;
+      } catch {
+        selectedProducts = [];
+      }
+
+      const saveSelection = () => {
+        try {
+          window.localStorage.setItem("kalu-selection", JSON.stringify(selectedProducts));
+        } catch {
+          // La selección seguirá funcionando durante esta visita si el navegador bloquea el guardado.
+        }
+      };
+
+      const isSelected = (product) => product && selectedProducts.some((item) => item.code === product.code);
+
+      const updateModalSelectionButton = () => {
+        const alreadyAdded = isSelected(activeProduct);
+        modalAddSelection.disabled = alreadyAdded;
+        modalAddSelection.textContent = alreadyAdded ? "Ya está en mi selección" : "Agregar a mi selección";
+      };
+
+      const updateSelection = () => {
+        const hasProducts = selectedProducts.length > 0;
+        selectionCount.textContent = selectedProducts.length;
+        selectionButton.setAttribute("aria-label", `Abrir mi selección: ${selectedProducts.length} productos`);
+        selectionList.hidden = !hasProducts;
+        selectionEmpty.hidden = hasProducts;
+        selectionList.innerHTML = selectedProducts.map((product) => `
+          <li class="selection-item">
+            <div><strong>${product.name}</strong><span>${product.code}</span></div>
+            <button class="remove-selection" type="button" data-remove-code="${product.code}" aria-label="Quitar ${product.name}">Quitar</button>
+          </li>
+        `).join("");
+        clearSelection.disabled = !hasProducts;
+        selectionWhatsapp.href = hasProducts
+          ? `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por estos productos:\n${selectedProducts.map((product) => `• ${product.name} (${product.code})`).join("\n")}`)}`
+          : "#";
+        selectionWhatsapp.setAttribute("aria-disabled", String(!hasProducts));
+      };
 
       document.querySelectorAll(".card").forEach((card) => {
         card.querySelector(".mini-button").addEventListener("click", () => {
           const { name, code, image, desc } = card.dataset;
+          activeProduct = { name, code, image, desc };
           modalImage.src = image;
           modalImage.alt = name;
           modalTitle.textContent = name;
           modalCode.textContent = code;
           modalDesc.textContent = desc;
           modalWhatsapp.href = `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por ${name} (${code}).`)}`;
+          updateModalSelectionButton();
           modal.showModal();
         });
+      });
+
+      modalAddSelection.addEventListener("click", () => {
+        if (!activeProduct || isSelected(activeProduct)) return;
+        selectedProducts.push(activeProduct);
+        saveSelection();
+        updateSelection();
+        updateModalSelectionButton();
+      });
+
+      selectionButton.addEventListener("click", () => selectionModal.showModal());
+      document.getElementById("close-selection").addEventListener("click", () => selectionModal.close());
+      selectionModal.addEventListener("click", (event) => {
+        if (event.target === selectionModal) selectionModal.close();
+      });
+
+      selectionList.addEventListener("click", (event) => {
+        const removeButton = event.target.closest("[data-remove-code]");
+        if (!removeButton) return;
+        selectedProducts = selectedProducts.filter((product) => product.code !== removeButton.dataset.removeCode);
+        saveSelection();
+        updateSelection();
+        updateModalSelectionButton();
+      });
+
+      clearSelection.addEventListener("click", () => {
+        selectedProducts = [];
+        saveSelection();
+        updateSelection();
+        updateModalSelectionButton();
+      });
+
+      selectionWhatsapp.addEventListener("click", (event) => {
+        if (!selectedProducts.length) event.preventDefault();
       });
 
       document.getElementById("close-modal").addEventListener("click", () => modal.close());
       modal.addEventListener("click", (event) => {
         if (event.target === modal) modal.close();
       });
+
+      updateSelection();
     </script>
   </body>
 </html>
