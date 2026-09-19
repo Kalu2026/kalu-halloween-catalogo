@@ -238,11 +238,13 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .card:nth-child(3) .image-wrap { background: radial-gradient(circle at 50% 25%, #56301b, #110218 72%); }
 .card:nth-child(4) .image-wrap { background: radial-gradient(circle at 50% 25%, #4c1646, #110218 72%); }
 .card:nth-child(5) .image-wrap { background: radial-gradient(circle at 50% 25%, #402050, #110218 72%); }
-.details { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 18px 18px 19px; }
+.details { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: center; padding: 18px 18px 19px; }
 .details h3 { margin: 0; color: #fff; font-size: 1.45rem; line-height: .95; }
 .details p { margin: 7px 0 0; color: #d1b6cd; font-size: .81rem; line-height: 1.35; }
 .mini-button { width: 43px; height: 43px; border: 0; border-radius: 12px; color: #16031e; background: var(--yellow); font-size: 1.35rem; font-weight: 800; cursor: pointer; }
 .mini-button:hover { background: var(--orange); color: #fff; }
+.zoom-button { width: 43px; height: 43px; border: 1px solid rgba(255,255,255,.28); border-radius: 12px; color: #fff; background: rgba(255,255,255,.08); font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+.zoom-button:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.5); transform: translateY(-2px); }
 .latex-card .image-wrap { background: #fff; }
 .latex-card .image-wrap img { padding: 0; }
 .material-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
@@ -353,6 +355,12 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 .modal-copy .modal-actions .button { align-self: auto; margin-top: 0; }
 .selection-dialog { width: min(92vw, 580px); }
+.zoom-dialog { width: min(94vw, 720px); background: transparent; border: 0; box-shadow: none; }
+.zoom-dialog::backdrop { background: rgba(8, 0, 14, .88); backdrop-filter: blur(6px); }
+.zoom-panel { position: relative; display: grid; place-items: center; min-height: 320px; padding: 20px; border-radius: 20px; background: radial-gradient(circle at 50% 30%, #2a0d34, #0d0214 78%); box-shadow: 0 28px 80px rgba(0,0,0,.58); }
+.zoom-panel img { width: 100%; max-height: 78vh; object-fit: contain; border-radius: 10px; }
+.zoom-panel .close { background: rgba(11, 2, 18, .78); }
+.zoom-caption { margin: 14px 0 0; color: #fff; font-family: "Baloo 2", Arial, sans-serif; font-size: 1.2rem; text-align: center; }
 .selection-panel { position: relative; padding: clamp(28px, 5vw, 42px); color: #fff; background: linear-gradient(135deg, #190522, #0d0214); }
 .selection-panel h2 { margin: 6px 0 10px; }
 .selection-panel > p { margin: 0; color: #decce0; line-height: 1.5; }
@@ -483,75 +491,75 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="grid">
 <article class="card latex-card" data-name="Máscara de látex Payaso bicolor" data-code="ML-01" data-image="assets/latex-01.jpg" data-desc="Payaso de terror bicolor con sombrero rojo y cabello en colores intensos.">
 <div class="image-wrap"><img src="assets/latex-01.jpg" alt="Máscara de látex de payaso bicolor con sombrero rojo" /><span class="code">ML-01</span></div>
-<div class="details"><div><h3>Payaso bicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso bicolor">+</button></div>
+<div class="details"><div><h3>Payaso bicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso bicolor">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso bicolor">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Monja siniestra" data-code="ML-02" data-image="assets/latex-02.jpg" data-desc="Máscara de terror con hábito blanco y negro, detalles agrietados y sonrisa inquietante.">
 <div class="image-wrap"><img src="assets/latex-02.jpg" alt="Máscara de látex de monja siniestra" /><span class="code">ML-02</span></div>
-<div class="details"><div><h3>Monja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Monja siniestra">+</button></div>
+<div class="details"><div><h3>Monja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Monja siniestra">🔍</button><button class="mini-button" aria-label="Ver máscara Monja siniestra">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Payaso rojo" data-code="ML-03" data-image="assets/latex-03.jpg" data-desc="Payaso de terror de rostro claro, cabello rojo y sonrisa intensa.">
 <div class="image-wrap"><img src="assets/latex-03.jpg" alt="Máscara de látex de payaso rojo" /><span class="code">ML-03</span></div>
-<div class="details"><div><h3>Payaso rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso rojo">+</button></div>
+<div class="details"><div><h3>Payaso rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso rojo">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso rojo">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Payaso triste" data-code="ML-04" data-image="assets/latex-04.jpg" data-desc="Máscara de payaso de terror con sombrero negro, mirada triste y sonrisa afilada.">
 <div class="image-wrap"><img src="assets/latex-04.jpg" alt="Máscara de látex de payaso triste con sombrero negro" /><span class="code">ML-04</span></div>
-<div class="details"><div><h3>Payaso triste</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso triste">+</button></div>
+<div class="details"><div><h3>Payaso triste</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso triste">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso triste">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Payaso de cono" data-code="ML-05" data-image="assets/latex-05.jpg" data-desc="Máscara de payaso siniestro con sombrero de cono negro y dientes marcados.">
 <div class="image-wrap"><img src="assets/latex-05.jpg" alt="Máscara de látex de payaso con cono negro" /><span class="code">ML-05</span></div>
-<div class="details"><div><h3>Payaso de cono</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso de cono">+</button></div>
+<div class="details"><div><h3>Payaso de cono</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso de cono">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso de cono">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Payaso espiral" data-code="ML-06" data-image="assets/latex-06.jpg" data-desc="Payaso en tonos morados y rosados con nariz en espiral y cabello multicolor.">
 <div class="image-wrap"><img src="assets/latex-06.jpg" alt="Máscara de látex de payaso espiral multicolor" /><span class="code">ML-06</span></div>
-<div class="details"><div><h3>Payaso espiral</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso espiral">+</button></div>
+<div class="details"><div><h3>Payaso espiral</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso espiral">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso espiral">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Criatura del bosque" data-code="ML-07" data-image="assets/latex-07.jpg" data-desc="Criatura de textura de madera, mirada verde y expresión amenazante.">
 <div class="image-wrap"><img src="assets/latex-07.jpg" alt="Máscara de látex de criatura del bosque" /><span class="code">ML-07</span></div>
-<div class="details"><div><h3>Criatura del bosque</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Criatura del bosque">+</button></div>
+<div class="details"><div><h3>Criatura del bosque</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Criatura del bosque">🔍</button><button class="mini-button" aria-label="Ver máscara Criatura del bosque">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Gorila salvaje" data-code="ML-08" data-image="assets/latex-08.jpg" data-desc="Máscara de gorila negro con detalles rojos y pelaje para un personaje impactante.">
 <div class="image-wrap"><img src="assets/latex-08.jpg" alt="Máscara de látex de gorila negro con detalles rojos" /><span class="code">ML-08</span></div>
-<div class="details"><div><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Gorila salvaje">+</button></div>
+<div class="details"><div><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Gorila salvaje">🔍</button><button class="mini-button" aria-label="Ver máscara Gorila salvaje">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Terror con sombrero" data-code="ML-09" data-image="assets/latex-09.jpg" data-desc="Rostro de terror desgastado con sombrero oscuro y sonrisa escalofriante.">
 <div class="image-wrap"><img src="assets/latex-09.jpg" alt="Máscara de látex de terror con sombrero" /><span class="code">ML-09</span></div>
-<div class="details"><div><h3>Terror con sombrero</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Terror con sombrero">+</button></div>
+<div class="details"><div><h3>Terror con sombrero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Terror con sombrero">🔍</button><button class="mini-button" aria-label="Ver máscara Terror con sombrero">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Lobo feroz" data-code="ML-10" data-image="assets/latex-10.jpg" data-desc="Máscara de lobo feroz con pelaje castaño y gesto amenazante.">
 <div class="image-wrap"><img src="assets/latex-10.jpg" alt="Máscara de látex de lobo feroz" /><span class="code">ML-10</span></div>
-<div class="details"><div><h3>Lobo feroz</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Lobo feroz">+</button></div>
+<div class="details"><div><h3>Lobo feroz</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Lobo feroz">🔍</button><button class="mini-button" aria-label="Ver máscara Lobo feroz">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Títere siniestro" data-code="ML-11" data-image="assets/latex-11.jpg" data-desc="Máscara blanca de títere con espirales rojas y cabello oscuro.">
 <div class="image-wrap"><img src="assets/latex-11.jpg" alt="Máscara de látex de títere siniestro" /><span class="code">ML-11</span></div>
-<div class="details"><div><h3>Títere siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Títere siniestro">+</button></div>
+<div class="details"><div><h3>Títere siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Títere siniestro">🔍</button><button class="mini-button" aria-label="Ver máscara Títere siniestro">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Zombie herido" data-code="ML-12" data-image="assets/latex-12.jpg" data-desc="Máscara de zombie herido con dientes expuestos y detalles de terror.">
 <div class="image-wrap"><img src="assets/latex-12.jpg" alt="Máscara de látex de zombie herido" /><span class="code">ML-12</span></div>
-<div class="details"><div><h3>Zombie herido</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Zombie herido">+</button></div>
+<div class="details"><div><h3>Zombie herido</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Zombie herido">🔍</button><button class="mini-button" aria-label="Ver máscara Zombie herido">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Payaso fucsia" data-code="ML-13" data-image="assets/latex-13.jpg" data-desc="Payaso de terror en tonos fucsia y morado con una sonrisa llena de dientes.">
 <div class="image-wrap"><img src="assets/latex-13.jpg" alt="Máscara de látex de payaso fucsia" /><span class="code">ML-13</span></div>
-<div class="details"><div><h3>Payaso fucsia</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso fucsia">+</button></div>
+<div class="details"><div><h3>Payaso fucsia</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso fucsia">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso fucsia">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Payaso azul" data-code="ML-14" data-image="assets/latex-14.jpg" data-desc="Payaso de terror azul con cabello naranja y rosado, perfecto para destacar.">
 <div class="image-wrap"><img src="assets/latex-14.jpg" alt="Máscara de látex de payaso azul" /><span class="code">ML-14</span></div>
-<div class="details"><div><h3>Payaso azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso azul">+</button></div>
+<div class="details"><div><h3>Payaso azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso azul">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso azul">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Bruja siniestra" data-code="ML-15" data-image="assets/latex-15.jpg" data-desc="Máscara de bruja de nariz alargada y cabello oscuro para un look clásico de Halloween.">
 <div class="image-wrap"><img src="assets/latex-15.jpg" alt="Máscara de látex de bruja siniestra" /><span class="code">ML-15</span></div>
-<div class="details"><div><h3>Bruja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Bruja siniestra">+</button></div>
+<div class="details"><div><h3>Bruja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Bruja siniestra">🔍</button><button class="mini-button" aria-label="Ver máscara Bruja siniestra">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Calavera grito" data-code="ML-16" data-image="assets/latex-16.jpg" data-desc="Calavera agrietada con expresión de grito y acabados de terror.">
 <div class="image-wrap"><img src="assets/latex-16.jpg" alt="Máscara de látex de calavera grito" /><span class="code">ML-16</span></div>
-<div class="details"><div><h3>Calavera grito</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Calavera grito">+</button></div>
+<div class="details"><div><h3>Calavera grito</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Calavera grito">🔍</button><button class="mini-button" aria-label="Ver máscara Calavera grito">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Bicolor clásica" data-code="ML-17" data-image="assets/latex-17.jpg" data-desc="Máscara clásica bicolor con cabello castaño y acabado envejecido.">
 <div class="image-wrap"><img src="assets/latex-17.jpg" alt="Máscara de látex bicolor clásica" /><span class="code">ML-17</span></div>
-<div class="details"><div><h3>Bicolor clásica</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Bicolor clásica">+</button></div>
+<div class="details"><div><h3>Bicolor clásica</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Bicolor clásica">🔍</button><button class="mini-button" aria-label="Ver máscara Bicolor clásica">+</button></div>
 </article>
 <article class="card latex-card" data-name="Máscara de látex Payaso rizado" data-code="ML-18" data-image="assets/latex-18.jpg" data-desc="Payaso de terror con cabello rizado amarillo y rojo, mirada intensa y nariz espiral.">
 <div class="image-wrap"><img src="assets/latex-18.jpg" alt="Máscara de látex de payaso rizado amarillo y rojo" /><span class="code">ML-18</span></div>
-<div class="details"><div><h3>Payaso rizado</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara Payaso rizado">+</button></div>
+<div class="details"><div><h3>Payaso rizado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso rizado">🔍</button><button class="mini-button" aria-label="Ver máscara Payaso rizado">+</button></div>
 </article>
 </div>
 </section>
@@ -566,7 +574,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="grid">
 <article class="card plush-card" data-name="Máscara de peluche Conejo siniestro" data-code="MPe-01" data-image="assets/plush-mask-rabbit.jpg" data-desc="Máscara de peluche negro con orejas largas, ojos amarillos y sonrisa de terror.">
 <div class="image-wrap"><img src="assets/plush-mask-rabbit.jpg" alt="Máscara de peluche de conejo negro siniestro" /><span class="code">MPe-01</span></div>
-<div class="details"><div><h3>Conejo siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara de peluche Conejo siniestro">+</button></div>
+<div class="details"><div><h3>Conejo siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Conejo siniestro">🔍</button><button class="mini-button" aria-label="Ver máscara de peluche Conejo siniestro">+</button></div>
 </article>
 </div>
 </section>
@@ -581,7 +589,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="grid">
 <article class="card prop-card" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
 <div class="image-wrap"><img src="assets/prop-machete.jpg" alt="Machete de utilería con mango envuelto y detalles rojos" /><span class="code">AP-01</span></div>
-<div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver machete de utilería">+</button></div>
+<div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen del machete de utilería">🔍</button><button class="mini-button" aria-label="Ver machete de utilería">+</button></div>
 </article>
 </div>
 </section>
@@ -602,7 +610,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="grid">
 <article class="card wig-card" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue-corner.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
 <div class="image-wrap"><img src="assets/wig-long-blue-corner.png" alt="Peluca larga azul con coletas y lazos rojos" /><span class="code">PL-01</span></div>
-<div class="details"><div><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver peluca larga azul">+</button></div>
+<div class="details"><div><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de peluca larga azul">🔍</button><button class="mini-button" aria-label="Ver peluca larga azul">+</button></div>
 </article>
 </div>
 </section>
@@ -670,6 +678,14 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 </div>
 </div>
 </dialog>
+
+<dialog class="zoom-dialog" id="zoom-modal" aria-labelledby="zoom-caption">
+<div class="zoom-panel">
+<button class="close" id="close-zoom" type="button" aria-label="Cerrar imagen ampliada">×</button>
+<img id="zoom-image" src="" alt="" />
+<p class="zoom-caption" id="zoom-caption"></p>
+</div>
+</dialog>
 <script>
 const modal = document.getElementById("product-modal");
 const modalImage = document.getElementById("modal-image");
@@ -685,6 +701,10 @@ const selectionList = document.getElementById("selection-list");
 const selectionEmpty = document.getElementById("selection-empty");
 const selectionWhatsapp = document.getElementById("selection-whatsapp");
 const clearSelection = document.getElementById("clear-selection");
+const zoomModal = document.getElementById("zoom-modal");
+const zoomImage = document.getElementById("zoom-image");
+const zoomCaption = document.getElementById("zoom-caption");
+const closeZoom = document.getElementById("close-zoom");
 let activeProduct = null;
 let selectedProducts = [];
 try {
@@ -737,6 +757,20 @@ document.querySelectorAll(".card").forEach((card) => {
     updateModalSelectionButton();
     modal.showModal();
   });
+  const zoomButton = card.querySelector(".zoom-button");
+  if (zoomButton) {
+    zoomButton.addEventListener("click", () => {
+      const { name, image } = card.dataset;
+      zoomImage.src = image;
+      zoomImage.alt = name;
+      zoomCaption.textContent = name;
+      zoomModal.showModal();
+    });
+  }
+});
+closeZoom.addEventListener("click", () => zoomModal.close());
+zoomModal.addEventListener("click", (event) => {
+  if (event.target === zoomModal) zoomModal.close();
 });
 modalAddSelection.addEventListener("click", () => {
   if (!activeProduct || isSelected(activeProduct)) return;
