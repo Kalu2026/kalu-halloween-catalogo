@@ -88,7 +88,7 @@
       .hero-copy-block::after { display: none; }
       .hero-bats { display: none; }
       @keyframes bat-drift { 0%,100% { translate: 0 0; } 50% { translate: 8px -6px; } }
-      @media (prefers-reduced-motion: reduce) { .hero-bats, .hero-art img.hero-logo { animation: none; } }
+      @media (prefers-reduced-motion: reduce) { .hero-bats, .hero-art img.hero-logo, .headline-logo { animation: none; } }
       .eyebrow {
         display: inline-flex;
         align-items: center;
@@ -110,6 +110,19 @@
         letter-spacing: -0.06em;
       }
       h1 em { color: #51065e; font-style: normal; }
+      .headline-logo {
+        display: inline-block;
+        width: clamp(142px, 15vw, 228px);
+        height: auto;
+        margin: 0 0.03em 0 0.1em;
+        vertical-align: -0.16em;
+        filter: drop-shadow(0 7px 7px rgba(62, 0, 71, .22));
+        animation: logo-float 3.8s ease-in-out infinite;
+      }
+      @keyframes logo-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
       .hero-copy { max-width: 390px; margin: 14px 0 21px; color: #fff; font-size: .86rem; line-height: 1.46; }
       .actions { display: flex; flex-wrap: wrap; gap: 12px; }
       .button {
@@ -289,7 +302,7 @@
           <img class="hero-sticker sticker-eye" src="sticker-eye.png" alt="" aria-hidden="true" />
           <div class="hero-copy-block">
             <p class="eyebrow">Halloween</p>
-            <h1>Tu personaje <em>empieza</em> en Kalú.</h1>
+            <h1>Tu personaje <em>empieza</em> en <img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" />.</h1>
             <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
             <div class="actions">
               <a class="button button-primary" href="#mascaras">Explorar catálogo</a>
