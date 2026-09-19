@@ -89,7 +89,7 @@
       .hero-bats { display: none; }
       @keyframes bat-drift { 0%,100% { translate: 0 0; } 50% { translate: 8px -6px; } }
       @media (prefers-reduced-motion: reduce) {
-        .hero-bats, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide { animation: none; }
+        .hero-bats, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide, .contact-bats { animation: none; }
         .hero-carousel .hero-slide { opacity: 0; }
         .hero-carousel .hero-slide:first-child { opacity: 1; }
       }
@@ -251,6 +251,7 @@
       .category-card p { position: relative; margin: 8px 0 0; font-size: .82rem; line-height: 1.45; }
 
       .contact {
+        position: relative;
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
@@ -262,6 +263,24 @@
         border: 1px solid rgba(255, 138, 20, .52);
         background: radial-gradient(circle at 90% 15%, rgba(239, 76, 10, .34), transparent 28%), linear-gradient(100deg, #15031e, #290628 56%, #16031e);
         box-shadow: 0 18px 45px rgba(0,0,0,.46), inset 0 0 36px rgba(111, 23, 96, .28);
+      }
+      .contact > :not(.contact-bats) { position: relative; z-index: 1; }
+      .contact-bats {
+        position: absolute;
+        z-index: 0;
+        right: 10px;
+        bottom: -42px;
+        width: clamp(128px, 15vw, 215px);
+        height: auto;
+        opacity: .72;
+        pointer-events: none;
+        filter: drop-shadow(0 9px 8px rgba(0,0,0,.42));
+        transform: rotate(-4deg);
+        animation: contact-bats-float 4.6s ease-in-out infinite;
+      }
+      @keyframes contact-bats-float {
+        0%, 100% { transform: rotate(-4deg) translate(0, 0); }
+        50% { transform: rotate(-2deg) translate(-4px, -6px); }
       }
       .contact-icon { display: grid; place-items: center; width: 64px; height: 64px; border: 3px solid rgba(255, 181, 33, .88); border-radius: 50%; font-size: 2rem; box-shadow: 0 0 20px rgba(255, 93, 11, .36); }
       .contact h2 { font-size: clamp(2rem, 3vw, 3rem); }
@@ -292,6 +311,7 @@
         .card:nth-child(5) { grid-column: auto; }
         .contact { grid-template-columns: auto 1fr; }
         .contact .button { grid-column: 1 / -1; }
+        .contact-bats { right: 14px; bottom: -35px; width: clamp(118px, 21vw, 175px); }
         .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
       @media (max-width: 570px) {
@@ -310,6 +330,7 @@
         .section-heading { display: block; }
         .section-heading > span { display: block; margin-top: 18px; }
         .contact { grid-template-columns: 1fr; gap: 15px; margin-bottom: 52px; }
+        .contact-bats { right: -4px; bottom: -32px; width: 132px; opacity: .62; }
         .modal { grid-template-columns: 1fr; }
         .modal img { max-height: 370px; }
         .category-grid { grid-template-columns: 1fr; }
@@ -414,6 +435,7 @@
         </section>
 
         <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
+          <img class="contact-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" />
           <div class="contact-icon" aria-hidden="true">☏</div>
           <div><h2 id="pedidos-title">¿Encontraste tu favorita?</h2><p>Escríbenos, menciona el código de la máscara y te confirmamos precio y disponibilidad.</p></div>
           <a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20una%20m%C3%A1scara%20de%20Halloween." target="_blank" rel="noopener">Hablar con Kalú</a>
