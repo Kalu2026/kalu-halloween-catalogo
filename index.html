@@ -249,6 +249,21 @@
       .mask-material h3 { margin: 0; color: #fff; font-size: 1.42rem; line-height: .96; }
       .mask-material p { margin: 9px 0 0; color: #d8c3d5; font-size: .84rem; line-height: 1.4; }
 
+      .material-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
+      .material-catalog .section-heading { margin-bottom: 36px; }
+      .material-catalog .section-heading p { color: #ff84c8; }
+      .plush-card { max-width: 390px; }
+      .plush-card .image-wrap { background: #fff; }
+      .plush-card .image-wrap img { padding: 0; object-fit: contain; transform: scale(1.17); }
+      .plush-card:hover .image-wrap img { transform: scale(1.21); }
+
+      .accessory-catalog { padding: 78px clamp(18px, 7vw, 110px) 84px; color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
+      .accessory-catalog .section-heading p { color: var(--yellow); }
+      .prop-card { max-width: 390px; }
+      .prop-card .image-wrap { background: linear-gradient(145deg, #fff, #eae6df); }
+      .prop-card .image-wrap img { padding: 0; object-fit: contain; transform: scale(1.2); }
+      .prop-card:hover .image-wrap img { transform: scale(1.24); }
+
       .wig-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
       .wig-catalog .section-heading { margin-bottom: 36px; }
       .wig-catalog .section-heading p { color: #50a2ff; }
@@ -342,6 +357,7 @@
         .sticker-candy { left: auto; right: 19%; bottom: 24px; }
         .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .wig-card { max-width: none; }
+        .plush-card, .prop-card { max-width: none; }
         .mask-materials { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .card:nth-child(5) { grid-column: auto; }
         .contact { grid-template-columns: auto 1fr; }
@@ -381,7 +397,7 @@
         <div class="nav-links">
           <a href="#mascaras">Máscaras</a>
           <a href="#pelucas">Pelucas</a>
-          <a href="#ninos">Niños</a>
+          <a href="#accesorios">Accesorios</a>
           <a href="#ninas">Niñas</a>
           <a href="#sombreros">Sombreros</a>
           <a href="#pedidos">Cómo pedir</a>
@@ -502,7 +518,39 @@
           <div class="mask-materials" aria-label="Próximas categorías de máscaras">
             <article class="mask-material"><span class="material-code">ML</span><h3>Máscaras de látex</h3><p>Catálogo disponible con códigos ML-01, ML-02 y siguientes.</p></article>
             <article class="mask-material"><span class="material-code">MP</span><h3>Máscaras de pasta</h3><p>Sección preparada para agregar próximamente los códigos MP-01 y siguientes.</p></article>
-            <article class="mask-material"><span class="material-code">MPe</span><h3>Máscaras de peluche</h3><p>Sección preparada para agregar próximamente los códigos MPe-01 y siguientes.</p></article>
+            <article class="mask-material"><span class="material-code">MPe</span><h3>Máscaras de peluche</h3><p>Catálogo disponible con código MPe-01 y preparado para recibir más modelos.</p></article>
+          </div>
+        </section>
+
+        <section class="material-catalog" id="mascaras-peluche" aria-labelledby="peluche-title">
+          <div class="section-heading">
+            <div>
+              <p>Máscaras de peluche</p>
+              <h2 id="peluche-title">Terror con textura</h2>
+            </div>
+            <span>Máscaras suaves y llamativas para complementar tu personaje.</span>
+          </div>
+          <div class="grid">
+            <article class="card plush-card" data-name="Máscara de peluche Conejo siniestro" data-code="MPe-01" data-image="assets/plush-mask-rabbit.jpg" data-desc="Máscara de peluche negro con orejas largas, ojos amarillos y sonrisa de terror.">
+              <div class="image-wrap"><img src="assets/plush-mask-rabbit.jpg" alt="Máscara de peluche de conejo negro siniestro" /><span class="code">MPe-01</span></div>
+              <div class="details"><div><h3>Conejo siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver máscara de peluche Conejo siniestro">+</button></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="accessory-catalog" id="accesorios" aria-labelledby="accesorios-title">
+          <div class="section-heading">
+            <div>
+              <p>Accesorios de personaje</p>
+              <h2 id="accesorios-title">Utilería para tu disfraz</h2>
+            </div>
+            <span>Encuentra machetes de utilería, katanas, motosierras, varitas y más accesorios para completar el look.</span>
+          </div>
+          <div class="grid">
+            <article class="card prop-card" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
+              <div class="image-wrap"><img src="assets/prop-machete.jpg" alt="Machete de utilería con mango envuelto y detalles rojos" /><span class="code">AP-01</span></div>
+              <div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver machete de utilería">+</button></div>
+            </article>
           </div>
         </section>
 
@@ -551,8 +599,8 @@
             <a class="category-card" href="#pelucas">
               <span class="soon">Disponible</span><h3>Pelucas</h3><p>Encuentra estilos largos y próximamente también cortos.</p>
             </a>
-            <a class="category-card" id="ninos" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1os." target="_blank" rel="noopener">
-              <span class="soon">Muy pronto</span><h3>Accesorios para niños</h3><p>Detalles divertidos para los pequeños de la casa.</p>
+            <a class="category-card" id="ninos" href="#accesorios">
+              <span class="soon">Disponible</span><h3>Accesorios de personaje</h3><p>Machetes de utilería, katanas, motosierras, varitas y más.</p>
             </a>
             <a class="category-card" id="ninas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">
               <span class="soon">Muy pronto</span><h3>Accesorios para niñas</h3><p>Ideas mágicas, coloridas y llenas de brillo.</p>
