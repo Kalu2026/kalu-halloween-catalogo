@@ -112,7 +112,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.06em;
+        gap: 0;
         font-size: clamp(3rem, 5.2vw, 4.85rem);
         line-height: 0.92;
         letter-spacing: -0.06em;
@@ -123,10 +123,10 @@
         align-items: center;
         white-space: nowrap;
       }
-      .headline-closing { gap: 0.14em; }
+      .headline-closing { gap: 0.1em; padding-left: clamp(14px, 2vw, 32px); font-size: .86em; }
       .headline-logo {
         display: inline-block;
-        width: clamp(132px, 14vw, 210px);
+        width: clamp(152px, 16vw, 238px);
         height: auto;
         margin: 0;
         filter: drop-shadow(0 7px 7px rgba(62, 0, 71, .22));
@@ -321,7 +321,8 @@
         .nav-links { gap: 12px; font-size: .75rem; }
         .hero { padding: 82px 20px 52px; }
         h1 { font-size: clamp(2.55rem, 12.4vw, 3.1rem); }
-        .headline-logo { width: clamp(118px, 39vw, 158px); }
+        .headline-closing { padding-left: 10px; font-size: .82em; }
+        .headline-logo { width: clamp(96px, 31vw, 166px); }
         .hero-art { width: min(78vw, 282px); }
         .sticker-eye, .sticker-skull { display: none; }
         .sticker-pumpkin { left: 2%; bottom: -16px; }
@@ -362,7 +363,7 @@
             <p class="eyebrow">Halloween</p>
             <h1>
               <span class="headline-line">Tu personaje</span>
-              <span class="headline-line headline-closing"><em>empieza</em> en <img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" />.</span>
+              <span class="headline-line headline-closing"><em>Empieza</em> en <img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" />.</span>
             </h1>
             <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
             <div class="actions">
