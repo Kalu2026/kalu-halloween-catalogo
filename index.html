@@ -232,6 +232,20 @@
       .card:nth-child(3) { grid-column: span 1; }
       .card:nth-child(5) { grid-column: 2 / span 1; }
 
+      .wig-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
+      .wig-catalog .section-heading { margin-bottom: 36px; }
+      .wig-catalog .section-heading p { color: #50a2ff; }
+      .wig-groups { max-width: 1250px; margin: auto; }
+      .wig-group + .wig-group { margin-top: 48px; }
+      .wig-group-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 0 0 18px; }
+      .wig-group-heading h3 { margin: 0; color: #fff; font-size: clamp(1.7rem, 2.7vw, 2.35rem); line-height: .95; }
+      .wig-group-heading p { margin: 0; color: #d8c3d5; font-size: .88rem; }
+      .wig-card { max-width: 390px; }
+      .wig-card .image-wrap { background: linear-gradient(145deg, #ffffff, #eaf2ff); }
+      .wig-card .image-wrap img { padding: 0; object-fit: cover; object-position: center 42%; }
+      .wig-empty { min-height: 182px; display: grid; place-items: center; padding: 28px; border: 1px dashed rgba(80, 162, 255, .64); border-radius: 18px; color: #d8c3d5; text-align: center; background: linear-gradient(135deg, rgba(38, 15, 64, .76), rgba(12, 5, 22, .9)); }
+      .wig-empty strong { display: block; margin-bottom: 8px; color: #fff; font-size: 1.24rem; }
+
       .categories { padding: 78px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
       .categories .section-heading { margin-bottom: 30px; }
       .categories .section-heading p { color: var(--yellow); }
@@ -309,6 +323,7 @@
         .sticker-eye { left: auto; right: 8%; top: 72px; }
         .sticker-candy { left: auto; right: 19%; bottom: 24px; }
         .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .wig-card { max-width: none; }
         .card:nth-child(5) { grid-column: auto; }
         .contact { grid-template-columns: auto 1fr; }
         .contact .button { grid-column: 1 / -1; }
@@ -329,6 +344,7 @@
         .sticker-pumpkin { left: 2%; bottom: -16px; }
         .sticker-candy { right: 7%; bottom: 13px; }
         .grid { grid-template-columns: 1fr; }
+        .wig-group-heading { align-items: flex-start; flex-direction: column; gap: 7px; }
         .section-heading { display: block; }
         .section-heading > span { display: block; margin-top: 18px; }
         .contact { grid-template-columns: 1fr; gap: 15px; margin-bottom: 52px; }
@@ -413,6 +429,39 @@
           </div>
         </section>
 
+        <section class="wig-catalog" id="pelucas" aria-labelledby="pelucas-title">
+          <div class="section-heading">
+            <div>
+              <p>Pelucas</p>
+              <h2 id="pelucas-title">Elige tu nuevo look</h2>
+            </div>
+            <span>Explora las pelucas por largo y toca <strong>+</strong> para pedir la tuya por WhatsApp.</span>
+          </div>
+
+          <div class="wig-groups">
+            <section class="wig-group" aria-labelledby="pelucas-largas-title">
+              <div class="wig-group-heading">
+                <h3 id="pelucas-largas-title">Pelucas largas</h3>
+                <p>Color, estilo y diversión para tu personaje.</p>
+              </div>
+              <div class="grid">
+                <article class="card wig-card" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
+                  <div class="image-wrap"><img src="assets/wig-long-blue.png" alt="Peluca larga azul con coletas y lazos rojos" /><span class="code">PL-01</span></div>
+                  <div class="details"><div><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="mini-button" aria-label="Ver peluca larga azul">+</button></div>
+                </article>
+              </div>
+            </section>
+
+            <section class="wig-group" aria-labelledby="pelucas-cortas-title">
+              <div class="wig-group-heading">
+                <h3 id="pelucas-cortas-title">Pelucas cortas</h3>
+                <p>Esta sección queda lista para las próximas pelucas.</p>
+              </div>
+              <div class="wig-empty"><div><strong>Muy pronto</strong>Agrega aquí las fotos de las pelucas cortas para mantenerlas separadas de las largas.</div></div>
+            </section>
+          </div>
+        </section>
+
         <section class="categories" aria-labelledby="categorias-title">
           <div class="section-heading">
             <div>
@@ -422,8 +471,8 @@
             <span>Estas secciones ya quedan preparadas para agregar fotos, códigos, precios y disponibilidad.</span>
           </div>
           <div class="category-grid">
-            <a class="category-card" id="pelucas" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20las%20pelucas." target="_blank" rel="noopener">
-              <span class="soon">Muy pronto</span><h3>Pelucas</h3><p>Colores, estilos y personajes para completar tu look.</p>
+            <a class="category-card" href="#pelucas">
+              <span class="soon">Disponible</span><h3>Pelucas</h3><p>Encuentra estilos largos y próximamente también cortos.</p>
             </a>
             <a class="category-card" id="ninos" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1os." target="_blank" rel="noopener">
               <span class="soon">Muy pronto</span><h3>Accesorios para niños</h3><p>Detalles divertidos para los pequeños de la casa.</p>
