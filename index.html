@@ -93,21 +93,30 @@ button { font: inherit; }
 .hero::after { display: none; }
 .hero-copy-block { position: relative; z-index: 4; width: 100%; max-width: 510px; }
 .hero-copy-block::after { display: none; }
+.headline-words { position: relative; display: inline-block; }
 .hero-bats {
   position: absolute;
-  z-index: 2;
-  right: 30%;
-  bottom: 22px;
+  z-index: -1;
+  left: 100%;
+  top: 50%;
+  margin-left: -34px;
+  margin-top: 16px;
   width: clamp(230px, 23vw, 350px);
   height: auto;
+  max-width: none;
   opacity: .96;
   pointer-events: none;
   filter: brightness(1.2) saturate(1.16) drop-shadow(0 10px 10px rgba(0,0,0,.48)) drop-shadow(0 0 12px rgba(116, 55, 176, .32));
-  animation: bat-drift 4.6s ease-in-out infinite;
+  animation: bat-hover 5.2s ease-in-out infinite;
 }
-@keyframes bat-drift { 0%,100% { transform: rotate(-4deg) translate(0, 0); } 50% { transform: rotate(-2deg) translate(-5px, -7px); } }
+@keyframes bat-hover {
+  0%, 100% { transform: translateY(-50%) translateX(0) rotate(-3deg); }
+  25% { transform: translateY(calc(-50% - 9px)) translateX(4px) rotate(-1deg); }
+  50% { transform: translateY(calc(-50% - 16px)) translateX(0) rotate(2deg); }
+  75% { transform: translateY(calc(-50% - 7px)) translateX(-4px) rotate(0deg); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero-bats, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide { animation: none; }
+  .hero-bats, .eye-iris, .hero-art img.hero-logo, .headline-logo, .hero-carousel .hero-slide { animation: none; }
   .hero-carousel .hero-slide { opacity: 0; }
   .hero-carousel .hero-slide:first-child { opacity: 1; }
 }
@@ -210,7 +219,16 @@ h1 em { color: #51065e; font-style: normal; }
 .sticker-pumpkin { left: 7%; bottom: -16px; width: clamp(70px, 11vw, 140px); transform: rotate(-7deg); }
 .sticker-candy { left: 49%; bottom: 35px; width: clamp(42px, 6vw, 74px); transform: rotate(-12deg); }
 .sticker-skull { left: 1.5%; bottom: 38px; width: clamp(40px, 5vw, 62px); transform: rotate(-11deg); }
-.sticker-eye { left: 57%; top: 62px; width: clamp(34px, 4.5vw, 58px); transform: rotate(12deg); }
+.sticker-eye { left: 57%; top: 62px; width: clamp(34px, 4.5vw, 58px); aspect-ratio: 1; transform: rotate(12deg); }
+.sticker-eye img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.eye-iris { animation: eye-look 6s ease-in-out infinite; }
+@keyframes eye-look {
+  0%, 10% { transform: translate(0, 0); }
+  20%, 34% { transform: translate(-8%, 1%); }
+  46%, 52% { transform: translate(0, 0); }
+  62%, 76% { transform: translate(8%, -1%); }
+  88%, 100% { transform: translate(0, 0); }
+}
 .catalog { padding: 84px clamp(18px, 7vw, 110px); background: radial-gradient(ellipse at 90% 0, rgba(109,29,101,.4), transparent 32%), linear-gradient(145deg, #16031e, #0b0212 67%); }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; max-width: 1250px; margin: 0 auto 34px; }
 .section-heading p { margin: 0 0 5px; color: var(--orange); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
@@ -508,7 +526,6 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 @media (max-width: 860px) {
   .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 92px; padding-bottom: 60px; }
   .hero-art { width: min(80vw, 420px); }
-  .hero-bats { right: 8%; bottom: 34px; width: min(44vw, 280px); }
   .sticker-eye { left: auto; right: 8%; top: 72px; }
   .sticker-candy { left: auto; right: 19%; bottom: 24px; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -556,8 +573,8 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .headline-closing { font-size: .82em; }
   .headline-logo { width: clamp(170px, 54vw, 242px); }
   .hero-art { width: min(88vw, 340px); }
-  .hero-bats { right: -7%; bottom: 25px; width: min(62vw, 285px); }
   .sticker-eye, .sticker-skull { display: none; }
+  .hero-bats { left: auto; right: -64px; margin: -54px 0 0; width: min(58vw, 240px); }
   .sticker-pumpkin { left: 2%; bottom: -16px; }
   .sticker-candy { right: 7%; bottom: 13px; }
   .acc-toggle { margin-top: 14px; padding: 9px 14px; }
@@ -608,15 +625,14 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 </nav>
 <main>
 <section class="hero" id="inicio">
-<img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" />
 <img class="hero-sticker sticker-pumpkin" src="sticker-pumpkin.png" alt="" aria-hidden="true" />
 <img class="hero-sticker sticker-candy" src="sticker-candy.png" alt="" aria-hidden="true" />
 <img class="hero-sticker sticker-skull" src="sticker-skull.png" alt="" aria-hidden="true" />
-<img class="hero-sticker sticker-eye" src="sticker-eye.png" alt="" aria-hidden="true" />
+<span class="hero-sticker sticker-eye" aria-hidden="true"><img class="eye-base" src="sticker-eye-base.png" alt="" /><img class="eye-iris" src="sticker-eye-iris.png" alt="" /></span>
 <div class="hero-copy-block">
 <p class="eyebrow">Halloween</p>
 <h1>
-<span class="headline-line">Tu personaje</span>
+<span class="headline-line"><span class="headline-words">Tu personaje<img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" /></span></span>
 <span class="headline-line headline-closing"><em>Empieza</em> en</span>
 <span class="headline-line headline-logo-line"><img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" /></span>
 </h1>
@@ -1004,6 +1020,15 @@ const updateModalSelectionButton = () => {
   modalAddSelection.disabled = alreadyAdded;
   modalAddSelection.textContent = alreadyAdded ? "Ya está en mi selección" : "Agregar a mi selección";
 };
+// Enlace del producto: WhatsApp lo convierte en una vista previa con la foto y el nombre.
+// Los productos con página propia (carpeta p/) usan esa; si no, se enlaza al catálogo.
+let productPages = new Set();
+fetch("p/manifest.json").then((r) => (r.ok ? r.json() : [])).then((list) => { productPages = new Set(list); }).catch(() => {});
+const productLink = (code) => productPages.has(code)
+  ? new URL(`p/${encodeURIComponent(code)}.html`, location.href).href
+  : new URL(`#producto=${encodeURIComponent(code)}`, location.href.split("#")[0]).href;
+const buildSingleMessage = (name, code) => `Hola Kalú, quiero consultar por ${name} (${code}).\n${productLink(code)}`;
+const buildSelectionMessage = (products) => `Hola Kalú, quiero consultar por estos productos:\n${products.map((product) => `• ${product.name} (${product.code})\n${productLink(product.code)}`).join("\n\n")}`;
 const updateSelection = () => {
   const hasProducts = selectedProducts.length > 0;
   selectionCount.textContent = selectedProducts.length;
@@ -1018,7 +1043,7 @@ const updateSelection = () => {
   `).join("");
   clearSelection.disabled = !hasProducts;
   selectionWhatsapp.href = hasProducts
-    ? `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por estos productos:\n${selectedProducts.map((product) => `• ${product.name} (${product.code})`).join("\n")}`)}`
+    ? `https://wa.me/573215055733?text=${encodeURIComponent(buildSelectionMessage(selectedProducts))}`
     : "#";
   selectionWhatsapp.setAttribute("aria-disabled", String(!hasProducts));
 };
@@ -1031,7 +1056,7 @@ document.querySelectorAll(".card").forEach((card) => {
     modalTitle.textContent = name;
     modalCode.textContent = code;
     modalDesc.textContent = desc;
-    modalWhatsapp.href = `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero consultar por ${name} (${code}).`)}`;
+    modalWhatsapp.href = `https://wa.me/573215055733?text=${encodeURIComponent(buildSingleMessage(name, code))}`;
     updateModalSelectionButton();
     modal.showModal();
   });
@@ -1058,7 +1083,7 @@ modalAddSelection.addEventListener("click", () => {
   updateModalSelectionButton();
   modal.close();
 });
-selectionButton.addEventListener("click", () => selectionModal.showModal());
+selectionButton.addEventListener("click", () => { updateSelection(); selectionModal.showModal(); });
 document.getElementById("close-selection").addEventListener("click", () => selectionModal.close());
 selectionModal.addEventListener("click", (event) => {
   if (event.target === selectionModal) selectionModal.close();
@@ -1390,6 +1415,23 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
   document.addEventListener("click", (e) => {
     if (!e.target.closest("#nav-search")) close();
   });
+})();
+
+// Abrir un producto desde un enlace compartido: /#producto=ML-08
+(function () {
+  const openFromHash = () => {
+    const match = location.hash.match(/^#producto=(.+)$/);
+    if (!match) return;
+    const code = decodeURIComponent(match[1]);
+    const card = Array.from(document.querySelectorAll(".card[data-code]")).find((c) => c.dataset.code === code);
+    if (!card) return;
+    const section = card.closest(".acc-closed");
+    if (section) section.querySelector(".acc-toggle")?.click();
+    card.querySelector(".mini-button")?.click();
+    history.replaceState(null, "", location.pathname + location.search);
+  };
+  window.addEventListener("hashchange", openFromHash);
+  window.addEventListener("load", openFromHash);
 })();
 </script>
 </body>
