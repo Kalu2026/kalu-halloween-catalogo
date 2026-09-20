@@ -378,11 +378,8 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 .top-card:hover, .top-card:focus-visible { transform: translateX(-5px); border-color: var(--yellow); box-shadow: var(--shadow); outline: none; }
-.top-thumb { position: relative; aspect-ratio: 1 / 1; background: radial-gradient(circle at 50% 25%, #4b1b5d, #110218 72%); }
-.top-card:nth-child(2) .top-thumb { background: radial-gradient(circle at 50% 25%, #56301b, #110218 72%); }
-.top-card:nth-child(3) .top-thumb { background: radial-gradient(circle at 50% 25%, #4c1646, #110218 72%); }
-.top-thumb img { width: 100%; height: 100%; padding: 6px; object-fit: contain; }
-.top-rank { position: absolute; left: 8px; top: 8px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--yellow); color: var(--ink); font-size: .9rem; font-weight: 900; box-shadow: 0 4px 10px rgba(0,0,0,.4); }
+.top-thumb { position: relative; aspect-ratio: 1 / 1; background: #fff; }
+.top-thumb img { width: 100%; height: 100%; padding: 0; object-fit: contain; display: block; }
 .top-info { display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 14px 18px; min-width: 0; }
 .top-code { color: var(--orange); font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
 .top-info h3 { margin: 0; font-size: 1.15rem; line-height: 1.1; }
@@ -723,20 +720,24 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 </div>
 
 <aside aria-labelledby="top-title">
-<h3 class="top-title" id="top-title">🔥 Top 3 más vistos</h3>
+<h3 class="top-title" id="top-title">⭐ Recomendados</h3>
 <div class="top-list">
-<!-- Para cambiar el top, edita el data-top-code (código del producto), la imagen y el nombre -->
+<!-- Para cambiar los recomendados, edita el data-top-code (código del producto), la foto y el nombre -->
 <article class="top-card" data-top-code="ML-08" tabindex="0" role="button" aria-label="Ver Gorila salvaje">
-<div class="top-thumb"><img src="assets/latex-08.jpg" alt="Máscara de látex de gorila negro con detalles rojos" /><span class="top-rank">1</span></div>
-<div class="top-info"><span class="top-code">ML-08</span><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
+<div class="top-thumb"><img src="assets/thumbs/latex-08.jpg" onerror="this.onerror=null;this.src='assets/latex-08.jpg'" alt="Máscara de látex de gorila negro con detalles rojos" /></div>
+<div class="top-info"><span class="top-code">ML-08 · Máscara de látex</span><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
 </article>
 <article class="top-card" data-top-code="ML-01" tabindex="0" role="button" aria-label="Ver Payaso bicolor">
-<div class="top-thumb"><img src="assets/latex-01.jpg" alt="Máscara de látex de payaso bicolor con sombrero rojo" /><span class="top-rank">2</span></div>
-<div class="top-info"><span class="top-code">ML-01</span><h3>Payaso bicolor</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
+<div class="top-thumb"><img src="assets/thumbs/latex-01.jpg" onerror="this.onerror=null;this.src='assets/latex-01.jpg'" alt="Máscara de látex de payaso bicolor con sombrero rojo" /></div>
+<div class="top-info"><span class="top-code">ML-01 · Máscara de látex</span><h3>Payaso bicolor</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
 </article>
-<article class="top-card" data-top-code="ML-15" tabindex="0" role="button" aria-label="Ver Bruja siniestra">
-<div class="top-thumb"><img src="assets/latex-15.jpg" alt="Máscara de látex de bruja siniestra" /><span class="top-rank">3</span></div>
-<div class="top-info"><span class="top-code">ML-15</span><h3>Bruja siniestra</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
+<article class="top-card" data-top-code="PL-01" tabindex="0" role="button" aria-label="Ver Peluca larga azul">
+<div class="top-thumb"><img src="assets/thumbs/wig-long-blue-corner.jpg" onerror="this.onerror=null;this.src='assets/wig-long-blue-corner.png'" alt="Peluca larga azul con coletas y lazos rojos" /></div>
+<div class="top-info"><span class="top-code">PL-01 · Peluca</span><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
+</article>
+<article class="top-card" data-top-code="AP-01" tabindex="0" role="button" aria-label="Ver Machete de utilería">
+<div class="top-thumb"><img src="assets/thumbs/prop-machete.jpg" onerror="this.onerror=null;this.src='assets/prop-machete.jpg'" alt="Machete de utilería con mango envuelto y detalles rojos" /></div>
+<div class="top-info"><span class="top-code">AP-01 · Accesorio</span><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
 </article>
 </div>
 </aside>
@@ -1155,7 +1156,7 @@ updateSelection();
   });
 })();
 
-// Top 3 más vistos: abre el detalle del producto original
+// Recomendados: abre el detalle del producto original
 document.querySelectorAll(".top-card").forEach((topCard) => {
   const open = () => {
     const original = document.querySelector(`.card[data-code="${topCard.dataset.topCode}"] .mini-button`);
