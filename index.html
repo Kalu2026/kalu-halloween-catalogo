@@ -484,7 +484,16 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .sticker-eye, .sticker-skull { display: none; }
   .sticker-pumpkin { left: 2%; bottom: -16px; }
   .sticker-candy { right: 7%; bottom: 13px; }
-  .grid { grid-template-columns: 1fr; }
+  /* Celular: 2 productos por fila */
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .plush-card, .wig-card, .prop-card { max-width: none; }
+  .image-wrap::after { width: 64px; }
+  .code { left: 8px; top: 8px; padding: 4px 8px; font-size: .6rem; }
+  .details { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 10px 12px; }
+  .details > div:first-child { grid-column: 1 / -1; }
+  .details h3 { font-size: 1.02rem; line-height: 1.05; }
+  .details p { margin-top: 4px; font-size: .68rem; }
+  .mini-button, .zoom-button { width: 100%; height: 36px; }
   .wig-group-heading { align-items: flex-start; flex-direction: column; gap: 7px; }
   .section-heading { display: block; }
   .section-heading > span { display: block; margin-top: 18px; }
