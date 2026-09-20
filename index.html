@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="es">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TRYZV3ZJ8F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TRYZV3ZJ8F');
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
@@ -392,15 +400,6 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .return-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .return-actions .button { cursor: pointer; }
 .selection-fab { position: fixed; right: 22px; bottom: 22px; z-index: 25; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 9px 13px 9px 17px; border: 0; border-radius: 999px; color: var(--ink); background: var(--yellow); box-shadow: 0 12px 28px rgba(0,0,0,.38); font-weight: 800; cursor: pointer; }
-.visitor-counter { position: fixed; left: 22px; bottom: 22px; z-index: 25; display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 18px; color: #fff; background: linear-gradient(135deg, rgba(42, 10, 58, .92), rgba(13, 2, 20, .95)); border: 1px solid rgba(255, 189, 24, .38); box-shadow: 0 12px 28px rgba(0,0,0,.4); backdrop-filter: blur(6px); }
-.visitor-counter-dot { position: relative; width: 10px; height: 10px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
-.visitor-counter-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #4ade80; animation: visitor-pulse 1.8s ease-out infinite; }
-@keyframes visitor-pulse { 0% { transform: scale(.6); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
-.visitor-counter-rows { display: grid; gap: 3px; }
-.visitor-counter-row { display: flex; align-items: baseline; gap: 6px; font-size: .74rem; line-height: 1; }
-.visitor-counter-row span:first-child { color: #d8c3d5; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .66rem; }
-.visitor-counter-value { font-family: "Baloo 2", Arial, sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--yellow); }
-.visitor-counter-row:last-child .visitor-counter-value { color: #ff9f4a; }
 .selection-fab:hover { background: #ffcf42; transform: translateY(-2px); }
 .selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
 footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
@@ -585,8 +584,6 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .cat-badge { display: none; }
   .cat-head { padding: 12px 14px; }
   .selection-fab { right: 12px; bottom: 12px; }
-  .visitor-counter { left: 12px; bottom: 12px; padding: 10px 14px; gap: 9px; }
-  .visitor-counter-value { font-size: .92rem; }
 }
 </style>
 </head>
@@ -930,13 +927,6 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <button class="selection-fab" id="selection-button" type="button" aria-haspopup="dialog" aria-label="Abrir mi selección">
 Mi selección <span class="selection-count" id="selection-count">0</span>
 </button>
-<div class="visitor-counter" role="status" aria-label="Visitas al catálogo">
-<span class="visitor-counter-dot" aria-hidden="true"></span>
-<div class="visitor-counter-rows">
-<div class="visitor-counter-row"><span>Hoy</span> <span class="visitor-counter-value" id="visitor-today">0</span></div>
-<div class="visitor-counter-row"><span>Total</span> <span class="visitor-counter-value" id="visitor-total">0</span></div>
-</div>
-</div>
 <dialog id="product-modal" aria-labelledby="modal-title">
 <div class="modal">
 <button class="close" id="close-modal" aria-label="Cerrar detalle">×</button>
@@ -1096,64 +1086,6 @@ modal.addEventListener("click", (event) => {
 });
 updateSelection();
 
-// Contador de visitas (usa CountAPI, servicio gratuito sin registro,
-// solo guarda números, no datos personales).
-(function () {
-  const NAMESPACE = "kalu-accesorios-halloween-catalogo";
-  const todayKey = "dia-" + new Date().toISOString().slice(0, 10);
-  const totalKey = "total-visitas";
-  const todayEl = document.getElementById("visitor-today");
-  const totalEl = document.getElementById("visitor-total");
-
-  const animateCount = (el, endValue) => {
-    if (!el) return;
-    const duration = 900;
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(endValue * eased).toLocaleString("es-CO");
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-
-  const hasVisitedToday = () => {
-    try {
-      return window.sessionStorage.getItem("kalu-visit-counted") === "1";
-    } catch {
-      return false;
-    }
-  };
-  const markVisited = () => {
-    try {
-      window.sessionStorage.setItem("kalu-visit-counted", "1");
-    } catch {
-      // Si el navegador bloquea sessionStorage, igual se mostrará el conteo.
-    }
-  };
-
-  const endpointDay = hasVisitedToday()
-    ? `https://api.countapi.xyz/get/${NAMESPACE}/${todayKey}`
-    : `https://api.countapi.xyz/hit/${NAMESPACE}/${todayKey}`;
-  const endpointTotal = hasVisitedToday()
-    ? `https://api.countapi.xyz/get/${NAMESPACE}/${totalKey}`
-    : `https://api.countapi.xyz/hit/${NAMESPACE}/${totalKey}`;
-
-  Promise.all([
-    fetch(endpointDay).then((r) => r.json()),
-    fetch(endpointTotal).then((r) => r.json()),
-  ])
-    .then(([dayData, totalData]) => {
-      animateCount(todayEl, dayData.value || 0);
-      animateCount(totalEl, totalData.value || 0);
-      markVisited();
-    })
-    .catch(() => {
-      if (todayEl) todayEl.textContent = "—";
-      if (totalEl) totalEl.textContent = "—";
-    });
-})();
 
 // Menú móvil del encabezado
 (function () {
