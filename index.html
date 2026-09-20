@@ -438,6 +438,37 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .selection-actions .button { cursor: pointer; }
 .selection-actions .button:disabled { opacity: .55; cursor: default; }
 .selection-actions a[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
+/* Acordeón de secciones de productos */
+.acc-toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  align-self: center;
+  padding: 10px 16px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 100px;
+  background: rgba(255,255,255,.08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.acc-toggle:hover { background: rgba(255,255,255,.18); border-color: var(--yellow); }
+.acc-toggle .acc-caret { font-size: .62rem; transition: transform .25s ease; }
+.acc-open > .section-heading .acc-toggle .acc-caret,
+.acc-open > .wig-group-heading .acc-toggle .acc-caret { transform: rotate(180deg); }
+.acc-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+.acc-open > .acc-body { grid-template-rows: 1fr; }
+.acc-inner { min-height: 0; overflow: hidden; visibility: hidden; transition: visibility 0s linear .35s; }
+.acc-open > .acc-body > .acc-inner { visibility: visible; transition-delay: 0s; padding: 12px 0 16px; }
+.section-heading.has-acc { align-items: center; }
+.acc-closed > .section-heading { margin-bottom: 0 !important; }
+.acc-closed > .wig-group-heading { margin-bottom: 0; }
+@media (prefers-reduced-motion: reduce) { .acc-body, .acc-toggle .acc-caret { transition: none; } }
 @media (max-width: 860px) {
   .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 92px; padding-bottom: 60px; }
   .hero-art { width: min(80vw, 420px); }
@@ -484,6 +515,8 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .sticker-eye, .sticker-skull { display: none; }
   .sticker-pumpkin { left: 2%; bottom: -16px; }
   .sticker-candy { right: 7%; bottom: 13px; }
+  .acc-toggle { margin-top: 14px; padding: 9px 14px; }
+  .wig-group-heading .acc-toggle { margin-top: 4px; }
   /* Celular: 2 productos por fila */
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .plush-card, .wig-card, .prop-card { max-width: none; }
@@ -1125,6 +1158,69 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
     if (event.key === "Enter" || event.key === " ") { event.preventDefault(); open(); }
   });
 });
+
+// Acordeón: cada sección de productos se puede cerrar y abrir
+(function () {
+  const sections = document.querySelectorAll(".catalog, .material-catalog, .accessory-catalog, .wig-catalog, .wig-group");
+
+  const setState = (section, open) => {
+    section.classList.toggle("acc-open", open);
+    section.classList.toggle("acc-closed", !open);
+    const btn = section.querySelector(":scope > .section-heading .acc-toggle, :scope > .wig-group-heading .acc-toggle");
+    if (btn) {
+      btn.setAttribute("aria-expanded", String(open));
+      btn.querySelector(".acc-label").textContent = open ? "Ocultar" : "Ver productos" + (btn.dataset.count ? " (" + btn.dataset.count + ")" : "");
+    }
+  };
+
+  sections.forEach((section, index) => {
+    const heading = section.querySelector(":scope > .section-heading, :scope > .wig-group-heading");
+    if (!heading) return;
+
+    const body = document.createElement("div");
+    body.className = "acc-body";
+    body.id = "acc-body-" + index;
+    const inner = document.createElement("div");
+    inner.className = "acc-inner";
+    while (heading.nextSibling) inner.appendChild(heading.nextSibling);
+    body.appendChild(inner);
+    section.appendChild(body);
+
+    const count = section.querySelectorAll(".card").length;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "acc-toggle";
+    btn.setAttribute("aria-controls", body.id);
+    btn.dataset.count = count || "";
+    btn.innerHTML = '<span class="acc-label"></span><span class="acc-caret" aria-hidden="true">▼</span>';
+    heading.classList.add("has-acc");
+    heading.appendChild(btn);
+
+    setState(section, true);
+    btn.addEventListener("click", () => setState(section, !section.classList.contains("acc-open")));
+  });
+
+  // Si llegan por un enlace del menú a una sección cerrada, se abre sola
+  const openFor = (target) => {
+    let opened = false;
+    let node = target;
+    while (node && node !== document.body) {
+      if (node.classList && node.classList.contains("acc-closed")) { setState(node, true); opened = true; }
+      node = node.parentElement;
+    }
+    if (opened) setTimeout(() => target.scrollIntoView({ behavior: "smooth", block: "start" }), 380);
+  };
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || link.getAttribute("href").length < 2) return;
+    const target = document.getElementById(link.getAttribute("href").slice(1));
+    if (target) openFor(target);
+  });
+  window.addEventListener("hashchange", () => {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) openFor(target);
+  });
+})();
 </script>
 </body>
 </html>
