@@ -57,8 +57,40 @@ button { font: inherit; }
   box-shadow: 0 5px 16px rgba(31, 0, 41, .24);
 }
 .nav img { width: 156px; height: 74px; object-fit: contain; display: block; }
+.nav-toggle { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; border: 0; border-radius: 10px; background: transparent; color: var(--ink); font-size: 1.5rem; cursor: pointer; }
+.nav-toggle:hover { background: rgba(0,0,0,.06); }
 .nav-links { display: flex; gap: clamp(12px, 1.8vw, 26px); align-items: center; font-size: 0.7rem; font-weight: 800; }
-.nav-links a:hover { color: var(--orange); }
+.nav-links > a:hover { color: var(--orange); }
+.nav-item { position: relative; }
+.nav-trigger { display: inline-flex; align-items: center; gap: 5px; border: 0; background: none; padding: 0; color: inherit; font: inherit; font-weight: 800; cursor: pointer; }
+.nav-trigger:hover { color: var(--orange); }
+.nav-trigger .caret { display: inline-block; font-size: .62em; transition: transform .18s ease; }
+.nav-item.open .nav-trigger .caret { transform: rotate(180deg); }
+.nav-item.open .nav-trigger { color: var(--orange); }
+.submenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translate(-50%, -6px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 210px;
+  padding: 8px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(31,0,41,.08);
+  box-shadow: 0 16px 32px rgba(31,0,41,.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .16s ease, transform .16s ease;
+  z-index: 40;
+}
+.nav-item.open .submenu { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.submenu a { padding: 9px 12px; border-radius: 9px; font-size: .74rem; font-weight: 700; letter-spacing: normal; text-transform: none; color: var(--ink); white-space: nowrap; }
+.submenu a:hover { background: rgba(241,90,11,.12); color: var(--orange); }
+.submenu a.soon-link { color: #9b7a92; }
+.submenu a.soon-link span { display: block; font-size: .62rem; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: .05em; margin-top: 2px; }
 .hero {
   position: relative;
   isolation: isolate;
@@ -346,10 +378,6 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .visitor-counter-row span:first-child { color: #d8c3d5; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .66rem; }
 .visitor-counter-value { font-family: "Baloo 2", Arial, sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--yellow); }
 .visitor-counter-row:last-child .visitor-counter-value { color: #ff9f4a; }
-@media (max-width: 570px) {
-  .visitor-counter { left: 12px; bottom: 12px; padding: 10px 14px; gap: 9px; }
-  .visitor-counter-value { font-size: .92rem; }
-}
 .selection-fab:hover { background: #ffcf42; transform: translateY(-2px); }
 .selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
 footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
@@ -404,8 +432,42 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 @media (max-width: 570px) {
   .nav { height: 50px; padding: 0 14px; }
   .nav img { width: 126px; height: 62px; }
-  .nav-links a:not(:last-child) { display: none; }
-  .nav-links { gap: 12px; font-size: .75rem; }
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 39;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    padding: 12px;
+    background: #fff;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 18px 32px rgba(31,0,41,.28);
+    font-size: .82rem;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > a { padding: 11px 10px; border-radius: 10px; }
+  .nav-links > a:hover { background: rgba(241,90,11,.1); }
+  .nav-item { width: 100%; }
+  .nav-trigger { width: 100%; justify-content: space-between; padding: 11px 10px; border-radius: 10px; }
+  .nav-trigger:hover { background: rgba(241,90,11,.1); }
+  .submenu {
+    position: static;
+    display: none;
+    min-width: 0;
+    margin: 2px 0 4px 12px;
+    padding: 2px;
+    border: 0;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+  .nav-item.open .submenu { display: flex; }
   .hero { padding: 82px 20px 52px; }
   h1 { font-size: clamp(2.55rem, 12.4vw, 3.1rem); }
   .headline-closing { font-size: .82em; }
@@ -424,6 +486,8 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .modal img { max-height: 370px; }
   .category-grid { grid-template-columns: 1fr; }
   .selection-fab { right: 12px; bottom: 12px; }
+  .visitor-counter { left: 12px; bottom: 12px; padding: 10px 14px; gap: 9px; }
+  .visitor-counter-value { font-size: .92rem; }
 }
 </style>
 </head>
@@ -431,9 +495,23 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="shell">
 <nav class="nav" aria-label="Navegación principal">
 <a href="#inicio" aria-label="Inicio Kalú Accesorios"><img src="kalu-logo.png" alt="Kalú Accesorios" /></a>
-<div class="nav-links">
-<a href="#mascaras">Máscaras</a>
-<a href="#pelucas">Pelucas</a>
+<button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">☰</button>
+<div class="nav-links" id="nav-links">
+<div class="nav-item" data-nav-item>
+<button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Máscaras <span class="caret">▾</span></button>
+<div class="submenu">
+<a href="#mascaras">Máscaras de látex</a>
+<a href="#mascaras-peluche">Máscaras de peluche</a>
+<a class="soon-link" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20m%C3%A1scaras%20de%20pasta." target="_blank" rel="noopener">Máscaras de pasta<span>Muy pronto</span></a>
+</div>
+</div>
+<div class="nav-item" data-nav-item>
+<button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Pelucas <span class="caret">▾</span></button>
+<div class="submenu">
+<a href="#pelucas-largas-title">Pelucas largas</a>
+<a href="#pelucas-cortas-title">Pelucas cortas</a>
+</div>
+</div>
 <a href="#accesorios">Accesorios</a>
 <a href="#ninas">Niñas</a>
 <a href="#sombreros">Sombreros</a>
@@ -917,6 +995,65 @@ updateSelection();
       if (todayEl) todayEl.textContent = "—";
       if (totalEl) totalEl.textContent = "—";
     });
+})();
+
+// Menú de navegación con submenús desplegables
+(function () {
+  const navToggle = document.getElementById("nav-toggle");
+  const navLinks = document.getElementById("nav-links");
+  const navItems = Array.from(document.querySelectorAll("[data-nav-item]"));
+
+  const closeAllSubmenus = () => {
+    navItems.forEach((item) => {
+      item.classList.remove("open");
+      const trigger = item.querySelector(".nav-trigger");
+      if (trigger) trigger.setAttribute("aria-expanded", "false");
+    });
+  };
+
+  const closeMobileMenu = () => {
+    navLinks.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+    closeAllSubmenus();
+  };
+
+  navToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+    if (!isOpen) closeAllSubmenus();
+  });
+
+  navItems.forEach((item) => {
+    const trigger = item.querySelector(".nav-trigger");
+    if (!trigger) return;
+    trigger.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const willOpen = !item.classList.contains("open");
+      closeAllSubmenus();
+      if (willOpen) {
+        item.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  document.querySelectorAll(".submenu a").forEach((link) => {
+    link.addEventListener("click", () => closeMobileMenu());
+  });
+  navLinks.querySelectorAll(":scope > a").forEach((link) => {
+    link.addEventListener("click", () => closeMobileMenu());
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".nav")) closeMobileMenu();
+    else if (!event.target.closest("[data-nav-item]")) closeAllSubmenus();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMobileMenu();
+  });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 570) closeMobileMenu();
+  });
 })();
 </script>
 </body>
