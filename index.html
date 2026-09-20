@@ -573,7 +573,8 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .hero-art { width: min(88vw, 340px); }
   .sticker-skull { display: none; }
   .sticker-eye:not(.eye-mobile) { display: none; }
-  .eye-mobile { display: block; left: auto; right: 4px; top: -22px; width: clamp(66px, 20vw, 86px); z-index: 4; }
+  .hero-art { margin-top: calc(clamp(66px, 20vw, 86px) - 14px); }
+  .eye-mobile { display: block; left: auto; right: 6px; top: auto; bottom: calc(100% + 4px); width: clamp(66px, 20vw, 86px); z-index: 4; }
   .hero-bats { left: auto; right: -64px; margin: -54px 0 0; width: min(58vw, 240px); }
   .sticker-pumpkin { left: 2%; bottom: -16px; }
   .sticker-candy { right: 7%; bottom: 13px; }
