@@ -659,6 +659,8 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .cat-badge { display: none; }
   .cat-head { padding: 12px 14px; }
   .selection-fab { right: 12px; bottom: 12px; }
+  .grid { scroll-snap-type: x mandatory; gap: 14px; }
+  .grid > .card { width: calc(50% - 7px); flex: 0 0 calc(50% - 7px); scroll-snap-align: center; }
 }
 </style>
 </head>
@@ -720,8 +722,21 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <h3 class="menu-title">Categorías</h3>
 <div class="cat-menu" id="cat-menu">
 
-<div class="cat-item open">
-<button class="cat-head" type="button" aria-expanded="true" aria-controls="sub-mascaras">
+<div class="cat-item" id="cat-alquiler">
+<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-alquiler">
+<span class="cat-icon" aria-hidden="true">🎭</span>
+<span class="cat-text"><span class="cat-name">Alquiler de disfraces</span><span class="cat-desc">Para niños, niñas y adultos, con accesorios incluidos.</span></span>
+<span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
+</button>
+<div class="cat-sub" id="sub-alquiler"><div class="cat-sub-inner"><div class="cat-sub-list">
+<a href="#alquiler-nino">Disfraces de niño</a>
+<a href="#alquiler-nina">Disfraces de niña</a>
+<a href="#alquiler-adulto">Disfraces de adulto</a>
+</div></div></div>
+</div>
+
+<div class="cat-item">
+<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-mascaras">
 <span class="cat-icon" aria-hidden="true">☠</span>
 <span class="cat-text"><span class="cat-name">Máscaras</span><span class="cat-desc">Modelos de látex, peluche y pasta para destacar.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
@@ -764,19 +779,6 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 </button>
 <div class="cat-sub" id="sub-ninas"><div class="cat-sub-inner"><div class="cat-sub-list">
 <a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
-</div></div></div>
-</div>
-
-<div class="cat-item" id="cat-alquiler">
-<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-alquiler">
-<span class="cat-icon" aria-hidden="true">🎭</span>
-<span class="cat-text"><span class="cat-name">Alquiler de disfraces</span><span class="cat-desc">Para niños, niñas y adultos, con accesorios incluidos.</span></span>
-<span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
-</button>
-<div class="cat-sub" id="sub-alquiler"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="#alquiler-nino">Disfraces de niño</a>
-<a href="#alquiler-nina">Disfraces de niña</a>
-<a href="#alquiler-adulto">Disfraces de adulto</a>
 </div></div></div>
 </div>
 
