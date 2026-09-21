@@ -457,6 +457,18 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .selection-actions .button { cursor: pointer; }
 .selection-actions .button:disabled { opacity: .55; cursor: default; }
 .selection-actions a[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
+/* Precios y unidades */
+.details p.has-price { color: var(--yellow); font-size: .98rem; font-weight: 800; }
+.stock-badge { position: absolute; left: 10px; bottom: 10px; z-index: 3; padding: 5px 11px; border-radius: 100px; background: var(--yellow); color: var(--ink); font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 4px 12px rgba(0,0,0,.3); pointer-events: none; }
+.stock-badge.out { left: 50%; top: 50%; bottom: auto; transform: translate(-50%, -50%); padding: 9px 18px; border: 2px solid rgba(255,255,255,.75); background: rgba(26,8,36,.92); color: #fff; font-size: .86rem; letter-spacing: .14em; white-space: nowrap; }
+.card.sold-out .image-wrap img, .top-card.sold-out .top-thumb img { filter: grayscale(.9); opacity: .45; }
+.card.sold-out .details h3 { opacity: .7; }
+.modal-price { margin: 4px 0 14px; color: var(--yellow); font-size: 1.05rem; font-weight: 800; }
+.modal-price[hidden] { display: none; }
+.modal-price .out { color: #ff9a9a; }
+.search-info .sold { color: #ff9a9a; font-style: normal; font-weight: 800; }
+.search-info .price { color: #fff; font-style: normal; font-weight: 800; }
+.selection-item .sel-out { margin-left: 8px; color: #ff9a9a; font-style: normal; font-size: .7rem; font-weight: 800; text-transform: uppercase; }
 /* Buscador */
 .nav-search { position: relative; flex: 0 1 240px; min-width: 0; }
 .search-box { position: relative; display: block; }
@@ -711,6 +723,19 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 </button>
 <div class="cat-sub" id="sub-ninas"><div class="cat-sub-inner"><div class="cat-sub-list">
 <a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
+</div></div></div>
+</div>
+
+<div class="cat-item" id="cat-alquiler">
+<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-alquiler">
+<span class="cat-icon" aria-hidden="true">🎭</span>
+<span class="cat-text"><span class="cat-name">Alquiler de disfraces</span><span class="cat-desc">Para niños, niñas y adultos, con accesorios incluidos.</span></span>
+<span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
+</button>
+<div class="cat-sub" id="sub-alquiler"><div class="cat-sub-inner"><div class="cat-sub-list">
+<a href="#alquiler-nino">Disfraces de niño</a>
+<a href="#alquiler-nina">Disfraces de niña</a>
+<a href="#alquiler-adulto">Disfraces de adulto</a>
 </div></div></div>
 </div>
 
@@ -999,6 +1024,38 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 </section>
 </div>
 </section>
+<section class="rental-catalog" id="alquiler" aria-labelledby="alquiler-title">
+<div class="section-heading">
+<div>
+<p>Alquiler de disfraces</p>
+<h2 id="alquiler-title">Disfrázate sin comprar</h2>
+</div>
+<span>Disfraces completos con accesorios incluidos, para niños, niñas y adultos. Consulta tallas, fechas y precio por WhatsApp.</span>
+</div>
+<div class="wig-groups">
+<section class="rental-group" aria-labelledby="alquiler-nino-title">
+<div class="wig-group-heading">
+<h3 id="alquiler-nino-title">Disfraces de niño</h3>
+<p>Personajes y superhéroes, con capa, careta y accesorios.</p>
+</div>
+<div class="wig-empty" id="alquiler-nino"><div><strong>Fotos muy pronto</strong>Agrega aquí las fotos de los disfraces de niño disponibles para alquilar.</div></div>
+</section>
+<section class="rental-group" aria-labelledby="alquiler-nina-title">
+<div class="wig-group-heading">
+<h3 id="alquiler-nina-title">Disfraces de niña</h3>
+<p>Princesas, hadas y personajes favoritos, con accesorios a juego.</p>
+</div>
+<div class="wig-empty" id="alquiler-nina"><div><strong>Fotos muy pronto</strong>Agrega aquí las fotos de los disfraces de niña disponibles para alquilar.</div></div>
+</section>
+<section class="rental-group" aria-labelledby="alquiler-adulto-title">
+<div class="wig-group-heading">
+<h3 id="alquiler-adulto-title">Disfraces de adulto</h3>
+<p>Disfraces completos para fiestas y eventos, talla estándar.</p>
+</div>
+<div class="wig-empty" id="alquiler-adulto"><div><strong>Fotos muy pronto</strong>Agrega aquí las fotos de los disfraces de adulto disponibles para alquilar.</div></div>
+</section>
+</div>
+</section>
 <section class="mask-return" aria-labelledby="volver-mascaras-title">
 <div class="mask-return-inner">
 <p>¿Quieres seguir explorando?</p>
@@ -1033,6 +1090,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <p class="eyebrow" id="modal-code"></p>
 <h2 id="modal-title"></h2>
 <p id="modal-desc"></p>
+<p class="modal-price" id="modal-price" hidden></p>
 <div class="modal-actions">
 <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
 <a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir solo este producto</a>
@@ -1070,6 +1128,7 @@ const modalCode = document.getElementById("modal-code");
 const modalDesc = document.getElementById("modal-desc");
 const modalWhatsapp = document.getElementById("modal-whatsapp");
 const modalAddSelection = document.getElementById("modal-add-selection");
+const modalPrice = document.getElementById("modal-price");
 const selectionModal = document.getElementById("selection-modal");
 const selectionButton = document.getElementById("selection-button");
 const selectionCount = document.getElementById("selection-count");
@@ -1081,6 +1140,101 @@ const zoomModal = document.getElementById("zoom-modal");
 const zoomImage = document.getElementById("zoom-image");
 const zoomCaption = document.getElementById("zoom-caption");
 const closeZoom = document.getElementById("close-zoom");
+// ===== Precios y unidades desde Google Sheets =====
+// Pega aquí el enlace CSV publicado de tu hoja. Si está vacío, la página funciona como siempre.
+const SHEET_CSV_URL = "";
+const LOW_STOCK = 5; // se muestra "Quedan N" cuando hay este número o menos
+let stock = {};
+const stockOf = (code) => stock[code] || {};
+const isSoldOut = (code) => stockOf(code).units === 0;
+const fmtPrice = (n) => "$" + Math.round(n).toLocaleString("es-CO");
+const stockText = (code) => {
+  const { price, units } = stockOf(code);
+  const parts = [];
+  if (price != null) parts.push(fmtPrice(price));
+  if (units === 0) parts.push("Agotado");
+  else if (units != null && units <= LOW_STOCK) parts.push(units === 1 ? "Queda 1" : `Quedan ${units}`);
+  return parts.join(" · ");
+};
+const parseCSV = (text) => {
+  const rows = []; let row = [], cell = "", quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (quoted) {
+      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') quoted = false;
+      else cell += c;
+    } else if (c === '"') quoted = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+    else if (c !== "\r") cell += c;
+  }
+  if (cell !== "" || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+};
+const toNumber = (v) => {
+  const digits = String(v ?? "").trim().replace(/[.,]\d{1,2}$/, "").replace(/[^0-9]/g, "");
+  return digits === "" ? null : parseInt(digits, 10);
+};
+const applyStock = () => {
+  document.querySelectorAll(".card[data-code]").forEach((card) => {
+    const code = card.dataset.code;
+    const info = stockOf(code);
+    const p = card.querySelector(".details p");
+    const wrap = card.querySelector(".image-wrap");
+    if (p) {
+      if (!p.dataset.original) p.dataset.original = p.textContent;
+      p.textContent = info.price != null ? fmtPrice(info.price) : p.dataset.original;
+      p.classList.toggle("has-price", info.price != null);
+    }
+    wrap.querySelectorAll(".stock-badge").forEach((b) => b.remove());
+    card.classList.toggle("sold-out", info.units === 0);
+    if (info.units === 0) wrap.insertAdjacentHTML("beforeend", '<span class="stock-badge out">Agotado</span>');
+    else if (info.units != null && info.units <= LOW_STOCK) wrap.insertAdjacentHTML("beforeend", `<span class="stock-badge">${info.units === 1 ? "Queda 1" : "Quedan " + info.units}</span>`);
+  });
+  document.querySelectorAll(".top-card[data-top-code]").forEach((card) => {
+    const code = card.dataset.topCode;
+    const info = stockOf(code);
+    const p = card.querySelector(".top-info p");
+    const thumb = card.querySelector(".top-thumb");
+    if (p) {
+      if (!p.dataset.original) p.dataset.original = p.textContent;
+      p.textContent = info.price != null ? fmtPrice(info.price) : p.dataset.original;
+      p.style.color = info.price != null ? "var(--yellow)" : "";
+      p.style.fontWeight = info.price != null ? "800" : "";
+    }
+    thumb.querySelectorAll(".stock-badge").forEach((b) => b.remove());
+    card.classList.toggle("sold-out", info.units === 0);
+    if (info.units === 0) thumb.insertAdjacentHTML("beforeend", '<span class="stock-badge out">Agotado</span>');
+    else if (info.units != null && info.units <= LOW_STOCK) thumb.insertAdjacentHTML("beforeend", `<span class="stock-badge">${info.units === 1 ? "Queda 1" : "Quedan " + info.units}</span>`);
+  });
+  if (typeof updateSelection === "function") updateSelection();
+};
+const loadStock = async () => {
+  if (!SHEET_CSV_URL) return;
+  try {
+    const url = SHEET_CSV_URL + (SHEET_CSV_URL.includes("?") ? "&" : "?") + "t=" + Math.floor(Date.now() / 300000);
+    const response = await fetch(url);
+    if (!response.ok) return;
+    const rows = parseCSV(await response.text());
+    const norm = (t) => String(t || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const head = rows.shift().map(norm);
+    const iCode = head.findIndex((h) => ["codigo", "code", "cod"].includes(h));
+    const iPrice = head.findIndex((h) => ["precio", "price"].includes(h));
+    const iUnits = head.findIndex((h) => ["unidades", "stock", "cantidad", "disponibles"].includes(h));
+    if (iCode < 0) return;
+    const next = {};
+    rows.forEach((r) => {
+      const code = (r[iCode] || "").trim();
+      if (!code) return;
+      next[code] = { price: iPrice >= 0 ? toNumber(r[iPrice]) : null, units: iUnits >= 0 ? toNumber(r[iUnits]) : null };
+    });
+    stock = next;
+    applyStock();
+  } catch {
+    // Si la hoja falla, el catálogo se ve igual que siempre.
+  }
+};
 let activeProduct = null;
 let selectedProducts = [];
 try {
@@ -1098,9 +1252,10 @@ const saveSelection = () => {
 };
 const isSelected = (product) => product && selectedProducts.some((item) => item.code === product.code);
 const updateModalSelectionButton = () => {
+  const soldOut = activeProduct && isSoldOut(activeProduct.code);
   const alreadyAdded = isSelected(activeProduct);
-  modalAddSelection.disabled = alreadyAdded;
-  modalAddSelection.textContent = alreadyAdded ? "Ya está en mi selección" : "Agregar a mi selección";
+  modalAddSelection.disabled = alreadyAdded || soldOut;
+  modalAddSelection.textContent = soldOut ? "Agotado" : alreadyAdded ? "Ya está en mi selección" : "Agregar a mi selección";
 };
 // Enlace del producto: WhatsApp lo convierte en una vista previa con la foto y el nombre.
 // Los productos con página propia (carpeta p/) usan esa; si no, se enlaza al catálogo.
@@ -1119,15 +1274,16 @@ const updateSelection = () => {
   selectionEmpty.hidden = hasProducts;
   selectionList.innerHTML = selectedProducts.map((product) => `
     <li class="selection-item">
-      <div><strong>${product.name}</strong><span>${product.code}</span></div>
+      <div><strong>${product.name}${isSoldOut(product.code) ? '<em class="sel-out">Agotado</em>' : ""}</strong><span>${product.code}</span></div>
       <button class="remove-selection" type="button" data-remove-code="${product.code}" aria-label="Quitar ${product.name}">Quitar</button>
     </li>
   `).join("");
   clearSelection.disabled = !hasProducts;
-  selectionWhatsapp.href = hasProducts
-    ? `https://wa.me/573215055733?text=${encodeURIComponent(buildSelectionMessage(selectedProducts))}`
+  const available = selectedProducts.filter((product) => !isSoldOut(product.code));
+  selectionWhatsapp.href = available.length
+    ? `https://wa.me/573215055733?text=${encodeURIComponent(buildSelectionMessage(available))}`
     : "#";
-  selectionWhatsapp.setAttribute("aria-disabled", String(!hasProducts));
+  selectionWhatsapp.setAttribute("aria-disabled", String(!available.length));
 };
 document.querySelectorAll(".card").forEach((card) => {
   card.querySelector(".mini-button").addEventListener("click", () => {
@@ -1138,7 +1294,15 @@ document.querySelectorAll(".card").forEach((card) => {
     modalTitle.textContent = name;
     modalCode.textContent = code;
     modalDesc.textContent = desc;
-    modalWhatsapp.href = `https://wa.me/573215055733?text=${encodeURIComponent(buildSingleMessage(name, code))}`;
+    const info = stockOf(code);
+    const soldOut = info.units === 0;
+    const priceLine = stockText(code);
+    modalPrice.hidden = !priceLine;
+    modalPrice.innerHTML = priceLine ? priceLine.replace("Agotado", '<span class="out">Agotado</span>') : "";
+    modalWhatsapp.textContent = soldOut ? "Avísame cuando llegue" : "Pedir solo este producto";
+    modalWhatsapp.href = soldOut
+      ? `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero que me avisen cuando vuelva a haber ${name} (${code}).`)}`
+      : `https://wa.me/573215055733?text=${encodeURIComponent(buildSingleMessage(name, code))}`;
     updateModalSelectionButton();
     modal.showModal();
   });
@@ -1251,7 +1415,7 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
 
 // Acordeón: cada sección de productos se puede cerrar y abrir
 (function () {
-  const sections = document.querySelectorAll(".catalog, .material-catalog, .accessory-catalog, .wig-catalog, .wig-group");
+  const sections = document.querySelectorAll(".catalog, .material-catalog, .accessory-catalog, .wig-catalog, .wig-group, .rental-catalog, .rental-group");
 
   const setState = (section, open) => {
     section.classList.toggle("acc-open", open);
@@ -1449,7 +1613,7 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
       html += `<p class="search-count">${total} resultado${total === 1 ? "" : "s"}</p>`;
       found.forEach((p) => {
         hits.push({ type: "product", p });
-        html += `<button class="search-hit" type="button" data-i="${hits.length - 1}"><span class="search-thumb"><img data-src="${esc(p.image)}" alt="" /></span><span class="search-info"><strong>${esc(p.name)}</strong><span><em>${esc(p.code)}</em> · ${esc(p.cat)}</span></span></button>`;
+        html += `<button class="search-hit" type="button" data-i="${hits.length - 1}"><span class="search-thumb"><img data-src="${esc(p.image)}" alt="" /></span><span class="search-info"><strong>${esc(p.name)}</strong><span><em>${esc(p.code)}</em> · ${esc(p.cat)}${(() => { const i = stockOf(p.code); const bits = []; if (i.price != null) bits.push(`<i class="price">${fmtPrice(i.price)}</i>`); if (i.units === 0) bits.push('<i class="sold">Agotado</i>'); return bits.length ? " · " + bits.join(" · ") : ""; })()}</span></span></button>`;
       });
       soonHits.forEach((i) => {
         hits.push({ type: "soon", i });
@@ -1515,6 +1679,8 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
   window.addEventListener("hashchange", openFromHash);
   window.addEventListener("load", openFromHash);
 })();
+
+loadStock();
 </script>
 </body>
 </html>
