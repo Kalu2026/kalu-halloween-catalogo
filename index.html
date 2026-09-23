@@ -472,9 +472,45 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .contact .button { background: var(--yellow); color: var(--ink); white-space: nowrap; }
 .mask-return { padding: 72px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(135deg, #2d0a3a, #13021d 62%, #2a061d); }
 .mask-return-inner { max-width: 1250px; margin: auto; padding: clamp(26px, 4vw, 42px); border: 1px solid rgba(255, 189, 24, .52); border-radius: 24px; background: radial-gradient(circle at 88% 14%, rgba(255, 111, 12, .33), transparent 28%), rgba(19, 3, 29, .76); box-shadow: var(--shadow); }
-.mask-return p { margin: 0 0 7px; color: var(--yellow); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.mask-return-inner .carousel-wrap::before { background: linear-gradient(90deg, rgba(19, 3, 29, .95), transparent); }
+.mask-return-inner .carousel-wrap::after { background: linear-gradient(270deg, rgba(19, 3, 29, .95), transparent); }
+.mask-return-inner > p { margin: 0 0 7px; color: var(--yellow); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .mask-return h2 { max-width: 750px; }
 .mask-return-copy { margin: 15px 0 0; max-width: 620px; color: #decce0; line-height: 1.55; }
+.explore-track {
+  display: flex;
+  gap: 16px;
+  margin: 26px 0 0;
+  padding: 4px 2px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.explore-track::-webkit-scrollbar { display: none; }
+.explore-track.dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.explore-item {
+  flex: 0 0 auto;
+  width: clamp(178px, 22vw, 240px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 137, 22, .46);
+  border-radius: 18px;
+  background: #1a0824;
+  box-shadow: 0 12px 28px rgba(0,0,0,.3);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.explore-item:hover, .explore-item:focus-visible { transform: translateY(-4px); border-color: var(--yellow); box-shadow: var(--shadow); outline: none; }
+.explore-item img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: #fff; -webkit-user-drag: none; user-select: none; }
+.explore-info { display: flex; flex-direction: column; gap: 5px; flex: 1; padding: 12px 14px 14px; }
+.explore-info h3 { margin: 0; font-size: 1.12rem; line-height: 1.1; }
+.explore-desc { color: #d8c3d5; font-size: .78rem; line-height: 1.4; }
+.explore-go { margin-top: auto; padding-top: 6px; color: var(--yellow); font-size: .74rem; font-weight: 800; }
+/* Botones: contenido siempre centrado en todos los dispositivos */
+.button { text-align: center; line-height: 1.2; }
 .return-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .return-actions .button { cursor: pointer; }
 .selection-fab { position: fixed; right: 22px; bottom: 22px; z-index: 25; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 9px 13px 9px 17px; border: 0; border-radius: 999px; color: var(--ink); background: var(--yellow); box-shadow: 0 12px 28px rgba(0,0,0,.38); font-weight: 800; cursor: pointer; }
@@ -669,6 +705,20 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .selection-fab { right: 12px; bottom: 12px; }
   .grid { scroll-snap-type: x mandatory; gap: 14px; }
   .grid > .card { width: calc(50% - 7px); flex: 0 0 calc(50% - 7px); scroll-snap-align: center; }
+  /* Botones centrados y a todo el ancho en móvil */
+  .actions, .selection-actions { flex-direction: column; align-items: stretch; }
+  .actions .button,
+  .modal-copy .modal-actions .button,
+  .selection-actions a.button,
+  .selection-actions .button { width: 100%; max-width: 420px; margin-left: auto; margin-right: auto; flex: 0 0 auto; }
+  .modal-actions { flex-direction: column; align-items: stretch; }
+  .contact { text-align: center; justify-items: center; }
+  .contact .button { width: 100%; max-width: 420px; white-space: normal; }
+  .explore-item { width: 62vw; max-width: 240px; scroll-snap-align: center; }
+  .explore-track { scroll-snap-type: x mandatory; gap: 14px; }
+  .mask-return { padding: 52px 16px; }
+  .mask-return-inner { text-align: center; }
+  .mask-return-inner .explore-track { text-align: left; }
 }
 </style>
 </head>
@@ -1589,11 +1639,17 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <section class="mask-return" aria-labelledby="volver-mascaras-title">
 <div class="mask-return-inner">
 <p>¿Quieres seguir explorando?</p>
-<h2 id="volver-mascaras-title">Encuentra la máscara perfecta para tu personaje</h2>
-<div class="mask-return-copy">Vuelve a las máscaras de látex o descubre los modelos de peluche. Puedes agregar varias a tu selección y pedirlas juntas por WhatsApp.</div>
-<div class="return-actions">
-<a class="button button-primary" href="#mascaras">Ver máscaras de látex</a>
-<a class="button button-secondary" href="#mascaras-peluche">Ver máscaras de peluche</a>
+<h2 id="volver-mascaras-title">Descubre todo lo que tenemos para tu personaje</h2>
+<div class="mask-return-copy">Desliza para recorrer las categorías y toca una para ir directo a sus productos. Puedes agregar varios a tu selección y pedirlos juntos por WhatsApp.</div>
+<div class="explore-track">
+<a class="explore-item" href="#mascaras"><img src="assets/latex-01.jpg" alt="Máscaras de látex" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de látex</h3><span class="explore-desc">Modelos de terror y personajes para destacar.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#mascaras-peluche"><img src="assets/plush-mask-01.png" alt="Máscaras de peluche" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de peluche</h3><span class="explore-desc">Suaves, divertidas y muy llamativas.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#mascaras-pasta"><img src="assets/pasta-01.jpg" alt="Máscaras de pasta" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de pasta</h3><span class="explore-desc">Acabados artesanales con mucho detalle.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#pelucas"><img src="assets/wig-long-blue-corner.png" alt="Pelucas" loading="lazy" draggable="false" /><div class="explore-info"><h3>Pelucas</h3><span class="explore-desc">Estilos largos y colores que roban miradas.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#accesorios"><img src="assets/prop-machete.jpg" alt="Accesorios" loading="lazy" draggable="false" /><div class="explore-info"><h3>Accesorios</h3><span class="explore-desc">Machetes y utilería para completar tu disfraz.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#alquiler-nino"><img src="assets/rental/dfn-01.jpg" alt="Disfraces de niño" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niño</h3><span class="explore-desc">Alquila disfraces completos con accesorios.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#alquiler-nina"><img src="assets/rental/dfna-01.jpg" alt="Disfraces de niña" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niña</h3><span class="explore-desc">Princesas, personajes y más para ellas.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#alquiler-adulto"><img src="assets/rental/dfa-01.jpg" alt="Disfraces de adulto" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de adulto</h3><span class="explore-desc">Disfraces para fiestas y eventos.</span><span class="explore-go">Ver productos →</span></div></a>
 </div>
 </div>
 </section>
@@ -2242,7 +2298,7 @@ loadStock();
 
 // Carrusel horizontal: cada .grid de productos se recorre deslizando o con flechas
 (function () {
-  const grids = document.querySelectorAll(".grid");
+  const grids = document.querySelectorAll(".grid, .explore-track");
   grids.forEach((grid) => {
     if (!grid.children.length) return; // secciones vacías (ej. alquiler sin fotos aún)
     const wrap = document.createElement("div");
@@ -2253,16 +2309,16 @@ loadStock();
     const prev = document.createElement("button");
     prev.type = "button";
     prev.className = "carousel-arrow prev";
-    prev.setAttribute("aria-label", "Ver productos anteriores");
+    prev.setAttribute("aria-label", "Ver anteriores");
     prev.innerHTML = "‹";
     const next = document.createElement("button");
     next.type = "button";
     next.className = "carousel-arrow next";
-    next.setAttribute("aria-label", "Ver más productos");
+    next.setAttribute("aria-label", "Ver más");
     next.innerHTML = "›";
     wrap.append(prev, next);
 
-    const step = () => (grid.querySelector(".card")?.getBoundingClientRect().width || 260) + 20;
+    const step = () => (grid.querySelector(".card, .explore-item")?.getBoundingClientRect().width || 260) + 20;
     prev.addEventListener("click", () => grid.scrollBy({ left: -step() * 2, behavior: "smooth" }));
     next.addEventListener("click", () => grid.scrollBy({ left: step() * 2, behavior: "smooth" }));
 
