@@ -182,8 +182,6 @@ h1 em { color: #51065e; font-style: normal; }
 }
 .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.18); }
 .button-primary { background: #5a075f; color: #fff; box-shadow: 0 6px 0 rgba(82, 4, 90, .2); }
-.button-amarillo { background: var(--yellow); color: var(--ink); box-shadow: 0 6px 0 rgba(190, 140, 0, .35); }
-.button-amarillo:hover { filter: brightness(0.95); }
 .button-light { border-color: rgba(255,255,255,.74); color: #fff; background: rgba(255, 113, 18, .36); }
 .button-secondary { border-color: rgba(255,255,255,.6); color: #fff; background: rgba(255,255,255,.08); cursor: pointer; }
 .button-secondary:disabled { opacity: .62; cursor: default; transform: none; box-shadow: none; }
@@ -360,6 +358,9 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .wig-card .image-wrap { background: linear-gradient(145deg, #ffffff, #eaf2ff); }
 .wig-card .image-wrap img { padding: 0; object-fit: contain; object-position: center; transform: scale(1.2); }
 .wig-card:hover .image-wrap img { transform: scale(1.24); }
+.rental-card .image-wrap { aspect-ratio: 9 / 16; background: #fff; }
+.rental-card .image-wrap img { padding: 0; object-fit: cover; object-position: center top; transform: scale(1); }
+.rental-card:hover .image-wrap img { transform: scale(1.04); }
 .wig-empty { min-height: 182px; display: grid; place-items: center; padding: 28px; border: 1px dashed rgba(80, 162, 255, .64); border-radius: 18px; color: #d8c3d5; text-align: center; background: linear-gradient(135deg, rgba(38, 15, 64, .76), rgba(12, 5, 22, .9)); }
 .wig-empty strong { display: block; margin-bottom: 8px; color: #fff; font-size: 1.24rem; }
 .categories { padding: 78px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
@@ -492,8 +493,6 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .close { position: absolute; right: 13px; top: 13px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
 .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 .modal-copy .modal-actions .button { align-self: auto; margin-top: 0; }
-.modal-actions-wpp { flex-direction: column; margin-top: 10px; }
-.modal-actions-wpp .button { width: 100%; }
 .selection-dialog { width: min(92vw, 580px); }
 .zoom-dialog { width: min(94vw, 720px); background: transparent; border: 0; box-shadow: none; }
 .zoom-dialog::backdrop { background: rgba(8, 0, 14, .88); backdrop-filter: blur(6px); }
@@ -511,7 +510,6 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .remove-selection { border: 0; color: #fff; background: transparent; font-size: .83rem; font-weight: 800; text-decoration: underline; cursor: pointer; }
 .selection-empty { margin: 24px 0; padding: 17px; border: 1px dashed rgba(255,255,255,.28); border-radius: 12px; color: #decce0; text-align: center; }
 .selection-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.selection-actions a.button { flex: 1 1 220px; }
 .selection-actions .button { cursor: pointer; }
 .selection-actions .button:disabled { opacity: .55; cursor: default; }
 .selection-actions a[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
@@ -685,7 +683,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <a href="#pelucas">Pelucas</a>
 <a href="#accesorios">Accesorios</a>
 <a href="#pedidos">Cómo pedir</a>
-<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
+<a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
 </div>
 </nav>
 <main>
@@ -783,7 +781,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <span class="cat-badge soon">Muy pronto</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-ninas"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
+<a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
 </div></div></div>
 </div>
 
@@ -794,7 +792,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <span class="cat-badge soon">Muy pronto</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-sombreros"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
+<a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
 </div></div></div>
 </div>
 
@@ -1086,21 +1084,500 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <h3 id="alquiler-nino-title">Disfraces de niño</h3>
 <p>Personajes y superhéroes, con capa, careta y accesorios.</p>
 </div>
-<div class="wig-empty" id="alquiler-nino"><div><strong>Fotos muy pronto</strong>Agrega aquí las fotos de los disfraces de niño disponibles para alquilar.</div></div>
+<div class="grid" id="alquiler-nino">
+<article class="card rental-card" data-name="Disfraz de niño Batman" data-code="DFN-01" data-image="assets/rental/dfn-01.jpg" data-desc="Traje musculoso negro con capa y antifaz, estilo superhéroe clásico.">
+<div class="image-wrap"><img src="assets/rental/dfn-01.jpg" alt="Disfraz de niño Batman" loading="lazy" /><span class="code">DFN-01</span></div>
+<div class="details"><div><h3>Batman</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Batman">🔍</button><button class="mini-button" aria-label="Ver disfraz Batman">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Bombero" data-code="DFN-02" data-image="assets/rental/dfn-02.jpg" data-desc="Uniforme rojo y amarillo con detalles reflectivos, ideal para un pequeño héroe.">
+<div class="image-wrap"><img src="assets/rental/dfn-02.jpg" alt="Disfraz de niño Bombero" loading="lazy" /><span class="code">DFN-02</span></div>
+<div class="details"><div><h3>Bombero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Bombero">🔍</button><button class="mini-button" aria-label="Ver disfraz Bombero">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Jirafa" data-code="DFN-03" data-image="assets/rental/dfn-03.jpg" data-desc="Enterizo con estampado de jirafa, orejas y cuernitos, suave y cómodo.">
+<div class="image-wrap"><img src="assets/rental/dfn-03.jpg" alt="Disfraz de niño Jirafa" loading="lazy" /><span class="code">DFN-03</span></div>
+<div class="details"><div><h3>Jirafa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Jirafa">🔍</button><button class="mini-button" aria-label="Ver disfraz Jirafa">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Osito" data-code="DFN-04" data-image="assets/rental/dfn-04.jpg" data-desc="Enterizo café de osito con orejas y capucha, tierno y abrigador.">
+<div class="image-wrap"><img src="assets/rental/dfn-04.jpg" alt="Disfraz de niño Osito" loading="lazy" /><span class="code">DFN-04</span></div>
+<div class="details"><div><h3>Osito</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Osito">🔍</button><button class="mini-button" aria-label="Ver disfraz Osito">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Policía" data-code="DFN-05" data-image="assets/rental/dfn-05.jpg" data-desc="Uniforme azul de policía con gorra, para los pequeños que cuidan el orden.">
+<div class="image-wrap"><img src="assets/rental/dfn-05.jpg" alt="Disfraz de niño Policía" loading="lazy" /><span class="code">DFN-05</span></div>
+<div class="details"><div><h3>Policía</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Policía">🔍</button><button class="mini-button" aria-label="Ver disfraz Policía">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Boruto" data-code="DFN-06" data-image="assets/rental/dfn-06.jpg" data-desc="Chaqueta negra y naranja con banda ninja en la frente, estilo ninja moderno.">
+<div class="image-wrap"><img src="assets/rental/dfn-06.jpg" alt="Disfraz de niño Boruto" loading="lazy" /><span class="code">DFN-06</span></div>
+<div class="details"><div><h3>Boruto</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Boruto">🔍</button><button class="mini-button" aria-label="Ver disfraz Boruto">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Chapulín Colorado" data-code="DFN-07" data-image="assets/rental/dfn-07.jpg" data-desc="Sudadera roja con corazón CH, antenitas y short amarillo, look muy noventero.">
+<div class="image-wrap"><img src="assets/rental/dfn-07.jpg" alt="Disfraz de niño Chapulín Colorado" loading="lazy" /><span class="code">DFN-07</span></div>
+<div class="details"><div><h3>Chapulín Colorado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Chapulín Colorado">🔍</button><button class="mini-button" aria-label="Ver disfraz Chapulín Colorado">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Soldado Militar" data-code="DFN-08" data-image="assets/rental/dfn-08.jpg" data-desc="Uniforme camuflado completo con gorra, para un disfraz de militar.">
+<div class="image-wrap"><img src="assets/rental/dfn-08.jpg" alt="Disfraz de niño Soldado Militar" loading="lazy" /><span class="code">DFN-08</span></div>
+<div class="details"><div><h3>Soldado Militar</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Soldado Militar">🔍</button><button class="mini-button" aria-label="Ver disfraz Soldado Militar">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Pinocho" data-code="DFN-09" data-image="assets/rental/dfn-09.jpg" data-desc="Camisa amarilla, short rojo, moño azul y sombrero puntudo, look de cuento clásico.">
+<div class="image-wrap"><img src="assets/rental/dfn-09.jpg" alt="Disfraz de niño Pinocho" loading="lazy" /><span class="code">DFN-09</span></div>
+<div class="details"><div><h3>Pinocho</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Pinocho">🔍</button><button class="mini-button" aria-label="Ver disfraz Pinocho">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Granjero" data-code="DFN-10" data-image="assets/rental/dfn-10.jpg" data-desc="Camisa a rayas, short con tirantes y gorra de cuadros, estilo campestre.">
+<div class="image-wrap"><img src="assets/rental/dfn-10.jpg" alt="Disfraz de niño Granjero" loading="lazy" /><span class="code">DFN-10</span></div>
+<div class="details"><div><h3>Granjero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Granjero">🔍</button><button class="mini-button" aria-label="Ver disfraz Granjero">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Príncipe" data-code="DFN-11" data-image="assets/rental/dfn-11.jpg" data-desc="Traje azul con detalles dorados y capa, para un pequeño príncipe de cuento.">
+<div class="image-wrap"><img src="assets/rental/dfn-11.jpg" alt="Disfraz de niño Príncipe" loading="lazy" /><span class="code">DFN-11</span></div>
+<div class="details"><div><h3>Príncipe</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Príncipe">🔍</button><button class="mini-button" aria-label="Ver disfraz Príncipe">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Capitán Marinero" data-code="DFN-12" data-image="assets/rental/dfn-12.jpg" data-desc="Uniforme blanco de capitán con gorra náutica, elegante y náutico.">
+<div class="image-wrap"><img src="assets/rental/dfn-12.jpg" alt="Disfraz de niño Capitán Marinero" loading="lazy" /><span class="code">DFN-12</span></div>
+<div class="details"><div><h3>Capitán Marinero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Capitán Marinero">🔍</button><button class="mini-button" aria-label="Ver disfraz Capitán Marinero">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Pirata" data-code="DFN-13" data-image="assets/rental/dfn-13.jpg" data-desc="Chaqueta roja, rayas blanco y negro y sombrero de pirata, listo para zarpar.">
+<div class="image-wrap"><img src="assets/rental/dfn-13.jpg" alt="Disfraz de niño Pirata" loading="lazy" /><span class="code">DFN-13</span></div>
+<div class="details"><div><h3>Pirata</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Pirata">🔍</button><button class="mini-button" aria-label="Ver disfraz Pirata">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Rey Mono" data-code="DFN-14" data-image="assets/rental/dfn-14.jpg" data-desc="Traje tradicional chino amarillo y verde con gorro rojo, estilo Rey Mono.">
+<div class="image-wrap"><img src="assets/rental/dfn-14.jpg" alt="Disfraz de niño Rey Mono" loading="lazy" /><span class="code">DFN-14</span></div>
+<div class="details"><div><h3>Rey Mono</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Rey Mono">🔍</button><button class="mini-button" aria-label="Ver disfraz Rey Mono">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Conejo Mago" data-code="DFN-15" data-image="assets/rental/dfn-15.jpg" data-desc="Enterizo blanco de conejo con moño y sombrero de mago, para un truco de magia.">
+<div class="image-wrap"><img src="assets/rental/dfn-15.jpg" alt="Disfraz de niño Conejo Mago" loading="lazy" /><span class="code">DFN-15</span></div>
+<div class="details"><div><h3>Conejo Mago</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Conejo Mago">🔍</button><button class="mini-button" aria-label="Ver disfraz Conejo Mago">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Explorador" data-code="DFN-16" data-image="assets/rental/dfn-16.jpg" data-desc="Camisa amarilla con banda de insignias y gorra, para la próxima aventura.">
+<div class="image-wrap"><img src="assets/rental/dfn-16.jpg" alt="Disfraz de niño Explorador" loading="lazy" /><span class="code">DFN-16</span></div>
+<div class="details"><div><h3>Explorador</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Explorador">🔍</button><button class="mini-button" aria-label="Ver disfraz Explorador">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Naruto" data-code="DFN-17" data-image="assets/rental/dfn-17.jpg" data-desc="Traje ninja naranja y azul con banda en la frente, estilo anime.">
+<div class="image-wrap"><img src="assets/rental/dfn-17.jpg" alt="Disfraz de niño Naruto" loading="lazy" /><span class="code">DFN-17</span></div>
+<div class="details"><div><h3>Naruto</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Naruto">🔍</button><button class="mini-button" aria-label="Ver disfraz Naruto">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Doctor" data-code="DFN-18" data-image="assets/rental/dfn-18.jpg" data-desc="Bata blanca sobre uniforme azul, para un pequeño doctor.">
+<div class="image-wrap"><img src="assets/rental/dfn-18.jpg" alt="Disfraz de niño Doctor" loading="lazy" /><span class="code">DFN-18</span></div>
+<div class="details"><div><h3>Doctor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doctor">🔍</button><button class="mini-button" aria-label="Ver disfraz Doctor">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Doctor" data-code="DFN-19" data-image="assets/rental/dfn-19.jpg" data-desc="Bata blanca con gorro azul a juego, look completo de doctor.">
+<div class="image-wrap"><img src="assets/rental/dfn-19.jpg" alt="Disfraz de niño Doctor" loading="lazy" /><span class="code">DFN-19</span></div>
+<div class="details"><div><h3>Doctor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doctor">🔍</button><button class="mini-button" aria-label="Ver disfraz Doctor">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Doctor" data-code="DFN-20" data-image="assets/rental/dfn-20.jpg" data-desc="Bata blanca con gorro quirúrgico azul, ideal para jugar al hospital.">
+<div class="image-wrap"><img src="assets/rental/dfn-20.jpg" alt="Disfraz de niño Doctor" loading="lazy" /><span class="code">DFN-20</span></div>
+<div class="details"><div><h3>Doctor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doctor">🔍</button><button class="mini-button" aria-label="Ver disfraz Doctor">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Michael Jackson" data-code="DFN-21" data-image="assets/rental/dfn-21.jpg" data-desc="Chaqueta negra con brillos y sombrero blanco, estilo estrella del pop.">
+<div class="image-wrap"><img src="assets/rental/dfn-21.jpg" alt="Disfraz de niño Michael Jackson" loading="lazy" /><span class="code">DFN-21</span></div>
+<div class="details"><div><h3>Michael Jackson</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Michael Jackson">🔍</button><button class="mini-button" aria-label="Ver disfraz Michael Jackson">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Pirata Capitán" data-code="DFN-22" data-image="assets/rental/dfn-22.jpg" data-desc="Chaqueta roja de terciopelo con chaleco y sombrero de capitán pirata.">
+<div class="image-wrap"><img src="assets/rental/dfn-22.jpg" alt="Disfraz de niño Pirata Capitán" loading="lazy" /><span class="code">DFN-22</span></div>
+<div class="details"><div><h3>Pirata Capitán</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Pirata Capitán">🔍</button><button class="mini-button" aria-label="Ver disfraz Pirata Capitán">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Harry Potter" data-code="DFN-23" data-image="assets/rental/dfn-23.jpg" data-desc="Túnica negra con corbata a rayas y gafas redondas, listo para Hogwarts.">
+<div class="image-wrap"><img src="assets/rental/dfn-23.jpg" alt="Disfraz de niño Harry Potter" loading="lazy" /><span class="code">DFN-23</span></div>
+<div class="details"><div><h3>Harry Potter</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Harry Potter">🔍</button><button class="mini-button" aria-label="Ver disfraz Harry Potter">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Marinero" data-code="DFN-24" data-image="assets/rental/dfn-24.jpg" data-desc="Traje azul marino a rayas con corbata roja, look clásico de marinero.">
+<div class="image-wrap"><img src="assets/rental/dfn-24.jpg" alt="Disfraz de niño Marinero" loading="lazy" /><span class="code">DFN-24</span></div>
+<div class="details"><div><h3>Marinero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Marinero">🔍</button><button class="mini-button" aria-label="Ver disfraz Marinero">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Tortuga" data-code="DFN-25" data-image="assets/rental/dfn-25.jpg" data-desc="Enterizo verde de tortuga con caparazón, tierno y cómodo.">
+<div class="image-wrap"><img src="assets/rental/dfn-25.jpg" alt="Disfraz de niño Tortuga" loading="lazy" /><span class="code">DFN-25</span></div>
+<div class="details"><div><h3>Tortuga</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Tortuga">🔍</button><button class="mini-button" aria-label="Ver disfraz Tortuga">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Dinosaurio Bebé" data-code="DFN-26" data-image="assets/rental/dfn-26.jpg" data-desc="Enterizo de dinosaurio con alitas y cresta, para los pequeños exploradores.">
+<div class="image-wrap"><img src="assets/rental/dfn-26.jpg" alt="Disfraz de niño Dinosaurio Bebé" loading="lazy" /><span class="code">DFN-26</span></div>
+<div class="details"><div><h3>Dinosaurio Bebé</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Dinosaurio Bebé">🔍</button><button class="mini-button" aria-label="Ver disfraz Dinosaurio Bebé">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Mickey Mouse" data-code="DFN-27" data-image="assets/rental/dfn-27.jpg" data-desc="Enterizo negro con short rojo, botones y orejas redondas, un clásico.">
+<div class="image-wrap"><img src="assets/rental/dfn-27.jpg" alt="Disfraz de niño Mickey Mouse" loading="lazy" /><span class="code">DFN-27</span></div>
+<div class="details"><div><h3>Mickey Mouse</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Mickey Mouse">🔍</button><button class="mini-button" aria-label="Ver disfraz Mickey Mouse">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Flash" data-code="DFN-28" data-image="assets/rental/dfn-28.jpg" data-desc="Traje ajustado con el rayo en el pecho y antifaz, para el héroe más veloz.">
+<div class="image-wrap"><img src="assets/rental/dfn-28.jpg" alt="Disfraz de niño Flash" loading="lazy" /><span class="code">DFN-28</span></div>
+<div class="details"><div><h3>Flash</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Flash">🔍</button><button class="mini-button" aria-label="Ver disfraz Flash">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Hombre Araña" data-code="DFN-29" data-image="assets/rental/dfn-29.jpg" data-desc="Traje rojo y azul con telarañas, para el superhéroe trepamuros.">
+<div class="image-wrap"><img src="assets/rental/dfn-29.jpg" alt="Disfraz de niño Hombre Araña" loading="lazy" /><span class="code">DFN-29</span></div>
+<div class="details"><div><h3>Hombre Araña</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Hombre Araña">🔍</button><button class="mini-button" aria-label="Ver disfraz Hombre Araña">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Iron Man" data-code="DFN-30" data-image="assets/rental/dfn-30.jpg" data-desc="Armadura roja y dorada con detalles metálicos, look de superhéroe tecnológico.">
+<div class="image-wrap"><img src="assets/rental/dfn-30.jpg" alt="Disfraz de niño Iron Man" loading="lazy" /><span class="code">DFN-30</span></div>
+<div class="details"><div><h3>Iron Man</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Iron Man">🔍</button><button class="mini-button" aria-label="Ver disfraz Iron Man">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Astronauta NASA" data-code="DFN-31" data-image="assets/rental/dfn-31.jpg" data-desc="Traje plateado con parche de la NASA y gorro, listo para el espacio.">
+<div class="image-wrap"><img src="assets/rental/dfn-31.jpg" alt="Disfraz de niño Astronauta NASA" loading="lazy" /><span class="code">DFN-31</span></div>
+<div class="details"><div><h3>Astronauta NASA</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Astronauta NASA">🔍</button><button class="mini-button" aria-label="Ver disfraz Astronauta NASA">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Payaso" data-code="DFN-32" data-image="assets/rental/dfn-32.jpg" data-desc="Traje de bufón rojo, azul y amarillo con gorro de picos y cascabeles.">
+<div class="image-wrap"><img src="assets/rental/dfn-32.jpg" alt="Disfraz de niño Payaso" loading="lazy" /><span class="code">DFN-32</span></div>
+<div class="details"><div><h3>Payaso</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Payaso">🔍</button><button class="mini-button" aria-label="Ver disfraz Payaso">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Sonic" data-code="DFN-33" data-image="assets/rental/dfn-33.jpg" data-desc="Enterizo azul con vientre crema y guantes, estilo el erizo veloz.">
+<div class="image-wrap"><img src="assets/rental/dfn-33.jpg" alt="Disfraz de niño Sonic" loading="lazy" /><span class="code">DFN-33</span></div>
+<div class="details"><div><h3>Sonic</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Sonic">🔍</button><button class="mini-button" aria-label="Ver disfraz Sonic">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Superman" data-code="DFN-34" data-image="assets/rental/dfn-34.jpg" data-desc="Traje azul y rojo con el escudo en el pecho y capa, un superhéroe clásico.">
+<div class="image-wrap"><img src="assets/rental/dfn-34.jpg" alt="Disfraz de niño Superman" loading="lazy" /><span class="code">DFN-34</span></div>
+<div class="details"><div><h3>Superman</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Superman">🔍</button><button class="mini-button" aria-label="Ver disfraz Superman">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Deadpool" data-code="DFN-35" data-image="assets/rental/dfn-35.jpg" data-desc="Traje rojo y negro ajustado con detalles de antihéroe.">
+<div class="image-wrap"><img src="assets/rental/dfn-35.jpg" alt="Disfraz de niño Deadpool" loading="lazy" /><span class="code">DFN-35</span></div>
+<div class="details"><div><h3>Deadpool</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Deadpool">🔍</button><button class="mini-button" aria-label="Ver disfraz Deadpool">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niño Tortuga Ninja" data-code="DFN-36" data-image="assets/rental/dfn-36.jpg" data-desc="Traje verde con caparazón y antifaz, estilo tortuga ninja guerrera.">
+<div class="image-wrap"><img src="assets/rental/dfn-36.jpg" alt="Disfraz de niño Tortuga Ninja" loading="lazy" /><span class="code">DFN-36</span></div>
+<div class="details"><div><h3>Tortuga Ninja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Tortuga Ninja">🔍</button><button class="mini-button" aria-label="Ver disfraz Tortuga Ninja">+</button></div>
+</article>
+</div>
 </section>
 <section class="rental-group" aria-labelledby="alquiler-nina-title">
 <div class="wig-group-heading">
 <h3 id="alquiler-nina-title">Disfraces de niña</h3>
 <p>Princesas, hadas y personajes favoritos, con accesorios a juego.</p>
 </div>
-<div class="wig-empty" id="alquiler-nina"><div><strong>Fotos muy pronto</strong>Agrega aquí las fotos de los disfraces de niña disponibles para alquilar.</div></div>
+<div class="grid" id="alquiler-nina">
+<article class="card rental-card" data-name="Disfraz de niña Princesa Rosa Clásica" data-code="DFNA-01" data-image="assets/rental/dfna-01.jpg" data-desc="Vestido rosa de gala con mangas abullonadas y falda de tul, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-01.jpg" alt="Disfraz de niña Princesa Rosa Clásica" loading="lazy" /><span class="code">DFNA-01</span></div>
+<div class="details"><div><h3>Princesa Rosa Clásica</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Rosa Clásica">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Rosa Clásica">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Morada" data-code="DFNA-02" data-image="assets/rental/dfna-02.jpg" data-desc="Vestido morado de gala con mangas abullonadas y falda amplia, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-02.jpg" alt="Disfraz de niña Princesa Morada" loading="lazy" /><span class="code">DFNA-02</span></div>
+<div class="details"><div><h3>Princesa Morada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Morada">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Morada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Amarilla" data-code="DFNA-03" data-image="assets/rental/dfna-03.jpg" data-desc="Vestido amarillo brillante con falda plisada, incluye sombrilla a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-03.jpg" alt="Disfraz de niña Princesa Amarilla" loading="lazy" /><span class="code">DFNA-03</span></div>
+<div class="details"><div><h3>Princesa Amarilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Amarilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Amarilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Azul Cielo" data-code="DFNA-04" data-image="assets/rental/dfna-04.jpg" data-desc="Vestido azul cielo con mangas blancas bordadas, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-04.jpg" alt="Disfraz de niña Princesa Azul Cielo" loading="lazy" /><span class="code">DFNA-04</span></div>
+<div class="details"><div><h3>Princesa Azul Cielo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Azul Cielo">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Azul Cielo">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Azul Floral" data-code="DFNA-05" data-image="assets/rental/dfna-05.jpg" data-desc="Vestido azul con estampado floral y mangas abullonadas, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-05.jpg" alt="Disfraz de niña Princesa Azul Floral" loading="lazy" /><span class="code">DFNA-05</span></div>
+<div class="details"><div><h3>Princesa Azul Floral</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Azul Floral">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Azul Floral">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Verde Floral" data-code="DFNA-06" data-image="assets/rental/dfna-06.jpg" data-desc="Vestido verde con bodice azul y estampado floral, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-06.jpg" alt="Disfraz de niña Princesa Verde Floral" loading="lazy" /><span class="code">DFNA-06</span></div>
+<div class="details"><div><h3>Princesa Verde Floral</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Verde Floral">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Verde Floral">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Azul Estrellas" data-code="DFNA-07" data-image="assets/rental/dfna-07.jpg" data-desc="Vestido azul con estampado de estrellas, incluye sombrilla a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-07.jpg" alt="Disfraz de niña Princesa Azul Estrellas" loading="lazy" /><span class="code">DFNA-07</span></div>
+<div class="details"><div><h3>Princesa Azul Estrellas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Azul Estrellas">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Azul Estrellas">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Fucsia Bordada" data-code="DFNA-08" data-image="assets/rental/dfna-08.jpg" data-desc="Vestido fucsia con flores bordadas y falda de tul, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-08.jpg" alt="Disfraz de niña Princesa Fucsia Bordada" loading="lazy" /><span class="code">DFNA-08</span></div>
+<div class="details"><div><h3>Princesa Fucsia Bordada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Fucsia Bordada">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Fucsia Bordada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Roja y Dorada" data-code="DFNA-09" data-image="assets/rental/dfna-09.jpg" data-desc="Vestido rojo con mangas amarillas y estampado de estrellas doradas, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-09.jpg" alt="Disfraz de niña Princesa Roja y Dorada" loading="lazy" /><span class="code">DFNA-09</span></div>
+<div class="details"><div><h3>Princesa Roja y Dorada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Roja y Dorada">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Roja y Dorada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Lila Floral" data-code="DFNA-10" data-image="assets/rental/dfna-10.jpg" data-desc="Vestido lila en capas con flores 3D aplicadas, muy femenino.">
+<div class="image-wrap"><img src="assets/rental/dfna-10.jpg" alt="Disfraz de niña Princesa Lila Floral" loading="lazy" /><span class="code">DFNA-10</span></div>
+<div class="details"><div><h3>Princesa Lila Floral</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Lila Floral">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Lila Floral">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Lila con Corona" data-code="DFNA-11" data-image="assets/rental/dfna-11.jpg" data-desc="Vestido lila con mangas abullonadas, incluye corona a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-11.jpg" alt="Disfraz de niña Princesa Lila con Corona" loading="lazy" /><span class="code">DFNA-11</span></div>
+<div class="details"><div><h3>Princesa Lila con Corona</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Lila con Corona">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Lila con Corona">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Celeste con Corona" data-code="DFNA-12" data-image="assets/rental/dfna-12.jpg" data-desc="Vestido celeste brillante con mangas transparentes, incluye corona.">
+<div class="image-wrap"><img src="assets/rental/dfna-12.jpg" alt="Disfraz de niña Princesa Celeste con Corona" loading="lazy" /><span class="code">DFNA-12</span></div>
+<div class="details"><div><h3>Princesa Celeste con Corona</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Celeste con Corona">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Celeste con Corona">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Elsa" data-code="DFNA-13" data-image="assets/rental/dfna-13.jpg" data-desc="Vestido celeste con detalles de copos de nieve, incluye corona a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-13.jpg" alt="Disfraz de niña Elsa" loading="lazy" /><span class="code">DFNA-13</span></div>
+<div class="details"><div><h3>Elsa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Elsa">🔍</button><button class="mini-button" aria-label="Ver disfraz Elsa">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Verde Esmeralda" data-code="DFNA-14" data-image="assets/rental/dfna-14.jpg" data-desc="Vestido verde esmeralda de terciopelo con corona dorada.">
+<div class="image-wrap"><img src="assets/rental/dfna-14.jpg" alt="Disfraz de niña Princesa Verde Esmeralda" loading="lazy" /><span class="code">DFNA-14</span></div>
+<div class="details"><div><h3>Princesa Verde Esmeralda</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Verde Esmeralda">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Verde Esmeralda">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Amarilla Elegante" data-code="DFNA-15" data-image="assets/rental/dfna-15.jpg" data-desc="Vestido amarillo de gala con escote bordado y falda amplia.">
+<div class="image-wrap"><img src="assets/rental/dfna-15.jpg" alt="Disfraz de niña Princesa Amarilla Elegante" loading="lazy" /><span class="code">DFNA-15</span></div>
+<div class="details"><div><h3>Princesa Amarilla Elegante</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Amarilla Elegante">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Amarilla Elegante">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Blancanieves" data-code="DFNA-16" data-image="assets/rental/dfna-16.jpg" data-desc="Vestido azul y rojo con mangas abullonadas, incluye corona a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-16.jpg" alt="Disfraz de niña Blancanieves" loading="lazy" /><span class="code">DFNA-16</span></div>
+<div class="details"><div><h3>Blancanieves</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Blancanieves">🔍</button><button class="mini-button" aria-label="Ver disfraz Blancanieves">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Verde Bosque" data-code="DFNA-17" data-image="assets/rental/dfna-17.jpg" data-desc="Vestido verde oscuro con detalles dorados, incluye corona a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-17.jpg" alt="Disfraz de niña Princesa Verde Bosque" loading="lazy" /><span class="code">DFNA-17</span></div>
+<div class="details"><div><h3>Princesa Verde Bosque</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Verde Bosque">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Verde Bosque">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Reina de Corazones" data-code="DFNA-18" data-image="assets/rental/dfna-18.jpg" data-desc="Vestido negro y rojo con estampado de diamantes y corona.">
+<div class="image-wrap"><img src="assets/rental/dfna-18.jpg" alt="Disfraz de niña Reina de Corazones" loading="lazy" /><span class="code">DFNA-18</span></div>
+<div class="details"><div><h3>Reina de Corazones</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Reina de Corazones">🔍</button><button class="mini-button" aria-label="Ver disfraz Reina de Corazones">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Aurora" data-code="DFNA-19" data-image="assets/rental/dfna-19.jpg" data-desc="Vestido rosa brillante con falda de tul y corona a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-19.jpg" alt="Disfraz de niña Aurora" loading="lazy" /><span class="code">DFNA-19</span></div>
+<div class="details"><div><h3>Aurora</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Aurora">🔍</button><button class="mini-button" aria-label="Ver disfraz Aurora">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Gatita de Halloween" data-code="DFNA-20" data-image="assets/rental/dfna-20.jpg" data-desc="Vestido negro y naranja a rayas con orejitas y moño, ideal para Halloween.">
+<div class="image-wrap"><img src="assets/rental/dfna-20.jpg" alt="Disfraz de niña Gatita de Halloween" loading="lazy" /><span class="code">DFNA-20</span></div>
+<div class="details"><div><h3>Gatita de Halloween</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Gatita de Halloween">🔍</button><button class="mini-button" aria-label="Ver disfraz Gatita de Halloween">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Jessie" data-code="DFNA-21" data-image="assets/rental/dfna-21.jpg" data-desc="Traje vaquero blanco y azul con sombrero y botas rojas, estilo cowgirl.">
+<div class="image-wrap"><img src="assets/rental/dfna-21.jpg" alt="Disfraz de niña Jessie" loading="lazy" /><span class="code">DFNA-21</span></div>
+<div class="details"><div><h3>Jessie</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Jessie">🔍</button><button class="mini-button" aria-label="Ver disfraz Jessie">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Minnie Mouse" data-code="DFNA-22" data-image="assets/rental/dfna-22.jpg" data-desc="Vestido rojo de lunares blancos con diadema de orejitas.">
+<div class="image-wrap"><img src="assets/rental/dfna-22.jpg" alt="Disfraz de niña Minnie Mouse" loading="lazy" /><span class="code">DFNA-22</span></div>
+<div class="details"><div><h3>Minnie Mouse</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Minnie Mouse">🔍</button><button class="mini-button" aria-label="Ver disfraz Minnie Mouse">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Mujer Maravilla" data-code="DFNA-23" data-image="assets/rental/dfna-23.jpg" data-desc="Vestido azul y rojo con diadema de estrella, estilo superheroína.">
+<div class="image-wrap"><img src="assets/rental/dfna-23.jpg" alt="Disfraz de niña Mujer Maravilla" loading="lazy" /><span class="code">DFNA-23</span></div>
+<div class="details"><div><h3>Mujer Maravilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Mujer Maravilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Mujer Maravilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Bruja" data-code="DFNA-24" data-image="assets/rental/dfna-24.jpg" data-desc="Vestido negro y naranja con sombrero de bruja puntiagudo.">
+<div class="image-wrap"><img src="assets/rental/dfna-24.jpg" alt="Disfraz de niña Bruja" loading="lazy" /><span class="code">DFNA-24</span></div>
+<div class="details"><div><h3>Bruja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Bruja">🔍</button><button class="mini-button" aria-label="Ver disfraz Bruja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Rosa con Sombrilla" data-code="DFNA-25" data-image="assets/rental/dfna-25.jpg" data-desc="Vestido rosa en capas con falda de tul, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-25.jpg" alt="Disfraz de niña Princesa Rosa con Sombrilla" loading="lazy" /><span class="code">DFNA-25</span></div>
+<div class="details"><div><h3>Princesa Rosa con Sombrilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Rosa con Sombrilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Rosa con Sombrilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Naranja con Sombrilla" data-code="DFNA-26" data-image="assets/rental/dfna-26.jpg" data-desc="Vestido naranja con mangas doradas y falda de tul, incluye sombrilla.">
+<div class="image-wrap"><img src="assets/rental/dfna-26.jpg" alt="Disfraz de niña Princesa Naranja con Sombrilla" loading="lazy" /><span class="code">DFNA-26</span></div>
+<div class="details"><div><h3>Princesa Naranja con Sombrilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Naranja con Sombrilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Naranja con Sombrilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Jazmín Turquesa" data-code="DFNA-27" data-image="assets/rental/dfna-27.jpg" data-desc="Conjunto de dos piezas turquesa estilo árabe con pantalón bombacho.">
+<div class="image-wrap"><img src="assets/rental/dfna-27.jpg" alt="Disfraz de niña Jazmín Turquesa" loading="lazy" /><span class="code">DFNA-27</span></div>
+<div class="details"><div><h3>Jazmín Turquesa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Jazmín Turquesa">🔍</button><button class="mini-button" aria-label="Ver disfraz Jazmín Turquesa">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Árabe Morada" data-code="DFNA-28" data-image="assets/rental/dfna-28.jpg" data-desc="Vestido morado estilo árabe con velo y detalles dorados.">
+<div class="image-wrap"><img src="assets/rental/dfna-28.jpg" alt="Disfraz de niña Princesa Árabe Morada" loading="lazy" /><span class="code">DFNA-28</span></div>
+<div class="details"><div><h3>Princesa Árabe Morada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Árabe Morada">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Árabe Morada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Caperucita Roja" data-code="DFNA-29" data-image="assets/rental/dfna-29.jpg" data-desc="Vestido rojo con capa y capucha, incluye canasta a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-29.jpg" alt="Disfraz de niña Caperucita Roja" loading="lazy" /><span class="code">DFNA-29</span></div>
+<div class="details"><div><h3>Caperucita Roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Caperucita Roja">🔍</button><button class="mini-button" aria-label="Ver disfraz Caperucita Roja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Árabe Turquesa" data-code="DFNA-30" data-image="assets/rental/dfna-30.jpg" data-desc="Conjunto turquesa de dos piezas con pantalón bombacho y velo.">
+<div class="image-wrap"><img src="assets/rental/dfna-30.jpg" alt="Disfraz de niña Princesa Árabe Turquesa" loading="lazy" /><span class="code">DFNA-30</span></div>
+<div class="details"><div><h3>Princesa Árabe Turquesa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Árabe Turquesa">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Árabe Turquesa">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Árabe Dorada" data-code="DFNA-31" data-image="assets/rental/dfna-31.jpg" data-desc="Vestido dorado estilo árabe con top halter y falda vaporosa.">
+<div class="image-wrap"><img src="assets/rental/dfna-31.jpg" alt="Disfraz de niña Princesa Árabe Dorada" loading="lazy" /><span class="code">DFNA-31</span></div>
+<div class="details"><div><h3>Princesa Árabe Dorada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Árabe Dorada">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Árabe Dorada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Árabe Lila" data-code="DFNA-32" data-image="assets/rental/dfna-32.jpg" data-desc="Conjunto lila de dos piezas estilo árabe con pantalón bombacho.">
+<div class="image-wrap"><img src="assets/rental/dfna-32.jpg" alt="Disfraz de niña Princesa Árabe Lila" loading="lazy" /><span class="code">DFNA-32</span></div>
+<div class="details"><div><h3>Princesa Árabe Lila</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Árabe Lila">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Árabe Lila">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Caperucita Roja" data-code="DFNA-33" data-image="assets/rental/dfna-33.jpg" data-desc="Vestido rojo con capa y capucha, incluye canasta de mimbre.">
+<div class="image-wrap"><img src="assets/rental/dfna-33.jpg" alt="Disfraz de niña Caperucita Roja" loading="lazy" /><span class="code">DFNA-33</span></div>
+<div class="details"><div><h3>Caperucita Roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Caperucita Roja">🔍</button><button class="mini-button" aria-label="Ver disfraz Caperucita Roja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Azul con Girasoles" data-code="DFNA-34" data-image="assets/rental/dfna-34.jpg" data-desc="Vestido azul con mangas verdes y aplicaciones de girasoles.">
+<div class="image-wrap"><img src="assets/rental/dfna-34.jpg" alt="Disfraz de niña Princesa Azul con Girasoles" loading="lazy" /><span class="code">DFNA-34</span></div>
+<div class="details"><div><h3>Princesa Azul con Girasoles</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Azul con Girasoles">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Azul con Girasoles">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Dorada" data-code="DFNA-35" data-image="assets/rental/dfna-35.jpg" data-desc="Vestido dorado en capas con top halter, muy elegante.">
+<div class="image-wrap"><img src="assets/rental/dfna-35.jpg" alt="Disfraz de niña Princesa Dorada" loading="lazy" /><span class="code">DFNA-35</span></div>
+<div class="details"><div><h3>Princesa Dorada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Dorada">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Dorada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Vestido Osito" data-code="DFNA-36" data-image="assets/rental/dfna-36.jpg" data-desc="Vestido crema y café con detalles tipo osito, tierno y suave.">
+<div class="image-wrap"><img src="assets/rental/dfna-36.jpg" alt="Disfraz de niña Vestido Osito" loading="lazy" /><span class="code">DFNA-36</span></div>
+<div class="details"><div><h3>Vestido Osito</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Vestido Osito">🔍</button><button class="mini-button" aria-label="Ver disfraz Vestido Osito">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Vestido Verde Floral" data-code="DFNA-37" data-image="assets/rental/dfna-37.jpg" data-desc="Vestido verde con estampado de flores blancas, fresco y sencillo.">
+<div class="image-wrap"><img src="assets/rental/dfna-37.jpg" alt="Disfraz de niña Vestido Verde Floral" loading="lazy" /><span class="code">DFNA-37</span></div>
+<div class="details"><div><h3>Vestido Verde Floral</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Vestido Verde Floral">🔍</button><button class="mini-button" aria-label="Ver disfraz Vestido Verde Floral">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Capitana" data-code="DFNA-38" data-image="assets/rental/dfna-38.jpg" data-desc="Traje blanco de capitana con falda negra y gorra náutica.">
+<div class="image-wrap"><img src="assets/rental/dfna-38.jpg" alt="Disfraz de niña Capitana" loading="lazy" /><span class="code">DFNA-38</span></div>
+<div class="details"><div><h3>Capitana</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Capitana">🔍</button><button class="mini-button" aria-label="Ver disfraz Capitana">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Muñeca Vintage" data-code="DFNA-39" data-image="assets/rental/dfna-39.jpg" data-desc="Vestido azul con cuello blanco y peluca rosa, estilo muñeca antigua.">
+<div class="image-wrap"><img src="assets/rental/dfna-39.jpg" alt="Disfraz de niña Muñeca Vintage" loading="lazy" /><span class="code">DFNA-39</span></div>
+<div class="details"><div><h3>Muñeca Vintage</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Muñeca Vintage">🔍</button><button class="mini-button" aria-label="Ver disfraz Muñeca Vintage">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Enfermera" data-code="DFNA-40" data-image="assets/rental/dfna-40.jpg" data-desc="Vestido blanco con detalles rojos y cofia, para una pequeña enfermera.">
+<div class="image-wrap"><img src="assets/rental/dfna-40.jpg" alt="Disfraz de niña Enfermera" loading="lazy" /><span class="code">DFNA-40</span></div>
+<div class="details"><div><h3>Enfermera</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Enfermera">🔍</button><button class="mini-button" aria-label="Ver disfraz Enfermera">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Sirenita" data-code="DFNA-41" data-image="assets/rental/dfna-41.jpg" data-desc="Vestido en capas de tul rosa, azul y turquesa, estilo escamas de sirena.">
+<div class="image-wrap"><img src="assets/rental/dfna-41.jpg" alt="Disfraz de niña Sirenita" loading="lazy" /><span class="code">DFNA-41</span></div>
+<div class="details"><div><h3>Sirenita</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Sirenita">🔍</button><button class="mini-button" aria-label="Ver disfraz Sirenita">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Sirenita Rosa" data-code="DFNA-42" data-image="assets/rental/dfna-42.jpg" data-desc="Vestido en capas de tul rosa y morado, estilo escamas de sirena.">
+<div class="image-wrap"><img src="assets/rental/dfna-42.jpg" alt="Disfraz de niña Sirenita Rosa" loading="lazy" /><span class="code">DFNA-42</span></div>
+<div class="details"><div><h3>Sirenita Rosa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Sirenita Rosa">🔍</button><button class="mini-button" aria-label="Ver disfraz Sirenita Rosa">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Conejita" data-code="DFNA-43" data-image="assets/rental/dfna-43.jpg" data-desc="Vestido rosa con aplicación de zanahoria y diadema de orejas.">
+<div class="image-wrap"><img src="assets/rental/dfna-43.jpg" alt="Disfraz de niña Conejita" loading="lazy" /><span class="code">DFNA-43</span></div>
+<div class="details"><div><h3>Conejita</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Conejita">🔍</button><button class="mini-button" aria-label="Ver disfraz Conejita">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Doncella Medieval" data-code="DFNA-44" data-image="assets/rental/dfna-44.jpg" data-desc="Vestido beige con corsé y cofia, estilo doncella de cuento.">
+<div class="image-wrap"><img src="assets/rental/dfna-44.jpg" alt="Disfraz de niña Doncella Medieval" loading="lazy" /><span class="code">DFNA-44</span></div>
+<div class="details"><div><h3>Doncella Medieval</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doncella Medieval">🔍</button><button class="mini-button" aria-label="Ver disfraz Doncella Medieval">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Murciélago Morado" data-code="DFNA-45" data-image="assets/rental/dfna-45.jpg" data-desc="Vestido de tutú morado brillante con diadema de murciélago.">
+<div class="image-wrap"><img src="assets/rental/dfna-45.jpg" alt="Disfraz de niña Murciélago Morado" loading="lazy" /><span class="code">DFNA-45</span></div>
+<div class="details"><div><h3>Murciélago Morado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Murciélago Morado">🔍</button><button class="mini-button" aria-label="Ver disfraz Murciélago Morado">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Murciélago Morado" data-code="DFNA-46" data-image="assets/rental/dfna-46.jpg" data-desc="Vestido de tutú morado brillante con diadema de murciélago, ideal para Halloween.">
+<div class="image-wrap"><img src="assets/rental/dfna-46.jpg" alt="Disfraz de niña Murciélago Morado" loading="lazy" /><span class="code">DFNA-46</span></div>
+<div class="details"><div><h3>Murciélago Morado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Murciélago Morado">🔍</button><button class="mini-button" aria-label="Ver disfraz Murciélago Morado">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Batichica Dorada" data-code="DFNA-47" data-image="assets/rental/dfna-47.jpg" data-desc="Vestido negro con capa, botas y antifaz, estilo superheroína murciélago.">
+<div class="image-wrap"><img src="assets/rental/dfna-47.jpg" alt="Disfraz de niña Batichica Dorada" loading="lazy" /><span class="code">DFNA-47</span></div>
+<div class="details"><div><h3>Batichica Dorada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Batichica Dorada">🔍</button><button class="mini-button" aria-label="Ver disfraz Batichica Dorada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Batichica Morada" data-code="DFNA-48" data-image="assets/rental/dfna-48.jpg" data-desc="Vestido morado y negro con botas y antifaz, estilo superheroína.">
+<div class="image-wrap"><img src="assets/rental/dfna-48.jpg" alt="Disfraz de niña Batichica Morada" loading="lazy" /><span class="code">DFNA-48</span></div>
+<div class="details"><div><h3>Batichica Morada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Batichica Morada">🔍</button><button class="mini-button" aria-label="Ver disfraz Batichica Morada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Batichica Negra" data-code="DFNA-49" data-image="assets/rental/dfna-49.jpg" data-desc="Vestido negro con botas y antifaz, estilo superheroína murciélago.">
+<div class="image-wrap"><img src="assets/rental/dfna-49.jpg" alt="Disfraz de niña Batichica Negra" loading="lazy" /><span class="code">DFNA-49</span></div>
+<div class="details"><div><h3>Batichica Negra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Batichica Negra">🔍</button><button class="mini-button" aria-label="Ver disfraz Batichica Negra">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Catrina Roja" data-code="DFNA-50" data-image="assets/rental/dfna-50.jpg" data-desc="Vestido rojo con bodice de flores bordadas y velo, estilo Catrina.">
+<div class="image-wrap"><img src="assets/rental/dfna-50.jpg" alt="Disfraz de niña Catrina Roja" loading="lazy" /><span class="code">DFNA-50</span></div>
+<div class="details"><div><h3>Catrina Roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Catrina Roja">🔍</button><button class="mini-button" aria-label="Ver disfraz Catrina Roja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Catrina Roja y Negra" data-code="DFNA-51" data-image="assets/rental/dfna-51.jpg" data-desc="Vestido rojo con bodice floral y velo negro, estilo Catrina.">
+<div class="image-wrap"><img src="assets/rental/dfna-51.jpg" alt="Disfraz de niña Catrina Roja y Negra" loading="lazy" /><span class="code">DFNA-51</span></div>
+<div class="details"><div><h3>Catrina Roja y Negra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Catrina Roja y Negra">🔍</button><button class="mini-button" aria-label="Ver disfraz Catrina Roja y Negra">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Catrina Multicolor" data-code="DFNA-52" data-image="assets/rental/dfna-52.jpg" data-desc="Vestido negro con bodice floral colorido y velo, estilo Catrina.">
+<div class="image-wrap"><img src="assets/rental/dfna-52.jpg" alt="Disfraz de niña Catrina Multicolor" loading="lazy" /><span class="code">DFNA-52</span></div>
+<div class="details"><div><h3>Catrina Multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Catrina Multicolor">🔍</button><button class="mini-button" aria-label="Ver disfraz Catrina Multicolor">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Catrina Oscura" data-code="DFNA-53" data-image="assets/rental/dfna-53.jpg" data-desc="Vestido vinotinto con estampado floral y velo, estilo Catrina.">
+<div class="image-wrap"><img src="assets/rental/dfna-53.jpg" alt="Disfraz de niña Catrina Oscura" loading="lazy" /><span class="code">DFNA-53</span></div>
+<div class="details"><div><h3>Catrina Oscura</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Catrina Oscura">🔍</button><button class="mini-button" aria-label="Ver disfraz Catrina Oscura">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Catrina Naranja" data-code="DFNA-54" data-image="assets/rental/dfna-54.jpg" data-desc="Vestido naranja con bodice floral y tocado de plumas coloridas.">
+<div class="image-wrap"><img src="assets/rental/dfna-54.jpg" alt="Disfraz de niña Catrina Naranja" loading="lazy" /><span class="code">DFNA-54</span></div>
+<div class="details"><div><h3>Catrina Naranja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Catrina Naranja">🔍</button><button class="mini-button" aria-label="Ver disfraz Catrina Naranja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Catrina Negra y Rosa" data-code="DFNA-55" data-image="assets/rental/dfna-55.jpg" data-desc="Vestido negro con bodice floral, fajín rosa y velo, estilo Catrina.">
+<div class="image-wrap"><img src="assets/rental/dfna-55.jpg" alt="Disfraz de niña Catrina Negra y Rosa" loading="lazy" /><span class="code">DFNA-55</span></div>
+<div class="details"><div><h3>Catrina Negra y Rosa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Catrina Negra y Rosa">🔍</button><button class="mini-button" aria-label="Ver disfraz Catrina Negra y Rosa">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Minion" data-code="DFNA-56" data-image="assets/rental/dfna-56.jpg" data-desc="Vestido azul y amarillo con diadema de ojo, estilo Minion.">
+<div class="image-wrap"><img src="assets/rental/dfna-56.jpg" alt="Disfraz de niña Minion" loading="lazy" /><span class="code">DFNA-56</span></div>
+<div class="details"><div><h3>Minion</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Minion">🔍</button><button class="mini-button" aria-label="Ver disfraz Minion">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Doncella Rosa" data-code="DFNA-57" data-image="assets/rental/dfna-57.jpg" data-desc="Vestido rosa y negro con delantal blanco y cofia.">
+<div class="image-wrap"><img src="assets/rental/dfna-57.jpg" alt="Disfraz de niña Doncella Rosa" loading="lazy" /><span class="code">DFNA-57</span></div>
+<div class="details"><div><h3>Doncella Rosa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doncella Rosa">🔍</button><button class="mini-button" aria-label="Ver disfraz Doncella Rosa">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Alicia en el País de las Maravillas" data-code="DFNA-58" data-image="assets/rental/dfna-58.jpg" data-desc="Vestido azul con delantal blanco y diadema, estilo cuento clásico.">
+<div class="image-wrap"><img src="assets/rental/dfna-58.jpg" alt="Disfraz de niña Alicia en el País de las Maravillas" loading="lazy" /><span class="code">DFNA-58</span></div>
+<div class="details"><div><h3>Alicia en el País de las Maravillas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Alicia en el País de las Maravillas">🔍</button><button class="mini-button" aria-label="Ver disfraz Alicia en el País de las Maravillas">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Doncella Amarilla" data-code="DFNA-59" data-image="assets/rental/dfna-59.jpg" data-desc="Vestido amarillo con delantal blanco y cofia a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-59.jpg" alt="Disfraz de niña Doncella Amarilla" loading="lazy" /><span class="code">DFNA-59</span></div>
+<div class="details"><div><h3>Doncella Amarilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doncella Amarilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Doncella Amarilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Vaquera" data-code="DFNA-60" data-image="assets/rental/dfna-60.jpg" data-desc="Traje blanco y azul con falda de vaca, botas y sombrero rojo.">
+<div class="image-wrap"><img src="assets/rental/dfna-60.jpg" alt="Disfraz de niña Vaquera" loading="lazy" /><span class="code">DFNA-60</span></div>
+<div class="details"><div><h3>Vaquera</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Vaquera">🔍</button><button class="mini-button" aria-label="Ver disfraz Vaquera">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Mujer Maravilla" data-code="DFNA-61" data-image="assets/rental/dfna-61.jpg" data-desc="Vestido azul y rojo con botas rojas, estilo superheroína.">
+<div class="image-wrap"><img src="assets/rental/dfna-61.jpg" alt="Disfraz de niña Mujer Maravilla" loading="lazy" /><span class="code">DFNA-61</span></div>
+<div class="details"><div><h3>Mujer Maravilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Mujer Maravilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Mujer Maravilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Reina Roja" data-code="DFNA-62" data-image="assets/rental/dfna-62.jpg" data-desc="Vestido rojo y negro con estampado de corazones, estilo gótico elegante.">
+<div class="image-wrap"><img src="assets/rental/dfna-62.jpg" alt="Disfraz de niña Reina Roja" loading="lazy" /><span class="code">DFNA-62</span></div>
+<div class="details"><div><h3>Reina Roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Reina Roja">🔍</button><button class="mini-button" aria-label="Ver disfraz Reina Roja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Alicia en el País de las Maravillas" data-code="DFNA-63" data-image="assets/rental/dfna-63.jpg" data-desc="Vestido azul con delantal blanco a cuadros y diadema.">
+<div class="image-wrap"><img src="assets/rental/dfna-63.jpg" alt="Disfraz de niña Alicia en el País de las Maravillas" loading="lazy" /><span class="code">DFNA-63</span></div>
+<div class="details"><div><h3>Alicia en el País de las Maravillas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Alicia en el País de las Maravillas">🔍</button><button class="mini-button" aria-label="Ver disfraz Alicia en el País de las Maravillas">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Abejita" data-code="DFNA-64" data-image="assets/rental/dfna-64.jpg" data-desc="Vestido negro y amarillo con alas y antenas, estilo abeja.">
+<div class="image-wrap"><img src="assets/rental/dfna-64.jpg" alt="Disfraz de niña Abejita" loading="lazy" /><span class="code">DFNA-64</span></div>
+<div class="details"><div><h3>Abejita</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Abejita">🔍</button><button class="mini-button" aria-label="Ver disfraz Abejita">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Bruja Naranja" data-code="DFNA-65" data-image="assets/rental/dfna-65.jpg" data-desc="Vestido de tutú naranja con corsé negro y sombrero de bruja.">
+<div class="image-wrap"><img src="assets/rental/dfna-65.jpg" alt="Disfraz de niña Bruja Naranja" loading="lazy" /><span class="code">DFNA-65</span></div>
+<div class="details"><div><h3>Bruja Naranja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Bruja Naranja">🔍</button><button class="mini-button" aria-label="Ver disfraz Bruja Naranja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Vestido Arlequín Azul y Rojo" data-code="DFNA-66" data-image="assets/rental/dfna-66.jpg" data-desc="Vestido de lentejuelas azul y rojo con falda en capas.">
+<div class="image-wrap"><img src="assets/rental/dfna-66.jpg" alt="Disfraz de niña Vestido Arlequín Azul y Rojo" loading="lazy" /><span class="code">DFNA-66</span></div>
+<div class="details"><div><h3>Vestido Arlequín Azul y Rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Vestido Arlequín Azul y Rojo">🔍</button><button class="mini-button" aria-label="Ver disfraz Vestido Arlequín Azul y Rojo">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Conejita Blanca" data-code="DFNA-67" data-image="assets/rental/dfna-67.jpg" data-desc="Vestido blanco y rosa con diadema de orejas de conejo y flor.">
+<div class="image-wrap"><img src="assets/rental/dfna-67.jpg" alt="Disfraz de niña Conejita Blanca" loading="lazy" /><span class="code">DFNA-67</span></div>
+<div class="details"><div><h3>Conejita Blanca</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Conejita Blanca">🔍</button><button class="mini-button" aria-label="Ver disfraz Conejita Blanca">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Duendecilla" data-code="DFNA-68" data-image="assets/rental/dfna-68.jpg" data-desc="Vestido verde y rojo con moño amarillo, estilo duende navideño.">
+<div class="image-wrap"><img src="assets/rental/dfna-68.jpg" alt="Disfraz de niña Duendecilla" loading="lazy" /><span class="code">DFNA-68</span></div>
+<div class="details"><div><h3>Duendecilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Duendecilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Duendecilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Duendecilla" data-code="DFNA-69" data-image="assets/rental/dfna-69.jpg" data-desc="Vestido verde y rojo con pantalón bombacho, estilo duende.">
+<div class="image-wrap"><img src="assets/rental/dfna-69.jpg" alt="Disfraz de niña Duendecilla" loading="lazy" /><span class="code">DFNA-69</span></div>
+<div class="details"><div><h3>Duendecilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Duendecilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Duendecilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Doctora" data-code="DFNA-70" data-image="assets/rental/dfna-70.jpg" data-desc="Bata blanca con pantalón rosa, para una pequeña doctora.">
+<div class="image-wrap"><img src="assets/rental/dfna-70.jpg" alt="Disfraz de niña Doctora" loading="lazy" /><span class="code">DFNA-70</span></div>
+<div class="details"><div><h3>Doctora</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doctora">🔍</button><button class="mini-button" aria-label="Ver disfraz Doctora">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Rosa y Lila" data-code="DFNA-71" data-image="assets/rental/dfna-71.jpg" data-desc="Vestido en capas rosa y lila con pequeña corona.">
+<div class="image-wrap"><img src="assets/rental/dfna-71.jpg" alt="Disfraz de niña Princesa Rosa y Lila" loading="lazy" /><span class="code">DFNA-71</span></div>
+<div class="details"><div><h3>Princesa Rosa y Lila</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Rosa y Lila">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Rosa y Lila">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña Princesa Rosa con Corona" data-code="DFNA-72" data-image="assets/rental/dfna-72.jpg" data-desc="Vestido rosa con detalles dorados y corona a juego.">
+<div class="image-wrap"><img src="assets/rental/dfna-72.jpg" alt="Disfraz de niña Princesa Rosa con Corona" loading="lazy" /><span class="code">DFNA-72</span></div>
+<div class="details"><div><h3>Princesa Rosa con Corona</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Rosa con Corona">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Rosa con Corona">+</button></div>
+</article>
+</div>
 </section>
 <section class="rental-group" aria-labelledby="alquiler-adulto-title">
 <div class="wig-group-heading">
 <h3 id="alquiler-adulto-title">Disfraces de adulto</h3>
 <p>Disfraces completos para fiestas y eventos, talla estándar.</p>
 </div>
-<div class="wig-empty" id="alquiler-adulto"><div><strong>Fotos muy pronto</strong>Agrega aquí las fotos de los disfraces de adulto disponibles para alquilar.</div></div>
+<div class="grid" id="alquiler-adulto">
+<article class="card rental-card" data-name="Disfraz de adulto Harley Quinn" data-code="DFA-01" data-image="assets/rental/dfa-01.jpg" data-desc="Chaqueta a cuadros con diamantes y pantalón bicolor rojo y negro.">
+<div class="image-wrap"><img src="assets/rental/dfa-01.jpg" alt="Disfraz de adulto Harley Quinn" loading="lazy" /><span class="code">DFA-01</span></div>
+<div class="details"><div><h3>Harley Quinn</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Harley Quinn">🔍</button><button class="mini-button" aria-label="Ver disfraz Harley Quinn">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Alicia en el País de las Maravillas" data-code="DFA-02" data-image="assets/rental/dfa-02.jpg" data-desc="Vestido azul con delantal blanco a cuadros y diadema, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-02.jpg" alt="Disfraz de adulto Alicia en el País de las Maravillas" loading="lazy" /><span class="code">DFA-02</span></div>
+<div class="details"><div><h3>Alicia en el País de las Maravillas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Alicia en el País de las Maravillas">🔍</button><button class="mini-button" aria-label="Ver disfraz Alicia en el País de las Maravillas">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Mujer Maravilla" data-code="DFA-03" data-image="assets/rental/dfa-03.jpg" data-desc="Vestido azul y rojo con botas, estilo superheroína, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-03.jpg" alt="Disfraz de adulto Mujer Maravilla" loading="lazy" /><span class="code">DFA-03</span></div>
+<div class="details"><div><h3>Mujer Maravilla</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Mujer Maravilla">🔍</button><button class="mini-button" aria-label="Ver disfraz Mujer Maravilla">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Abeja" data-code="DFA-04" data-image="assets/rental/dfa-04.jpg" data-desc="Vestido negro y amarillo con alas y antenas, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-04.jpg" alt="Disfraz de adulto Abeja" loading="lazy" /><span class="code">DFA-04</span></div>
+<div class="details"><div><h3>Abeja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Abeja">🔍</button><button class="mini-button" aria-label="Ver disfraz Abeja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Caperucita Roja" data-code="DFA-05" data-image="assets/rental/dfa-05.jpg" data-desc="Vestido rojo con capa y capucha, incluye canasta, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-05.jpg" alt="Disfraz de adulto Caperucita Roja" loading="lazy" /><span class="code">DFA-05</span></div>
+<div class="details"><div><h3>Caperucita Roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Caperucita Roja">🔍</button><button class="mini-button" aria-label="Ver disfraz Caperucita Roja">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Vestido Retro Rosa y Verde" data-code="DFA-06" data-image="assets/rental/dfa-06.jpg" data-desc="Vestido corto estilo retro en rosa y verde con bolsillos.">
+<div class="image-wrap"><img src="assets/rental/dfa-06.jpg" alt="Disfraz de adulto Vestido Retro Rosa y Verde" loading="lazy" /><span class="code">DFA-06</span></div>
+<div class="details"><div><h3>Vestido Retro Rosa y Verde</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Vestido Retro Rosa y Verde">🔍</button><button class="mini-button" aria-label="Ver disfraz Vestido Retro Rosa y Verde">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Bruja Morada" data-code="DFA-07" data-image="assets/rental/dfa-07.jpg" data-desc="Vestido corsé morado y negro con falda de tul, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-07.jpg" alt="Disfraz de adulto Bruja Morada" loading="lazy" /><span class="code">DFA-07</span></div>
+<div class="details"><div><h3>Bruja Morada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Bruja Morada">🔍</button><button class="mini-button" aria-label="Ver disfraz Bruja Morada">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Catwoman" data-code="DFA-08" data-image="assets/rental/dfa-08.jpg" data-desc="Traje de cuerpo completo negro con antifaz y orejas de gato.">
+<div class="image-wrap"><img src="assets/rental/dfa-08.jpg" alt="Disfraz de adulto Catwoman" loading="lazy" /><span class="code">DFA-08</span></div>
+<div class="details"><div><h3>Catwoman</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Catwoman">🔍</button><button class="mini-button" aria-label="Ver disfraz Catwoman">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Batichica" data-code="DFA-09" data-image="assets/rental/dfa-09.jpg" data-desc="Vestido negro con capa, botas y antifaz, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-09.jpg" alt="Disfraz de adulto Batichica" loading="lazy" /><span class="code">DFA-09</span></div>
+<div class="details"><div><h3>Batichica</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Batichica">🔍</button><button class="mini-button" aria-label="Ver disfraz Batichica">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Superman" data-code="DFA-10" data-image="assets/rental/dfa-10.jpg" data-desc="Traje azul y rojo con el escudo en el pecho, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-10.jpg" alt="Disfraz de adulto Superman" loading="lazy" /><span class="code">DFA-10</span></div>
+<div class="details"><div><h3>Superman</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Superman">🔍</button><button class="mini-button" aria-label="Ver disfraz Superman">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de adulto Batichica" data-code="DFA-11" data-image="assets/rental/dfa-11.jpg" data-desc="Vestido negro con botas y antifaz, talla adulto.">
+<div class="image-wrap"><img src="assets/rental/dfa-11.jpg" alt="Disfraz de adulto Batichica" loading="lazy" /><span class="code">DFA-11</span></div>
+<div class="details"><div><h3>Batichica</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Batichica">🔍</button><button class="mini-button" aria-label="Ver disfraz Batichica">+</button></div>
+</article>
+</div>
 </section>
 </div>
 </section>
@@ -1118,12 +1595,12 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
 <div class="contact-icon" aria-hidden="true">☏</div>
 <div><h2 id="pedidos-title">¿Ya tienes tu selección?</h2><p>Pide un producto de inmediato desde su detalle o reúne varios artículos en <strong>Mi selección</strong> y envíalos juntos por WhatsApp.</p></div>
-<a class="button" href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo." target="_blank" rel="noopener">Hablar con Kalú</a>
+<a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo." target="_blank" rel="noopener">Hablar con Kalú</a>
 </section>
 </main>
 <footer>
 <img src="kalu-logo.png" alt="Kalú Accesorios" />
-<p>Accesorios para celebrar, crear y destacar. · WhatsApp 311 757 0138</p>
+<p>Accesorios para celebrar, crear y destacar. · WhatsApp 321 505 5733</p>
 <p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
 </footer>
 </div>
@@ -1141,10 +1618,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <p class="modal-price" id="modal-price" hidden></p>
 <div class="modal-actions">
 <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
-</div>
-<div class="modal-actions modal-actions-wpp">
-<a class="button button-amarillo" id="modal-whatsapp-principal" target="_blank" rel="noopener"></a>
-<a class="button button-primary" id="modal-whatsapp-secundaria" target="_blank" rel="noopener"></a>
+<a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir solo este producto</a>
 </div>
 </div>
 </div>
@@ -1158,8 +1632,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <ul class="selection-list" id="selection-list"></ul>
 <p class="selection-empty" id="selection-empty">Aún no has agregado productos. Abre un artículo con el botón + para empezar.</p>
 <div class="selection-actions">
-<a class="button button-amarillo" id="selection-whatsapp-principal" target="_blank" rel="noopener"></a>
-<a class="button button-primary" id="selection-whatsapp-secundaria" target="_blank" rel="noopener"></a>
+<a class="button button-primary" id="selection-whatsapp" target="_blank" rel="noopener">Pedir mi selección por WhatsApp</a>
 <button class="button button-secondary" id="clear-selection" type="button">Vaciar selección</button>
 </div>
 </div>
@@ -1178,8 +1651,7 @@ const modalImage = document.getElementById("modal-image");
 const modalTitle = document.getElementById("modal-title");
 const modalCode = document.getElementById("modal-code");
 const modalDesc = document.getElementById("modal-desc");
-const modalWhatsappPrincipal = document.getElementById("modal-whatsapp-principal");
-const modalWhatsappSecundaria = document.getElementById("modal-whatsapp-secundaria");
+const modalWhatsapp = document.getElementById("modal-whatsapp");
 const modalAddSelection = document.getElementById("modal-add-selection");
 const modalPrice = document.getElementById("modal-price");
 const selectionModal = document.getElementById("selection-modal");
@@ -1187,22 +1659,12 @@ const selectionButton = document.getElementById("selection-button");
 const selectionCount = document.getElementById("selection-count");
 const selectionList = document.getElementById("selection-list");
 const selectionEmpty = document.getElementById("selection-empty");
-const selectionWhatsappPrincipal = document.getElementById("selection-whatsapp-principal");
-const selectionWhatsappSecundaria = document.getElementById("selection-whatsapp-secundaria");
+const selectionWhatsapp = document.getElementById("selection-whatsapp");
 const clearSelection = document.getElementById("clear-selection");
 const zoomModal = document.getElementById("zoom-modal");
 const zoomImage = document.getElementById("zoom-image");
 const zoomCaption = document.getElementById("zoom-caption");
 const closeZoom = document.getElementById("close-zoom");
-// ===== Sedes de WhatsApp =====
-// "principal" se usa en todos los enlaces generales (menú, footer, buscador).
-// En la ficha de producto y en "Mi selección" se muestran las dos como opciones.
-const SEDES = {
-  principal: { nombre: "Kalú Accesorios", numero: "573117570138" },
-  secundaria: { nombre: "Kalú Disfraces", numero: "573215055733" },
-};
-const waLink = (numero, mensaje) => `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-
 // ===== Precios y unidades desde Google Sheets =====
 // Pega aquí el enlace CSV publicado de tu hoja. Si está vacío, la página funciona como siempre.
 const SHEET_CSV_URL = "";
@@ -1343,13 +1805,10 @@ const updateSelection = () => {
   `).join("");
   clearSelection.disabled = !hasProducts;
   const available = selectedProducts.filter((product) => !isSoldOut(product.code));
-  const selectionMsg = available.length ? buildSelectionMessage(available) : "";
-  selectionWhatsappPrincipal.textContent = `Pedir por WhatsApp · ${SEDES.principal.nombre}`;
-  selectionWhatsappSecundaria.textContent = `Pedir por WhatsApp · ${SEDES.secundaria.nombre}`;
-  selectionWhatsappPrincipal.href = available.length ? waLink(SEDES.principal.numero, selectionMsg) : "#";
-  selectionWhatsappSecundaria.href = available.length ? waLink(SEDES.secundaria.numero, selectionMsg) : "#";
-  selectionWhatsappPrincipal.setAttribute("aria-disabled", String(!available.length));
-  selectionWhatsappSecundaria.setAttribute("aria-disabled", String(!available.length));
+  selectionWhatsapp.href = available.length
+    ? `https://wa.me/573215055733?text=${encodeURIComponent(buildSelectionMessage(available))}`
+    : "#";
+  selectionWhatsapp.setAttribute("aria-disabled", String(!available.length));
 };
 document.querySelectorAll(".card").forEach((card) => {
   card.querySelector(".mini-button").addEventListener("click", () => {
@@ -1365,18 +1824,10 @@ document.querySelectorAll(".card").forEach((card) => {
     const priceLine = stockText(code);
     modalPrice.hidden = !priceLine;
     modalPrice.innerHTML = priceLine ? priceLine.replace("Agotado", '<span class="out">Agotado</span>') : "";
-    if (soldOut) {
-      modalWhatsappPrincipal.textContent = "Avísame cuando llegue";
-      modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, `Hola Kalú, quiero que me avisen cuando vuelva a haber ${name} (${code}).`);
-      modalWhatsappSecundaria.hidden = true;
-    } else {
-      const msg = buildSingleMessage(name, code);
-      modalWhatsappPrincipal.textContent = `Pedir por WhatsApp · ${SEDES.principal.nombre}`;
-      modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, msg);
-      modalWhatsappSecundaria.textContent = `Pedir por WhatsApp · ${SEDES.secundaria.nombre}`;
-      modalWhatsappSecundaria.href = waLink(SEDES.secundaria.numero, msg);
-      modalWhatsappSecundaria.hidden = false;
-    }
+    modalWhatsapp.textContent = soldOut ? "Avísame cuando llegue" : "Pedir solo este producto";
+    modalWhatsapp.href = soldOut
+      ? `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero que me avisen cuando vuelva a haber ${name} (${code}).`)}`
+      : `https://wa.me/573215055733?text=${encodeURIComponent(buildSingleMessage(name, code))}`;
     updateModalSelectionButton();
     modal.showModal();
   });
@@ -1422,10 +1873,8 @@ clearSelection.addEventListener("click", () => {
   updateSelection();
   updateModalSelectionButton();
 });
-[selectionWhatsappPrincipal, selectionWhatsappSecundaria].forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    if (!selectedProducts.length) event.preventDefault();
-  });
+selectionWhatsapp.addEventListener("click", (event) => {
+  if (!selectedProducts.length) event.preventDefault();
 });
 document.getElementById("close-modal").addEventListener("click", () => modal.close());
 modal.addEventListener("click", (event) => {
@@ -1577,7 +2026,7 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
     return { card, name, code, image, cat: cat.label, nameN: norm(name), codeN: norm(code), hay: norm([name, code, desc, cat.label, cat.kw].join(" ")) };
   });
 
-  const wa = (t) => waLink(SEDES.principal.numero, "Hola Kalú, quiero consultar por " + t + ".");
+  const wa = (t) => "https://wa.me/573215055733?text=" + encodeURIComponent("Hola Kalú, quiero consultar por " + t + ".");
   const soon = [
     { name: "Sombreros", icon: "🎩", kw: "sombrero sombreros gorro", href: wa("los sombreros") },
     { name: "Accesorios para niñas", icon: "★", kw: "nina ninas accesorio accesorios brillo infantil", href: wa("accesorios para niñas") },
