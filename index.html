@@ -182,6 +182,8 @@ h1 em { color: #51065e; font-style: normal; }
 }
 .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.18); }
 .button-primary { background: #5a075f; color: #fff; box-shadow: 0 6px 0 rgba(82, 4, 90, .2); }
+.button-amarillo { background: var(--yellow); color: var(--ink); box-shadow: 0 6px 0 rgba(190, 140, 0, .35); }
+.button-amarillo:hover { filter: brightness(0.95); }
 .button-light { border-color: rgba(255,255,255,.74); color: #fff; background: rgba(255, 113, 18, .36); }
 .button-secondary { border-color: rgba(255,255,255,.6); color: #fff; background: rgba(255,255,255,.08); cursor: pointer; }
 .button-secondary:disabled { opacity: .62; cursor: default; transform: none; box-shadow: none; }
@@ -1141,7 +1143,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
 </div>
 <div class="modal-actions modal-actions-wpp">
-<a class="button button-primary" id="modal-whatsapp-principal" target="_blank" rel="noopener"></a>
+<a class="button button-amarillo" id="modal-whatsapp-principal" target="_blank" rel="noopener"></a>
 <a class="button button-primary" id="modal-whatsapp-secundaria" target="_blank" rel="noopener"></a>
 </div>
 </div>
@@ -1156,7 +1158,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <ul class="selection-list" id="selection-list"></ul>
 <p class="selection-empty" id="selection-empty">Aún no has agregado productos. Abre un artículo con el botón + para empezar.</p>
 <div class="selection-actions">
-<a class="button button-primary" id="selection-whatsapp-principal" target="_blank" rel="noopener"></a>
+<a class="button button-amarillo" id="selection-whatsapp-principal" target="_blank" rel="noopener"></a>
 <a class="button button-primary" id="selection-whatsapp-secundaria" target="_blank" rel="noopener"></a>
 <button class="button button-secondary" id="clear-selection" type="button">Vaciar selección</button>
 </div>
