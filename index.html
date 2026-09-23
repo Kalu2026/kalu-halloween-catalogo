@@ -183,6 +183,8 @@ h1 em { color: #51065e; font-style: normal; }
 .button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.18); }
 .button-primary { background: #5a075f; color: #fff; box-shadow: 0 6px 0 rgba(82, 4, 90, .2); }
 .button-light { border-color: rgba(255,255,255,.74); color: #fff; background: rgba(255, 113, 18, .36); }
+.button-amarillo { background: var(--yellow); color: var(--ink); box-shadow: 0 6px 0 rgba(190, 140, 0, .35); }
+.button-amarillo:hover { filter: brightness(0.95); }
 .button-secondary { border-color: rgba(255,255,255,.6); color: #fff; background: rgba(255,255,255,.08); cursor: pointer; }
 .button-secondary:disabled { opacity: .62; cursor: default; transform: none; box-shadow: none; }
 .hero-art { position: relative; z-index: 3; justify-self: center; width: min(100%, 460px); aspect-ratio: .86; display: grid; place-items: center; }
@@ -493,6 +495,8 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .close { position: absolute; right: 13px; top: 13px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
 .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 .modal-copy .modal-actions .button { align-self: auto; margin-top: 0; }
+.modal-actions-wpp { flex-direction: column; margin-top: 10px; }
+.modal-actions-wpp .button { width: 100%; }
 .selection-dialog { width: min(92vw, 580px); }
 .zoom-dialog { width: min(94vw, 720px); background: transparent; border: 0; box-shadow: none; }
 .zoom-dialog::backdrop { background: rgba(8, 0, 14, .88); backdrop-filter: blur(6px); }
@@ -510,6 +514,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .remove-selection { border: 0; color: #fff; background: transparent; font-size: .83rem; font-weight: 800; text-decoration: underline; cursor: pointer; }
 .selection-empty { margin: 24px 0; padding: 17px; border: 1px dashed rgba(255,255,255,.28); border-radius: 12px; color: #decce0; text-align: center; }
 .selection-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.selection-actions a.button { flex: 1 1 220px; }
 .selection-actions .button { cursor: pointer; }
 .selection-actions .button:disabled { opacity: .55; cursor: default; }
 .selection-actions a[aria-disabled="true"] { opacity: .55; cursor: default; pointer-events: none; }
@@ -683,7 +688,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <a href="#pelucas">Pelucas</a>
 <a href="#accesorios">Accesorios</a>
 <a href="#pedidos">Cómo pedir</a>
-<a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
+<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
 </div>
 </nav>
 <main>
@@ -781,7 +786,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <span class="cat-badge soon">Muy pronto</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-ninas"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
+<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
 </div></div></div>
 </div>
 
@@ -792,7 +797,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <span class="cat-badge soon">Muy pronto</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-sombreros"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
+<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
 </div></div></div>
 </div>
 
@@ -1595,12 +1600,12 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
 <div class="contact-icon" aria-hidden="true">☏</div>
 <div><h2 id="pedidos-title">¿Ya tienes tu selección?</h2><p>Pide un producto de inmediato desde su detalle o reúne varios artículos en <strong>Mi selección</strong> y envíalos juntos por WhatsApp.</p></div>
-<a class="button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo." target="_blank" rel="noopener">Hablar con Kalú</a>
+<a class="button" href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20productos%20del%20cat%C3%A1logo." target="_blank" rel="noopener">Hablar con Kalú</a>
 </section>
 </main>
 <footer>
 <img src="kalu-logo.png" alt="Kalú Accesorios" />
-<p>Accesorios para celebrar, crear y destacar. · WhatsApp 321 505 5733</p>
+<p>Accesorios para celebrar, crear y destacar. · WhatsApp Accesorios 311 757 0138 · Disfraces 321 505 5733</p>
 <p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
 </footer>
 </div>
@@ -1618,7 +1623,10 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <p class="modal-price" id="modal-price" hidden></p>
 <div class="modal-actions">
 <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
-<a class="button button-primary" id="modal-whatsapp" target="_blank" rel="noopener">Pedir solo este producto</a>
+</div>
+<div class="modal-actions modal-actions-wpp">
+<a class="button button-amarillo" id="modal-whatsapp-principal" target="_blank" rel="noopener"></a>
+<a class="button button-primary" id="modal-whatsapp-secundaria" target="_blank" rel="noopener"></a>
 </div>
 </div>
 </div>
@@ -1632,7 +1640,8 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <ul class="selection-list" id="selection-list"></ul>
 <p class="selection-empty" id="selection-empty">Aún no has agregado productos. Abre un artículo con el botón + para empezar.</p>
 <div class="selection-actions">
-<a class="button button-primary" id="selection-whatsapp" target="_blank" rel="noopener">Pedir mi selección por WhatsApp</a>
+<a class="button button-amarillo" id="selection-whatsapp-principal" target="_blank" rel="noopener"></a>
+<a class="button button-primary" id="selection-whatsapp-secundaria" target="_blank" rel="noopener"></a>
 <button class="button button-secondary" id="clear-selection" type="button">Vaciar selección</button>
 </div>
 </div>
@@ -1651,7 +1660,8 @@ const modalImage = document.getElementById("modal-image");
 const modalTitle = document.getElementById("modal-title");
 const modalCode = document.getElementById("modal-code");
 const modalDesc = document.getElementById("modal-desc");
-const modalWhatsapp = document.getElementById("modal-whatsapp");
+const modalWhatsappPrincipal = document.getElementById("modal-whatsapp-principal");
+const modalWhatsappSecundaria = document.getElementById("modal-whatsapp-secundaria");
 const modalAddSelection = document.getElementById("modal-add-selection");
 const modalPrice = document.getElementById("modal-price");
 const selectionModal = document.getElementById("selection-modal");
@@ -1659,12 +1669,21 @@ const selectionButton = document.getElementById("selection-button");
 const selectionCount = document.getElementById("selection-count");
 const selectionList = document.getElementById("selection-list");
 const selectionEmpty = document.getElementById("selection-empty");
-const selectionWhatsapp = document.getElementById("selection-whatsapp");
+const selectionWhatsappPrincipal = document.getElementById("selection-whatsapp-principal");
+const selectionWhatsappSecundaria = document.getElementById("selection-whatsapp-secundaria");
 const clearSelection = document.getElementById("clear-selection");
 const zoomModal = document.getElementById("zoom-modal");
 const zoomImage = document.getElementById("zoom-image");
 const zoomCaption = document.getElementById("zoom-caption");
 const closeZoom = document.getElementById("close-zoom");
+// ===== Sedes de WhatsApp =====
+// "principal" se usa en todos los enlaces generales (menú, footer, buscador).
+// En la ficha de producto y en "Mi selección" se muestran las dos como opciones.
+const SEDES = {
+  principal: { nombre: "Kalú Accesorios", numero: "573117570138" },
+  secundaria: { nombre: "Kalú Disfraces", numero: "573215055733" },
+};
+const waLink = (numero, mensaje) => `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 // ===== Precios y unidades desde Google Sheets =====
 // Pega aquí el enlace CSV publicado de tu hoja. Si está vacío, la página funciona como siempre.
 const SHEET_CSV_URL = "";
@@ -1805,10 +1824,13 @@ const updateSelection = () => {
   `).join("");
   clearSelection.disabled = !hasProducts;
   const available = selectedProducts.filter((product) => !isSoldOut(product.code));
-  selectionWhatsapp.href = available.length
-    ? `https://wa.me/573215055733?text=${encodeURIComponent(buildSelectionMessage(available))}`
-    : "#";
-  selectionWhatsapp.setAttribute("aria-disabled", String(!available.length));
+  const selectionMsg = available.length ? buildSelectionMessage(available) : "";
+  selectionWhatsappPrincipal.textContent = `Pedir por WhatsApp · ${SEDES.principal.nombre}`;
+  selectionWhatsappSecundaria.textContent = `Pedir por WhatsApp · ${SEDES.secundaria.nombre}`;
+  selectionWhatsappPrincipal.href = available.length ? waLink(SEDES.principal.numero, selectionMsg) : "#";
+  selectionWhatsappSecundaria.href = available.length ? waLink(SEDES.secundaria.numero, selectionMsg) : "#";
+  selectionWhatsappPrincipal.setAttribute("aria-disabled", String(!available.length));
+  selectionWhatsappSecundaria.setAttribute("aria-disabled", String(!available.length));
 };
 document.querySelectorAll(".card").forEach((card) => {
   card.querySelector(".mini-button").addEventListener("click", () => {
@@ -1824,10 +1846,18 @@ document.querySelectorAll(".card").forEach((card) => {
     const priceLine = stockText(code);
     modalPrice.hidden = !priceLine;
     modalPrice.innerHTML = priceLine ? priceLine.replace("Agotado", '<span class="out">Agotado</span>') : "";
-    modalWhatsapp.textContent = soldOut ? "Avísame cuando llegue" : "Pedir solo este producto";
-    modalWhatsapp.href = soldOut
-      ? `https://wa.me/573215055733?text=${encodeURIComponent(`Hola Kalú, quiero que me avisen cuando vuelva a haber ${name} (${code}).`)}`
-      : `https://wa.me/573215055733?text=${encodeURIComponent(buildSingleMessage(name, code))}`;
+    if (soldOut) {
+      modalWhatsappPrincipal.textContent = "Avísame cuando llegue";
+      modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, `Hola Kalú, quiero que me avisen cuando vuelva a haber ${name} (${code}).`);
+      modalWhatsappSecundaria.hidden = true;
+    } else {
+      const msg = buildSingleMessage(name, code);
+      modalWhatsappPrincipal.textContent = `Pedir por WhatsApp · ${SEDES.principal.nombre}`;
+      modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, msg);
+      modalWhatsappSecundaria.textContent = `Pedir por WhatsApp · ${SEDES.secundaria.nombre}`;
+      modalWhatsappSecundaria.href = waLink(SEDES.secundaria.numero, msg);
+      modalWhatsappSecundaria.hidden = false;
+    }
     updateModalSelectionButton();
     modal.showModal();
   });
@@ -1873,8 +1903,10 @@ clearSelection.addEventListener("click", () => {
   updateSelection();
   updateModalSelectionButton();
 });
-selectionWhatsapp.addEventListener("click", (event) => {
-  if (!selectedProducts.length) event.preventDefault();
+[selectionWhatsappPrincipal, selectionWhatsappSecundaria].forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (!selectedProducts.length) event.preventDefault();
+  });
 });
 document.getElementById("close-modal").addEventListener("click", () => modal.close());
 modal.addEventListener("click", (event) => {
@@ -2026,7 +2058,7 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
     return { card, name, code, image, cat: cat.label, nameN: norm(name), codeN: norm(code), hay: norm([name, code, desc, cat.label, cat.kw].join(" ")) };
   });
 
-  const wa = (t) => "https://wa.me/573215055733?text=" + encodeURIComponent("Hola Kalú, quiero consultar por " + t + ".");
+  const wa = (t) => waLink(SEDES.principal.numero, "Hola Kalú, quiero consultar por " + t + ".");
   const soon = [
     { name: "Sombreros", icon: "🎩", kw: "sombrero sombreros gorro", href: wa("los sombreros") },
     { name: "Accesorios para niñas", icon: "★", kw: "nina ninas accesorio accesorios brillo infantil", href: wa("accesorios para niñas") },
