@@ -374,8 +374,8 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .rental-catalog .section-heading { margin-bottom: 36px; }
 .rental-notice { display: flex; align-items: flex-start; gap: 12px; max-width: 1250px; margin: 0 auto 30px; padding: 14px 18px; border: 1px solid rgba(255,189,24,.5); border-left: 5px solid var(--orange); border-radius: 14px; background: rgba(241,90,11,.12); color: #ffe9c7; font-size: 1rem; line-height: 1.5; }
 .rental-notice strong { color: var(--yellow); }
-.modal-copy .modal-note { margin: -4px 0 14px; padding: 9px 12px; border-left: 4px solid var(--orange); border-radius: 8px; background: rgba(241,90,11,.12); color: #ffd9a3; font-size: .88rem; line-height: 1.45; }
-.modal-copy .modal-note[hidden] { display: none; }
+.modal-copy .modal-note, .selection-panel .modal-note { margin: -4px 0 14px; padding: 9px 12px; border-left: 4px solid var(--orange); border-radius: 8px; background: rgba(241,90,11,.12); color: #ffd9a3; font-size: .88rem; line-height: 1.45; }
+.modal-note[hidden] { display: none; }
 .wig-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
 .wig-catalog .section-heading { margin-bottom: 36px; }
 .wig-catalog .section-heading p { color: #50a2ff; }
@@ -1190,6 +1190,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <span>Disfraces completos con accesorios incluidos, para niños, niñas y adultos. Consulta tallas, fechas y precio por WhatsApp.</span>
 </div>
 <p class="rental-notice" role="note"><span aria-hidden="true">⚠️</span><span><strong>Aviso:</strong> los accesorios que acompañan cada disfraz pueden variar según la disponibilidad.</span></p>
+<p class="rental-notice" role="note"><span aria-hidden="true">💰</span><span><strong>Depósito de alquiler:</strong> para reservar tu disfraz se deja un depósito que varía según el traje. Se devuelve completo al entregar el disfraz en la fecha acordada.</span></p>
 <div class="wig-groups">
 <section class="rental-group" aria-labelledby="alquiler-nino-title">
 <div class="wig-group-heading">
@@ -1797,7 +1798,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <p class="eyebrow" id="modal-code"></p>
 <h2 id="modal-title"></h2>
 <p id="modal-desc"></p>
-<p class="modal-note" id="modal-note" hidden><strong>Aviso:</strong> los accesorios pueden variar según la disponibilidad.</p>
+<p class="modal-note" id="modal-note" hidden><strong>Depósito:</strong> este disfraz requiere un depósito de reserva (el valor varía según el traje). Se devuelve completo al entregar el disfraz en la fecha pactada.</p>
 <p class="modal-price" id="modal-price" hidden></p>
 <div class="modal-actions">
 <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
@@ -1815,6 +1816,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <p class="eyebrow">Mi selección</p>
 <h2 id="selection-title">Productos elegidos</h2>
 <p>Revisa tus productos antes de enviar la consulta. Kalú te confirmará precio y disponibilidad.</p>
+<p class="modal-note" id="selection-note" hidden><strong>Depósito:</strong> los disfraces de alquiler de tu selección requieren un depósito de reserva (varía según el traje). Se devuelve completo al entregar el disfraz en la fecha pactada.</p>
 <ul class="selection-list" id="selection-list"></ul>
 <p class="selection-empty" id="selection-empty">Aún no has agregado productos. Abre un artículo con el botón + para empezar.</p>
 <div class="selection-actions">
@@ -1848,6 +1850,7 @@ const selectionModal = document.getElementById("selection-modal");
 const selectionButton = document.getElementById("selection-button");
 const selectionCount = document.getElementById("selection-count");
 const selectionList = document.getElementById("selection-list");
+const selectionNote = document.getElementById("selection-note");
 const selectionEmpty = document.getElementById("selection-empty");
 const selectionWhatsappPrincipal = document.getElementById("selection-whatsapp-principal");
 const selectionWhatsappSecundaria = document.getElementById("selection-whatsapp-secundaria");
@@ -2003,6 +2006,7 @@ const updateSelection = () => {
     </li>
   `).join("");
   clearSelection.disabled = !hasProducts;
+  selectionNote.hidden = !selectedProducts.some((product) => /^DF/.test(product.code));
   const available = selectedProducts.filter((product) => !isSoldOut(product.code));
   const selectionMsg = available.length ? buildSelectionMessage(available) : "";
   selectionWhatsappPrincipal.textContent = `Pedir por WhatsApp · ${SEDES.principal.nombre}`;
@@ -2575,6 +2579,7 @@ loadStock();
   const FILTERS = {
     "alquiler-nino-title": [["Superhéroes", /batman|hombre ara|iron man|flash|superman|deadpool/i], ["Anime y juegos", /gohan|gok|boruto|sonic|tortuga ninja/i], ["Oficios", /bombero|polic|soldado|doctor|astronauta|explorador|marinero|capit/i], ["Animales", /jirafa|osito|tortuga|dinosaurio|conejo/i], ["Chavo y Chapulín", /chavo|chapul/i]],
     "alquiler-nina-title": [["Princesas", /princesa|jazm|aurora|blancanieves|elsa|reina|doncella/i], ["Catrinas", /catrina/i], ["Superheroínas", /mujer maravilla|batichica/i], ["Brujas", /bruja|murci/i], ["Chavo del 8", /chilindrina|bruja del 71|chavo/i]],
+    "alquiler-adulto-title": [["Superhéroes", /batman|superman|spider|ara.a|mujer maravilla|batichica|capitana marvel|incre.bles/i], ["Kimonos anime", /kimono/i], ["Bodies", /\bbody\b/i], ["Brujas y terror", /bruja|chucky|esqueleto/i], ["Cuentos y villanas", /harley|alicia|catwoman|caperucita|popis/i], ["Patrios y animales", /bandera|capit.n am.rica|cebra|abeja/i]],
   };
   const groups = [];
   document.querySelectorAll(".rental-group").forEach((group) => {
