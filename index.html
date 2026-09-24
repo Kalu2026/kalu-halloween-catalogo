@@ -705,7 +705,8 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .cat-head { padding: 12px 14px; }
   .selection-fab { right: 12px; bottom: 12px; }
   .grid { scroll-snap-type: x mandatory; gap: 14px; }
-  .grid > .card { width: calc(50% - 7px); flex: 0 0 calc(50% - 7px); scroll-snap-align: center; }
+  .grid > .card { width: 100%; max-width: none; flex: 0 0 100%; scroll-snap-align: center; }
+  .carousel-wrap:has(> .grid)::before, .carousel-wrap:has(> .grid)::after { display: none; }
   /* Botones centrados y a todo el ancho en móvil */
   .actions, .selection-actions { flex-direction: column; align-items: stretch; }
   .actions .button,
@@ -2311,9 +2312,11 @@ loadStock();
     next.innerHTML = "›";
     wrap.append(prev, next);
 
-    const step = () => (grid.querySelector(".card, .explore-item")?.getBoundingClientRect().width || 260) + 20;
-    prev.addEventListener("click", () => grid.scrollBy({ left: -step() * 2, behavior: "smooth" }));
-    next.addEventListener("click", () => grid.scrollBy({ left: step() * 2, behavior: "smooth" }));
+    const gap = () => parseFloat(getComputedStyle(grid).columnGap) || 20;
+    const step = () => (grid.querySelector(".card, .explore-item")?.getBoundingClientRect().width || 260) + gap();
+    const perClick = () => (grid.clientWidth < 480 ? 1 : 2);
+    prev.addEventListener("click", () => grid.scrollBy({ left: -step() * perClick(), behavior: "smooth" }));
+    next.addEventListener("click", () => grid.scrollBy({ left: step() * perClick(), behavior: "smooth" }));
 
     const updateArrows = () => {
       const max = grid.scrollWidth - grid.clientWidth - 2;
