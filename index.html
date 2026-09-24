@@ -759,6 +759,21 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .mask-return-inner { text-align: center; }
   .mask-return-inner .explore-track { text-align: left; }
 }
+/* ===== Logo animado Kalú ===== */
+.klogo{position:relative;display:block;width:clamp(270px,34vw,480px);aspect-ratio:var(--ar);margin:4px auto 0;cursor:pointer;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 8px 8px rgba(62,0,71,.28))}
+.kl-l{position:absolute;display:block;user-select:none;-webkit-user-drag:none;transform-origin:50% 90%;animation:kl-pop .95s calc(var(--i)*.16s + .1s) cubic-bezier(.3,1.4,.5,1) both,kl-idle 3.6s calc(var(--i)*.16s + 1.3s) ease-in-out infinite,kl-glow 5s calc(var(--i)*.5s + 1.6s) ease-in-out infinite}
+.kl-l.kl-hop{animation:kl-hop .7s cubic-bezier(.3,1.5,.5,1) 1,kl-idle 3.6s ease-in-out infinite}
+@keyframes kl-pop{0%{opacity:0;transform:translateY(-110%) scale(.3) rotate(-14deg)}45%{opacity:1;transform:translateY(6%) scale(1.14,.9) rotate(3deg)}65%{transform:translateY(-9%) scale(.96,1.06) rotate(-2deg)}82%{transform:translateY(2%) scale(1.02,.98)}100%{opacity:1;transform:none}}
+@keyframes kl-idle{0%,100%{translate:0 0}50%{translate:0 -2.2%}}
+@keyframes kl-glow{0%,80%,100%{filter:brightness(1) saturate(1)}88%{filter:brightness(1.25) saturate(1.3) drop-shadow(0 0 8px rgba(255,236,150,.9))}}
+@keyframes kl-hop{0%{transform:none;filter:brightness(1)}30%{transform:translateY(-16%) scale(1.09,.96) rotate(-4deg);filter:brightness(1.3) drop-shadow(0 0 10px rgba(255,236,150,.95))}58%{transform:translateY(3%) scale(.97,1.04)}78%{transform:translateY(-3%) rotate(1deg)}100%{transform:none;filter:brightness(1)}}
+.kl-shine{position:absolute;inset:0;pointer-events:none;-webkit-mask:url(assets/logo/full.png) center/100% 100% no-repeat;mask:url(assets/logo/full.png) center/100% 100% no-repeat;background:linear-gradient(112deg,transparent 38%,rgba(255,255,255,.95) 49%,rgba(255,255,255,.95) 51%,transparent 62%) 100% 0/300% 100% no-repeat;mix-blend-mode:soft-light;opacity:0;animation:kl-sweep 5s 1.8s ease-in-out infinite}
+@keyframes kl-sweep{0%{opacity:1;background-position:100% 0}32%{opacity:1;background-position:0 0}33%,100%{opacity:0;background-position:0 0}}
+.kl-tw{position:absolute;width:clamp(14px,2.6vw,24px);aspect-ratio:1;margin:-1.3vw 0 0 -1.3vw;pointer-events:none;background:#fff;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 4px #fff);opacity:0;animation:kl-tw 3.6s var(--d) ease-in-out infinite}
+@keyframes kl-tw{0%,100%{opacity:0;transform:scale(.2) rotate(0)}45%{opacity:1;transform:scale(1) rotate(45deg)}70%{opacity:0;transform:scale(.3) rotate(90deg)}}
+.kl-fx{position:fixed;left:0;top:0;width:100vw;height:100vh;pointer-events:none;z-index:80}
+@media (max-width:570px){.klogo{width:clamp(250px,80vw,400px)}}
+@media (prefers-reduced-motion:reduce){.kl-l,.kl-shine,.kl-tw{animation:none!important}.kl-shine,.kl-tw{display:none}}
 </style>
 </head>
 <body>
@@ -791,7 +806,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <h1>
 <span class="headline-line"><span class="headline-words">Tu personaje<img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" /></span></span>
 <span class="headline-line headline-closing"><em>Empieza</em> en</span>
-<span class="headline-line headline-logo-line"><img class="headline-logo" src="assets/kalu-logo.png" alt="Kalú Accesorios" /></span>
+<span class="headline-line headline-logo-line"><span class="klogo" data-klogo role="img" aria-label="Kalú Accesorios" style="--ar:1406/626"><img class="kl-l kl-k" style="left:0.0%;top:1.278%;width:34.068%;height:86.741%;--i:0" src="assets/logo/k.png" alt="" draggable="false" /><img class="kl-l kl-a" style="left:25.889%;top:27.636%;width:26.814%;height:57.188%;--i:1" src="assets/logo/a.png" alt="" draggable="false" /><img class="kl-l kl-l" style="left:47.866%;top:0.479%;width:23.826%;height:84.665%;--i:2" src="assets/logo/l.png" alt="" draggable="false" /><img class="kl-l kl-u" style="left:65.789%;top:1.757%;width:33.997%;height:84.505%;--i:3" src="assets/logo/u.png" alt="" draggable="false" /><img class="kl-l kl-texto" style="left:16.927%;top:72.684%;width:66.43%;height:26.837%;--i:4" src="assets/logo/texto.png" alt="" draggable="false" /><span class="kl-shine" aria-hidden="true"></span><i class="kl-tw" style="left:14%;top:10%;--d:0s"></i><i class="kl-tw" style="left:48%;top:4%;--d:0.7s"></i><i class="kl-tw" style="left:88%;top:12%;--d:1.4s"></i><i class="kl-tw" style="left:70%;top:58%;--d:2.1s"></i><i class="kl-tw" style="left:30%;top:60%;--d:2.8s"></i><i class="kl-tw" style="left:96%;top:64%;--d:3.5s"></i></span></span>
 </h1>
 <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
 <div class="actions">
@@ -2546,6 +2561,67 @@ loadStock();
     }, { rootMargin: "1500px 0px" });
     io2.observe(track);
   }
+})();
+// Logo animado: letras que rebotan, chispas con el mouse y polvo de hada con el dedo
+(function () {
+  const logo = document.querySelector("[data-klogo]");
+  if (!logo || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv = document.createElement("canvas"); cv.className = "kl-fx"; cv.setAttribute("aria-hidden", "true");
+  document.body.appendChild(cv);
+  const ctx = cv.getContext("2d"); let W = 0, H = 0, ps = [], run = false;
+  const size = () => { const d = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+  size(); addEventListener("resize", size);
+  const COLS = ["#fff7b8", "#ffd23f", "#ff7ac8", "#ffffff", "#c8a2ff", "#8fe8ff"];
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const emit = (x, y, n, dust) => {
+    for (let i = 0; i < n && ps.length < 320; i++) {
+      const a = rnd(0, 6.283), s = dust ? rnd(.2, 1.3) : rnd(1.5, 6);
+      ps.push({ x: x + rnd(-4, 4), y: y + rnd(-4, 4), vx: Math.cos(a) * s, vy: Math.sin(a) * s - (dust ? .3 : 1.2), g: dust ? .025 : .12, l: 1, dec: dust ? rnd(.008, .016) : rnd(.02, .04), r: dust ? rnd(2, 5.5) : rnd(3, 7), c: COLS[(Math.random() * COLS.length) | 0], ph: rnd(0, 6.28), dust });
+    }
+    if (!run) { run = true; requestAnimationFrame(tick); }
+  };
+  const star = (x, y, r) => { ctx.beginPath(); for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4, d = i % 2 ? r * .3 : r; ctx.lineTo(x + Math.cos(a) * d, y + Math.sin(a) * d); } ctx.closePath(); ctx.fill(); };
+  const tick = () => {
+    ctx.clearRect(0, 0, W, H); ctx.globalCompositeOperation = "lighter";
+    ps = ps.filter((p) => p.l > 0);
+    for (const p of ps) {
+      p.ph += .25; p.vy += p.g; p.x += p.vx + (p.dust ? Math.sin(p.ph) * .4 : 0); p.y += p.vy; p.vx *= .985; p.l -= p.dec;
+      const tw = p.dust ? .55 + .45 * Math.sin(p.ph * 2) : 1, a = Math.max(p.l, 0) * tw;
+      ctx.fillStyle = p.c; ctx.globalAlpha = a * .28; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 2.2, 0, 6.283); ctx.fill();
+      ctx.globalAlpha = a; star(p.x, p.y, p.r * (.5 + p.l * .6));
+    }
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
+    if (ps.length) requestAnimationFrame(tick); else { run = false; ctx.clearRect(0, 0, W, H); }
+  };
+  const pieces = Array.from(logo.querySelectorAll(".kl-l"));
+  const hop = (el) => { el.classList.remove("kl-hop"); void el.offsetWidth; el.classList.add("kl-hop"); setTimeout(() => el.classList.remove("kl-hop"), 750); };
+  const nearest = (x, y) => {
+    const r = logo.getBoundingClientRect(), fy = (y - r.top) / r.height;
+    let best = null, bd = 1e9;
+    for (const p of pieces) {
+      if (p.classList.contains("kl-texto") !== fy > .72) continue;
+      const b = p.getBoundingClientRect(), d = Math.abs(x - (b.left + b.width / 2));
+      if (d < bd) { bd = d; best = p; }
+    }
+    return best;
+  };
+  let last = 0, lastHop = null;
+  logo.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch") return;
+    emit(e.clientX, e.clientY, 3, false);
+    const n = performance.now(); if (n - last < 90) return; last = n;
+    const p = nearest(e.clientX, e.clientY); if (p && p !== lastHop) { lastHop = p; hop(p); }
+  });
+  logo.addEventListener("pointerleave", () => { lastHop = null; });
+  logo.addEventListener("pointerdown", (e) => { emit(e.clientX, e.clientY, e.pointerType === "touch" ? 26 : 34, e.pointerType === "touch"); const p = nearest(e.clientX, e.clientY); if (p) hop(p); });
+  // Dedo: polvo mágico en toda la portada (hero) y sobre el logo
+  addEventListener("touchmove", (e) => {
+    const t = e.touches[0]; if (!t) return;
+    const el = document.elementFromPoint(t.clientX, t.clientY);
+    if (el && el.closest(".hero")) emit(t.clientX, t.clientY, 3, true);
+  }, { passive: true });
+  // Ola de rebote cada cierto tiempo
+  setInterval(() => { if (document.hidden) return; pieces.forEach((p, i) => setTimeout(() => hop(p), i * 130)); }, 8000);
 })();
 </script>
 </body>
