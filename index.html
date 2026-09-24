@@ -326,10 +326,11 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
   z-index: 2;
   top: 0;
   right: 0;
-  width: 32%; max-width: 108px;
+  width: 20%; max-width: 64px;
   aspect-ratio: 4 / 3;
   background: url("assets/kalu-logo.png") right top / contain no-repeat;
   pointer-events: none;
+  opacity: .92;
   filter: drop-shadow(0 3px 4px rgba(32, 0, 38, .22));
 }
 .card:hover .image-wrap img { transform: scale(calc(var(--zoom, 1) + .03)); }
@@ -760,7 +761,10 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .mask-return-inner .explore-track { text-align: left; }
 }
 /* ===== Logo animado Kalú ===== */
-.klogo{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:clamp(2px,1vw,12px);width:fit-content;max-width:92vw;height:clamp(128px,17vw,244px);margin:4px auto 0;cursor:pointer;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 8px 8px rgba(62,0,71,.28))}
+.klogo{position:relative;display:flex;align-items:flex-end;justify-content:center;width:fit-content;max-width:92vw;height:clamp(128px,17vw,244px);margin:4px auto 0;cursor:pointer;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 8px 8px rgba(62,0,71,.28))}
+.klogo .kl-a{margin-left:clamp(-30px,-6.5vw,-12px)}
+.klogo .kl-l{margin-left:clamp(-26px,-5.5vw,-10px)}
+.klogo .kl-u{margin-left:clamp(-24px,-5vw,-9px)}
 .kl-l{position:relative;display:block;height:100%;width:auto;max-width:none;user-select:none;-webkit-user-drag:none;transform-origin:50% 90%;animation:kl-pop .95s calc(var(--i)*.16s + .1s) cubic-bezier(.3,1.4,.5,1) both,kl-idle 3.6s calc(var(--i)*.16s + 1.3s) ease-in-out infinite,kl-glow 5s calc(var(--i)*.5s + 1.6s) ease-in-out infinite}
 .kl-l.kl-hop{animation:kl-hop .7s cubic-bezier(.3,1.5,.5,1) 1,kl-idle 3.6s ease-in-out infinite}
 @keyframes kl-pop{0%{opacity:0;transform:translateY(-110%) scale(.3) rotate(-14deg)}45%{opacity:1;transform:translateY(6%) scale(1.14,.9) rotate(3deg)}65%{transform:translateY(-9%) scale(.96,1.06) rotate(-2deg)}82%{transform:translateY(2%) scale(1.02,.98)}100%{opacity:1;transform:none}}
