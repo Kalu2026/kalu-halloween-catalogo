@@ -326,7 +326,7 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .zoom-button { width: 100%; height: 40px; border: 1px solid rgba(255,255,255,.28); border-radius: 12px; color: #fff; background: rgba(255,255,255,.08); font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
 .zoom-button:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.5); transform: translateY(-2px); }
 .latex-card .image-wrap { background: #fff; }
-.latex-card { --zoom: 1.25; }
+.latex-card { --zoom: 1; }
 .latex-card .image-wrap img { padding: 0; }
 .material-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
 .material-catalog .section-heading { margin-bottom: 36px; }
@@ -337,13 +337,13 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .plush-card:hover .image-wrap img { transform: scale(1.03); }
 .pasta-card { max-width: 390px; }
 .pasta-card .image-wrap { background: #fff; }
-.pasta-card { --zoom: 1.25; }
+.pasta-card { --zoom: 1; }
 .pasta-card .image-wrap img { padding: 0; object-fit: contain; }
 .accessory-catalog { padding: 78px clamp(18px, 7vw, 110px) 84px; color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
 .accessory-catalog .section-heading p { color: var(--yellow); }
 .prop-card { max-width: 390px; }
 .prop-card .image-wrap { background: linear-gradient(145deg, #fff, #eae6df); }
-.prop-card { --zoom: 1.3; }
+.prop-card { --zoom: 1; }
 .prop-card .image-wrap img { padding: 0; object-fit: contain; }
 .wig-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
 .wig-catalog .section-heading { margin-bottom: 36px; }
@@ -355,8 +355,10 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .wig-group-heading p { margin: 0; color: #d8c3d5; font-size: .88rem; }
 .wig-card { max-width: 390px; }
 .wig-card .image-wrap { background: linear-gradient(145deg, #ffffff, #eaf2ff); }
-.wig-card { --zoom: 1.3; }
+.wig-card { --zoom: 1; }
 .wig-card .image-wrap img { padding: 0; object-fit: contain; object-position: center; }
+/* Máscaras, machetes y pelucas: formato 4:5 (foto completa, sin recortes). Disfraces: 9:16 */
+.latex-card .image-wrap, .plush-card .image-wrap, .pasta-card .image-wrap, .prop-card .image-wrap, .wig-card .image-wrap { aspect-ratio: 4 / 5; }
 .rental-card .image-wrap { aspect-ratio: 9 / 16; background: #fff; }
 .rental-card .image-wrap img { padding: 0; object-fit: cover; object-position: center top; transform: scale(1); }
 .rental-card:hover .image-wrap img { transform: scale(1.04); }
@@ -476,6 +478,7 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .mask-return-copy { margin: 15px 0 0; max-width: 620px; color: #decce0; line-height: 1.55; }
 .explore-track {
   display: flex;
+  align-items: flex-start;
   gap: 16px;
   margin: 26px 0 0;
   padding: 4px 2px 16px;
@@ -501,7 +504,8 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
   transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
 }
 .explore-item:hover, .explore-item:focus-visible { transform: translateY(-4px); border-color: var(--yellow); box-shadow: var(--shadow); outline: none; }
-.explore-item img { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: contain; background: #fff; -webkit-user-drag: none; user-select: none; }
+.explore-item img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: contain; background: #fff; -webkit-user-drag: none; user-select: none; }
+.explore-item.is-rental img { aspect-ratio: 9 / 16; object-fit: contain; }
 .explore-info { display: flex; flex-direction: column; gap: 5px; flex: 1; padding: 12px 14px 14px; }
 .explore-info h3 { margin: 0; font-size: 1.12rem; line-height: 1.1; }
 .explore-desc { color: #d8c3d5; font-size: .78rem; line-height: 1.4; }
@@ -1636,9 +1640,9 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <a class="explore-item" href="#mascaras-pasta"><img src="assets/pasta-01.jpg" alt="Máscaras de pasta" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de pasta</h3><span class="explore-desc">Acabados artesanales con mucho detalle.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#pelucas"><img src="assets/wig-long-blue-corner.png" alt="Pelucas" loading="lazy" draggable="false" /><div class="explore-info"><h3>Pelucas</h3><span class="explore-desc">Estilos largos y colores que roban miradas.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#accesorios"><img src="assets/prop-machete.jpg" alt="Accesorios" loading="lazy" draggable="false" /><div class="explore-info"><h3>Accesorios</h3><span class="explore-desc">Machetes y utilería para completar tu disfraz.</span><span class="explore-go">Ver productos →</span></div></a>
-<a class="explore-item" href="#alquiler-nino"><img src="assets/rental/dfn-01.jpg" alt="Disfraces de niño" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niño</h3><span class="explore-desc">Alquila disfraces completos con accesorios.</span><span class="explore-go">Ver productos →</span></div></a>
-<a class="explore-item" href="#alquiler-nina"><img src="assets/rental/dfna-01.jpg" alt="Disfraces de niña" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niña</h3><span class="explore-desc">Princesas, personajes y más para ellas.</span><span class="explore-go">Ver productos →</span></div></a>
-<a class="explore-item" href="#alquiler-adulto"><img src="assets/rental/dfa-01.jpg" alt="Disfraces de adulto" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de adulto</h3><span class="explore-desc">Disfraces para fiestas y eventos.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item is-rental" href="#alquiler-nino"><img src="assets/rental/dfn-01.jpg" alt="Disfraces de niño" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niño</h3><span class="explore-desc">Alquila disfraces completos con accesorios.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item is-rental" href="#alquiler-nina"><img src="assets/rental/dfna-01.jpg" alt="Disfraces de niña" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niña</h3><span class="explore-desc">Princesas, personajes y más para ellas.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item is-rental" href="#alquiler-adulto"><img src="assets/rental/dfa-01.jpg" alt="Disfraces de adulto" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de adulto</h3><span class="explore-desc">Disfraces para fiestas y eventos.</span><span class="explore-go">Ver productos →</span></div></a>
 </div>
 </div>
 </section>
