@@ -728,9 +728,12 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
   .cat-head { padding: 12px 14px; }
   .selection-fab { right: 12px; bottom: 12px; }
   .grid { scroll-snap-type: x mandatory; gap: 14px; }
-  .grid > .card { width: 100%; max-width: none; flex: 0 0 100%; scroll-snap-align: center; }
-  .carousel-wrap:has(> .grid)::before, .carousel-wrap:has(> .grid)::after { display: none; }
-  .rental-group .grid > .card { width: 68%; flex: 0 0 68%; scroll-snap-align: start; }
+  .grid::before, .grid::after { content: ""; flex: 0 0 calc(16% - 14px); }
+  .grid > .card { width: 68%; max-width: none; flex: 0 0 68%; scroll-snap-align: center; scroll-snap-stop: always; }
+  .explore-track::before, .explore-track::after { content: ""; flex: 0 0 calc((100% - min(62vw, 240px)) / 2 - 14px); }
+  .explore-item { scroll-snap-stop: always; }
+  .carousel-arrow { display: none; }
+  .carousel-wrap::before, .carousel-wrap::after { display: none; }
   /* Botones centrados y a todo el ancho en móvil */
   .actions, .selection-actions { flex-direction: column; align-items: stretch; }
   .actions .button,
@@ -2423,6 +2426,34 @@ loadStock();
   });
   // Si el buscador abre un producto, se quita el filtro para que siempre sea visible
   document.addEventListener("click", (e) => { if (e.target.closest(".search-hit")) groups.forEach((g) => g.filterReset()); }, true);
+})();
+
+// Precarga: las fotos de cada carrusel se piden antes de que la persona llegue a ellas
+(function () {
+  document.querySelectorAll(".grid").forEach((grid) => {
+    const warm = () => {
+      const cards = Array.from(grid.querySelectorAll(":scope > .card:not([hidden])"));
+      const w = (cards[0]?.getBoundingClientRect().width || 260) + 14;
+      const i = Math.round(grid.scrollLeft / w);
+      const n = Math.ceil(grid.clientWidth / w) + 3;
+      cards.slice(Math.max(0, i - 1), i + n).forEach((c) => {
+        const im = c.querySelector("img");
+        if (im && im.loading === "lazy") im.loading = "eager";
+      });
+    };
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { warm(); io.disconnect(); }
+    }, { rootMargin: "1500px 0px" });
+    io.observe(grid);
+    grid.addEventListener("scroll", warm, { passive: true });
+  });
+  const track = document.querySelector(".explore-track");
+  if (track) {
+    const io2 = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { track.querySelectorAll("img").forEach((im) => { im.loading = "eager"; }); io2.disconnect(); }
+    }, { rootMargin: "1500px 0px" });
+    io2.observe(track);
+  }
 })();
 </script>
 </body>
