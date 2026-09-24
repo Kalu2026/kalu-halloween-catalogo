@@ -248,7 +248,8 @@ h1 em { color: #51065e; font-style: normal; }
 }
 .catalog { padding: 84px clamp(18px, 7vw, 110px); background: radial-gradient(ellipse at 90% 0, rgba(109,29,101,.4), transparent 32%), linear-gradient(145deg, #16031e, #0b0212 67%); }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; max-width: 1250px; margin: 0 auto 34px; }
-.section-heading p { margin: 0 0 5px; color: var(--orange); font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.section-heading p { margin: 0 0 10px; color: var(--orange); font-family: "Baloo 2", Arial, sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; letter-spacing: -.02em; line-height: .95; text-transform: none; }
+.section-heading h2 { font-size: clamp(1.15rem, 2.1vw, 1.6rem); font-weight: 600; line-height: 1.2; letter-spacing: 0; color: #eadbe8; }
 h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter-spacing: -.04em; }
 .section-heading > span { max-width: 330px; color: #d8c3d5; font-size: .95rem; line-height: 1.5; }
 .carousel-wrap { position: relative; max-width: 1250px; margin: auto; }
@@ -368,6 +369,10 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .filter-chip[aria-pressed="true"] { background: var(--yellow); border-color: var(--yellow); color: var(--ink); }
 .rental-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
 .rental-catalog .section-heading { margin-bottom: 36px; }
+.rental-notice { display: flex; align-items: flex-start; gap: 12px; max-width: 1250px; margin: 0 auto 30px; padding: 14px 18px; border: 1px solid rgba(255,189,24,.5); border-left: 5px solid var(--orange); border-radius: 14px; background: rgba(241,90,11,.12); color: #ffe9c7; font-size: 1rem; line-height: 1.5; }
+.rental-notice strong { color: var(--yellow); }
+.modal-copy .modal-note { margin: -4px 0 14px; padding: 9px 12px; border-left: 4px solid var(--orange); border-radius: 8px; background: rgba(241,90,11,.12); color: #ffd9a3; font-size: .88rem; line-height: 1.45; }
+.modal-copy .modal-note[hidden] { display: none; }
 .wig-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
 .wig-catalog .section-heading { margin-bottom: 36px; }
 .wig-catalog .section-heading p { color: #50a2ff; }
@@ -558,12 +563,15 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .modal-actions-wpp { flex-direction: column; margin-top: 10px; }
 .modal-actions-wpp .button { width: 100%; }
 .selection-dialog { width: min(92vw, 580px); }
-.zoom-dialog { overflow: hidden; width: min(94vw, 720px); background: transparent; border: 0; box-shadow: none; }
+.zoom-dialog { overflow: hidden; width: min(96vw, 1000px); max-height: 96vh; max-height: 96dvh; background: transparent; border: 0; box-shadow: none; }
 .zoom-dialog::backdrop { background: rgba(8, 0, 14, .88); backdrop-filter: blur(6px); }
-.zoom-panel { position: relative; display: grid; place-items: center; min-height: 320px; padding: 20px; border-radius: 20px; background: radial-gradient(circle at 50% 30%, #2a0d34, #0d0214 78%); box-shadow: 0 28px 80px rgba(0,0,0,.58); }
-.zoom-panel img { width: 100%; max-height: 78vh; object-fit: contain; border-radius: 10px; }
-.zoom-panel .close { background: rgba(11, 2, 18, .78); }
-.zoom-caption { margin: 14px 0 0; color: #fff; font-family: "Baloo 2", Arial, sans-serif; font-size: 1.2rem; text-align: center; }
+.zoom-panel { position: relative; display: grid; place-items: center; min-height: 320px; padding: 14px; border-radius: 20px; background: radial-gradient(circle at 50% 30%, #2a0d34, #0d0214 78%); box-shadow: 0 28px 80px rgba(0,0,0,.58); }
+.zoom-stage { position: relative; width: 100%; height: min(72vh, 900px); height: min(72dvh, 900px); overflow: hidden; touch-action: none; cursor: zoom-in; border-radius: 12px; }
+.zoom-stage.is-zoomed { cursor: grab; }
+.zoom-stage img { display: block; width: 100%; height: 100%; object-fit: contain; transform-origin: 0 0; will-change: transform; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+.zoom-hint { margin: 4px 0 0; color: #cdb8cf; font-size: .82rem; text-align: center; }
+.zoom-panel .close { z-index: 3; background: rgba(11, 2, 18, .78); }
+.zoom-caption { margin: 10px 0 0; color: #fff; font-family: "Baloo 2", Arial, sans-serif; font-size: 1.2rem; text-align: center; }
 .selection-panel { position: relative; padding: clamp(28px, 5vw, 42px); color: #fff; background: linear-gradient(135deg, #190522, #0d0214); }
 .selection-panel h2 { margin: 6px 0 10px; }
 .selection-panel > p { margin: 0; color: #decce0; line-height: 1.5; }
@@ -1162,6 +1170,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 </div>
 <span>Disfraces completos con accesorios incluidos, para niños, niñas y adultos. Consulta tallas, fechas y precio por WhatsApp.</span>
 </div>
+<p class="rental-notice" role="note"><span aria-hidden="true">⚠️</span><span><strong>Aviso:</strong> los accesorios que acompañan cada disfraz pueden variar según la disponibilidad.</span></p>
 <div class="wig-groups">
 <section class="rental-group" aria-labelledby="alquiler-nino-title">
 <div class="wig-group-heading">
@@ -1393,9 +1402,9 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="image-wrap"><img src="assets/rental/dfna-19.jpg" alt="Disfraz de niña Aurora" loading="lazy" decoding="async" /><span class="code">DFNA-19</span></div>
 <div class="details"><div><h3>Aurora</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Aurora">🔍</button><button class="mini-button" aria-label="Ver disfraz Aurora">+</button></div>
 </article>
-<article class="card rental-card" data-name="Disfraz de niña Gatita de Halloween" data-code="DFNA-20" data-image="assets/rental/dfna-20.jpg" data-desc="Vestido negro y naranja a rayas con orejitas y moño, ideal para Halloween.">
-<div class="image-wrap"><img src="assets/rental/dfna-20.jpg" alt="Disfraz de niña Gatita de Halloween" loading="lazy" decoding="async" /><span class="code">DFNA-20</span></div>
-<div class="details"><div><h3>Gatita de Halloween</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Gatita de Halloween">🔍</button><button class="mini-button" aria-label="Ver disfraz Gatita de Halloween">+</button></div>
+<article class="card rental-card" data-name="Disfraz de niña Personaje de los Picapiedra" data-code="DFNA-20" data-image="assets/rental/dfna-20.jpg" data-desc="Disfraz inspirado en un personaje de Los Picapiedra.">
+<div class="image-wrap"><img src="assets/rental/dfna-20.jpg" alt="Disfraz de niña Personaje de los Picapiedra" loading="lazy" decoding="async" /><span class="code">DFNA-20</span></div>
+<div class="details"><div><h3>Personaje de los Picapiedra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Personaje de los Picapiedra">🔍</button><button class="mini-button" aria-label="Ver disfraz Personaje de los Picapiedra">+</button></div>
 </article>
 <article class="card rental-card" data-name="Disfraz de niña Jessie" data-code="DFNA-21" data-image="assets/rental/dfna-21.jpg" data-desc="Traje vaquero blanco y azul con sombrero y botas rojas, estilo cowgirl.">
 <div class="image-wrap"><img src="assets/rental/dfna-21.jpg" alt="Disfraz de niña Jessie" loading="lazy" decoding="async" /><span class="code">DFNA-21</span></div>
@@ -1461,9 +1470,9 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="image-wrap"><img src="assets/rental/dfna-36.jpg" alt="Disfraz de niña Vestido Osito" loading="lazy" decoding="async" /><span class="code">DFNA-36</span></div>
 <div class="details"><div><h3>Vestido Osito</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Vestido Osito">🔍</button><button class="mini-button" aria-label="Ver disfraz Vestido Osito">+</button></div>
 </article>
-<article class="card rental-card" data-name="Disfraz de niña Vestido Verde Floral" data-code="DFNA-37" data-image="assets/rental/dfna-37.jpg" data-desc="Vestido verde con estampado de flores blancas, fresco y sencillo.">
-<div class="image-wrap"><img src="assets/rental/dfna-37.jpg" alt="Disfraz de niña Vestido Verde Floral" loading="lazy" decoding="async" /><span class="code">DFNA-37</span></div>
-<div class="details"><div><h3>Vestido Verde Floral</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Vestido Verde Floral">🔍</button><button class="mini-button" aria-label="Ver disfraz Vestido Verde Floral">+</button></div>
+<article class="card rental-card" data-name="Disfraz de niña Tristeza (Intensamente)" data-code="DFNA-37" data-image="assets/rental/dfna-37.jpg" data-desc="Disfraz inspirado en Tristeza, la emoción azul de la película Intensamente.">
+<div class="image-wrap"><img src="assets/rental/dfna-37.jpg" alt="Disfraz de niña Tristeza (Intensamente)" loading="lazy" decoding="async" /><span class="code">DFNA-37</span></div>
+<div class="details"><div><h3>Tristeza (Intensamente)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Tristeza (Intensamente)">🔍</button><button class="mini-button" aria-label="Ver disfraz Tristeza (Intensamente)">+</button></div>
 </article>
 <article class="card rental-card" data-name="Disfraz de niña Capitana" data-code="DFNA-38" data-image="assets/rental/dfna-38.jpg" data-desc="Traje blanco de capitana con falda negra y gorra náutica.">
 <div class="image-wrap"><img src="assets/rental/dfna-38.jpg" alt="Disfraz de niña Capitana" loading="lazy" decoding="async" /><span class="code">DFNA-38</span></div>
@@ -1493,9 +1502,9 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="image-wrap"><img src="assets/rental/dfna-44.jpg" alt="Disfraz de niña Doncella Medieval" loading="lazy" decoding="async" /><span class="code">DFNA-44</span></div>
 <div class="details"><div><h3>Doncella Medieval</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Doncella Medieval">🔍</button><button class="mini-button" aria-label="Ver disfraz Doncella Medieval">+</button></div>
 </article>
-<article class="card rental-card" data-name="Disfraz de niña Murciélago Morado" data-code="DFNA-45" data-image="assets/rental/dfna-46.jpg" data-desc="Vestido de tutú morado brillante con diadema de murciélago, ideal para Halloween.">
-<div class="image-wrap"><img src="assets/rental/dfna-46.jpg" alt="Disfraz de niña Murciélago Morado" loading="lazy" decoding="async" /><span class="code">DFNA-45</span></div>
-<div class="details"><div><h3>Murciélago Morado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Murciélago Morado">🔍</button><button class="mini-button" aria-label="Ver disfraz Murciélago Morado">+</button></div>
+<article class="card rental-card" data-name="Disfraz de niña Kuromi" data-code="DFNA-45" data-image="assets/rental/dfna-46.jpg" data-desc="Disfraz inspirado en Kuromi: vestido de tutú morado brillante con diadema de orejas, ideal para Halloween.">
+<div class="image-wrap"><img src="assets/rental/dfna-46.jpg" alt="Disfraz de niña Kuromi" loading="lazy" decoding="async" /><span class="code">DFNA-45</span></div>
+<div class="details"><div><h3>Kuromi</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Kuromi">🔍</button><button class="mini-button" aria-label="Ver disfraz Kuromi">+</button></div>
 </article>
 <article class="card rental-card" data-name="Disfraz de niña Batichica Dorada" data-code="DFNA-46" data-image="assets/rental/dfna-47.jpg" data-desc="Vestido negro con capa, botas y antifaz, estilo superheroína murciélago.">
 <div class="image-wrap"><img src="assets/rental/dfna-47.jpg" alt="Disfraz de niña Batichica Dorada" loading="lazy" decoding="async" /><span class="code">DFNA-46</span></div>
@@ -1581,9 +1590,9 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <div class="image-wrap"><img src="assets/rental/dfna-67.jpg" alt="Disfraz de niña Conejita Blanca" loading="lazy" decoding="async" /><span class="code">DFNA-66</span></div>
 <div class="details"><div><h3>Conejita Blanca</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Conejita Blanca">🔍</button><button class="mini-button" aria-label="Ver disfraz Conejita Blanca">+</button></div>
 </article>
-<article class="card rental-card" data-name="Disfraz de niña La Chilindrina" data-code="DFNA-67" data-image="assets/rental/dfna-68.jpg" data-desc="Vestido verde y rojo con moño amarillo, inspirado en La Chilindrina del Chavo del 8.">
-<div class="image-wrap"><img src="assets/rental/dfna-68.jpg" alt="Disfraz de niña La Chilindrina" loading="lazy" decoding="async" /><span class="code">DFNA-67</span></div>
-<div class="details"><div><h3>La Chilindrina</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz La Chilindrina">🔍</button><button class="mini-button" aria-label="Ver disfraz La Chilindrina">+</button></div>
+<article class="card rental-card" data-name="Disfraz de niña Tristeza (Intensamente)" data-code="DFNA-67" data-image="assets/rental/dfna-68.jpg" data-desc="Disfraz inspirado en Tristeza, la emoción azul de la película Intensamente.">
+<div class="image-wrap"><img src="assets/rental/dfna-68.jpg" alt="Disfraz de niña Tristeza (Intensamente)" loading="lazy" decoding="async" /><span class="code">DFNA-67</span></div>
+<div class="details"><div><h3>Tristeza (Intensamente)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Tristeza (Intensamente)">🔍</button><button class="mini-button" aria-label="Ver disfraz Tristeza (Intensamente)">+</button></div>
 </article>
 <article class="card rental-card" data-name="Disfraz de niña La Chilindrina" data-code="DFNA-68" data-image="assets/rental/dfna-69.jpg" data-desc="Vestido verde y rojo con pantalón bombacho, inspirado en La Chilindrina del Chavo del 8.">
 <div class="image-wrap"><img src="assets/rental/dfna-69.jpg" alt="Disfraz de niña La Chilindrina" loading="lazy" decoding="async" /><span class="code">DFNA-68</span></div>
@@ -1600,6 +1609,10 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 <article class="card rental-card" data-name="Disfraz de niña Princesa Rosa con Corona" data-code="DFNA-71" data-image="assets/rental/dfna-72.jpg" data-desc="Vestido rosa con detalles dorados y corona a juego.">
 <div class="image-wrap"><img src="assets/rental/dfna-72.jpg" alt="Disfraz de niña Princesa Rosa con Corona" loading="lazy" decoding="async" /><span class="code">DFNA-71</span></div>
 <div class="details"><div><h3>Princesa Rosa con Corona</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz Princesa Rosa con Corona">🔍</button><button class="mini-button" aria-label="Ver disfraz Princesa Rosa con Corona">+</button></div>
+</article>
+<article class="card rental-card" data-name="Disfraz de niña La Chilindrina con borde rojo" data-code="DFNA-72" data-image="assets/rental/dfna-73.jpg" data-desc="Disfraz de La Chilindrina del Chavo del 8, con borde rojo en el vestido.">
+<div class="image-wrap"><img src="assets/rental/dfna-73.jpg" alt="Disfraz de niña La Chilindrina con borde rojo" loading="lazy" decoding="async" /><span class="code">DFNA-72</span></div>
+<div class="details"><div><h3>La Chilindrina con borde rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de disfraz La Chilindrina con borde rojo">🔍</button><button class="mini-button" aria-label="Ver disfraz La Chilindrina con borde rojo">+</button></div>
 </article>
 </div>
 </section>
@@ -1697,6 +1710,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <p class="eyebrow" id="modal-code"></p>
 <h2 id="modal-title"></h2>
 <p id="modal-desc"></p>
+<p class="modal-note" id="modal-note" hidden><strong>Aviso:</strong> los accesorios pueden variar según la disponibilidad.</p>
 <p class="modal-price" id="modal-price" hidden></p>
 <div class="modal-actions">
 <button class="button button-secondary" id="modal-add-selection" type="button">Agregar a mi selección</button>
@@ -1727,8 +1741,9 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 <dialog class="zoom-dialog" id="zoom-modal" aria-labelledby="zoom-caption">
 <div class="zoom-panel">
 <button class="close" id="close-zoom" type="button" aria-label="Cerrar imagen ampliada">×</button>
-<img id="zoom-image" src="" alt="" />
+<div class="zoom-stage" id="zoom-stage"><img id="zoom-image" src="" alt="" draggable="false" /></div>
 <p class="zoom-caption" id="zoom-caption"></p>
+<p class="zoom-hint">Toca la imagen para acercarla · arrastra para moverte · pellizca para más detalle</p>
 </div>
 </dialog>
 <script>
@@ -1737,6 +1752,7 @@ const modalImage = document.getElementById("modal-image");
 const modalTitle = document.getElementById("modal-title");
 const modalCode = document.getElementById("modal-code");
 const modalDesc = document.getElementById("modal-desc");
+const modalNote = document.getElementById("modal-note");
 const modalWhatsappPrincipal = document.getElementById("modal-whatsapp-principal");
 const modalWhatsappSecundaria = document.getElementById("modal-whatsapp-secundaria");
 const modalAddSelection = document.getElementById("modal-add-selection");
@@ -1918,6 +1934,7 @@ document.querySelectorAll(".card").forEach((card) => {
     modalTitle.textContent = name;
     modalCode.textContent = code;
     modalDesc.textContent = desc;
+    modalNote.hidden = !/^DF/.test(code);
     const info = stockOf(code);
     const soldOut = info.units === 0;
     const priceLine = stockText(code);
@@ -1953,6 +1970,74 @@ closeZoom.addEventListener("click", () => zoomModal.close());
 zoomModal.addEventListener("click", (event) => {
   if (event.target === zoomModal) zoomModal.close();
 });
+
+// Zoom de imagen: toque para acercar/alejar, pellizco, rueda y arrastre para moverse
+(function () {
+  const stage = document.getElementById("zoom-stage");
+  if (!stage) return;
+  const MAX = 4, TAP_ZOOM = 2.5;
+  let z = { s: 1, x: 0, y: 0 };
+  const pts = new Map();
+  let tap = null, lastDist = 0;
+  const apply = () => {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    z.s = Math.min(MAX, Math.max(1, z.s));
+    z.x = Math.min(0, Math.max(w - w * z.s, z.x));
+    z.y = Math.min(0, Math.max(h - h * z.s, z.y));
+    zoomImage.style.transform = `translate(${z.x}px, ${z.y}px) scale(${z.s})`;
+    stage.classList.toggle("is-zoomed", z.s > 1.01);
+  };
+  const zoomAt = (cx, cy, ns) => {
+    ns = Math.min(MAX, Math.max(1, ns));
+    const k = ns / z.s;
+    z.x = cx - (cx - z.x) * k;
+    z.y = cy - (cy - z.y) * k;
+    z.s = ns;
+    apply();
+  };
+  const local = (e) => { const r = stage.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  const reset = () => { z = { s: 1, x: 0, y: 0 }; pts.clear(); tap = null; apply(); };
+
+  stage.addEventListener("pointerdown", (e) => {
+    stage.setPointerCapture(e.pointerId);
+    pts.set(e.pointerId, local(e));
+    tap = pts.size === 1 ? { t: Date.now(), x: e.clientX, y: e.clientY, moved: false } : null;
+    if (pts.size === 2) { const [a, b] = [...pts.values()]; lastDist = Math.hypot(a.x - b.x, a.y - b.y); }
+  });
+  stage.addEventListener("pointermove", (e) => {
+    if (!pts.has(e.pointerId)) return;
+    const prev = pts.get(e.pointerId), cur = local(e);
+    pts.set(e.pointerId, cur);
+    if (tap && Math.hypot(e.clientX - tap.x, e.clientY - tap.y) > 8) tap.moved = true;
+    if (pts.size === 2) {
+      const [a, b] = [...pts.values()];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      if (lastDist) zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, z.s * (dist / lastDist));
+      lastDist = dist;
+    } else if (pts.size === 1 && z.s > 1) {
+      z.x += cur.x - prev.x;
+      z.y += cur.y - prev.y;
+      apply();
+    }
+  });
+  const end = (e) => {
+    const wasTap = tap && !tap.moved && Date.now() - tap.t < 350 && pts.size === 1 && e.type === "pointerup";
+    const at = local(e);
+    pts.delete(e.pointerId);
+    lastDist = 0;
+    if (wasTap) { if (z.s > 1.01) { z = { s: 1, x: 0, y: 0 }; apply(); } else zoomAt(at.x, at.y, TAP_ZOOM); }
+    tap = null;
+  };
+  stage.addEventListener("pointerup", end);
+  stage.addEventListener("pointercancel", end);
+  stage.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const at = local(e);
+    zoomAt(at.x, at.y, z.s * (e.deltaY < 0 ? 1.25 : 0.8));
+  }, { passive: false });
+  zoomModal.addEventListener("close", reset);
+  window.addEventListener("resize", apply);
+})();
 modalAddSelection.addEventListener("click", () => {
   if (!activeProduct || isSelected(activeProduct)) return;
   selectedProducts.push(activeProduct);
