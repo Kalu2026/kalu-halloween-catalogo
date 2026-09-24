@@ -2277,16 +2277,25 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
     });
     return thumbCache[src];
   };
+  // Recuerda qué miniaturas ya se resolvieron o no existen, para no repetir descargas ni errores 404
+  const thumbReady = {};
+  const thumbMissing = new Set();
   const applyThumbs = () => {
     box.querySelectorAll("img[data-src]").forEach((el) => {
       const original = el.dataset.src;
+      if (thumbReady[original]) { el.src = thumbReady[original]; return; }
       // 1) miniatura ligera y ya centrada: assets/thumbs/<mismo-nombre>.jpg
       const thumb = original.replace(/^(?:.*\/)?([^\/]+)\.[a-z0-9]+$/i, "assets/thumbs/$1.jpg");
-      // 2) si no existe, se recorta y centra al vuelo desde la foto original
-      el.onerror = () => {
+      // 2) si no existe, se muestra la foto original de inmediato y luego se cambia por el recorte centrado
+      const useOriginal = () => {
         el.onerror = null;
-        centeredThumb(original).then((url) => { if (el.isConnected) el.src = url; });
+        el.onload = null;
+        el.src = original;
+        centeredThumb(original).then((url) => { thumbReady[original] = url; if (el.isConnected) el.src = url; });
       };
+      if (thumbMissing.has(thumb)) { useOriginal(); return; }
+      el.onload = () => { if ((el.currentSrc || el.src).indexOf("assets/thumbs/") !== -1) thumbReady[original] = thumb; };
+      el.onerror = () => { thumbMissing.add(thumb); useOriginal(); };
       el.src = thumb;
     });
   };
