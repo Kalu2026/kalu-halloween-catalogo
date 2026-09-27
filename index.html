@@ -38,15 +38,15 @@
 />
 <style>
 :root {
-  --ink: #0b0212;
-  --violet: #42115e;
-  --purple: #74206e;
-  --fuchsia: #a71c65;
-  --orange: #f15a0b;
-  --yellow: #ffbd18;
-  --blue: #68246f;
-  --green: #9b3920;
-  --paper: #11031b;
+  --ink: #07010c;
+  --violet: #32103f;
+  --purple: #5a174f;
+  --fuchsia: #74133f;
+  --orange: #8f3008;
+  --yellow: #a2760f;
+  --blue: #3f365b;
+  --green: #246b3d;
+  --paper: #09010f;
   --shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
 }
 * { box-sizing: border-box; }
@@ -154,136 +154,6 @@ body {
 }
 
 /* Todo el contenido queda encima del fondo */
-
-/* ===== DECORACIÓN HALLOWEEN: NUBES + BRUJA ESTÁTICA ===== */
-/* Las nubes quedan un poco elevadas y fuera de un marco recortado. */
-.kalu-bottom-clouds {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 24vh;
-  min-height: 130px;
-  z-index: 1;
-  pointer-events: none;
-  overflow: visible;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate3d(0, 28px, 0);
-  transition: opacity 1.8s cubic-bezier(.22,.61,.36,1), transform 2.2s cubic-bezier(.22,.61,.36,1), visibility 0s linear 1.8s;
-  will-change: opacity, transform;
-}
-
-.kalu-bottom-clouds.is-visible {
-  opacity: .78;
-  visibility: visible;
-  transform: translate3d(0, 0, 0);
-  transition-delay: 0s;
-}
-
-.kalu-bottom-clouds img {
-  position: absolute;
-  left: 50%;
-  bottom: 7vh;
-  width: max(112vw, 1350px);
-  height: auto;
-  max-width: none;
-  transform: translateX(-50%);
-  opacity: .70;
-  filter: saturate(.82) brightness(.82);
-  animation: kaluCloudLevitate 7.5s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes kaluCloudLevitate {
-  0%, 100% { transform: translate3d(-50%, 0, 0) scale(1.01); }
-  50% { transform: translate3d(-50%, -9px, 0) scale(1.02); }
-}
-
-/* Bruja fija en una esquina: solo levita, no cruza la pantalla. */
-.kalu-static-witch {
-  position: fixed;
-  left: clamp(10px, 3vw, 42px);
-  right: auto;
-  bottom: clamp(7vh, 9vh, 13vh);
-  width: clamp(118px, 13vw, 205px);
-  z-index: 6;
-  pointer-events: auto;
-  cursor: pointer;
-  touch-action: manipulation;
-  opacity: .96;
-  will-change: transform;
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.38)) drop-shadow(0 0 12px rgba(166,92,255,.12));
-  animation: kaluWitchLevitate 4.8s ease-in-out infinite;
-}
-
-.kalu-static-witch img {
-  display: block;
-  width: 100%;
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-}
-
-/* Murciélagos ligeros: nacen al tocar la bruja y se desvanecen solos. */
-.kalu-bat-burst {
-  position: fixed;
-  z-index: 90;
-  pointer-events: none;
-  font-size: 13px;
-  line-height: 1;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
-  animation: kaluBatFly 1.25s cubic-bezier(.2,.75,.3,1) forwards;
-  will-change: transform, opacity;
-}
-@keyframes kaluBatFly {
-  0% { opacity: 0; transform: translate3d(0, 8px, 0) scale(.55) rotate(0deg); }
-  12% { opacity: 1; }
-  70% { opacity: .82; }
-  100% { opacity: 0; transform: translate3d(var(--bx), var(--by), 0) scale(.9) rotate(var(--br)); }
-}
-@media (max-width: 700px) {
-  .kalu-static-witch {
-    left: 8px;
-    right: auto;
-    bottom: 9vh;
-    width: 112px;
-  }
-}
-
-.kalu-static-witch::after {
-  content: "";
-  position: absolute;
-  inset: 24% 7% 5% 7%;
-  background: radial-gradient(ellipse at center, rgba(121,71,180,.13), transparent 68%);
-  filter: blur(16px);
-  z-index: -1;
-}
-
-@keyframes kaluWitchLevitate {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1deg); }
-  50% { transform: translate3d(0, -13px, 0) rotate(1deg); }
-}
-
-@media (max-width: 700px) {
-  .kalu-bottom-clouds {
-    bottom: 0;
-    height: 20vh;
-    min-height: 105px;
-  }
-  .kalu-bottom-clouds img { width: 150vw; bottom: 6vh; }
-  .kalu-static-witch {
-    left: 8px;
-    right: auto;
-    bottom: 9vh;
-    width: 112px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .kalu-static-witch { animation: none; }
-}
 
 .shell {
   position: relative;
@@ -1269,15 +1139,7 @@ body.kalu-ready>.shell{opacity:1}
 </div>
 
 <!-- Nubes Halloween elevadas, sin recuadro de recorte -->
-<div class="kalu-bottom-clouds" aria-hidden="true">
-  <img src="assets/nubes-halloween.webp" alt="">
-</div>
-
 <!-- Bruja estática: levita suavemente en la esquina, sin cruzar la página -->
-<div class="kalu-static-witch" aria-hidden="true">
-  <img src="assets/bruja-derecha.webp" alt="">
-</div>
-
 <div class="scroll-gradient-bg" aria-hidden="true">
   <div class="kalu-bg-layer kalu-bg-a"></div>
   <div class="kalu-bg-layer kalu-bg-b"></div>
@@ -3382,63 +3244,7 @@ loadStock();
 </script>
 
 <script>
-/* ===== BRUJA: 3 murciélagos pequeños por toque ===== */
-(function () {
-  const witch = document.querySelector('.kalu-static-witch');
-  if (!witch) return;
-  let lastTouch = 0;
-  const burst = () => {
-    const now = performance.now();
-    if (now - lastTouch < 180) return;
-    lastTouch = now;
-    const r = witch.getBoundingClientRect();
-    const x = r.left + r.width * .56;
-    const y = r.top + r.height * .34;
-    const dirs = [
-      { x: -58, y: -58, r: -12 },
-      { x: 8, y: -78, r: 8 },
-      { x: 66, y: -48, r: 14 }
-    ];
-    dirs.forEach((d, i) => {
-      const bat = document.createElement('span');
-      bat.className = 'kalu-bat-burst';
-      bat.textContent = '🦇';
-      bat.style.left = `${x + (i - 1) * 4}px`;
-      bat.style.top = `${y}px`;
-      bat.style.setProperty('--bx', `${d.x}px`);
-      bat.style.setProperty('--by', `${d.y}px`);
-      bat.style.setProperty('--br', `${d.r}deg`);
-      bat.style.animationDelay = `${i * 45}ms`;
-      document.body.appendChild(bat);
-      setTimeout(() => bat.remove(), 1500);
-    });
-  };
-  witch.addEventListener('pointerdown', burst, { passive: true });
-})();
-</script>
 
-<script>
-/* ===== NUBES: aparecen suavemente solo al llegar al final ===== */
-(function () {
-  const clouds = document.querySelector('.kalu-bottom-clouds');
-  if (!clouds) return;
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const y = window.scrollY || window.pageYOffset || 0;
-    // Solo se muestran en la última zona de la página, no durante el catálogo.
-    clouds.classList.toggle('is-visible', y >= max - Math.max(220, window.innerHeight * 0.72));
-  };
-  const requestUpdate = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(update);
-  };
-  update();
-  window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', requestUpdate, { passive: true });
-})();
 </script>
 
 <script>
@@ -3454,15 +3260,15 @@ loadStock();
      lentamente de combinación. Los estados vecinos están pensados
      para mezclarse sin saltos bruscos. */
   const palettes = [
-    ["#245d4a", "#244d79", "#42115e"],
-    ["#3d754c", "#315b82", "#74206e"],
-    ["#ffbd18", "#f15a0b", "#74206e"],
-    ["#f58b12", "#d52a72", "#42115e"],
-    ["#f15a0b", "#a71c65", "#74206e"],
-    ["#a71c65", "#74206e", "#68246f"],
-    ["#74206e", "#4e477b", "#315f70"],
-    ["#3f7b63", "#2d6674", "#5c7c45"],
-    ["#245d4a", "#315f70", "#42115e"]
+    ["#1d5639", "#203f64", "#32103f"],
+    ["#2d6840", "#294c6d", "#5a174f"],
+    ["#a2760f", "#8f3008", "#5a174f"],
+    ["#9b560c", "#9e2454", "#32103f"],
+    ["#8f3008", "#74133f", "#5a174f"],
+    ["#74133f", "#5a174f", "#303457"],
+    ["#5a174f", "#3b375f", "#244c58"],
+    ["#2d6840", "#24566a", "#415b34"],
+    ["#1d5639", "#244c58", "#32103f"]
   ];
 
   const gradient = (p) => `
