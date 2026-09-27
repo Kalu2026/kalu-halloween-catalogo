@@ -59,411 +59,6 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
-
-/* ===== FONDO KALÚ — TRANSICIÓN LENTA + EFECTO AGUA SUTIL ===== */
-html {
-  background: #0b0212;
-}
-
-body {
-  position: relative;
-  min-height: 100%;
-  overflow-x: hidden;
-  background: transparent !important;
-}
-
-/* Fondo principal */
-.scroll-gradient-bg {
-  position: fixed;
-  inset: -8%;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      circle at var(--water-x1) var(--water-y1),
-      hsla(var(--bg-h1), 92%, 64%, .40),
-      transparent 36%
-    ),
-    radial-gradient(
-      circle at var(--water-x2) var(--water-y2),
-      hsla(var(--bg-h2), 88%, 58%, .30),
-      transparent 43%
-    ),
-    radial-gradient(
-      circle at var(--water-x3) var(--water-y3),
-      hsla(var(--bg-h3), 90%, 56%, .27),
-      transparent 47%
-    ),
-    linear-gradient(
-      135deg,
-      hsl(var(--bg-h1), 88%, var(--bg-l1)) 0%,
-      hsl(var(--bg-h2), 86%, var(--bg-l2)) 48%,
-      hsl(var(--bg-h3), 88%, var(--bg-l3)) 100%
-    );
-  will-change: background, transform;
-  transform: translate3d(0, 0, 0);
-}
-
-/* Ondas de color muy lentas, como reflejos sobre agua */
-.scroll-gradient-bg::before,
-.scroll-gradient-bg::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  pointer-events: none;
-  border-radius: 45%;
-}
-
-.scroll-gradient-bg::before {
-  background:
-    radial-gradient(
-      ellipse 55% 28% at 25% 35%,
-      hsla(var(--bg-h2), 95%, 68%, .13),
-      transparent 68%
-    ),
-    radial-gradient(
-      ellipse 48% 25% at 76% 68%,
-      hsla(var(--bg-h1), 95%, 65%, .12),
-      transparent 70%
-    );
-  filter: blur(22px);
-  mix-blend-mode: screen;
-  animation: kaluWaterDrift 24s ease-in-out infinite alternate;
-}
-
-.scroll-gradient-bg::after {
-  background:
-    radial-gradient(
-      ellipse 52% 18% at 65% 25%,
-      hsla(var(--bg-h3), 95%, 70%, .10),
-      transparent 72%
-    ),
-    radial-gradient(
-      ellipse 42% 22% at 30% 78%,
-      hsla(var(--bg-h2), 90%, 64%, .09),
-      transparent 72%
-    );
-  filter: blur(30px);
-  mix-blend-mode: screen;
-  animation: kaluWaterDriftReverse 31s ease-in-out infinite alternate;
-}
-
-@keyframes kaluWaterDrift {
-  0% {
-    transform: translate3d(-3%, -1%, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(2%, 3%, 0) scale(1.045);
-  }
-  100% {
-    transform: translate3d(4%, -2%, 0) scale(1.02);
-  }
-}
-
-@keyframes kaluWaterDriftReverse {
-  0% {
-    transform: translate3d(4%, 2%, 0) scale(1.03);
-  }
-  50% {
-    transform: translate3d(-2%, -3%, 0) scale(1.06);
-  }
-  100% {
-    transform: translate3d(-4%, 1%, 0) scale(1.02);
-  }
-}
-
-/* Todo el contenido queda encima del fondo */
-
-/* ===== DECORACIÓN HALLOWEEN: NUBES + BRUJA ===== */
-
-/* Las nubes aparecen solamente en la zona final de la página. */
-.kalu-bottom-clouds {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -18px;
-  height: min(30vw, 420px);
-  overflow: hidden;
-  z-index: 3;
-  pointer-events: none;
-  opacity: .78;
-  transform: translateZ(0);
-}
-
-.kalu-bottom-clouds img {
-  position: absolute;
-  left: 50%;
-  bottom: -5%;
-  width: max(115vw, 1400px);
-  height: auto;
-  max-width: none;
-  transform: translateX(-50%);
-  opacity: .72;
-  filter: saturate(.82) brightness(.82);
-  animation: kaluCloudFloat 13s ease-in-out infinite alternate;
-}
-
-@keyframes kaluCloudFloat {
-  0% {
-    transform: translate3d(-50%, 7px, 0) scale(1.02);
-  }
-  100% {
-    transform: translate3d(-48%, -10px, 0) scale(1.045);
-  }
-}
-
-/* Segunda copia muy sutil para dar profundidad de niebla. */
-.kalu-bottom-clouds::after {
-  content: "";
-  position: absolute;
-  left: -8%;
-  right: -8%;
-  bottom: 3%;
-  height: 42%;
-  border-radius: 50%;
-  background: rgba(90, 78, 125, .10);
-  filter: blur(30px);
-  animation: kaluMistFloat 18s ease-in-out infinite alternate;
-}
-
-@keyframes kaluMistFloat {
-  0% { transform: translateX(-2%) scaleX(1); }
-  100% { transform: translateX(3%) scaleX(1.08); }
-}
-
-/* Bruja: inicialmente fuera de pantalla.
-   JS controla su recorrido según el scroll. */
-.kalu-scroll-witch {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: clamp(170px, 19vw, 300px);
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0;
-  will-change: transform, opacity;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
-}
-
-.kalu-scroll-witch img {
-  display: block;
-  width: 100%;
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* Un pequeño balanceo para que parezca que vuela. */
-.kalu-scroll-witch::after {
-  content: "";
-  position: absolute;
-  inset: 20% 5% 5% 5%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(121, 71, 180, .16),
-    transparent 68%
-  );
-  filter: blur(18px);
-  z-index: -1;
-}
-
-/* En pantallas pequeñas reducimos un poco el tamaño. */
-@media (max-width: 700px) {
-  .kalu-bottom-clouds {
-    height: 25vh;
-    bottom: -8px;
-  }
-
-  .kalu-bottom-clouds img {
-    width: 170vw;
-  }
-
-  .kalu-scroll-witch {
-    width: 145px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .kalu-bottom-clouds img,
-  .kalu-bottom-clouds::after {
-    animation: none;
-  }
-}
-
-.shell {
-  position: relative;
-  z-index: 1;
-}
-
-/* Un solo fondo continuo, sin cortes entre páginas/secciones */
-.hero,
-.categories,
-.catalog,
-.material-catalog,
-.accessory-catalog,
-.wig-catalog,
-.rental-catalog,
-.mask-return,
-.contact {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-.hero::before,
-.hero::after,
-.categories::before,
-.categories::after,
-.catalog::before,
-.catalog::after,
-.material-catalog::before,
-.material-catalog::after,
-.accessory-catalog::before,
-.accessory-catalog::after,
-.wig-catalog::before,
-.wig-catalog::after,
-.rental-catalog::before,
-.rental-catalog::after,
-.mask-return::before,
-.mask-return::after,
-.contact::before,
-.contact::after {
-  background-image: none !important;
-}
-
-.nav {
-  position: relative;
-  z-index: 30;
-}
-
-.card,
-.product-card,
-.category-card,
-.contact-card,
-.modal,
-.search-panel,
-.filter-panel {
-  position: relative;
-  z-index: 2;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scroll-gradient-bg::before,
-  .scroll-gradient-bg::after {
-    animation: none;
-  }
-}
-.shell {
-  position: relative;
-  z-index: 1;
-}
-
-/* Un solo fondo continuo: se eliminan los bloques de fondo de las secciones. */
-.hero,
-.categories,
-.catalog,
-.material-catalog,
-.accessory-catalog,
-.wig-catalog,
-.rental-catalog,
-.mask-return,
-.contact {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-.hero::before,
-.hero::after,
-.categories::before,
-.categories::after,
-.catalog::before,
-.catalog::after,
-.material-catalog::before,
-.material-catalog::after,
-.accessory-catalog::before,
-.accessory-catalog::after,
-.wig-catalog::before,
-.wig-catalog::after,
-.rental-catalog::before,
-.rental-catalog::after,
-.mask-return::before,
-.mask-return::after,
-.contact::before,
-.contact::after {
-  background-image: none !important;
-}
-
-/* El menú permanece perfectamente legible sobre el fondo superior. */
-.nav {
-  position: relative;
-  z-index: 30;
-}
-
-.card,
-.product-card,
-.category-card,
-.contact-card,
-.modal,
-.search-panel,
-.filter-panel {
-  position: relative;
-  z-index: 2;
-}
-
-.shell {
-  position: relative;
-  z-index: 1;
-}
-
-/* Eliminamos los fondos propios de las secciones para que NO haya cortes. */
-.hero,
-.categories,
-.catalog,
-.material-catalog,
-.accessory-catalog,
-.wig-catalog,
-.rental-catalog,
-.mask-return,
-.contact {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-/* También anulamos overlays decorativos que puedan formar bloques de color. */
-.hero::before,
-.hero::after,
-.categories::before,
-.categories::after,
-.catalog::before,
-.catalog::after,
-.material-catalog::before,
-.material-catalog::after,
-.accessory-catalog::before,
-.accessory-catalog::after,
-.wig-catalog::before,
-.wig-catalog::after,
-.rental-catalog::before,
-.rental-catalog::after,
-.mask-return::before,
-.mask-return::after,
-.contact::before,
-.contact::after {
-  background-image: none !important;
-}
-
-/* Tarjetas y elementos que sí deben conservar su propio fondo. */
-.nav,
-.card,
-.product-card,
-.category-card,
-.contact-card,
-.modal,
-.search-panel,
-.filter-panel {
-  position: relative;
-  z-index: 2;
-}
-
 .shell { overflow: hidden; }
 .nav {
   position: absolute;
@@ -1207,20 +802,191 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 @media (max-width:570px){.klogo{height:clamp(72px,22vw,120px)}}
 @media (prefers-reduced-motion:reduce){.kl-l,.kl-tw{animation:none!important}.kl-tw{display:none}}
 </style>
+<style>
+
+/* =========================================================
+   KALÚ HALLOWEEN — FONDO LIVIANO + DECORACIÓN
+   Cambio de color por tramos de scroll (no RGB continuo).
+   ========================================================= */
+html, body {
+  background: #0b0212;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Una sola capa fija: muy barata para móvil. */
+.kalu-scroll-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(255,255,255,.08), transparent 34%),
+    radial-gradient(circle at 84% 76%, rgba(255,255,255,.06), transparent 38%),
+    linear-gradient(135deg, #164a3d 0%, #123c52 48%, #42115e 100%);
+  transition: background 4.8s cubic-bezier(.22,.61,.36,1);
+}
+
+/* Reflejos estáticos con movimiento MUY lento: no se recalculan con scroll. */
+.kalu-scroll-bg::before,
+.kalu-scroll-bg::after {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  filter: blur(30px);
+  opacity: .32;
+  will-change: transform;
+}
+
+.kalu-scroll-bg::before {
+  background:
+    radial-gradient(ellipse 42% 18% at 20% 28%, rgba(255,189,24,.22), transparent 70%),
+    radial-gradient(ellipse 38% 20% at 76% 68%, rgba(115,32,110,.20), transparent 72%);
+  animation: kaluWaterSlow 38s ease-in-out infinite alternate;
+}
+
+.kalu-scroll-bg::after {
+  background:
+    radial-gradient(ellipse 40% 17% at 70% 22%, rgba(33,180,150,.16), transparent 70%),
+    radial-gradient(ellipse 36% 18% at 30% 82%, rgba(241,90,11,.14), transparent 72%);
+  animation: kaluWaterSlowReverse 46s ease-in-out infinite alternate;
+}
+
+@keyframes kaluWaterSlow {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); }
+  to   { transform: translate3d(3%, 2%, 0) scale(1.035); }
+}
+@keyframes kaluWaterSlowReverse {
+  from { transform: translate3d(3%, 1%, 0) scale(1.02); }
+  to   { transform: translate3d(-3%, -2%, 0) scale(1.045); }
+}
+
+/* El contenido está encima del fondo. */
+.shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* Quitamos los fondos opacos de las secciones para que no haya cortes. */
+.hero,
+.categories,
+.catalog,
+.material-catalog,
+.accessory-catalog,
+.wig-catalog,
+.rental-catalog,
+.mask-return,
+.contact {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Decoración: nubes al final. */
+.kalu-bottom-clouds {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(34vw, 460px);
+  overflow: hidden;
+  z-index: 4;
+  pointer-events: none;
+  opacity: .82;
+}
+
+.kalu-bottom-clouds img {
+  position: absolute;
+  left: 50%;
+  bottom: -5%;
+  width: max(120vw, 1450px);
+  max-width: none;
+  height: auto;
+  transform: translateX(-50%);
+  opacity: .76;
+  filter: saturate(.82) brightness(.82);
+  animation: kaluCloudsFloat 22s ease-in-out infinite alternate;
+}
+
+@keyframes kaluCloudsFloat {
+  from { transform: translate3d(-50%, 8px, 0) scale(1.01); }
+  to   { transform: translate3d(-47%, -8px, 0) scale(1.035); }
+}
+
+/* Bruja: aparece desde la segunda pantalla y hace ida/vuelta. */
+.kalu-witch-flight {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: clamp(155px, 17vw, 270px);
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.48));
+  transform-origin: center center;
+}
+
+.kalu-witch-flight img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (max-width: 700px) {
+  .kalu-scroll-bg::before,
+  .kalu-scroll-bg::after {
+    opacity: .22;
+    filter: blur(24px);
+  }
+
+  .kalu-bottom-clouds {
+    height: 27vh;
+  }
+
+  .kalu-bottom-clouds img {
+    width: 175vw;
+  }
+
+  .kalu-witch-flight {
+    width: 128px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kalu-scroll-bg {
+    transition: none;
+  }
+  .kalu-scroll-bg::before,
+  .kalu-scroll-bg::after,
+  .kalu-bottom-clouds img {
+    animation: none;
+  }
+}
+
+</style>
 </head>
 <body>
 
-<!-- Nubes Halloween flotando al final de la página -->
+<!-- Fondo global ligero -->
+<div class="kalu-scroll-bg" aria-hidden="true"></div>
+
+<!-- Nubes transparentes al final -->
 <div class="kalu-bottom-clouds" aria-hidden="true">
   <img src="assets/kalu-clouds-halloween.webp" alt="">
 </div>
 
-<!-- Bruja volando desde la segunda pantalla hasta el final -->
-<div class="kalu-scroll-witch" aria-hidden="true">
+<!-- Bruja: empieza en la segunda pantalla y cruza ida/vuelta -->
+<div class="kalu-witch-flight" aria-hidden="true">
   <img src="assets/kalu-witch-flying.webp" alt="">
 </div>
 
-<div class="scroll-gradient-bg" aria-hidden="true"></div>
 <div class="shell">
 <nav class="nav" aria-label="Navegación principal">
 <a href="#inicio" aria-label="Inicio Kalú Accesorios"><img src="kalu-logo.png" alt="Kalú Accesorios" /></a>
@@ -3244,207 +3010,128 @@ loadStock();
 </script>
 
 <script>
-/* ===== KALÚ: COLOR MÁS LENTO + MOVIMIENTO DE AGUA ===== */
+/* =========================================================
+   KALÚ — COLOR POR TRAMOS + BRUJA DE IDA Y VUELTA
+   Sin requestAnimationFrame continuo: optimizado para móvil.
+   ========================================================= */
 (function () {
   const root = document.documentElement;
+  const bg = document.querySelector(".kalu-scroll-bg");
+  const witch = document.querySelector(".kalu-witch-flight");
 
-  const stops = [
-    { p: 0.00, h1: 140, h2: 205, h3: 286 },
-    { p: 0.13, h1: 205, h2: 286, h3: 45 },
-    { p: 0.27, h1: 286, h2: 45,  h3: 19  },
-    { p: 0.40, h1: 45,  h2: 19,  h3: 331 },
-    { p: 0.54, h1: 19,  h2: 331, h3: 307 },
-    { p: 0.68, h1: 331, h2: 307, h3: 286 },
-    { p: 0.82, h1: 307, h2: 140, h3: 175 },
-    { p: 1.00, h1: 140, h2: 165, h3: 125 }
+  /* Combinaciones de los colores base de Kalú.
+     Cada cambio sucede después de ~3.5 alturas de pantalla. */
+  const palettes = [
+    ["#164a3d", "#123c52", "#42115e"], // verde + azul + violeta
+    ["#ffbd18", "#f15a0b", "#74206e"], // amarillo + naranja + morado
+    ["#a71c65", "#42115e", "#68246f"], // fucsia + violeta + azul
+    ["#f15a0b", "#a71c65", "#42115e"], // naranja + fucsia + violeta
+    ["#74206e", "#68246f", "#164a3d"], // morado + azul + verde
+    ["#ffbd18", "#a71c65", "#42115e"], // amarillo + fucsia + violeta
+    ["#123c52", "#74206e", "#f15a0b"], // azul + morado + naranja
+    ["#164a3d", "#ffbd18", "#74206e"]  // verde + amarillo + morado
   ];
 
-  function clamp(v, min, max) {
-    return Math.max(min, Math.min(max, v));
+  let paletteIndex = Math.floor(Math.random() * palettes.length);
+  let lastStep = -1;
+  let lastScrollY = window.scrollY;
+  let scrollRaf = 0;
+
+  function setPalette(index) {
+    const p = palettes[index];
+    bg.style.background =
+      "radial-gradient(circle at 16% 12%, rgba(255,255,255,.08), transparent 34%)," +
+      "radial-gradient(circle at 84% 76%, rgba(255,255,255,.06), transparent 38%)," +
+      "linear-gradient(135deg, " + p[0] + " 0%, " + p[1] + " 48%, " + p[2] + " 100%)";
   }
 
-  function smooth(t) {
-    return t * t * (3 - 2 * t);
-  }
+  /* Empieza con una combinación distinta cada carga. */
+  setPalette(paletteIndex);
 
-  function interpolate(progress, key) {
-    for (let i = 0; i < stops.length - 1; i++) {
-      const a = stops[i];
-      const b = stops[i + 1];
+  function updateColor() {
+    const vh = Math.max(1, window.innerHeight);
 
-      if (progress <= b.p) {
-        const t = smooth(
-          clamp((progress - a.p) / (b.p - a.p), 0, 1)
-        );
-        return a[key] + (b[key] - a[key]) * t;
-      }
+    /* Un color nuevo cada 3.5 pantallas aprox. */
+    const step = Math.floor(window.scrollY / (vh * 3.5));
+
+    if (step !== lastStep) {
+      lastStep = step;
+
+      /* Avanza a otro color, evitando repetir inmediatamente. */
+      paletteIndex = (paletteIndex + 1 + Math.floor(Math.random() * (palettes.length - 1))) % palettes.length;
+      setPalette(paletteIndex);
     }
-
-    return stops[stops.length - 1][key];
   }
 
-  /*
-    El color visual tiene inercia:
-    no salta inmediatamente al color correspondiente al scroll.
-    Se acerca lentamente al destino, produciendo una sensación más líquida.
-  */
-  let currentProgress = 0;
-  let targetProgress = 0;
+  /* Bruja:
+     - tramo 0: derecha -> izquierda, mirando hacia la izquierda
+     - tramo 1: izquierda -> derecha, se voltea para mirar hacia la derecha
+     - tramo 2: derecha -> izquierda otra vez
+     Todo el movimiento depende solo del scroll. */
+  function updateWitch() {
+    if (!witch) return;
 
-  function readScroll() {
-    const maxScroll = Math.max(
-      1,
-      document.documentElement.scrollHeight - window.innerHeight
-    );
-
-    targetProgress = clamp(
-      window.scrollY / maxScroll,
-      0,
-      1
-    );
-  }
-
-  function animateColor() {
-    // 0.018 = transición mucho más lenta, con menos cambios visibles.
-    currentProgress += (targetProgress - currentProgress) * 0.018;
-
-    const h1 = interpolate(currentProgress, "h1");
-    const h2 = interpolate(currentProgress, "h2");
-    const h3 = interpolate(currentProgress, "h3");
-
-    const topBoost = Math.max(0, 1 - currentProgress / 0.18);
-    const bottomBoost = Math.max(0, (currentProgress - 0.78) / 0.22);
-
-    root.style.setProperty("--bg-h1", h1.toFixed(2));
-    root.style.setProperty("--bg-h2", h2.toFixed(2));
-    root.style.setProperty("--bg-h3", h3.toFixed(2));
-
-    root.style.setProperty(
-      "--bg-l1",
-      (48 + topBoost * 7 + bottomBoost * 8).toFixed(2) + "%"
-    );
-
-    root.style.setProperty(
-      "--bg-l2",
-      (40 + topBoost * 5 + bottomBoost * 10).toFixed(2) + "%"
-    );
-
-    root.style.setProperty(
-      "--bg-l3",
-      (42 + topBoost * 5 + bottomBoost * 11).toFixed(2) + "%"
-    );
-
-    // Movimiento orgánico lento del "agua".
-    const t = performance.now() * 0.00006;
-
-    root.style.setProperty(
-      "--water-x1",
-      (20 + Math.sin(t * 1.7) * 15) + "%"
-    );
-    root.style.setProperty(
-      "--water-y1",
-      (20 + Math.cos(t * 1.2) * 13) + "%"
-    );
-
-    root.style.setProperty(
-      "--water-x2",
-      (78 + Math.cos(t * 1.1) * 14) + "%"
-    );
-    root.style.setProperty(
-      "--water-y2",
-      (68 + Math.sin(t * 1.5) * 15) + "%"
-    );
-
-    root.style.setProperty(
-      "--water-x3",
-      (50 + Math.sin(t * 0.8) * 20) + "%"
-    );
-    root.style.setProperty(
-      "--water-y3",
-      (88 + Math.cos(t * 1.0) * 10) + "%"
-    );
-
-    requestAnimationFrame(animateColor);
-  }
-
-  readScroll();
-  window.addEventListener("scroll", readScroll, { passive: true });
-  window.addEventListener("resize", readScroll, { passive: true });
-
-  animateColor();
-})();
-
-</script>
-
-
-<script>
-/* ===== BRUJA: RECORRIDO DE LADO A LADO DESDE LA SEGUNDA PANTALLA ===== */
-(function () {
-  const witch = document.querySelector(".kalu-scroll-witch");
-  if (!witch) return;
-
-  let target = 0;
-  let current = 0;
-  let ticking = false;
-
-  function clamp(v, min, max) {
-    return Math.max(min, Math.min(max, v));
-  }
-
-  function readScroll() {
-    const viewport = window.innerHeight;
-    const total = Math.max(
-      1,
-      document.documentElement.scrollHeight - viewport
-    );
-
+    const vh = Math.max(1, window.innerHeight);
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
     const y = window.scrollY;
 
-    // La bruja empieza después de la primera pantalla.
-    const start = Math.min(viewport * 0.82, total * 0.16);
+    const start = vh * 0.95;
+    const end = Math.max(start + vh * 7, maxScroll - vh * 0.35);
+    const progress = Math.max(0, Math.min(1, (y - start) / Math.max(1, end - start)));
 
-    // Termina su recorrido cerca del final.
-    const end = Math.max(
-      start + viewport * 2,
-      total - viewport * 0.28
-    );
-
-    target = clamp((y - start) / Math.max(1, end - start), 0, 1);
-  }
-
-  function animate() {
-    current += (target - current) * 0.055;
-
-    if (current <= 0.001) {
+    if (progress <= 0 || progress >= 1) {
       witch.style.opacity = "0";
-    } else {
-      // Entra y sale suavemente, sin aparecer de golpe.
-      const fadeIn = clamp(current / 0.08, 0, 1);
-      const fadeOut = clamp((1 - current) / 0.10, 0, 1);
-      witch.style.opacity = String(Math.min(fadeIn, fadeOut) * 0.96);
+      return;
     }
 
-    // Cruza TODO el ancho: izquierda -> derecha.
-    const x = -24 + current * 124;
+    const travel = progress * 3; // 3 tramos: ida, vuelta, ida
+    const segment = Math.min(2, Math.floor(travel));
+    const t = travel - segment;
 
-    // Vuelo sutil: sube y baja mientras avanza.
-    const t = performance.now() * 0.001;
-    const bob = Math.sin(t * 0.75 + current * Math.PI * 2) * 1.8;
+    /* Suavizado por tramo. */
+    const ease = t * t * (3 - 2 * t);
 
-    // Ligera inclinación según el movimiento.
-    const tilt = Math.sin(current * Math.PI * 2) * 3;
+    let x;
+    let facing;
 
+    if (segment === 0) {
+      // Derecha -> izquierda
+      x = 104 - ease * 122;
+      facing = 1;
+    } else if (segment === 1) {
+      // Izquierda -> derecha
+      x = -18 + ease * 122;
+      facing = -1;
+    } else {
+      // Derecha -> izquierda
+      x = 104 - ease * 122;
+      facing = 1;
+    }
+
+    /* Movimiento vertical suave, sin animación continua. */
+    const bob = Math.sin(progress * Math.PI * 6) * 5;
+    const tilt = Math.sin(progress * Math.PI * 6) * 2.5;
+
+    witch.style.opacity = String(Math.min(1, progress * 10, (1 - progress) * 10) * .96);
     witch.style.transform =
-      `translate3d(${x}vw, calc(48vh + ${bob}vh), 0) rotate(${tilt}deg)`;
-
-    requestAnimationFrame(animate);
+      "translate3d(" + x + "vw, calc(44vh + " + bob + "px), 0) " +
+      "rotate(" + tilt + "deg) scaleX(" + facing + ")";
   }
 
-  readScroll();
-  window.addEventListener("scroll", readScroll, { passive: true });
-  window.addEventListener("resize", readScroll, { passive: true });
+  function updateOnScroll() {
+    if (scrollRaf) return;
+    scrollRaf = requestAnimationFrame(function () {
+      scrollRaf = 0;
+      updateColor();
+      updateWitch();
+    });
+  }
 
-  animate();
+  window.addEventListener("scroll", updateOnScroll, { passive: true });
+  window.addEventListener("resize", updateOnScroll, { passive: true });
+
+  updateColor();
+  updateWitch();
 })();
 </script>
 
