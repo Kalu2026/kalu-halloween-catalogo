@@ -1222,6 +1222,22 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 body.kalu-loading>.shell{opacity:.01; transition:opacity .35s ease}
 body.kalu-ready>.shell{opacity:1}
 @media(prefers-reduced-motion:reduce){.kalu-loader-logo,.kalu-loader-wand i{animation:none}.kalu-loader-wand i{width:100%}}
+
+/* ===== CARGA SUAVE DURANTE EL SCROLL ===== */
+.kalu-scroll-loader{
+  position:fixed; left:50%; bottom:18px; transform:translate(-50%,12px); z-index:9998;
+  display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+  background:rgba(17,3,27,.72); border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 28px rgba(0,0,0,.25); backdrop-filter:blur(8px);
+  color:rgba(255,255,255,.82); font:700 10px/1 Montserrat,Arial,sans-serif;
+  letter-spacing:.08em; text-transform:uppercase; opacity:0; pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.kalu-scroll-loader.is-loading{opacity:1; transform:translate(-50%,0)}
+.kalu-scroll-loader-dot{width:8px;height:8px;border-radius:50%;background:#ffbd18;box-shadow:0 0 12px rgba(255,189,24,.8);animation:kaluScrollPulse .8s ease-in-out infinite}
+@keyframes kaluScrollPulse{0%,100%{transform:scale(.65);opacity:.45}50%{transform:scale(1.15);opacity:1}}
+@media(max-width:600px){.kalu-scroll-loader{bottom:12px;font-size:9px;padding:7px 10px}}
+@media(prefers-reduced-motion:reduce){.kalu-scroll-loader{transition:none}.kalu-scroll-loader-dot{animation:none}}
 </style>
 </head>
 <body class="kalu-loading">
@@ -1234,6 +1250,10 @@ body.kalu-ready>.shell{opacity:1}
   </div>
 </div>
 
+<div class="kalu-scroll-loader" id="kaluScrollLoader" aria-hidden="true">
+  <span class="kalu-scroll-loader-dot"></span>
+  <span>Preparando...</span>
+</div>
 
 <!-- Nubes Halloween flotando al final de la página -->
 <div class="kalu-bottom-clouds" aria-hidden="true">
@@ -3183,54 +3203,79 @@ loadStock();
   document.addEventListener("click", (e) => { if (e.target.closest(".search-hit")) groups.forEach((g) => g.filterReset()); }, true);
 })();
 
-// Precarga inteligente: pide imágenes un poco antes de llegar a ellas,
-// pero limita la cantidad simultánea para no saturar el móvil.
+// Precarga inteligente sin competir con el cliente mientras está haciendo scroll.
+// Las imágenes siguientes se preparan cuando el usuario se detiene, no durante el gesto.
 (function () {
   if (matchMedia("(prefers-reduced-data: reduce)").matches) return;
-  const queued = new Set();
-  let busy = false;
 
-  const warmGrid = (grid) => {
-    const cards = Array.from(grid.querySelectorAll(":scope > .card:not([hidden])"));
-    if (!cards.length) return;
-    const w = (cards[0]?.getBoundingClientRect().width || 260) + 14;
-    const i = Math.max(0, Math.round(grid.scrollLeft / w));
-    // Solo adelantamos 5-6 tarjetas: suficiente para que el siguiente gesto
-    // encuentre la imagen ya descargándose, sin disparar decenas de requests.
-    cards.slice(i, i + 6).forEach((card) => {
-      const im = card.querySelector("img");
-      if (!im || queued.has(im.currentSrc || im.src)) return;
-      queued.add(im.currentSrc || im.src);
-      im.loading = "eager";
-      im.fetchPriority = "high";
-      // decode en segundo plano cuando el navegador pueda hacerlo.
-      if (im.complete && im.decode) im.decode().catch(() => {});
-    });
+  const pending = new Set();
+  const loaded = new Set();
+  let scrollTimer = 0;
+  let idleTimer = 0;
+  let scrolling = false;
+  let busyCount = 0;
+  const indicator = document.getElementById("kaluScrollLoader");
+
+  const setBusy = (on) => {
+    if (!indicator) return;
+    busyCount = Math.max(0, busyCount + (on ? 1 : -1));
+    indicator.classList.toggle("is-loading", busyCount > 0);
   };
 
-  document.querySelectorAll(".grid").forEach((grid) => {
-    const io = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
-      warmGrid(grid);
-      io.disconnect();
-    }, { rootMargin: "2400px 0px" });
-    io.observe(grid);
-    grid.addEventListener("scroll", () => warmGrid(grid), { passive: true });
+  const preload = (img) => new Promise((resolve) => {
+    const src = img.currentSrc || img.src;
+    if (!src || loaded.has(src)) return resolve();
+    if (pending.has(src)) return resolve();
+    pending.add(src);
+    const probe = new Image();
+    probe.decoding = "async";
+    probe.onload = async () => {
+      loaded.add(src); pending.delete(src);
+      try { await probe.decode(); } catch {}
+      resolve();
+    };
+    probe.onerror = () => { pending.delete(src); resolve(); };
+    probe.src = src;
   });
 
-  const track = document.querySelector(".explore-track");
-  if (track) {
-    const io = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
-      track.querySelectorAll("img").forEach((im, i) => {
-        if (i > 7) return;
-        im.loading = "eager";
-        im.fetchPriority = "high";
-      });
-      io.disconnect();
-    }, { rootMargin: "2200px 0px" });
-    io.observe(track);
-  }
+  const prepareAhead = () => {
+    if (scrolling || document.hidden) return;
+    const y = window.scrollY, h = window.innerHeight;
+    const imgs = Array.from(document.querySelectorAll("img[loading='lazy']"));
+    const targets = imgs.filter(im => {
+      const r = im.getBoundingClientRect();
+      return r.top > h * 0.65 && r.top < h * 3.2;
+    }).slice(0, 4);
+    if (!targets.length) return;
+
+    setBusy(true);
+    let i = 0;
+    const next = () => {
+      if (scrolling || i >= targets.length) { setBusy(false); return; }
+      preload(targets[i++]).finally(() => setTimeout(next, 80));
+    };
+    next();
+  };
+
+  const onScroll = () => {
+    scrolling = true;
+    if (indicator) indicator.classList.remove("is-loading");
+    clearTimeout(scrollTimer);
+    clearTimeout(idleTimer);
+    scrollTimer = setTimeout(() => {
+      scrolling = false;
+      idleTimer = setTimeout(prepareAhead, 260);
+    }, 180);
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("touchmove", onScroll, { passive: true });
+  window.addEventListener("wheel", onScroll, { passive: true });
+
+  // Primera preparación después de que el catálogo ya esté visible.
+  window.addEventListener("load", () => {
+    setTimeout(prepareAhead, 700);
+  }, { once: true });
 })();
 // Logo animado + chispas ligeras en TODA la página.
 (function () {
