@@ -223,7 +223,7 @@ body {
   pointer-events: none;
   opacity: 0;
   will-change: transform, opacity;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.38)) drop-shadow(0 0 14px rgba(166, 92, 255, .14));
 }
 
 .kalu-scroll-witch img {
@@ -3450,13 +3450,14 @@ loadStock();
 
     // Vuelo sutil: sube y baja mientras avanza.
     const t = performance.now() * 0.001;
-    const bob = Math.sin(t * 0.75 + current * Math.PI * 2) * 1.8;
+    const bob = Math.sin(t * 0.72 + current * Math.PI * 2) * 3.6;
+    const drift = Math.sin(t * 0.38 + current * Math.PI) * 0.7;
 
     // Ligera inclinación según el movimiento.
-    const tilt = Math.sin(current * Math.PI * 2) * 3;
+    const tilt = Math.sin(t * 0.55 + current * Math.PI * 2) * 4.5;
 
     witch.style.transform =
-      `translate3d(${x}vw, calc(48vh + ${bob}vh), 0) rotate(${tilt}deg)`;
+      `translate3d(calc(${x}vw + ${drift}vw), calc(48vh + ${bob}vh), 0) rotate(${tilt}deg)`;
 
     requestAnimationFrame(animate);
   }
