@@ -1203,9 +1203,37 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 .kl-fx{position:fixed;left:0;top:0;width:100vw;height:100vh;pointer-events:none;z-index:80}
 @media (max-width:570px){.klogo{height:clamp(72px,22vw,120px)}}
 @media (prefers-reduced-motion:reduce){.kl-l,.kl-tw{animation:none!important}.kl-tw{display:none}}
+
+/* ===== KALÚ: PANTALLA DE CARGA SUAVE ===== */
+.kalu-loader{
+  position:fixed; inset:0; z-index:99999; display:grid; place-items:center;
+  background:radial-gradient(circle at 50% 35%, rgba(116,32,110,.96), rgba(11,2,18,.985) 72%);
+  opacity:1; visibility:visible; pointer-events:auto;
+  transition:opacity .65s ease, visibility .65s ease;
+}
+.kalu-loader.is-hidden{opacity:0; visibility:hidden; pointer-events:none}
+.kalu-loader-box{text-align:center; padding:24px 28px; min-width:220px}
+.kalu-loader-logo{font-weight:900; letter-spacing:.16em; font-size:clamp(22px,5vw,38px); color:#ffbd18; text-shadow:0 0 22px rgba(255,189,24,.35); animation:kaluLoadFloat 2.2s ease-in-out infinite}
+.kalu-loader-wand{width:120px; height:4px; margin:18px auto 13px; border-radius:99px; overflow:hidden; background:rgba(255,255,255,.13)}
+.kalu-loader-wand i{display:block; width:42%; height:100%; border-radius:inherit; background:linear-gradient(90deg,#ffbd18,#f15a0b,#a71c65,#74206e); animation:kaluLoadBar 1.25s ease-in-out infinite}
+.kalu-loader-text{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.76)}
+@keyframes kaluLoadBar{0%{transform:translateX(-110%)}50%{transform:translateX(140%)}100%{transform:translateX(290%)}}
+@keyframes kaluLoadFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+body.kalu-loading>.shell{opacity:.01; transition:opacity .35s ease}
+body.kalu-ready>.shell{opacity:1}
+@media(prefers-reduced-motion:reduce){.kalu-loader-logo,.kalu-loader-wand i{animation:none}.kalu-loader-wand i{width:100%}}
 </style>
 </head>
-<body>
+<body class="kalu-loading">
+<!-- Capa de carga: evita mostrar el contenido entrecortado mientras se prepara la página -->
+<div class="kalu-loader" id="kaluLoader" aria-live="polite" aria-label="Cargando catálogo">
+  <div class="kalu-loader-box">
+    <div class="kalu-loader-logo">KALÚ</div>
+    <div class="kalu-loader-wand"><i></i></div>
+    <div class="kalu-loader-text">Preparando tu catálogo...</div>
+  </div>
+</div>
+
 
 <!-- Nubes Halloween flotando al final de la página -->
 <div class="kalu-bottom-clouds" aria-hidden="true">
@@ -3470,5 +3498,25 @@ loadStock();
 })();
 </script>
 
+
+<script>
+/* ===== KALÚ: salida limpia del cargador ===== */
+(function(){
+  const loader=document.getElementById('kaluLoader');
+  if(!loader) return;
+  let done=false;
+  const finish=()=>{
+    if(done) return; done=true;
+    document.body.classList.remove('kalu-loading');
+    document.body.classList.add('kalu-ready');
+    loader.classList.add('is-hidden');
+    setTimeout(()=>loader.remove(),750);
+  };
+  if(document.readyState==='complete') finish();
+  else window.addEventListener('load', finish, {once:true});
+  // Nunca dejar una pantalla de carga atrapada por una imagen lenta.
+  setTimeout(finish, 4500);
+})();
+</script>
 </body>
 </html>
