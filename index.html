@@ -547,6 +547,26 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .return-actions .button { cursor: pointer; }
 .selection-fab { position: fixed; right: 22px; bottom: 22px; z-index: 25; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 9px 13px 9px 17px; border: 0; border-radius: 999px; color: var(--ink); background: var(--yellow); box-shadow: 0 12px 28px rgba(0,0,0,.38); font-weight: 800; cursor: pointer; }
 .selection-fab:hover { background: #ffcf42; transform: translateY(-2px); }
+.selection-fab.fab-pulse { animation: fab-pulse .55s cubic-bezier(.3,1.6,.4,1); }
+@keyframes fab-pulse { 0%{transform:scale(1)} 35%{transform:scale(1.22)} 60%{transform:scale(.94)} 100%{transform:scale(1)} }
+
+/* ===== Feedback al agregar a la selección: chulito + confeti + burbuja ===== */
+#modal-add-selection { position: relative; overflow: visible; transition: background .25s ease, color .25s ease, transform .18s ease; will-change: transform; }
+#modal-add-selection.added { background: #2fbf6e; border-color: #2fbf6e; color: #fff; }
+#modal-add-selection .add-check { display: inline-flex; align-items: center; gap: 6px; }
+#modal-add-selection .add-check svg { width: 16px; height: 16px; transform: scale(0); animation: check-pop .45s cubic-bezier(.3,1.7,.4,1) forwards; }
+@keyframes check-pop { 0%{transform:scale(0) rotate(-20deg)} 60%{transform:scale(1.25) rotate(4deg)} 100%{transform:scale(1) rotate(0)} }
+
+.confetti-bit { position: fixed; left: 0; top: 0; width: 7px; height: 7px; margin: -3px 0 0 -3px; border-radius: 2px; background: var(--yellow); pointer-events: none; z-index: 2147483000; opacity: 1; will-change: transform, opacity; transform: translate3d(var(--x0), var(--y0), 0) rotate(0deg) scale(1); transition: transform .7s cubic-bezier(.15,.7,.3,1), opacity .7s ease .15s; }
+.confetti-bit.fly { transform: translate3d(var(--x1), var(--y1), 0) rotate(var(--rot)) scale(.4); opacity: 0; }
+
+.add-bubble { position: fixed; left: 0; top: 0; border-radius: 50%; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.85) inset; pointer-events: none; z-index: 2147483000; will-change: transform, opacity; transition: transform .62s cubic-bezier(.22,.75,.24,1), opacity .62s ease .3s, border-radius .62s ease; }
+.add-bubble img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.add-bubble.fly { opacity: 0; border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .selection-fab.fab-pulse, #modal-add-selection .add-check svg, .confetti-bit, .add-bubble { animation: none !important; transition: none !important; }
+}
 .selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
 footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
 footer img { width: 150px; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
@@ -2129,13 +2149,81 @@ zoomModal.addEventListener("click", (event) => {
   zoomModal.addEventListener("close", reset);
   window.addEventListener("resize", apply);
 })();
+const CONFETTI_COLORS = ["#ffbd18", "#f15a0b", "#a71c65", "#74206e", "#ffffff"];
+const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function spawnConfetti(originX, originY, container) {
+  if (reduceMotion) return;
+  const count = 14;
+  for (let i = 0; i < count; i++) {
+    const bit = document.createElement("i");
+    bit.className = "confetti-bit";
+    const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+    const dist = 46 + Math.random() * 58;
+    const dx = originX + Math.cos(angle) * dist;
+    const dy = originY + Math.sin(angle) * dist - 18;
+    bit.style.setProperty("--x0", `${originX}px`);
+    bit.style.setProperty("--y0", `${originY}px`);
+    bit.style.setProperty("--x1", `${dx}px`);
+    bit.style.setProperty("--y1", `${dy}px`);
+    bit.style.setProperty("--rot", `${(Math.random() * 360) | 0}deg`);
+    bit.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+    bit.style.transform = `translate3d(${originX}px, ${originY}px, 0) rotate(0deg) scale(1)`;
+    container.appendChild(bit);
+    requestAnimationFrame(() => requestAnimationFrame(() => bit.classList.add("fly")));
+    setTimeout(() => bit.remove(), 900);
+  }
+}
+function flyBubble(imgSrc, fromRect, toRect, container) {
+  const bubble = document.createElement("div");
+  bubble.className = "add-bubble";
+  const startSize = Math.min(140, Math.max(fromRect.width, fromRect.height));
+  const endSize = 22;
+  const startX = fromRect.left + fromRect.width / 2 - startSize / 2;
+  const startY = fromRect.top + fromRect.height / 2 - startSize / 2;
+  bubble.style.width = `${startSize}px`;
+  bubble.style.height = `${startSize}px`;
+  bubble.style.left = `${startX}px`;
+  bubble.style.top = `${startY}px`;
+  bubble.style.transform = "translate3d(0,0,0) scale(1)";
+  const img = document.createElement("img");
+  img.src = imgSrc;
+  img.alt = "";
+  bubble.appendChild(img);
+  container.appendChild(bubble);
+  if (reduceMotion) { bubble.remove(); return; }
+  const destX = toRect.left + toRect.width / 2 - (startX + startSize / 2);
+  const destY = toRect.top + toRect.height / 2 - (startY + startSize / 2);
+  const scale = endSize / startSize;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    bubble.style.transform = `translate3d(${destX}px, ${destY}px, 0) scale(${scale})`;
+    bubble.classList.add("fly");
+  }));
+  setTimeout(() => bubble.remove(), 700);
+}
 modalAddSelection.addEventListener("click", () => {
   if (!activeProduct || isSelected(activeProduct)) return;
+  const modalEl = document.querySelector(".modal");
+  const imgRect = modalImage.getBoundingClientRect();
+  const btnRect = modalAddSelection.getBoundingClientRect();
+  const fabRect = selectionButton.getBoundingClientRect();
+  const imgSrc = modalImage.src;
+
   selectedProducts.push(activeProduct);
   saveSelection();
   updateSelection();
-  updateModalSelectionButton();
-  modal.close();
+
+  modalAddSelection.classList.add("added");
+  modalAddSelection.disabled = true;
+  modalAddSelection.innerHTML = '<span class="add-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>¡Agregado!</span>';
+
+  spawnConfetti(btnRect.left + btnRect.width / 2, btnRect.top + btnRect.height / 2, modalEl);
+  flyBubble(imgSrc, imgRect, fabRect, modalEl);
+
+  setTimeout(() => {
+    selectionButton.classList.add("fab-pulse");
+    setTimeout(() => selectionButton.classList.remove("fab-pulse"), 600);
+    modal.close();
+  }, reduceMotion ? 120 : 560);
 });
 selectionButton.addEventListener("click", () => { updateSelection(); selectionModal.showModal(); });
 document.getElementById("close-selection").addEventListener("click", () => selectionModal.close());
