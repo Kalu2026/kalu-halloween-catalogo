@@ -567,6 +567,11 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 @media (prefers-reduced-motion: reduce) {
   .selection-fab.fab-pulse, #modal-add-selection .add-check svg, .confetti-bit, .add-bubble { animation: none !important; transition: none !important; }
 }
+
+/* ===== View Transition: la foto de la tarjeta "se abre" hacia la foto del modal ===== */
+::view-transition-group(vt-product-img) { animation-duration: .5s; animation-timing-function: cubic-bezier(.22,.8,.24,1); }
+::view-transition-old(vt-product-img), ::view-transition-new(vt-product-img) { animation-duration: .5s; animation-timing-function: cubic-bezier(.22,.8,.24,1); }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .28s; }
 .selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
 footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
 footer img { width: 150px; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
@@ -1856,6 +1861,7 @@ Mi selección <span class="selection-count" id="selection-count">0</span>
 </div>
 </dialog>
 <script>
+const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const modal = document.getElementById("product-modal");
 const modalImage = document.getElementById("modal-image");
 const modalTitle = document.getElementById("modal-title");
@@ -2036,36 +2042,61 @@ const updateSelection = () => {
   selectionWhatsappPrincipal.setAttribute("aria-disabled", String(!available.length));
   selectionWhatsappSecundaria.setAttribute("aria-disabled", String(!available.length));
 };
-document.querySelectorAll(".card").forEach((card) => {
-  card.querySelector(".mini-button").addEventListener("click", () => {
-    const { name, code, image, desc } = card.dataset;
-    activeProduct = { name, code, image, desc };
-    modalImage.src = image;
-    modalImage.alt = name;
-    modalTitle.textContent = name;
-    modalCode.textContent = code;
-    modalDesc.textContent = desc;
-    modalNote.hidden = !/^DF/.test(code);
-    const info = stockOf(code);
-    const soldOut = info.units === 0;
-    const priceLine = stockText(code);
-    modalPrice.hidden = !priceLine;
-    modalPrice.innerHTML = priceLine ? priceLine.replace("Agotado", '<span class="out">Agotado</span>') : "";
-    if (soldOut) {
-      modalWhatsappPrincipal.textContent = "Avísame cuando llegue";
-      modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, `Hola Kalú, quiero que me avisen cuando vuelva a haber ${name} (${code}).`);
-      modalWhatsappSecundaria.hidden = true;
-    } else {
-      const msg = buildSingleMessage(name, code);
-      modalWhatsappPrincipal.textContent = `Pedir por WhatsApp · ${SEDES.principal.nombre}`;
-      modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, msg);
-      modalWhatsappSecundaria.textContent = `Pedir por WhatsApp · ${SEDES.secundaria.nombre}`;
-      modalWhatsappSecundaria.href = waLink(SEDES.secundaria.numero, msg);
-      modalWhatsappSecundaria.hidden = false;
-    }
-    updateModalSelectionButton();
-    modal.showModal();
+let activeCardEl = null;
+function fillProductModal(card) {
+  const { name, code, image, desc } = card.dataset;
+  activeProduct = { name, code, image, desc };
+  activeCardEl = card;
+  modalImage.src = image;
+  modalImage.alt = name;
+  modalTitle.textContent = name;
+  modalCode.textContent = code;
+  modalDesc.textContent = desc;
+  modalNote.hidden = !/^DF/.test(code);
+  const info = stockOf(code);
+  const soldOut = info.units === 0;
+  const priceLine = stockText(code);
+  modalPrice.hidden = !priceLine;
+  modalPrice.innerHTML = priceLine ? priceLine.replace("Agotado", '<span class="out">Agotado</span>') : "";
+  if (soldOut) {
+    modalWhatsappPrincipal.textContent = "Avísame cuando llegue";
+    modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, `Hola Kalú, quiero que me avisen cuando vuelva a haber ${name} (${code}).`);
+    modalWhatsappSecundaria.hidden = true;
+  } else {
+    const msg = buildSingleMessage(name, code);
+    modalWhatsappPrincipal.textContent = `Pedir por WhatsApp · ${SEDES.principal.nombre}`;
+    modalWhatsappPrincipal.href = waLink(SEDES.principal.numero, msg);
+    modalWhatsappSecundaria.textContent = `Pedir por WhatsApp · ${SEDES.secundaria.nombre}`;
+    modalWhatsappSecundaria.href = waLink(SEDES.secundaria.numero, msg);
+    modalWhatsappSecundaria.hidden = false;
+  }
+  updateModalSelectionButton();
+  modal.showModal();
+}
+function openProductModal(card) {
+  const cardImg = card.querySelector(".image-wrap img");
+  if (!document.startViewTransition || reduceMotion || !cardImg) { fillProductModal(card); return; }
+  cardImg.style.viewTransitionName = "vt-product-img";
+  const transition = document.startViewTransition(() => {
+    fillProductModal(card);
+    modalImage.style.viewTransitionName = "vt-product-img";
+    cardImg.style.viewTransitionName = "";
   });
+  transition.finished.finally(() => { modalImage.style.viewTransitionName = ""; });
+}
+function closeProductModal() {
+  const cardImg = activeCardEl && activeCardEl.querySelector(".image-wrap img");
+  if (!document.startViewTransition || reduceMotion || !cardImg || !modal.open) { modal.close(); return; }
+  modalImage.style.viewTransitionName = "vt-product-img";
+  const transition = document.startViewTransition(() => {
+    modal.close();
+    cardImg.style.viewTransitionName = "vt-product-img";
+    modalImage.style.viewTransitionName = "";
+  });
+  transition.finished.finally(() => { cardImg.style.viewTransitionName = ""; });
+}
+document.querySelectorAll(".card").forEach((card) => {
+  card.querySelector(".mini-button").addEventListener("click", () => openProductModal(card));
   const zoomButton = card.querySelector(".zoom-button");
   if (zoomButton) {
     zoomButton.addEventListener("click", () => {
@@ -2150,7 +2181,6 @@ zoomModal.addEventListener("click", (event) => {
   window.addEventListener("resize", apply);
 })();
 const CONFETTI_COLORS = ["#ffbd18", "#f15a0b", "#a71c65", "#74206e", "#ffffff"];
-const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 function spawnConfetti(originX, originY, container) {
   if (reduceMotion) return;
   const count = 14;
@@ -2249,9 +2279,15 @@ clearSelection.addEventListener("click", () => {
     if (!selectedProducts.length) event.preventDefault();
   });
 });
-document.getElementById("close-modal").addEventListener("click", () => modal.close());
+document.getElementById("close-modal").addEventListener("click", () => closeProductModal());
 modal.addEventListener("click", (event) => {
-  if (event.target === modal) modal.close();
+  if (event.target === modal) closeProductModal();
+});
+modal.addEventListener("cancel", (event) => {
+  if (document.startViewTransition && !reduceMotion && activeCardEl) {
+    event.preventDefault();
+    closeProductModal();
+  }
 });
 updateSelection();
 
