@@ -624,19 +624,17 @@ h1 em { color: #51065e; font-style: normal; }
   object-position: center;
   opacity: 0;
   pointer-events: none;
-  animation: hero-product-cycle 3s cubic-bezier(.32,.9,.28,1) infinite;
+  animation: hero-product-cycle 6s ease-in-out infinite;
 }
 .hero-carousel .hero-slide:nth-child(1) { animation-delay: 0s; }
 .hero-carousel .hero-slide:nth-child(2) { animation-delay: -2s; }
-.hero-carousel .hero-slide:nth-child(3) { animation-delay: -1s; }
+.hero-carousel .hero-slide:nth-child(3) { animation-delay: -4s; }
 @keyframes hero-product-cycle {
-  0% { opacity: 0; clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transform: scale(1.08) translateX(-3%); }
-  7% { opacity: 1; clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%); transform: scale(1.03) translateX(-1%); }
-  14% { opacity: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: scale(1) translateX(0); }
-  30% { opacity: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: scale(1) translateX(0); }
-  33.3% { opacity: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: scale(1) translateX(0); }
-  34.5% { opacity: 0; clip-path: polygon(105% 0, 105% 0, 105% 100%, 105% 100%); transform: scale(1.04) translateX(3%); }
-  100% { opacity: 0; clip-path: polygon(105% 0, 105% 0, 105% 100%, 105% 100%); }
+  0%, 100% { opacity: 0; transform: scale(1.015) translate3d(0, 0, 0); }
+  2% { opacity: 0; }
+  7% { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+  27% { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+  33.33% { opacity: 0; transform: scale(.995) translate3d(0, 0, 0); }
 }
 .hero-sticker { position: absolute; z-index: 3; display: block; object-fit: contain; pointer-events: none; filter: drop-shadow(0 5px 3px rgba(68, 0, 60, .18)); }
 .sticker-pumpkin { left: 7%; bottom: -16px; width: clamp(70px, 11vw, 140px); transform: rotate(-7deg); }
@@ -962,7 +960,7 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 #modal-add-selection .add-check svg { width: 16px; height: 16px; transform: scale(0); animation: check-pop .45s cubic-bezier(.3,1.7,.4,1) forwards; }
 @keyframes check-pop { 0%{transform:scale(0) rotate(-20deg)} 60%{transform:scale(1.25) rotate(4deg)} 100%{transform:scale(1) rotate(0)} }
 
-.confetti-bit { position: fixed; left: 0; top: 0; width: 7px; height: 7px; margin: -3px 0 0 -3px; border-radius: 2px; background: var(--yellow); pointer-events: none; z-index: 2147483000; opacity: 1; will-change: transform, opacity; transform: translate3d(var(--x0), var(--y0), 0) rotate(0deg) scale(1); transition: transform .7s cubic-bezier(.15,.7,.3,1), opacity .7s ease .15s; }
+.confetti-bit { position: fixed; left: 0; top: 0; width: 7px; height: 7px; margin: -3px 0 0 -3px; border-radius: 2px; background: var(--yellow); pointer-events: none; z-index: 2147483000; opacity: 1; will-change: transform, opacity; transform: translate3d(var(--x0), var(--y0), 0) rotate(0deg) scale(1); transition: transform .58s cubic-bezier(.22,.75,.24,1), opacity .58s ease .12s; }
 .confetti-bit.fly { transform: translate3d(var(--x1), var(--y1), 0) rotate(var(--rot)) scale(.4); opacity: 0; }
 
 .add-bubble { position: fixed; left: 0; top: 0; border-radius: 50%; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.85) inset; pointer-events: none; z-index: 2147483000; will-change: transform, opacity; transition: transform .62s cubic-bezier(.22,.75,.24,1), opacity .62s ease .3s, border-radius .62s ease; }
@@ -974,23 +972,24 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 }
 
 /* ===== View Transition: la foto de la tarjeta "se abre" hacia la foto del modal ===== */
-::view-transition-group(vt-product-img) { animation-duration: .5s; animation-timing-function: cubic-bezier(.22,.8,.24,1); }
-::view-transition-old(vt-product-img), ::view-transition-new(vt-product-img) { animation-duration: .5s; animation-timing-function: cubic-bezier(.22,.8,.24,1); }
-::view-transition-old(root), ::view-transition-new(root) { animation-duration: .28s; }
+::view-transition-group(vt-product-img) { animation-duration: .68s; animation-timing-function: cubic-bezier(.18,.78,.22,1); }
+::view-transition-old(vt-product-img), ::view-transition-new(vt-product-img) { animation-duration: .68s; animation-timing-function: cubic-bezier(.18,.78,.22,1); }
+::view-transition-image-pair(vt-product-img) { overflow: clip; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .18s; animation-timing-function: ease-out; }
 .selection-count { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; color: #fff; background: #5a075f; font-size: .8rem; }
 footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
 footer img { width: 150px; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
 footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
 dialog { width: min(92vw, 860px); max-height: 92vh; max-height: 92dvh; padding: 0; border: 1px solid rgba(255, 143, 20, .55); border-radius: 24px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.35) transparent; color: #fff; box-shadow: 0 28px 80px rgba(0,0,0,.58); }
 dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px); }
-.modal { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; background: linear-gradient(135deg, #190522, #0d0214); }
+.modal { position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; background: linear-gradient(135deg, #190522, #0d0214); }
 .modal img { width: 100%; height: 100%; padding: 12px; object-fit: contain; object-position: center; background: radial-gradient(circle, #3f103c, #100218 68%); }
 .modal-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 58px); }
 .modal-copy .eyebrow { color: var(--orange); }
 .modal-copy h2 { margin-bottom: 16px; }
 .modal-copy p { color: #decce0; line-height: 1.6; }
 .modal-copy .button { align-self: flex-start; margin-top: 14px; }
-.close { position: absolute; right: 13px; top: 13px; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
+.close { position: absolute; right: 13px; top: 13px; z-index: 20; width: 40px; height: 40px; border: 0; border-radius: 50%; color: #fff; background: var(--ink); font-size: 1.35rem; cursor: pointer; }
 .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 .modal-copy .modal-actions .button { align-self: auto; margin-top: 0; }
 .modal-actions-wpp { flex-direction: column; margin-top: 10px; }
@@ -1203,7 +1202,7 @@ dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px);
 @keyframes kl-hop{0%{transform:none;filter:brightness(1)}30%{transform:translateY(-16%) scale(1.09,.96) rotate(-4deg);filter:brightness(1.3) drop-shadow(0 0 10px rgba(255,236,150,.95))}58%{transform:translateY(3%) scale(.97,1.04)}78%{transform:translateY(-3%) rotate(1deg)}100%{transform:none;filter:brightness(1)}}
 .kl-tw{position:absolute;width:clamp(14px,2.6vw,24px);aspect-ratio:1;margin:-1.3vw 0 0 -1.3vw;pointer-events:none;background:#fff;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 4px #fff);opacity:0;animation:kl-tw 3.6s var(--d) ease-in-out infinite}
 @keyframes kl-tw{0%,100%{opacity:0;transform:scale(.2) rotate(0)}45%{opacity:1;transform:scale(1) rotate(45deg)}70%{opacity:0;transform:scale(.3) rotate(90deg)}}
-.kl-fx{position:fixed;left:0;top:0;width:100vw;height:100vh;pointer-events:none;z-index:80}
+.kl-fx{position:fixed;left:0;top:0;width:100vw;height:100vh;pointer-events:none;z-index:80;opacity:1;transition:opacity .25s ease;will-change:opacity}
 @media (max-width:570px){.klogo{height:clamp(72px,22vw,120px)}}
 @media (prefers-reduced-motion:reduce){.kl-l,.kl-tw{animation:none!important}.kl-tw{display:none}}
 
@@ -2654,7 +2653,7 @@ zoomModal.addEventListener("click", (event) => {
 const CONFETTI_COLORS = ["#ffbd18", "#f15a0b", "#a71c65", "#74206e", "#ffffff"];
 function spawnConfetti(originX, originY, container) {
   if (reduceMotion) return;
-  const count = 14;
+  const count = 8;
   for (let i = 0; i < count; i++) {
     const bit = document.createElement("i");
     bit.className = "confetti-bit";
@@ -2671,7 +2670,7 @@ function spawnConfetti(originX, originY, container) {
     bit.style.transform = `translate3d(${originX}px, ${originY}px, 0) rotate(0deg) scale(1)`;
     container.appendChild(bit);
     requestAnimationFrame(() => requestAnimationFrame(() => bit.classList.add("fly")));
-    setTimeout(() => bit.remove(), 900);
+    setTimeout(() => bit.remove(), 700);
   }
 }
 function flyBubble(imgSrc, fromRect, toRect, container) {
@@ -3251,14 +3250,14 @@ loadStock();
     const targets = imgs.filter(im => {
       const r = im.getBoundingClientRect();
       return r.top > h * 0.65 && r.top < h * 3.2;
-    }).slice(0, 4);
+    }).slice(0, 2);
     if (!targets.length) return;
 
     setBusy(true);
     let i = 0;
     const next = () => {
       if (scrolling || i >= targets.length) { setBusy(false); return; }
-      preload(targets[i++]).finally(() => setTimeout(next, 80));
+      preload(targets[i++]).finally(() => setTimeout(next, 220));
     };
     next();
   };
@@ -3270,7 +3269,7 @@ loadStock();
     clearTimeout(idleTimer);
     scrollTimer = setTimeout(() => {
       scrolling = false;
-      idleTimer = setTimeout(prepareAhead, 260);
+      idleTimer = setTimeout(prepareAhead, 420);
     }, 180);
   };
 
@@ -3280,106 +3279,97 @@ loadStock();
 
   // Primera preparación después de que el catálogo ya esté visible.
   window.addEventListener("load", () => {
-    setTimeout(prepareAhead, 700);
+    setTimeout(prepareAhead, 1100);
   }, { once: true });
 })();
-// Logo animado + chispas ligeras en TODA la página.
+// Logo animado + chispas SOLO en la portada/inicio.
 (function () {
   const logo = document.querySelector("[data-klogo]");
-  if (!logo || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const hero = document.querySelector(".hero");
+  if (!logo || !hero || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
   const cv = document.createElement("canvas");
-  cv.className = "kl-fx"; cv.setAttribute("aria-hidden", "true");
+  cv.className = "kl-fx";
+  cv.setAttribute("aria-hidden", "true");
   document.body.appendChild(cv);
   const ctx = cv.getContext("2d", { alpha: true });
-  let W = 0, H = 0, ps = [], run = false;
+  let W = 0, H = 0, ps = [], run = false, homeActive = true;
+
   const size = () => {
-    const d = Math.min(devicePixelRatio || 1, 1.5);
+    const d = Math.min(devicePixelRatio || 1, 1.25);
     W = innerWidth; H = innerHeight;
     cv.width = Math.round(W * d); cv.height = Math.round(H * d);
     ctx.setTransform(d, 0, 0, d, 0, 0);
   };
-  size(); addEventListener("resize", size, { passive: true });
+  size();
+  addEventListener("resize", size, { passive: true });
+
+  const updateHomeState = () => {
+    const limit = Math.max(innerHeight * .9, hero.offsetHeight * .72);
+    const active = window.scrollY < limit;
+    if (active === homeActive) return;
+    homeActive = active;
+    cv.style.opacity = active ? "1" : "0";
+    if (!active) { ps.length = 0; ctx.clearRect(0, 0, W, H); }
+  };
+  addEventListener("scroll", updateHomeState, { passive: true });
+  updateHomeState();
 
   const COLS = ["#fff7b8", "#ffd23f", "#ff7ac8", "#ffffff", "#c8a2ff", "#8fe8ff"];
   const rnd = (a, b) => a + Math.random() * (b - a);
   const emit = (x, y, n = 1, dust = false) => {
-    // Límite bajo: evita acumulaciones que hacen pesado el scroll.
-    if (ps.length >= 90) return;
-    n = Math.min(n, 2, 90 - ps.length);
+    if (!homeActive || ps.length >= 48) return;
+    n = Math.min(n, 2, 48 - ps.length);
     for (let i = 0; i < n; i++) {
-      const a = rnd(0, 6.283), s = dust ? rnd(.15, .8) : rnd(.8, 2.4);
-      ps.push({
-        x: x + rnd(-3, 3), y: y + rnd(-3, 3),
-        vx: Math.cos(a) * s, vy: Math.sin(a) * s - (dust ? .15 : .55),
-        g: dust ? .012 : .045, l: 1,
-        dec: dust ? rnd(.025, .045) : rnd(.035, .06),
-        r: dust ? rnd(1.2, 2.4) : rnd(1.5, 3.2),
-        c: COLS[(Math.random() * COLS.length) | 0], ph: rnd(0, 6.28), dust
-      });
+      const a = rnd(0, 6.283), sp = dust ? rnd(.15, .65) : rnd(.7, 1.9);
+      ps.push({ x:x+rnd(-3,3), y:y+rnd(-3,3), vx:Math.cos(a)*sp, vy:Math.sin(a)*sp-(dust?.1:.4), g:dust?.008:.03, l:1, dec:dust?rnd(.03,.05):rnd(.045,.07), r:dust?rnd(1,1.8):rnd(1.2,2.6), c:COLS[(Math.random()*COLS.length)|0] });
     }
     if (!run) { run = true; requestAnimationFrame(tick); }
   };
-  const star = (x, y, r) => {
+  const star = (x,y,r) => {
     ctx.beginPath();
-    ctx.moveTo(x, y-r); ctx.lineTo(x+r*.35, y-r*.35);
-    ctx.lineTo(x+r, y); ctx.lineTo(x+r*.35, y+r*.35);
-    ctx.lineTo(x, y+r); ctx.lineTo(x-r*.35, y+r*.35);
-    ctx.lineTo(x-r, y); ctx.lineTo(x-r*.35, y-r*.35);
+    ctx.moveTo(x,y-r); ctx.lineTo(x+r*.35,y-r*.35); ctx.lineTo(x+r,y); ctx.lineTo(x+r*.35,y+r*.35);
+    ctx.lineTo(x,y+r); ctx.lineTo(x-r*.35,y+r*.35); ctx.lineTo(x-r,y); ctx.lineTo(x-r*.35,y-r*.35);
     ctx.closePath(); ctx.fill();
   };
   const tick = () => {
-    ctx.clearRect(0, 0, W, H);
-    ctx.globalCompositeOperation = "lighter";
+    ctx.clearRect(0,0,W,H); ctx.globalCompositeOperation = "lighter";
     ps = ps.filter(p => p.l > 0);
     for (const p of ps) {
-      p.ph += .16; p.vy += p.g; p.x += p.vx; p.y += p.vy; p.vx *= .99; p.l -= p.dec;
-      const a = Math.max(p.l, 0);
-      ctx.fillStyle = p.c;
-      ctx.globalAlpha = a * .18;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 1.8, 0, 6.283); ctx.fill();
-      ctx.globalAlpha = a;
-      star(p.x, p.y, p.r * (.45 + p.l * .5));
+      p.vy += p.g; p.x += p.vx; p.y += p.vy; p.vx *= .99; p.l -= p.dec;
+      ctx.fillStyle = p.c; ctx.globalAlpha = p.l*.14;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r*1.7,0,6.283); ctx.fill();
+      ctx.globalAlpha = p.l; star(p.x,p.y,p.r*(.45+p.l*.45));
     }
-    ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
-    if (ps.length) requestAnimationFrame(tick); else { run = false; ctx.clearRect(0, 0, W, H); }
+    ctx.globalAlpha=1; ctx.globalCompositeOperation="source-over";
+    if (ps.length && homeActive) requestAnimationFrame(tick); else { run=false; ctx.clearRect(0,0,W,H); }
   };
 
   const pieces = Array.from(logo.querySelectorAll(".kl-l"));
   const hop = (el) => { el.classList.remove("kl-hop"); void el.offsetWidth; el.classList.add("kl-hop"); setTimeout(() => el.classList.remove("kl-hop"), 750); };
-  const nearest = (x, y) => {
-    let best = null, bd = 1e9;
-    for (const p of pieces) {
-      const b = p.getBoundingClientRect(), d = Math.abs(x - (b.left + b.width / 2));
-      if (d < bd) { bd = d; best = p; }
-    }
+  const nearest = (x,y) => {
+    let best=null, bd=1e9;
+    for (const p of pieces) { const b=p.getBoundingClientRect(), d=Math.abs(x-(b.left+b.width/2)); if(d<bd){bd=d;best=p;} }
     return best;
   };
 
-  // Chispas en toda la página: muy pocas, espaciadas y con límite global.
-  let lastX = -999, lastY = -999, lastEmit = 0, lastHop = null;
+  let lastX=-999,lastY=-999,lastEmit=0,lastHop=0,lastHopEl=null;
   addEventListener("pointermove", (e) => {
+    if (!homeActive) return;
+    const now=performance.now();
     if (e.pointerType === "mouse") {
-      const now = performance.now();
-      const dx = e.clientX-lastX, dy=e.clientY-lastY;
-      if (now-lastEmit < 55 || dx*dx+dy*dy < 18*18) return;
+      const dx=e.clientX-lastX, dy=e.clientY-lastY;
+      if (now-lastEmit<70 || dx*dx+dy*dy<20*20) return;
       lastEmit=now; lastX=e.clientX; lastY=e.clientY;
-      emit(e.clientX, e.clientY, 1, false);
-      if (logo.contains(e.target) && now-lastEmit > 90) {
-        const p=nearest(e.clientX,e.clientY); if(p && p!==lastHop){lastHop=p;hop(p);}
-      }
-    } else if (e.pointerType === "touch") {
-      const now = performance.now();
-      if (now-lastEmit < 65) return;
+      emit(e.clientX,e.clientY,1,false);
+      if (hero.contains(e.target) && now-lastHop>140) { const p=nearest(e.clientX,e.clientY); if(p && p!==lastHopEl){lastHopEl=p;lastHop=now;hop(p);} }
+    } else if (e.pointerType === "touch" && now-lastEmit>=90) {
       lastEmit=now; emit(e.clientX,e.clientY,1,true);
     }
-  }, { passive: true });
-
-  addEventListener("pointerdown", (e) => {
-    emit(e.clientX, e.clientY, 2, e.pointerType === "touch");
-    if (logo.contains(e.target)) { const p=nearest(e.clientX,e.clientY); if(p) hop(p); }
-  }, { passive: true });
-  logo.addEventListener("pointerleave", () => { lastHop = null; });
-  setInterval(() => { if (document.hidden) return; pieces.forEach((p, i) => setTimeout(() => hop(p), i * 130)); }, 8000);
+  }, { passive:true });
+  addEventListener("pointerdown", (e) => { if(!homeActive)return; emit(e.clientX,e.clientY,1,e.pointerType==="touch"); if(hero.contains(e.target)){const p=nearest(e.clientX,e.clientY);if(p)hop(p);} }, {passive:true});
+  logo.addEventListener("pointerleave",()=>{lastHopEl=null;});
+  setInterval(()=>{ if(!document.hidden && homeActive) pieces.forEach((p,i)=>setTimeout(()=>{if(homeActive)hop(p);},i*130)); },9000);
 })();
 </script>
 
