@@ -164,7 +164,7 @@ body {
   bottom: 0;
   height: 24vh;
   min-height: 130px;
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
   overflow: visible;
   opacity: 0;
@@ -203,11 +203,14 @@ body {
 /* Bruja fija en una esquina: solo levita, no cruza la pantalla. */
 .kalu-static-witch {
   position: fixed;
-  right: clamp(10px, 3vw, 42px);
+  left: clamp(10px, 3vw, 42px);
+  right: auto;
   bottom: clamp(7vh, 9vh, 13vh);
-  width: clamp(135px, 16vw, 245px);
-  z-index: 5;
-  pointer-events: none;
+  width: clamp(118px, 13vw, 205px);
+  z-index: 6;
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
   opacity: .96;
   will-change: transform;
   filter: drop-shadow(0 10px 18px rgba(0,0,0,.38)) drop-shadow(0 0 12px rgba(166,92,255,.12));
@@ -220,6 +223,33 @@ body {
   height: auto;
   user-select: none;
   -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Murciélagos ligeros: nacen al tocar la bruja y se desvanecen solos. */
+.kalu-bat-burst {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+  font-size: 13px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+  animation: kaluBatFly 1.25s cubic-bezier(.2,.75,.3,1) forwards;
+  will-change: transform, opacity;
+}
+@keyframes kaluBatFly {
+  0% { opacity: 0; transform: translate3d(0, 8px, 0) scale(.55) rotate(0deg); }
+  12% { opacity: 1; }
+  70% { opacity: .82; }
+  100% { opacity: 0; transform: translate3d(var(--bx), var(--by), 0) scale(.9) rotate(var(--br)); }
+}
+@media (max-width: 700px) {
+  .kalu-static-witch {
+    left: 8px;
+    right: auto;
+    bottom: 9vh;
+    width: 112px;
+  }
 }
 
 .kalu-static-witch::after {
@@ -244,9 +274,10 @@ body {
   }
   .kalu-bottom-clouds img { width: 150vw; bottom: 6vh; }
   .kalu-static-witch {
-    right: 8px;
+    left: 8px;
+    right: auto;
     bottom: 9vh;
-    width: 125px;
+    width: 112px;
   }
 }
 
@@ -3347,6 +3378,42 @@ loadStock();
   addEventListener("pointerdown", (e) => { if(!homeActive)return; emit(e.clientX,e.clientY,1,e.pointerType==="touch"); if(hero.contains(e.target)){const p=nearest(e.clientX,e.clientY);if(p)hop(p);} }, {passive:true});
   logo.addEventListener("pointerleave",()=>{lastHopEl=null;});
   setInterval(()=>{ if(!document.hidden && homeActive) pieces.forEach((p,i)=>setTimeout(()=>{if(homeActive)hop(p);},i*130)); },9000);
+})();
+</script>
+
+<script>
+/* ===== BRUJA: 3 murciélagos pequeños por toque ===== */
+(function () {
+  const witch = document.querySelector('.kalu-static-witch');
+  if (!witch) return;
+  let lastTouch = 0;
+  const burst = () => {
+    const now = performance.now();
+    if (now - lastTouch < 180) return;
+    lastTouch = now;
+    const r = witch.getBoundingClientRect();
+    const x = r.left + r.width * .56;
+    const y = r.top + r.height * .34;
+    const dirs = [
+      { x: -58, y: -58, r: -12 },
+      { x: 8, y: -78, r: 8 },
+      { x: 66, y: -48, r: 14 }
+    ];
+    dirs.forEach((d, i) => {
+      const bat = document.createElement('span');
+      bat.className = 'kalu-bat-burst';
+      bat.textContent = '🦇';
+      bat.style.left = `${x + (i - 1) * 4}px`;
+      bat.style.top = `${y}px`;
+      bat.style.setProperty('--bx', `${d.x}px`);
+      bat.style.setProperty('--by', `${d.y}px`);
+      bat.style.setProperty('--br', `${d.r}deg`);
+      bat.style.animationDelay = `${i * 45}ms`;
+      document.body.appendChild(bat);
+      setTimeout(() => bat.remove(), 1500);
+    });
+  };
+  witch.addEventListener('pointerdown', burst, { passive: true });
 })();
 </script>
 
