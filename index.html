@@ -161,26 +161,43 @@ body {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 3vh;
+  bottom: 0;
   height: 24vh;
   min-height: 130px;
   z-index: 3;
   pointer-events: none;
   overflow: visible;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 1.8s cubic-bezier(.22,.61,.36,1), transform 2.2s cubic-bezier(.22,.61,.36,1), visibility 0s linear 1.8s;
+  will-change: opacity, transform;
+}
+
+.kalu-bottom-clouds.is-visible {
   opacity: .78;
-  transform: translateZ(0);
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0s;
 }
 
 .kalu-bottom-clouds img {
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: 7vh;
   width: max(112vw, 1350px);
   height: auto;
   max-width: none;
   transform: translateX(-50%);
   opacity: .70;
   filter: saturate(.82) brightness(.82);
+  animation: kaluCloudLevitate 7.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes kaluCloudLevitate {
+  0%, 100% { transform: translate3d(-50%, 0, 0) scale(1.01); }
+  50% { transform: translate3d(-50%, -9px, 0) scale(1.02); }
 }
 
 /* Bruja fija en una esquina: solo levita, no cruza la pantalla. */
@@ -221,11 +238,11 @@ body {
 
 @media (max-width: 700px) {
   .kalu-bottom-clouds {
-    bottom: 4vh;
+    bottom: 0;
     height: 20vh;
     min-height: 105px;
   }
-  .kalu-bottom-clouds img { width: 150vw; }
+  .kalu-bottom-clouds img { width: 150vw; bottom: 6vh; }
   .kalu-static-witch {
     right: 8px;
     bottom: 9vh;
@@ -3330,6 +3347,30 @@ loadStock();
   addEventListener("pointerdown", (e) => { if(!homeActive)return; emit(e.clientX,e.clientY,1,e.pointerType==="touch"); if(hero.contains(e.target)){const p=nearest(e.clientX,e.clientY);if(p)hop(p);} }, {passive:true});
   logo.addEventListener("pointerleave",()=>{lastHopEl=null;});
   setInterval(()=>{ if(!document.hidden && homeActive) pieces.forEach((p,i)=>setTimeout(()=>{if(homeActive)hop(p);},i*130)); },9000);
+})();
+</script>
+
+<script>
+/* ===== NUBES: aparecen suavemente solo al llegar al final ===== */
+(function () {
+  const clouds = document.querySelector('.kalu-bottom-clouds');
+  if (!clouds) return;
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const y = window.scrollY || window.pageYOffset || 0;
+    // Solo se muestran en la última zona de la página, no durante el catálogo.
+    clouds.classList.toggle('is-visible', y >= max - Math.max(220, window.innerHeight * 0.72));
+  };
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+  update();
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
 })();
 </script>
 
