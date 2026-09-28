@@ -1173,6 +1173,41 @@ body.kalu-ready>.shell{opacity:1}
     width: clamp(82px, 25vw, 128px) !important;
   }
 }
+
+/* ===== Ajuste final: L nueva visible + calabaza completa ===== */
+.klogo .kl-l-new {
+  height: 86%;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  object-fit: contain;
+  object-position: center bottom;
+  margin-left: clamp(-34px, -7vw, -15px);
+  filter: drop-shadow(0 6px 6px rgba(62,0,71,.24));
+}
+
+/* Calabaza pequeña, en la posición original y siempre dentro del hero. */
+.sticker-pumpkin {
+  left: 7% !important;
+  bottom: 10px !important;
+  width: clamp(62px, 8vw, 100px) !important;
+  max-width: 100px;
+  transform: rotate(-7deg) !important;
+  z-index: 1 !important;
+}
+
+@media (max-width: 700px) {
+  .sticker-pumpkin {
+    left: 2% !important;
+    bottom: 8px !important;
+    width: clamp(56px, 18vw, 82px) !important;
+    max-width: 82px;
+  }
+  .klogo .kl-l-new {
+    height: 84%;
+    margin-left: clamp(-24px, -6vw, -10px);
+  }
+}
 </style>
 </head>
 <body class="kalu-loading">
@@ -1225,7 +1260,7 @@ body.kalu-ready>.shell{opacity:1}
 <h1>
 <span class="headline-line"><span class="headline-words">Tu personaje<img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" /></span></span>
 <span class="headline-line headline-closing"><em>Empieza</em> en</span>
-<span class="headline-line headline-logo-line"><span class="klogo" data-klogo role="img" aria-label="Kalú"><img class="kl-l kl-k" style="--i:0" src="assets/logo/k.png" alt="" draggable="false" /><img class="kl-l kl-a" style="--i:1" src="assets/logo/a.png" alt="" draggable="false" /><img class="kl-l kl-l" style="--i:2" src="assets/logo/l.png" alt="" draggable="false" /><img class="kl-l kl-u" style="--i:3" src="assets/logo/u.png" alt="" draggable="false" /><i class="kl-tw" style="left:14%;top:10%;--d:0s"></i><i class="kl-tw" style="left:48%;top:4%;--d:0.7s"></i><i class="kl-tw" style="left:88%;top:12%;--d:1.4s"></i><i class="kl-tw" style="left:70%;top:58%;--d:2.1s"></i><i class="kl-tw" style="left:30%;top:60%;--d:2.8s"></i><i class="kl-tw" style="left:96%;top:64%;--d:3.5s"></i></span></span>
+<span class="headline-line headline-logo-line"><span class="klogo" data-klogo role="img" aria-label="Kalú"><img class="kl-l kl-k" style="--i:0" src="assets/logo/k.png" alt="" draggable="false" /><img class="kl-l kl-a" style="--i:1" src="assets/logo/a.png" alt="" draggable="false" /><img class="kl-l kl-l-new" style="--i:2" src="assets/logo/l.webp" alt="" draggable="false" /><img class="kl-l kl-u" style="--i:3" src="assets/logo/u.png" alt="" draggable="false" /><i class="kl-tw" style="left:14%;top:10%;--d:0s"></i><i class="kl-tw" style="left:48%;top:4%;--d:0.7s"></i><i class="kl-tw" style="left:88%;top:12%;--d:1.4s"></i><i class="kl-tw" style="left:70%;top:58%;--d:2.1s"></i><i class="kl-tw" style="left:30%;top:60%;--d:2.8s"></i><i class="kl-tw" style="left:96%;top:64%;--d:3.5s"></i></span></span>
 </h1>
 <p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
 <div class="actions">
