@@ -657,6 +657,17 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .filter-chip { flex: none; padding: 8px 14px; border: 1px solid rgba(255,255,255,.28); border-radius: 100px; background: rgba(255,255,255,.08); color: #fff; font-size: .78rem; font-weight: 800; cursor: pointer; transition: background .2s ease, color .2s ease; }
 .filter-chip:hover { border-color: var(--yellow); }
 .filter-chip[aria-pressed="true"] { background: var(--yellow); border-color: var(--yellow); color: var(--ink); }
+.accessory-filters { max-width: 1250px; margin: -6px auto 24px; padding: 14px 16px; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(20, 4, 30, .5); box-shadow: 0 12px 32px rgba(0,0,0,.16); }
+.accessory-filters .filter-chips { margin-bottom: 10px; }
+.accessory-filters .filter-chips:last-of-type { margin-bottom: 2px; }
+.filter-label { margin: 0 0 7px 2px; color: #f2dfed; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.accessory-series-label { margin-top: 10px; }
+.accessory-filter-count { margin-top: 8px; color: #cdb6ca; font-size: .76rem; font-weight: 700; }
+.accessory-card .image-wrap { aspect-ratio: 9 / 16; background: #fff; }
+.accessory-card .image-wrap img { padding: 0; object-fit: cover; object-position: center; transform: scale(1); }
+.accessory-card:hover .image-wrap img { transform: scale(1.025); }
+.accessory-grid { align-items: start; }
+
 .rental-catalog { padding: 0 clamp(18px, 7vw, 110px) 84px; background: linear-gradient(145deg, #16031e, #0b0212 67%); }
 .rental-catalog .section-heading { margin-bottom: 36px; }
 .rental-notice { display: flex; align-items: flex-start; gap: 12px; max-width: 1250px; margin: 0 auto 30px; padding: 14px 18px; border: 1px solid rgba(255,189,24,.5); border-left: 5px solid var(--orange); border-radius: 14px; background: rgba(241,90,11,.12); color: #ffe9c7; font-size: 1rem; line-height: 1.5; }
@@ -1174,7 +1185,7 @@ body.kalu-ready>.shell{opacity:1}
 <a href="#inicio" aria-label="Inicio Kalú Accesorios"><img src="kalu-logo.png" alt="Kalú Accesorios" /></a>
 <div class="nav-search" id="nav-search" role="search">
 <label class="search-box"><span class="search-icon" aria-hidden="true">🔍</span>
-<input id="search-input" type="search" placeholder="Buscar: máscara, peluca..." autocomplete="off" enterkeyhint="search" aria-label="Buscar productos" aria-controls="search-results" /></label>
+<input id="search-input" type="search" placeholder="Buscar: máscara, peluca, accesorio..." autocomplete="off" enterkeyhint="search" aria-label="Buscar productos" aria-controls="search-results" /></label>
 <div class="search-results" id="search-results" hidden></div>
 </div>
 <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">☰</button>
@@ -1530,14 +1541,236 @@ body.kalu-ready>.shell{opacity:1}
 <div class="section-heading">
 <div>
 <p>Accesorios de personaje</p>
-<h2 id="accesorios-title">Utilería para tu disfraz</h2>
+<h2 id="accesorios-title">Accesorios para completar tu disfraz</h2>
 </div>
-<span>Encuentra machetes de utilería, katanas, motosierras, varitas y más accesorios para completar el look.</span>
+<span>Explora diademas, medias, guantes, utilería, maquillaje, joyería y accesorios inspirados en personajes. Filtra por tipo y encuentra rápido lo que buscas.</span>
 </div>
-<div class="grid">
-<article class="card prop-card" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
-<div class="image-wrap"><img src="assets/prop-machete.jpg" alt="Machete de utilería con mango envuelto y detalles rojos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-01</span></div>
+<div class="accessory-filters" id="accessory-filters" aria-label="Filtros de accesorios">
+<div class="filter-label">Categoría</div>
+<div class="filter-chips" data-filter-group="category" role="group" aria-label="Filtrar accesorios por categoría">
+<button type="button" class="filter-chip" data-value="Todos" aria-pressed="true">Todos</button>
+<button type="button" class="filter-chip" data-value="Cabeza" aria-pressed="false">Cabeza</button>
+<button type="button" class="filter-chip" data-value="Rostro" aria-pressed="false">Rostro</button>
+<button type="button" class="filter-chip" data-value="Manos" aria-pressed="false">Manos</button>
+<button type="button" class="filter-chip" data-value="Piernas" aria-pressed="false">Piernas</button>
+<button type="button" class="filter-chip" data-value="Cuerpo" aria-pressed="false">Cuerpo</button>
+<button type="button" class="filter-chip" data-value="Utilería" aria-pressed="false">Utilería</button>
+<button type="button" class="filter-chip" data-value="Personajes" aria-pressed="false">Personajes</button>
+</div>
+<div class="filter-label accessory-series-label">Personajes / estilos reconocibles</div>
+<div class="filter-chips" data-filter-group="series" role="group" aria-label="Filtrar accesorios por personaje o estilo">
+<button type="button" class="filter-chip" data-value="Todos" aria-pressed="true">Todos</button>
+<button type="button" class="filter-chip" data-value="DC / Mujer Maravilla" aria-pressed="false">Mujer Maravilla · DC</button>
+<button type="button" class="filter-chip" data-value="Disney / estilo Minnie Mouse" aria-pressed="false">Minnie · estilo Disney</button>
+<button type="button" class="filter-chip" data-value="Marvel / Capitán América" aria-pressed="false">Capitán América · Marvel</button>
+<button type="button" class="filter-chip" data-value="Mitología / Medusa" aria-pressed="false">Medusa</button>
+</div>
+<div class="accessory-filter-count" id="accessory-filter-count" aria-live="polite">51 accesorios</div>
+</div>
+<div class="grid accessory-grid">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
+<div class="image-wrap"><img src="assets/prop-machete.jpg" alt="Machete de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-01</span></div>
 <div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen del machete de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver machete de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema floral con flores y perlas" data-code="AP-02" data-image="assets/accesorios/acc-02.webp" data-desc="Diadema de flores en tonos pastel con detalles decorativos, ideal para hadas, princesas, primavera o disfraces de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-02.webp" alt="Diadema floral con flores y perlas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-02</span></div>
+<div class="details"><div><h3>Diadema floral con flores y perlas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema floral con flores y perlas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema floral con flores y perlas">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Pipa de utilería clásica" data-code="AP-03" data-image="assets/accesorios/acc-03.webp" data-desc="Pipa decorativa de utilería para personajes elegantes, detectives, profesores o disfraces de época.">
+<div class="image-wrap"><img src="assets/accesorios/acc-03.webp" alt="Pipa de utilería clásica" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-03</span></div>
+<div class="details"><div><h3>Pipa de utilería clásica</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Pipa de utilería clásica"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Pipa de utilería clásica">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema unicornio pastel" data-code="AP-04" data-image="assets/accesorios/acc-04.webp" data-desc="Diadema de unicornio con cuerno, orejas y flores en tonos pastel para looks de fantasía y personajes infantiles.">
+<div class="image-wrap"><img src="assets/accesorios/acc-04.webp" alt="Diadema unicornio pastel" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-04</span></div>
+<div class="details"><div><h3>Diadema unicornio pastel</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema unicornio pastel"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema unicornio pastel">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Mono esqueleto encapuchado" data-code="AP-05" data-image="assets/accesorios/acc-05.webp" data-desc="Accesorio tipo mono de esqueleto con capucha, pensado para completar un look de terror o Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-05.webp" alt="Mono esqueleto encapuchado" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-05</span></div>
+<div class="details"><div><h3>Mono esqueleto encapuchado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Mono esqueleto encapuchado"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Mono esqueleto encapuchado">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Tocado negro de plumas" data-code="AP-06" data-image="assets/accesorios/acc-06.webp" data-desc="Tocado negro con plumas largas para estilos de cabaret, años 20, villana o Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-06.webp" alt="Tocado negro de plumas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-06</span></div>
+<div class="details"><div><h3>Tocado negro de plumas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Tocado negro de plumas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Tocado negro de plumas">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema de enfermera" data-code="AP-07" data-image="assets/accesorios/acc-07.webp" data-desc="Diadema de enfermera con cruz roja, ideal para disfraces médicos y personajes de hospital.">
+<div class="image-wrap"><img src="assets/accesorios/acc-07.webp" alt="Diadema de enfermera" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-07</span></div>
+<div class="details"><div><h3>Diadema de enfermera</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema de enfermera"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema de enfermera">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="DC / Mujer Maravilla" data-name="Set Mujer Maravilla — DC DC / Mujer Maravilla" data-code="AP-08" data-image="assets/accesorios/acc-08.webp" data-desc="Set dorado inspirado en la Mujer Maravilla de DC, con tiara y brazaletes decorativos con estrella roja.">
+<div class="image-wrap"><img src="assets/accesorios/acc-08.webp" alt="Set Mujer Maravilla — DC" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-08</span></div>
+<div class="details"><div><h3>Set Mujer Maravilla — DC</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set Mujer Maravilla — DC"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set Mujer Maravilla — DC">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Sombrilla blanca de encaje" data-code="AP-09" data-image="assets/accesorios/acc-09.webp" data-desc="Sombrilla blanca decorativa con encaje y detalles ornamentales, ideal para personajes vintage, góticos o de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-09.webp" alt="Sombrilla blanca de encaje" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-09</span></div>
+<div class="details"><div><h3>Sombrilla blanca de encaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrilla blanca de encaje"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Sombrilla blanca de encaje">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Set de bombero de utilería" data-code="AP-10" data-image="assets/accesorios/acc-10.webp" data-desc="Set de accesorios de bombero con casco, hacha, placa y elementos decorativos para completar el personaje.">
+<div class="image-wrap"><img src="assets/accesorios/acc-10.webp" alt="Set de bombero de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-10</span></div>
+<div class="details"><div><h3>Set de bombero de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de bombero de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de bombero de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Medias altas rayadas multicolor" data-code="AP-11" data-image="assets/accesorios/acc-11.webp" data-desc="Medias largas a rayas en varios colores para disfraces divertidos, payasos, personajes escolares o fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-11.webp" alt="Medias altas rayadas multicolor" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-11</span></div>
+<div class="details"><div><h3>Medias altas rayadas multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Medias altas rayadas multicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Medias altas rayadas multicolor">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Set de medias largas de fantasía I" data-code="AP-12" data-image="assets/accesorios/acc-12.webp" data-desc="Selección de medias altas con diferentes diseños y colores para combinar con disfraces de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-12.webp" alt="Set de medias largas de fantasía I" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-12</span></div>
+<div class="details"><div><h3>Set de medias largas de fantasía I</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de medias largas de fantasía I"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de medias largas de fantasía I">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Set de medias largas de fantasía II" data-code="AP-13" data-image="assets/accesorios/acc-13.webp" data-desc="Medias altas en combinaciones negras, verdes, rojas y estampadas para personajes y looks temáticos.">
+<div class="image-wrap"><img src="assets/accesorios/acc-13.webp" alt="Set de medias largas de fantasía II" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-13</span></div>
+<div class="details"><div><h3>Set de medias largas de fantasía II</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de medias largas de fantasía II"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de medias largas de fantasía II">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Set de medias largas de fantasía III" data-code="AP-14" data-image="assets/accesorios/acc-14.webp" data-desc="Medias blancas y estampadas de diferentes estilos para disfraces infantiles y adultos.">
+<div class="image-wrap"><img src="assets/accesorios/acc-14.webp" alt="Set de medias largas de fantasía III" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-14</span></div>
+<div class="details"><div><h3>Set de medias largas de fantasía III</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de medias largas de fantasía III"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de medias largas de fantasía III">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Set de medias largas oscuras" data-code="AP-15" data-image="assets/accesorios/acc-15.webp" data-desc="Medias altas negras y estampadas para looks góticos, brujas, villanas y disfraces de terror.">
+<div class="image-wrap"><img src="assets/accesorios/acc-15.webp" alt="Set de medias largas oscuras" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-15</span></div>
+<div class="details"><div><h3>Set de medias largas oscuras</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de medias largas oscuras"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de medias largas oscuras">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gemas faciales de calavera y catrina I" data-code="AP-16" data-image="assets/accesorios/acc-16.webp" data-desc="Adornos faciales autoadhesivos con diseños de calavera, pedrería y detalles de catrina para maquillaje de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-16.webp" alt="Gemas faciales de calavera y catrina I" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-16</span></div>
+<div class="details"><div><h3>Gemas faciales de calavera y catrina I</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gemas faciales de calavera y catrina I"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gemas faciales de calavera y catrina I">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gemas faciales de catrina II" data-code="AP-17" data-image="assets/accesorios/acc-17.webp" data-desc="Decoraciones faciales con pedrería y motivos de calavera para complementar maquillajes de catrina y Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-17.webp" alt="Gemas faciales de catrina II" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-17</span></div>
+<div class="details"><div><h3>Gemas faciales de catrina II</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gemas faciales de catrina II"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gemas faciales de catrina II">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gemas faciales doradas de catrina" data-code="AP-18" data-image="assets/accesorios/acc-18.webp" data-desc="Set de adornos faciales dorados con motivos de calavera y pedrería para looks de catrina.">
+<div class="image-wrap"><img src="assets/accesorios/acc-18.webp" alt="Gemas faciales doradas de catrina" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-18</span></div>
+<div class="details"><div><h3>Gemas faciales doradas de catrina</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gemas faciales doradas de catrina"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gemas faciales doradas de catrina">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gemas faciales de fantasía oscura" data-code="AP-19" data-image="assets/accesorios/acc-19.webp" data-desc="Adornos para rostro con pedrería y diseños dramáticos para maquillaje de Halloween y personajes.">
+<div class="image-wrap"><img src="assets/accesorios/acc-19.webp" alt="Gemas faciales de fantasía oscura" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-19</span></div>
+<div class="details"><div><h3>Gemas faciales de fantasía oscura</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gemas faciales de fantasía oscura"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gemas faciales de fantasía oscura">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gemas faciales negras y rojas" data-code="AP-20" data-image="assets/accesorios/acc-20.webp" data-desc="Decoración facial en tonos negros, rojos y dorados para maquillaje de terror, catrina o fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-20.webp" alt="Gemas faciales negras y rojas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-20</span></div>
+<div class="details"><div><h3>Gemas faciales negras y rojas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gemas faciales negras y rojas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gemas faciales negras y rojas">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gemas faciales plateadas de calavera" data-code="AP-21" data-image="assets/accesorios/acc-21.webp" data-desc="Set de adornos faciales plateados con motivos de calavera y detalles brillantes para Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-21.webp" alt="Gemas faciales plateadas de calavera" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-21</span></div>
+<div class="details"><div><h3>Gemas faciales plateadas de calavera</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gemas faciales plateadas de calavera"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gemas faciales plateadas de calavera">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema de orejas de conejo" data-code="AP-22" data-image="assets/accesorios/acc-22.webp" data-desc="Diadema con orejas de conejo en diferentes acabados, ideal para conejita, fantasía o Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-22.webp" alt="Diadema de orejas de conejo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-22</span></div>
+<div class="details"><div><h3>Diadema de orejas de conejo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema de orejas de conejo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema de orejas de conejo">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="Disney / estilo Minnie Mouse" data-name="Diademas de ratoncita — estilo Minnie Disney / estilo Minnie Mouse" data-code="AP-23" data-image="assets/accesorios/acc-23.webp" data-desc="Diademas con orejas y lazos inspiradas en el clásico estilo de ratoncita, en versiones rosada y roja.">
+<div class="image-wrap"><img src="assets/accesorios/acc-23.webp" alt="Diademas de ratoncita — estilo Minnie" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-23</span></div>
+<div class="details"><div><h3>Diademas de ratoncita — estilo Minnie</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diademas de ratoncita — estilo Minnie"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diademas de ratoncita — estilo Minnie">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema de orejas rayadas rojas y negras" data-code="AP-24" data-image="assets/accesorios/acc-24.webp" data-desc="Diadema con orejas altas y medias rayadas, ideal para conejita, diablesa o personaje de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-24.webp" alt="Diadema de orejas rayadas rojas y negras" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-24</span></div>
+<div class="details"><div><h3>Diadema de orejas rayadas rojas y negras</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema de orejas rayadas rojas y negras"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema de orejas rayadas rojas y negras">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="Mitología / Medusa" data-name="Diadema de Medusa Mitología / Medusa" data-code="AP-25" data-image="assets/accesorios/acc-25.webp" data-desc="Diadema decorativa con serpientes, inspirada en la estética de Medusa para disfraces mitológicos.">
+<div class="image-wrap"><img src="assets/accesorios/acc-25.webp" alt="Diadema de Medusa" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-25</span></div>
+<div class="details"><div><h3>Diadema de Medusa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema de Medusa"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema de Medusa">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema de abeja" data-code="AP-26" data-image="assets/accesorios/acc-26.webp" data-desc="Diadema con antenas amarillas y negras para disfraces de abeja, apicultora o personajes infantiles.">
+<div class="image-wrap"><img src="assets/accesorios/acc-26.webp" alt="Diadema de abeja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-26</span></div>
+<div class="details"><div><h3>Diadema de abeja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema de abeja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema de abeja">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Orejas de elfo" data-code="AP-27" data-image="assets/accesorios/acc-27.webp" data-desc="Orejas puntiagudas de fantasía para personajes élficos, mágicos y medievales.">
+<div class="image-wrap"><img src="assets/accesorios/acc-27.webp" alt="Orejas de elfo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-27</span></div>
+<div class="details"><div><h3>Orejas de elfo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Orejas de elfo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Orejas de elfo">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Set de joyería de fantasía" data-code="AP-28" data-image="assets/accesorios/acc-28.webp" data-desc="Set de accesorios de fantasía con pendientes y collar decorativo para completar personajes de cuento o fiesta.">
+<div class="image-wrap"><img src="assets/accesorios/acc-28.webp" alt="Set de joyería de fantasía" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-28</span></div>
+<div class="details"><div><h3>Set de joyería de fantasía</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de joyería de fantasía"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de joyería de fantasía">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema de diablita" data-code="AP-29" data-image="assets/accesorios/acc-29.webp" data-desc="Diadema con cuernos y detalles rojos para disfraces de diablita, demonio o Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-29.webp" alt="Diadema de diablita" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-29</span></div>
+<div class="details"><div><h3>Diadema de diablita</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema de diablita"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema de diablita">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Collares tipo choker con dije" data-code="AP-30" data-image="assets/accesorios/acc-30.webp" data-desc="Collares ajustados decorativos en negro y rojo para looks góticos, vampiros y personajes de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-30.webp" alt="Collares tipo choker con dije" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-30</span></div>
+<div class="details"><div><h3>Collares tipo choker con dije</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Collares tipo choker con dije"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Collares tipo choker con dije">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Diadema de araña" data-code="AP-31" data-image="assets/accesorios/acc-31.webp" data-desc="Diadema con patas y detalles de araña para disfraces de Halloween, bruja o personaje arácnido.">
+<div class="image-wrap"><img src="assets/accesorios/acc-31.webp" alt="Diadema de araña" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-31</span></div>
+<div class="details"><div><h3>Diadema de araña</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema de araña"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema de araña">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Manos" data-series="" data-name="Set de guantes de Halloween" data-code="AP-32" data-image="assets/accesorios/acc-32.webp" data-desc="Selección de guantes rojos y negros con diseños de terror, huesos y detalles decorativos.">
+<div class="image-wrap"><img src="assets/accesorios/acc-32.webp" alt="Set de guantes de Halloween" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-32</span></div>
+<div class="details"><div><h3>Set de guantes de Halloween</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de guantes de Halloween"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de guantes de Halloween">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Corsé pirata negro y rojo" data-code="AP-33" data-image="assets/accesorios/acc-33.webp" data-desc="Corsé decorativo negro con tiras de encaje y telas rojas y negras, ideal para pirata, corsaria o personaje gótico.">
+<div class="image-wrap"><img src="assets/accesorios/acc-33.webp" alt="Corsé pirata negro y rojo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-33</span></div>
+<div class="details"><div><h3>Corsé pirata negro y rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Corsé pirata negro y rojo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Corsé pirata negro y rojo">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Manos" data-series="" data-name="Mangas largas de fantasía" data-code="AP-34" data-image="assets/accesorios/acc-34.webp" data-desc="Mangas independientes en varios colores y estampados para complementar disfraces y looks de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-34.webp" alt="Mangas largas de fantasía" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-34</span></div>
+<div class="details"><div><h3>Mangas largas de fantasía</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Mangas largas de fantasía"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Mangas largas de fantasía">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Manos" data-series="" data-name="Guantes largos de encaje" data-code="AP-35" data-image="assets/accesorios/acc-35.webp" data-desc="Guantes largos en distintos colores y texturas para estilos góticos, elegantes, vampiros o cabaret.">
+<div class="image-wrap"><img src="assets/accesorios/acc-35.webp" alt="Guantes largos de encaje" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-35</span></div>
+<div class="details"><div><h3>Guantes largos de encaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Guantes largos de encaje"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Guantes largos de encaje">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Calentadores de pierna de colores" data-code="AP-36" data-image="assets/accesorios/acc-36.webp" data-desc="Calentadores largos en diferentes colores para disfraces retro, bailarinas, personajes pop y looks divertidos.">
+<div class="image-wrap"><img src="assets/accesorios/acc-36.webp" alt="Calentadores de pierna de colores" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-36</span></div>
+<div class="details"><div><h3>Calentadores de pierna de colores</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Calentadores de pierna de colores"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Calentadores de pierna de colores">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Medias altas estampadas de fantasía" data-code="AP-37" data-image="assets/accesorios/acc-37.webp" data-desc="Medias largas con diseños coloridos y estampados para disfraces, cosplay y Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-37.webp" alt="Medias altas estampadas de fantasía" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-37</span></div>
+<div class="details"><div><h3>Medias altas estampadas de fantasía</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Medias altas estampadas de fantasía"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Medias altas estampadas de fantasía">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Manos" data-series="" data-name="Guantes LED multicolor" data-code="AP-38" data-image="assets/accesorios/acc-38.webp" data-desc="Guantes con iluminación LED multicolor para fiestas, Halloween, baile y disfraces futuristas.">
+<div class="image-wrap"><img src="assets/accesorios/acc-38.webp" alt="Guantes LED multicolor" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-38</span></div>
+<div class="details"><div><h3>Guantes LED multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Guantes LED multicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Guantes LED multicolor">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Set de sombreros de bruja" data-code="AP-39" data-image="assets/accesorios/acc-39.webp" data-desc="Sombreros puntiagudos de bruja en diferentes estilos para completar disfraces clásicos de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-39.webp" alt="Set de sombreros de bruja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-39</span></div>
+<div class="details"><div><h3>Set de sombreros de bruja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de sombreros de bruja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de sombreros de bruja">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Medias altas negras y estampadas" data-code="AP-40" data-image="assets/accesorios/acc-40.webp" data-desc="Selección de medias altas negras con distintos patrones para looks góticos, escolares o de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-40.webp" alt="Medias altas negras y estampadas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-40</span></div>
+<div class="details"><div><h3>Medias altas negras y estampadas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Medias altas negras y estampadas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Medias altas negras y estampadas">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Trenza larga morada" data-code="AP-41" data-image="assets/accesorios/acc-41.webp" data-desc="Trenza postiza larga en color morado para añadir volumen y color a peinados y disfraces.">
+<div class="image-wrap"><img src="assets/accesorios/acc-41.webp" alt="Trenza larga morada" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-41</span></div>
+<div class="details"><div><h3>Trenza larga morada</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Trenza larga morada"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Trenza larga morada">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Extensiones de cabello multicolor" data-code="AP-42" data-image="assets/accesorios/acc-42.webp" data-desc="Extensiones y mechones postizos en colores vivos para personajes de fantasía, payasos y looks de fiesta.">
+<div class="image-wrap"><img src="assets/accesorios/acc-42.webp" alt="Extensiones de cabello multicolor" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-42</span></div>
+<div class="details"><div><h3>Extensiones de cabello multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Extensiones de cabello multicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Extensiones de cabello multicolor">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Diadema y barba de rana" data-code="AP-43" data-image="assets/accesorios/acc-43.webp" data-desc="Set divertido de accesorios de rana con ojos grandes, moño y barba para personajes infantiles y fiestas temáticas.">
+<div class="image-wrap"><img src="assets/accesorios/acc-43.webp" alt="Diadema y barba de rana" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-43</span></div>
+<div class="details"><div><h3>Diadema y barba de rana</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema y barba de rana"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diadema y barba de rana">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Gafas redondas de mago y steampunk" data-code="AP-44" data-image="assets/accesorios/acc-44.webp" data-desc="Set de gafas redondas y gafas steampunk para personajes de magia, fantasía, ciencia ficción y época.">
+<div class="image-wrap"><img src="assets/accesorios/acc-44.webp" alt="Gafas redondas de mago y steampunk" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-44</span></div>
+<div class="details"><div><h3>Gafas redondas de mago y steampunk</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gafas redondas de mago y steampunk"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gafas redondas de mago y steampunk">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Medias de red y fantasía" data-code="AP-45" data-image="assets/accesorios/acc-45.webp" data-desc="Medias de red y diseños estampados para disfraces de Halloween, villanas y personajes de fiesta.">
+<div class="image-wrap"><img src="assets/accesorios/acc-45.webp" alt="Medias de red y fantasía" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-45</span></div>
+<div class="details"><div><h3>Medias de red y fantasía</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Medias de red y fantasía"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Medias de red y fantasía">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="Marvel / Capitán América" data-name="Escudo Capitán América — Marvel Marvel / Capitán América" data-code="AP-46" data-image="assets/accesorios/acc-46.webp" data-desc="Escudo decorativo inspirado en el escudo del Capitán América de Marvel, ideal para disfraces de superhéroe.">
+<div class="image-wrap"><img src="assets/accesorios/acc-46.webp" alt="Escudo Capitán América — Marvel" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-46</span></div>
+<div class="details"><div><h3>Escudo Capitán América — Marvel</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Escudo Capitán América — Marvel"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Escudo Capitán América — Marvel">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Set de policía de utilería" data-code="AP-47" data-image="assets/accesorios/acc-47.webp" data-desc="Set de accesorios de policía con esposas y elementos de utilería para completar disfraces de agente o policía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-47.webp" alt="Set de policía de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-47</span></div>
+<div class="details"><div><h3>Set de policía de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de policía de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Set de policía de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Liga de pierna de encaje I" data-code="AP-48" data-image="assets/accesorios/acc-48.webp" data-desc="Liga decorativa de encaje con diferentes colores y detalles para disfraces, cabaret y looks de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-48.webp" alt="Liga de pierna de encaje I" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-48</span></div>
+<div class="details"><div><h3>Liga de pierna de encaje I</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Liga de pierna de encaje I"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Liga de pierna de encaje I">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Liga de pierna de encaje II" data-code="AP-49" data-image="assets/accesorios/acc-49.webp" data-desc="Liga decorativa de encaje en diferentes colores para completar disfraces y atuendos de fiesta.">
+<div class="image-wrap"><img src="assets/accesorios/acc-49.webp" alt="Liga de pierna de encaje II" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-49</span></div>
+<div class="details"><div><h3>Liga de pierna de encaje II</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Liga de pierna de encaje II"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Liga de pierna de encaje II">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Medias panty de red" data-code="AP-50" data-image="assets/accesorios/acc-50.webp" data-desc="Panty de red color negro para looks góticos, de villana, cabaret y Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-50.webp" alt="Medias panty de red" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-50</span></div>
+<div class="details"><div><h3>Medias panty de red</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Medias panty de red"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Medias panty de red">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Botas rojas de utilería" data-code="AP-51" data-image="assets/accesorios/acc-51.webp" data-desc="Botas altas rojas de utilería para complementar personajes, superhéroes, villanas y disfraces temáticos.">
+<div class="image-wrap"><img src="assets/accesorios/acc-51.webp" alt="Botas rojas de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-51</span></div>
+<div class="details"><div><h3>Botas rojas de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Botas rojas de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Botas rojas de utilería">+</button></div>
 </article>
 </div>
 </section>
@@ -2158,7 +2391,7 @@ body.kalu-ready>.shell{opacity:1}
 <a class="explore-item" href="#mascaras-peluche"><img src="assets/plush-mask-01.png" alt="Máscaras de peluche" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de peluche</h3><span class="explore-desc">Suaves, divertidas y muy llamativas.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#mascaras-pasta"><img src="assets/pasta-01.jpg" alt="Máscaras de pasta" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de pasta</h3><span class="explore-desc">Acabados artesanales con mucho detalle.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#pelucas"><img src="assets/wig-long-blue-corner.png" alt="Pelucas" loading="lazy" draggable="false" /><div class="explore-info"><h3>Pelucas</h3><span class="explore-desc">Estilos largos y colores que roban miradas.</span><span class="explore-go">Ver productos →</span></div></a>
-<a class="explore-item" href="#accesorios"><img src="assets/prop-machete.jpg" alt="Accesorios" loading="lazy" draggable="false" /><div class="explore-info"><h3>Accesorios</h3><span class="explore-desc">Machetes y utilería para completar tu disfraz.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#accesorios"><img src="assets/accesorios/acc-02.webp" alt="Accesorios" loading="lazy" draggable="false" /><div class="explore-info"><h3>Accesorios</h3><span class="explore-desc">Diademas, medias, guantes, utilería y accesorios para completar tu disfraz.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-nino"><img src="assets/rental/dfn-01.jpg" alt="Disfraces de niño" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niño</h3><span class="explore-desc">Alquila disfraces completos con accesorios.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-nina"><img src="assets/rental/dfna-01.jpg" alt="Disfraces de niña" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niña</h3><span class="explore-desc">Princesas, personajes y más para ellas.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-adulto"><img src="assets/rental/dfa-01.jpg" alt="Disfraces de adulto" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de adulto</h3><span class="explore-desc">Disfraces para fiestas y eventos.</span><span class="explore-go">Ver productos →</span></div></a>
@@ -2845,7 +3078,7 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
     if (card.classList.contains("plush-card")) return { label: "Máscara de peluche", kw: "mascara mascaras peluche disfraz terror" };
     if (card.classList.contains("pasta-card")) return { label: "Máscara de pasta", kw: "mascara mascaras pasta disfraz terror" };
     if (card.classList.contains("wig-card")) return { label: "Peluca", kw: "peluca pelucas pelo cabello disfraz" };
-    if (card.classList.contains("prop-card")) return { label: "Accesorio de personaje", kw: "accesorio accesorios utileria disfraz personaje" };
+    if (card.classList.contains("prop-card")) return { label: "Accesorio de personaje", kw: "accesorio accesorios utileria disfraz personaje " + (card.dataset.category || "") + " " + (card.dataset.series || "") };
     return { label: "Producto", kw: "" };
   };
 
@@ -3116,6 +3349,45 @@ loadStock();
     window.addEventListener("pointerup", () => { dragging = false; grid.classList.remove("dragging"); });
     grid.addEventListener("click", (event) => { if (moved) { event.preventDefault(); event.stopPropagation(); moved = false; } }, true);
   });
+})();
+
+// Filtros de accesorios
+(function () {
+  const section = document.getElementById("accesorios");
+  if (!section) return;
+  const cards = Array.from(section.querySelectorAll(".accessory-card"));
+  const groups = Array.from(section.querySelectorAll(".accessory-filters [data-filter-group]"));
+  const count = document.getElementById("accessory-filter-count");
+  const state = { category: "Todos", series: "Todos" };
+
+  const apply = () => {
+    let visible = 0;
+    cards.forEach((card) => {
+      const categoryOk = state.category === "Todos" || card.dataset.category === state.category;
+      const seriesOk = state.series === "Todos" || card.dataset.series === state.series;
+      const show = categoryOk && seriesOk;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    groups.forEach((group) => {
+      const key = group.dataset.filterGroup;
+      group.querySelectorAll(".filter-chip").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.value === state[key]));
+      });
+    });
+    if (count) count.textContent = `${visible} accesorio${visible === 1 ? "" : "s"}`;
+  };
+
+  groups.forEach((group) => {
+    const key = group.dataset.filterGroup;
+    group.addEventListener("click", (event) => {
+      const btn = event.target.closest(".filter-chip");
+      if (!btn) return;
+      state[key] = btn.dataset.value || "Todos";
+      apply();
+    });
+  });
+  apply();
 })();
 
 // Filtros rápidos en disfraces de niño y niña
