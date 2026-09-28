@@ -1208,6 +1208,70 @@ body.kalu-ready>.shell{opacity:1}
     margin-left: clamp(-24px, -6vw, -10px);
   }
 }
+
+/* ===== MENÚ: VENTAS / ALQUILER ===== */
+.cat-group { display: flex; flex-direction: column; gap: 10px; }
+.cat-group + .cat-group { margin-top: 20px; }
+.cat-group-title { display: flex; align-items: center; gap: 12px; margin: 0 2px 2px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.2); }
+.cat-group-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.12); font-size: 1.05rem; }
+.cat-group-title strong { display: block; font-family: "Baloo 2", Arial, sans-serif; font-size: 1.45rem; font-weight: 800; line-height: 1; color: #fff; }
+.cat-group-title small { display: block; margin-top: 3px; color: rgba(255,255,255,.68); font-size: .76rem; font-weight: 600; }
+.cat-group-rental > .cat-item:nth-child(2) .cat-icon { background: linear-gradient(145deg, var(--fuchsia), var(--violet)); }
+.cat-menu .cat-item.is-folk { border-color: rgba(214,170,90,.55); background: linear-gradient(120deg, rgba(110,130,62,.26), rgba(184,102,52,.2)); }
+.cat-menu .cat-item.is-folk.open { border-color: #e2b862; }
+.cat-menu .cat-item.is-folk .cat-icon { background: linear-gradient(145deg, #6f8a3d, #b5532c); }
+.cat-menu .cat-item.is-folk .cat-badge { background: #e9d9b4; color: #4a3423; }
+.explore-item.is-folk { border-color: rgba(214,170,90,.6); background: linear-gradient(160deg, #3a3b20, #2b2417); }
+
+/* ===== ALQUILER DE TÍPICOS DE BAILE — paleta natural (crema, arcilla, hoja) ===== */
+.folk-catalog { position: relative; z-index: 1; padding: 0 clamp(18px, 7vw, 110px) 84px; }
+.folk-panel {
+  max-width: 1250px; margin: 0 auto;
+  padding: clamp(26px, 4vw, 52px) clamp(18px, 3.5vw, 46px) clamp(28px, 4vw, 46px);
+  border-radius: 32px; color: #3f2d1d;
+  border: 1px solid rgba(255,255,255,.6);
+  background:
+    radial-gradient(circle at 92% 6%, rgba(201,138,27,.30), transparent 34%),
+    radial-gradient(circle at 4% 96%, rgba(91,107,58,.24), transparent 38%),
+    linear-gradient(160deg, #f8eedb 0%, #efe1c4 55%, #e6d2ab 100%);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+}
+#tipicos-baile .section-heading { margin-bottom: 26px; }
+#tipicos-baile .section-heading p { color: #a4471f !important; text-shadow: none; }
+#tipicos-baile .section-heading h2 { color: #3f2d1d; text-shadow: none; }
+#tipicos-baile .section-heading > span { color: #6a5641; text-shadow: none; }
+.folk-notice { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 26px; padding: 13px 16px; border: 1px solid rgba(91,107,58,.4); border-left: 5px solid #5b6b3a; border-radius: 14px; background: rgba(91,107,58,.12); color: #4a3a28; font-size: .95rem; line-height: 1.5; }
+.folk-notice strong { color: #3f5a2b; }
+.folk-group-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 18px; }
+.folk-group-heading h3 { margin: 0; color: #3f2d1d; font-size: clamp(1.7rem, 2.7vw, 2.35rem); line-height: .95; }
+.folk-group-heading p { margin: 0; color: #6a5641; font-size: .88rem; }
+#tipicos-baile .card { background: #fffaf0; border: 1px solid rgba(139,94,52,.35); box-shadow: 0 12px 26px rgba(80,55,30,.22); }
+#tipicos-baile .card:hover { box-shadow: 0 18px 36px rgba(80,55,30,.32); }
+.folk-card { max-width: 390px; }
+#tipicos-baile .folk-card .image-wrap { aspect-ratio: 9 / 16; background: #efe1c4; }
+#tipicos-baile .folk-card .image-wrap img { padding: 0; object-fit: cover; object-position: center top; transform: scale(1); }
+#tipicos-baile .folk-card:hover .image-wrap img { transform: scale(1.04); }
+#tipicos-baile .code { background: #5b6b3a; }
+#tipicos-baile .details h3 { color: #3f2d1d; }
+#tipicos-baile .details p { color: #7a6650; text-shadow: none; }
+#tipicos-baile .mini-button { background: #5b6b3a; color: #fff; }
+#tipicos-baile .mini-button:hover { background: #a4471f; color: #fff; }
+#tipicos-baile .zoom-button { background: #8a6b3d; border-color: #8a6b3d; }
+#tipicos-baile .zoom-button:hover { background: #a4471f; border-color: #a4471f; }
+#tipicos-baile .zoom-icon { background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fffaf0' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5L21 21'/%3E%3Cpath d='M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center / 22px no-repeat; filter: none; }
+#tipicos-baile .carousel-arrow { background: rgba(63,74,43,.94); border-color: rgba(255,250,240,.6); color: #fffaf0; }
+#tipicos-baile .carousel-wrap::before { background: linear-gradient(90deg, #efe1c4, transparent); }
+#tipicos-baile .carousel-wrap::after { background: linear-gradient(270deg, #e9d8b5, transparent); }
+#tipicos-baile .carousel-count { color: #6a5641; }
+.folk-more { display: flex; align-items: center; justify-content: space-between; gap: 18px 28px; flex-wrap: wrap; margin-top: 30px; padding: 20px 24px; border: 2px dashed rgba(138,107,61,.6); border-radius: 18px; background: rgba(255,250,240,.55); }
+.folk-more strong { display: block; color: #3f2d1d; font-size: 1.15rem; }
+.folk-more span { display: block; margin-top: 4px; color: #6a5641; font-size: .9rem; line-height: 1.45; }
+.folk-more .folk-button { background: #5b6b3a; color: #fff; white-space: nowrap; }
+.folk-more .folk-button:hover { background: #a4471f; }
+@media (max-width: 700px) {
+  .folk-panel { border-radius: 24px; }
+  .folk-more .folk-button { width: 100%; }
+}
 </style>
 </head>
 <body class="kalu-loading">
@@ -1236,7 +1300,7 @@ body.kalu-ready>.shell{opacity:1}
 <a href="#inicio" aria-label="Inicio Kalú Accesorios"><img src="kalu-logo.png" alt="Kalú Accesorios" /></a>
 <div class="nav-search" id="nav-search" role="search">
 <label class="search-box"><span class="search-icon" aria-hidden="true">🔍</span>
-<input id="search-input" type="search" placeholder="Buscar: máscara, peluca, accesorio..." autocomplete="off" enterkeyhint="search" aria-label="Buscar productos" aria-controls="search-results" /></label>
+<input id="search-input" type="search" placeholder="Buscar: máscara, peluca, disfraz, típico..." autocomplete="off" enterkeyhint="search" aria-label="Buscar productos" aria-controls="search-results" /></label>
 <div class="search-results" id="search-results" hidden></div>
 </div>
 <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">☰</button>
@@ -1281,25 +1345,15 @@ body.kalu-ready>.shell{opacity:1}
 <p>Explora Kalú</p>
 <h2 id="categorias-title">Todo para crear tu personaje</h2>
 </div>
-<span>Despliega una categoría, elige su submenú y encuentra tu look de Halloween.</span>
+<span>Compra máscaras, pelucas y accesorios, o alquila tu disfraz de Halloween y tu traje típico de baile.</span>
 </div>
 <div class="explore">
 <div>
 <h3 class="menu-title">Categorías</h3>
 <div class="cat-menu" id="cat-menu">
 
-<div class="cat-item" id="cat-alquiler">
-<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-alquiler">
-<span class="cat-icon" aria-hidden="true">🎭</span>
-<span class="cat-text"><span class="cat-name">Alquiler de disfraces</span><span class="cat-desc">Para niños, niñas y adultos, con accesorios incluidos.</span></span>
-<span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
-</button>
-<div class="cat-sub" id="sub-alquiler"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="#alquiler-nino">Disfraces de niño</a>
-<a href="#alquiler-nina">Disfraces de niña</a>
-<a href="#alquiler-adulto">Disfraces de adulto</a>
-</div></div></div>
-</div>
+<div class="cat-group cat-group-sales">
+<div class="cat-group-title"><span class="cat-group-icon" aria-hidden="true">🛍️</span><div><strong>Ventas</strong><small>Productos para llevarte a casa</small></div></div>
 
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-mascaras">
@@ -1357,6 +1411,37 @@ body.kalu-ready>.shell{opacity:1}
 <div class="cat-sub" id="sub-sombreros"><div class="cat-sub-inner"><div class="cat-sub-list">
 <a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
 </div></div></div>
+</div>
+
+</div>
+
+<div class="cat-group cat-group-rental">
+<div class="cat-group-title"><span class="cat-group-icon" aria-hidden="true">🎭</span><div><strong>Alquiler</strong><small>Disfraces y trajes típicos por días</small></div></div>
+
+<div class="cat-item" id="cat-alquiler">
+<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-alquiler">
+<span class="cat-icon" aria-hidden="true">🎭</span>
+<span class="cat-text"><span class="cat-name">Disfraces de Halloween</span><span class="cat-desc">Para niños, niñas y adultos, con accesorios incluidos.</span></span>
+<span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
+</button>
+<div class="cat-sub" id="sub-alquiler"><div class="cat-sub-inner"><div class="cat-sub-list">
+<a href="#alquiler-nino">Disfraces de niño</a>
+<a href="#alquiler-nina">Disfraces de niña</a>
+<a href="#alquiler-adulto">Disfraces de adulto</a>
+</div></div></div>
+</div>
+
+<div class="cat-item is-folk" id="cat-tipicos">
+<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-tipicos">
+<span class="cat-icon" aria-hidden="true">💃</span>
+<span class="cat-text"><span class="cat-name">Típicos de baile</span><span class="cat-desc">Trajes folclóricos para danzas, presentaciones y eventos.</span></span>
+<span class="cat-badge">Nuevo</span><span class="cat-caret" aria-hidden="true">▼</span>
+</button>
+<div class="cat-sub" id="sub-tipicos"><div class="cat-sub-inner"><div class="cat-sub-list">
+<a href="#alquiler-tipicos">Trajes típicos de baile</a>
+</div></div></div>
+</div>
+
 </div>
 
 </div>
@@ -2432,6 +2517,35 @@ body.kalu-ready>.shell{opacity:1}
 </section>
 </div>
 </section>
+<section class="folk-catalog" id="tipicos-baile" aria-labelledby="tipicos-title">
+<div class="folk-panel">
+<div class="section-heading">
+<div>
+<p>Alquiler de típicos de baile</p>
+<h2 id="tipicos-title">Folclor que se luce en tu escenario</h2>
+</div>
+<span>Trajes típicos con faldas de vuelo, encajes y estampados de nuestra tierra. Consulta tallas, fechas y precio por WhatsApp.</span>
+</div>
+<p class="folk-notice" role="note"><span aria-hidden="true">🌿</span><span><strong>Aviso:</strong> los accesorios que acompañan cada traje (flores, aretes y otros) pueden variar según la disponibilidad.</span></p>
+<section class="folk-group" aria-labelledby="alquiler-tipicos-title">
+<div class="folk-group-heading">
+<h3 id="alquiler-tipicos-title">Trajes típicos de baile</h3>
+<p>Para danzas folclóricas, festivales y presentaciones.</p>
+</div>
+<!-- Para agregar otro traje: copia una tarjeta <article>, cambia data-name, data-code (TB-02, TB-03...), data-image, data-desc, la foto (formato 9:16) y el nombre. -->
+<div class="grid" id="alquiler-tipicos">
+<article class="card folk-card" data-name="Traje típico de baile Girasoles" data-code="TB-01" data-image="assets/tipicos/tb-01.webp" data-desc="Blusa amarilla con bolero de girasoles y encaje, falda de gran vuelo en rojo, azul con girasoles y amarillo con puntilla. Ideal para danza folclórica.">
+<div class="image-wrap"><img src="assets/tipicos/tb-01.webp" alt="Traje típico de baile Girasoles con falda de vuelo amarilla, roja y azul" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">TB-01</span></div>
+<div class="details"><div><h3>Traje Girasoles</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de traje típico Girasoles"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver traje típico Girasoles">+</button></div>
+</article>
+</div>
+</section>
+<div class="folk-more">
+<div><strong>Más trajes muy pronto</strong><span>¿Buscas un traje o una región en particular? Cuéntanos la talla y la fecha de tu presentación.</span></div>
+<a class="button folk-button" href="https://wa.me/573215055733?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20el%20alquiler%20de%20trajes%20t%C3%ADpicos%20de%20baile." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+</div>
+</div>
+</section>
 <section class="mask-return" aria-labelledby="volver-mascaras-title">
 <div class="mask-return-inner">
 <p>¿Quieres seguir explorando?</p>
@@ -2446,6 +2560,7 @@ body.kalu-ready>.shell{opacity:1}
 <a class="explore-item is-rental" href="#alquiler-nino"><img src="assets/rental/dfn-01.jpg" alt="Disfraces de niño" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niño</h3><span class="explore-desc">Alquila disfraces completos con accesorios.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-nina"><img src="assets/rental/dfna-01.jpg" alt="Disfraces de niña" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niña</h3><span class="explore-desc">Princesas, personajes y más para ellas.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-adulto"><img src="assets/rental/dfa-01.jpg" alt="Disfraces de adulto" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de adulto</h3><span class="explore-desc">Disfraces para fiestas y eventos.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item is-rental is-folk" href="#alquiler-tipicos"><img src="assets/tipicos/tb-01.webp" alt="Típicos de baile" loading="lazy" draggable="false" /><div class="explore-info"><h3>Típicos de baile</h3><span class="explore-desc">Trajes folclóricos para danzas y presentaciones.</span><span class="explore-go">Ver productos →</span></div></a>
 </div>
 </div>
 </section>
@@ -3130,6 +3245,7 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
     if (card.classList.contains("pasta-card")) return { label: "Máscara de pasta", kw: "mascara mascaras pasta disfraz terror" };
     if (card.classList.contains("wig-card")) return { label: "Peluca", kw: "peluca pelucas pelo cabello disfraz" };
     if (card.classList.contains("prop-card")) return { label: "Accesorio de personaje", kw: "accesorio accesorios utileria disfraz personaje " + (card.dataset.category || "") + " " + (card.dataset.series || "") };
+    if (card.classList.contains("folk-card")) return { label: "Traje típico de baile", kw: "tipico tipicos baile danza folclor folclorico traje vestido falda alquiler" };
     return { label: "Producto", kw: "" };
   };
 
