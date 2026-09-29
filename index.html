@@ -850,6 +850,43 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
 footer img { width: 210px; max-width: 70vw; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
 footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 22px auto 4px;
+}
+.social-link {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  display: grid;
+  place-items: center;
+  padding: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 7px 18px rgba(0,0,0,.24);
+  border: 2px solid rgba(255,255,255,.72);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.social-link:hover,
+.social-link:focus-visible {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 11px 24px rgba(0,0,0,.34);
+  outline: none;
+}
+.social-link img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  filter: none;
+}
+@media (max-width: 600px) {
+  .social-links { gap: 12px; margin-top: 18px; }
+  .social-link { width: 58px; height: 58px; flex-basis: 58px; padding: 6px; }
+}
 dialog { width: min(92vw, 860px); max-height: 92vh; max-height: 92dvh; padding: 0; border: 1px solid rgba(255, 143, 20, .55); border-radius: 24px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.35) transparent; color: #fff; box-shadow: 0 28px 80px rgba(0,0,0,.58); }
 dialog::backdrop { background: rgba(21, 0, 33, .76); backdrop-filter: blur(4px); }
 .modal { position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; background: linear-gradient(135deg, #190522, #0d0214); }
@@ -1712,7 +1749,7 @@ body.kalu-ready>.shell{opacity:1}
 <button type="button" class="filter-chip" data-value="Marvel / Capitán América" aria-pressed="false">Capitán América · Marvel</button>
 <button type="button" class="filter-chip" data-value="Mitología / Medusa" aria-pressed="false">Medusa</button>
 </div>
-<div class="accessory-filter-count" id="accessory-filter-count" aria-live="polite">51 accesorios</div>
+<div class="accessory-filter-count" id="accessory-filter-count" aria-live="polite">68 accesorios</div>
 </div>
 <div class="grid accessory-grid">
 <article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
@@ -1918,6 +1955,74 @@ body.kalu-ready>.shell{opacity:1}
 <article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Botas rojas de utilería" data-code="AP-51" data-image="assets/accesorios/acc-51.webp" data-desc="Botas altas rojas de utilería para complementar personajes, superhéroes, villanas y disfraces temáticos.">
 <div class="image-wrap"><img src="assets/accesorios/acc-51.webp" alt="Botas rojas de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-51</span></div>
 <div class="details"><div><h3>Botas rojas de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Botas rojas de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Botas rojas de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diademas de orejas de conejo LED azul y rosa" data-code="AP-52" data-image="assets/accesorios/acc-52.webp" data-desc="Diademas luminosas con orejas de conejo en tonos azul y rosa para disfraces, fiestas y personajes de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-52.webp" alt="Diademas de orejas de conejo LED azul y rosa" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-52</span></div>
+<div class="details"><div><h3>Diademas de orejas de conejo LED azul y rosa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diademas de orejas de conejo LED azul y rosa"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diademas de orejas de conejo LED azul y rosa">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diademas de orejas de conejo LED rosa y multicolor" data-code="AP-53" data-image="assets/accesorios/acc-53.webp" data-desc="Diademas luminosas con orejas de conejo en tonos rosa y multicolor para disfraces, fiestas y personajes de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-53.webp" alt="Diademas de orejas de conejo LED rosa y multicolor" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-53</span></div>
+<div class="details"><div><h3>Diademas de orejas de conejo LED rosa y multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diademas de orejas de conejo LED rosa y multicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diademas de orejas de conejo LED rosa y multicolor">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Bate de utilería" data-code="AP-54" data-image="assets/accesorios/acc-54.webp" data-desc="Bate de utilería decorativo para complementar disfraces de béisbol, personajes y looks de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-54.webp" alt="Bate de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-54</span></div>
+<div class="details"><div><h3>Bate de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Bate de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Bate de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Hacha doble de utilería" data-code="AP-55" data-image="assets/accesorios/acc-55.webp" data-desc="Hacha doble de utilería con diseño oscuro y detalles decorativos para personajes de guerrero, terror y Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-55.webp" alt="Hacha doble de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-55</span></div>
+<div class="details"><div><h3>Hacha doble de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Hacha doble de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Hacha doble de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Bastón luminoso multicolor" data-code="AP-56" data-image="assets/accesorios/acc-56.webp" data-desc="Bastón luminoso de utilería con iluminación multicolor para complementar disfraces, fiestas y personajes de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-56.webp" alt="Bastón luminoso multicolor" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-56</span></div>
+<div class="details"><div><h3>Bastón luminoso multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Bastón luminoso multicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Bastón luminoso multicolor">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Espada de princesa" data-code="AP-57" data-image="assets/accesorios/acc-57.webp" data-desc="Espada decorativa de fantasía con diseño de fantasía y detalles de colores para completar disfraces infantiles y personajes mágicos.">
+<div class="image-wrap"><img src="assets/accesorios/acc-57.webp" alt="Espada de princesa" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-57</span></div>
+<div class="details"><div><h3>Espada de princesa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Espada de princesa"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Espada de princesa">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Guadaña de utilería" data-code="AP-58" data-image="assets/accesorios/acc-58.webp" data-desc="Guadaña de utilería de mango negro y hoja decorativa para personajes de terror, muerte y Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-58.webp" alt="Guadaña de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-58</span></div>
+<div class="details"><div><h3>Guadaña de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Guadaña de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Guadaña de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Martillos de utilería" data-code="AP-59" data-image="assets/accesorios/acc-59.webp" data-desc="Set de martillos de utilería en diferentes tamaños y acabados para completar disfraces de personajes y Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-59.webp" alt="Martillos de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-59</span></div>
+<div class="details"><div><h3>Martillos de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Martillos de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Martillos de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gafas de sol de corazón" data-code="AP-60" data-image="assets/accesorios/acc-60.webp" data-desc="Gafas de sol con montura en forma de corazón, disponibles en tonos llamativos para looks de fiesta, fantasía y disfraces.">
+<div class="image-wrap"><img src="assets/accesorios/acc-60.webp" alt="Gafas de sol de corazón" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-60</span></div>
+<div class="details"><div><h3>Gafas de sol de corazón</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gafas de sol de corazón"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gafas de sol de corazón">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gafas de sol degradadas" data-code="AP-61" data-image="assets/accesorios/acc-61.webp" data-desc="Gafas de sol con lentes y monturas en tonos degradados para complementar disfraces, fiestas y personajes.">
+<div class="image-wrap"><img src="assets/accesorios/acc-61.webp" alt="Gafas de sol degradadas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-61</span></div>
+<div class="details"><div><h3>Gafas de sol degradadas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gafas de sol degradadas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gafas de sol degradadas">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Rostro" data-series="" data-name="Gafas luminosas tipo persiana" data-code="AP-62" data-image="assets/accesorios/acc-62.webp" data-desc="Gafas luminosas tipo persiana en varios colores para fiestas, disfraces y looks de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-62.webp" alt="Gafas luminosas tipo persiana" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-62</span></div>
+<div class="details"><div><h3>Gafas luminosas tipo persiana</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gafas luminosas tipo persiana"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Gafas luminosas tipo persiana">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diademas de estrella" data-code="AP-63" data-image="assets/accesorios/acc-63.webp" data-desc="Diademas decorativas con diseño de estrella y detalles brillantes para princesas, hadas, fiestas y disfraces de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-63.webp" alt="Diademas de estrella" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-63</span></div>
+<div class="details"><div><h3>Diademas de estrella</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diademas de estrella"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diademas de estrella">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Katanas de utilería" data-code="AP-64" data-image="assets/accesorios/acc-64.webp" data-desc="Set de katanas decorativas de utilería con diseños de colores para personajes de guerrero, ninja y anime.">
+<div class="image-wrap"><img src="assets/accesorios/acc-64.webp" alt="Katanas de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-64</span></div>
+<div class="details"><div><h3>Katanas de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Katanas de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Katanas de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Espadas luminosas" data-code="AP-65" data-image="assets/accesorios/acc-65.webp" data-desc="Set de espadas luminosas con iluminación multicolor para disfraces, fiestas y personajes de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-65.webp" alt="Espadas luminosas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-65</span></div>
+<div class="details"><div><h3>Espadas luminosas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Espadas luminosas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Espadas luminosas">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diademas de orejas de conejo LED" data-code="AP-66" data-image="assets/accesorios/acc-66.webp" data-desc="Diademas luminosas con orejas de conejo en colores rosa y multicolor para disfraces, fiestas y personajes de fantasía.">
+<div class="image-wrap"><img src="assets/accesorios/acc-66.webp" alt="Diademas de orejas de conejo LED" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-66</span></div>
+<div class="details"><div><h3>Diademas de orejas de conejo LED</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diademas de orejas de conejo LED"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Diademas de orejas de conejo LED">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Piernas" data-series="" data-name="Medias altas de colores" data-code="AP-67" data-image="assets/accesorios/acc-67.webp" data-desc="Medias altas en diferentes colores para completar disfraces, looks de fantasía, personajes y fiestas temáticas.">
+<div class="image-wrap"><img src="assets/accesorios/acc-67.webp" alt="Medias altas de colores" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-67</span></div>
+<div class="details"><div><h3>Medias altas de colores</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Medias altas de colores"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Medias altas de colores">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Traje de esqueleto" data-code="AP-68" data-image="assets/accesorios/acc-68.webp" data-desc="Traje completo de esqueleto con estampado óseo para complementar disfraces de Halloween y personajes de terror.">
+<div class="image-wrap"><img src="assets/accesorios/acc-68.webp" alt="Traje de esqueleto" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-68</span></div>
+<div class="details"><div><h3>Traje de esqueleto</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Traje de esqueleto"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Ver Traje de esqueleto">+</button></div>
 </article>
 </div>
 </section>
@@ -2583,6 +2688,17 @@ body.kalu-ready>.shell{opacity:1}
 </main>
 <footer>
 <img src="assets/logo/kalu-disfraces-logo.webp" alt="Kalú Accesorios" />
+<div class="social-links" aria-label="Redes sociales de Kalú">
+<a class="social-link" href="https://www.facebook.com/share/1Bq4t5wiAB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook — Página de Kalú" title="Facebook — Página">
+<img src="assets/redes/facebook-pagina.webp" alt="Facebook — Página" />
+</a>
+<a class="social-link" href="https://www.facebook.com/share/191ScGM178/" target="_blank" rel="noopener noreferrer" aria-label="Facebook — Perfil de Kalú" title="Facebook — Perfil">
+<img src="assets/redes/facebook-perfil.webp" alt="Facebook — Perfil" />
+</a>
+<a class="social-link" href="https://www.instagram.com/disfraceskalu?stkn=MWppOTQwdzF0dmV5Nw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Kalú" title="Instagram">
+<img src="assets/redes/instagram.webp" alt="Instagram de Kalú" />
+</a>
+</div>
 <p>Accesorios para celebrar, crear y destacar. · WhatsApp Accesorios 311 757 0138 · Disfraces 321 505 5733</p>
 <p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
 </footer>
