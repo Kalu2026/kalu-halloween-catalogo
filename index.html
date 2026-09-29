@@ -1272,6 +1272,22 @@ body.kalu-ready>.shell{opacity:1}
   .folk-panel { border-radius: 24px; }
   .folk-more .folk-button { width: 100%; }
 }
+
+/* ===== BOTÓN VOLVER ARRIBA (a las categorías) ===== */
+.back-top{
+  position:fixed; right:22px; bottom:86px; z-index:24;
+  display:inline-flex; align-items:center; gap:6px; padding:8px 13px; border-radius:999px;
+  background:rgba(17,3,27,.78); color:#fff; border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 8px 22px rgba(0,0,0,.3); backdrop-filter:blur(6px);
+  font:700 11px/1 Montserrat,Arial,sans-serif; letter-spacing:.04em;
+  opacity:0; visibility:hidden; transform:translateY(8px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s ease;
+}
+.back-top.is-visible{opacity:1; visibility:visible; transform:none}
+.back-top:hover{background:var(--orange)}
+.back-top span{font-size:13px; line-height:1}
+@media(max-width:600px){.back-top{right:12px; bottom:76px; padding:7px 11px; font-size:10px}}
+@media(prefers-reduced-motion:reduce){.back-top{transition:none}}
 </style>
 </head>
 <body class="kalu-loading">
@@ -1282,11 +1298,6 @@ body.kalu-ready>.shell{opacity:1}
     <div class="kalu-loader-wand"><i></i></div>
     <div class="kalu-loader-text">Preparando tu catálogo...</div>
   </div>
-</div>
-
-<div class="kalu-scroll-loader" id="kaluScrollLoader" aria-hidden="true">
-  <span class="kalu-scroll-loader-dot"></span>
-  <span>Preparando...</span>
 </div>
 
 <!-- Nubes Halloween elevadas, sin recuadro de recorte -->
@@ -2576,6 +2587,7 @@ body.kalu-ready>.shell{opacity:1}
 <p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
 </footer>
 </div>
+<a class="back-top" id="backTop" href="#categorias" aria-label="Volver arriba a las categorías"><span aria-hidden="true">↑</span>Volver arriba</a>
 <button class="selection-fab" id="selection-button" type="button" aria-haspopup="dialog" aria-label="Abrir mi selección">
 Mi selección <span class="selection-count" id="selection-count">0</span>
 </button>
@@ -3797,6 +3809,21 @@ loadStock();
   else window.addEventListener('load', finish, {once:true});
   // Nunca dejar una pantalla de carga atrapada por una imagen lenta.
   setTimeout(finish, 4500);
+})();
+</script>
+<script>
+/* ===== KALÚ: botón volver arriba ===== */
+(function(){
+  const btn=document.getElementById('backTop');
+  const cat=document.getElementById('categorias');
+  if(!btn||!cat) return;
+  let ticking=false;
+  const update=()=>{
+    ticking=false;
+    btn.classList.toggle('is-visible', cat.getBoundingClientRect().bottom < 0);
+  };
+  addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
+  update();
 })();
 </script>
 </body>
