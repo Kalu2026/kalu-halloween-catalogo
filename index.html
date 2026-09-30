@@ -4366,18 +4366,12 @@ loadStock();
   const elements = [...new Set(selectors.flatMap(sel => [...document.querySelectorAll(sel)]))];
   if(!elements.length) return;
 
-  const pauseCSS = el => {
-    const cs = getComputedStyle(el);
-    if(cs.animationName && cs.animationName !== 'none') el.classList.add('kalu-animation-paused');
-  };
-  elements.forEach(pauseCSS);
-
+  /* Las animaciones corren desde el inicio; solo se pausan cuando el elemento sale de pantalla. */
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const el = entry.target;
       if(entry.isIntersecting){
         el.classList.remove('kalu-animation-paused');
-        pauseCSS(el);
       }else{
         el.classList.add('kalu-animation-paused');
       }
