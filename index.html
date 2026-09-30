@@ -1550,6 +1550,17 @@ body.kalu-ready>.shell{opacity:1}
   .cat-menu .cat-group + .cat-group{margin-top:24px}
 }
 
+
+/* Máscaras: una sola sección, dos criterios combinables y material visible en cada tarjeta. */
+.mask-filter { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto auto; align-items:center; gap:10px 14px; }
+.mask-filter-group { min-width:0; display:flex; align-items:center; gap:8px; }
+.mask-filter-group .filter-label { flex:none; margin:0; white-space:nowrap; }
+.mask-filter-group .filter-chips { min-width:0; flex:1; margin:0; }
+.mask-filter-count { color:#d8c3d5; font-size:.76rem; font-weight:800; white-space:nowrap; }
+.material-badge { position:absolute; top:10px; left:10px; z-index:2; padding:5px 9px; border-radius:999px; background:rgba(45,10,58,.86); color:#fff; font-size:.65rem; font-weight:900; letter-spacing:.04em; text-transform:uppercase; box-shadow:0 4px 12px rgba(0,0,0,.22); }
+.mask-grid .mask-card .image-wrap { position:relative; }
+@media(max-width:900px){ .mask-filter{grid-template-columns:1fr 1fr;}.mask-filter-count{grid-column:1}.mask-filter-clear{grid-column:2;justify-self:end;} }
+@media(max-width:600px){ .mask-filter{grid-template-columns:1fr;}.mask-filter-group{width:100%;}.mask-filter-count{grid-column:auto}.mask-filter-clear{grid-column:auto;justify-self:start}.mask-filter-group .filter-chips{overflow-x:auto;scrollbar-width:none}.mask-filter-group .filter-chips::-webkit-scrollbar{display:none}.material-badge{top:8px;left:8px;font-size:.58rem;padding:4px 7px;} }
 </style>
 
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
@@ -1740,13 +1751,12 @@ body.kalu-ready>.shell{opacity:1}
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-mascaras">
 <span class="cat-icon cat-photo"><img src="assets/latex/latex-01.webp" alt="" loading="lazy" /></span>
-<span class="cat-text"><span class="cat-name">Máscaras</span><span class="cat-desc">Modelos de látex, peluche y pasta para destacar.</span></span>
+<span class="cat-text"><span class="cat-name">Máscaras</span><span class="cat-desc">Látex, pasta y peluche, todo en una sola sección con filtros por material y estilo.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-mascaras"><div class="cat-sub-inner"><div class="cat-sub-list">
 <a href="#mascaras">Máscaras de látex</a>
-<a href="#mascaras-peluche">Máscaras de peluche</a>
-<a href="#mascaras-pasta">Máscaras de pasta</a>
+<a href="#mascaras">Máscaras por material</a>
 </div></div></div>
 </div>
 
@@ -1841,236 +1851,219 @@ body.kalu-ready>.shell{opacity:1}
 </aside>
 </div>
 </section>
-<section class="catalog" id="mascaras" aria-labelledby="mascaras-title">
+<section class="catalog mask-catalog" id="mascaras" aria-labelledby="mascaras-title">
 <div class="section-heading">
 <div>
-<p>Máscaras de látex</p>
-<h2 id="mascaras-title">Personajes que no pasan desapercibidos</h2>
+<p>Catálogo de máscaras</p>
+<h2 id="mascaras-title">Encuentra tu máscara por material y estilo</h2>
 </div>
-<span>Elige tu favorita, revisa el código y toca <strong>+</strong> para agregarla a Mi pedido y consultarla por WhatsApp.</span>
+<span>Explora látex, pasta y peluche desde una sola sección. Usa los filtros para combinar material y tipo de personaje.</span>
 </div>
-<div class="catalog-filter" data-smart-filter="mascaras" aria-label="Filtrar máscaras de látex"><span class="filter-label">Filtrar por:</span><div class="filter-chips" role="group" aria-label="Categoría de máscara"></div></div>
-<div class="grid">
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Payaso sombrero rojo" data-code="ML-01" data-image="assets/latex/latex-01.webp" data-desc="Payaso de terror con sombrero rojo con estrella, mechones morados y verdes, nariz en espiral y sonrisa de dientes afilados.">
+<div class="catalog-filter mask-filter" data-smart-filter="mascaras" aria-label="Filtrar máscaras">
+  <div class="mask-filter-group"><span class="filter-label">Material:</span><div class="filter-chips" data-filter-group="material" role="group" aria-label="Material de máscara"></div></div>
+  <div class="mask-filter-group"><span class="filter-label">Estilo:</span><div class="filter-chips" data-filter-group="category" role="group" aria-label="Estilo de máscara"></div></div>
+  <span class="mask-filter-count" aria-live="polite"></span>
+  <button type="button" class="filter-clear mask-filter-clear">Limpiar</button>
+</div>
+<div class="grid mask-grid">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Payaso sombrero rojo" data-code="ML-01" data-image="assets/latex/latex-01.webp" data-desc="Payaso de terror con sombrero rojo con estrella, mechones morados y verdes, nariz en espiral y sonrisa de dientes afilados.">
 <div class="image-wrap"><img src="assets/latex/latex-01.webp" alt="Máscara de látex de payaso con sombrero rojo con estrella, mechones morados y verdes y nariz en espiral" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-01</span></div>
 <div class="details"><div><h3>Payaso sombrero rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso sombrero rojo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Payaso sombrero rojo">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" data-name="Máscara de látex Monja siniestra" data-code="ML-02" data-image="assets/latex/latex-02.webp" data-desc="Monja de terror con hábito blanco y negro, rostro agrietado y dientes ensangrentados.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" data-name="Máscara de látex Monja siniestra" data-code="ML-02" data-image="assets/latex/latex-02.webp" data-desc="Monja de terror con hábito blanco y negro, rostro agrietado y dientes ensangrentados.">
 <div class="image-wrap"><img src="assets/latex/latex-02.webp" alt="Máscara de látex de monja siniestra con hábito blanco y negro y rostro agrietado" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-02</span></div>
 <div class="details"><div><h3>Monja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Monja siniestra"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Monja siniestra">+</button></div>
 </article>
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Payaso rojo" data-code="ML-03" data-image="assets/latex/latex-03.webp" data-desc="Payaso de terror de rostro claro, mechones de cabello rojo, nariz roja y sonrisa pintada.">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Payaso rojo" data-code="ML-03" data-image="assets/latex/latex-03.webp" data-desc="Payaso de terror de rostro claro, mechones de cabello rojo, nariz roja y sonrisa pintada.">
 <div class="image-wrap"><img src="assets/latex/latex-03.webp" alt="Máscara de látex de payaso rojo con nariz roja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-03</span></div>
 <div class="details"><div><h3>Payaso rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso rojo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Payaso rojo">+</button></div>
 </article>
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Art the Clown (Terrifier)" data-code="ML-04" data-image="assets/latex/latex-04.webp" data-desc="Máscara con capucha del payaso Art, el villano de la saga de terror Terrifier: rostro blanco, sombrero negro, cejas pintadas y sonrisa de dientes amarillos.">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Art the Clown (Terrifier)" data-code="ML-04" data-image="assets/latex/latex-04.webp" data-desc="Máscara con capucha del payaso Art, el villano de la saga de terror Terrifier: rostro blanco, sombrero negro, cejas pintadas y sonrisa de dientes amarillos.">
 <div class="image-wrap"><img src="assets/latex/latex-04.webp" alt="Máscara de látex de Art the Clown, el payaso de la saga Terrifier" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-04</span></div>
 <div class="details"><div><h3>Art the Clown (Terrifier)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Art the Clown (Terrifier)"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Art the Clown (Terrifier)">+</button></div>
 </article>
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Payaso de cono" data-code="ML-05" data-image="assets/latex/latex-05.webp" data-desc="Payaso siniestro de rostro blanco con sombrero de cono negro, mejillas rojas, líneas negras y dientes marcados.">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Payaso de cono" data-code="ML-05" data-image="assets/latex/latex-05.webp" data-desc="Payaso siniestro de rostro blanco con sombrero de cono negro, mejillas rojas, líneas negras y dientes marcados.">
 <div class="image-wrap"><img src="assets/latex/latex-05.webp" alt="Máscara de látex de payaso con sombrero de cono negro y mejillas rojas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-05</span></div>
 <div class="details"><div><h3>Payaso de cono</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso de cono"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Payaso de cono">+</button></div>
 </article>
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Payaso espiral" data-code="ML-06" data-image="assets/latex/latex-06.webp" data-desc="Payaso en tonos morados y rosados con nariz en espiral blanco y negro, sonrisa negra y cabello largo multicolor.">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Payaso espiral" data-code="ML-06" data-image="assets/latex/latex-06.webp" data-desc="Payaso en tonos morados y rosados con nariz en espiral blanco y negro, sonrisa negra y cabello largo multicolor.">
 <div class="image-wrap"><img src="assets/latex/latex-06.webp" alt="Máscara de látex de payaso espiral en tonos morados y rosados" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-06</span></div>
 <div class="details"><div><h3>Payaso espiral</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso espiral"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Payaso espiral">+</button></div>
 </article>
-<article class="card latex-card" data-category="Animales y criaturas" data-name="Máscara de látex Criatura del bosque" data-code="ML-07" data-image="assets/latex/latex-07.webp" data-desc="Criatura con textura de tronco de árbol, ojos verdes y expresión amenazante.">
+<article class="card latex-card mask-card" data-category="Animales y criaturas" data-material="Látex" data-name="Máscara de látex Criatura del bosque" data-code="ML-07" data-image="assets/latex/latex-07.webp" data-desc="Criatura con textura de tronco de árbol, ojos verdes y expresión amenazante.">
 <div class="image-wrap"><img src="assets/latex/latex-07.webp" alt="Máscara de látex de criatura del bosque con textura de madera" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-07</span></div>
 <div class="details"><div><h3>Criatura del bosque</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Criatura del bosque"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Criatura del bosque">+</button></div>
 </article>
-<article class="card latex-card" data-category="Animales y criaturas" data-name="Máscara de látex Gorila salvaje" data-code="ML-08" data-image="assets/latex/latex-08.webp" data-desc="Máscara de gorila negro con pelaje, ojos delineados en rojo y colmillos para un personaje impactante.">
+<article class="card latex-card mask-card" data-category="Animales y criaturas" data-material="Látex" data-name="Máscara de látex Gorila salvaje" data-code="ML-08" data-image="assets/latex/latex-08.webp" data-desc="Máscara de gorila negro con pelaje, ojos delineados en rojo y colmillos para un personaje impactante.">
 <div class="image-wrap"><img src="assets/latex/latex-08.webp" alt="Máscara de látex de gorila negro con detalles rojos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-08</span></div>
 <div class="details"><div><h3>Gorila salvaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Gorila salvaje"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Gorila salvaje">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" data-name="Máscara de látex Freddy Krueger (Elm Street)" data-code="ML-09" data-image="assets/latex/latex-09.webp" data-desc="Rostro quemado y sombrero de fieltro café del icónico Freddy Krueger, villano de la saga de terror Pesadilla en Elm Street (A Nightmare on Elm Street).">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" data-name="Máscara de látex Freddy Krueger (Elm Street)" data-code="ML-09" data-image="assets/latex/latex-09.webp" data-desc="Rostro quemado y sombrero de fieltro café del icónico Freddy Krueger, villano de la saga de terror Pesadilla en Elm Street (A Nightmare on Elm Street).">
 <div class="image-wrap"><img src="assets/latex/latex-09.webp" alt="Máscara de látex de Freddy Krueger con sombrero de fieltro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-09</span></div>
 <div class="details"><div><h3>Freddy Krueger (Elm Street)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Freddy Krueger (Elm Street)"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Freddy Krueger (Elm Street)">+</button></div>
 </article>
-<article class="card latex-card" data-category="Animales y criaturas" data-name="Máscara de látex Lobo feroz" data-code="ML-10" data-image="assets/latex/latex-10.webp" data-desc="Máscara de lobo feroz con pelaje castaño, ojos delineados en rojo y colmillos afilados.">
+<article class="card latex-card mask-card" data-category="Animales y criaturas" data-material="Látex" data-name="Máscara de látex Lobo feroz" data-code="ML-10" data-image="assets/latex/latex-10.webp" data-desc="Máscara de lobo feroz con pelaje castaño, ojos delineados en rojo y colmillos afilados.">
 <div class="image-wrap"><img src="assets/latex/latex-10.webp" alt="Máscara de látex de lobo feroz con pelaje castaño" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-10</span></div>
 <div class="details"><div><h3>Lobo feroz</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Lobo feroz"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Lobo feroz">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" data-name="Máscara de látex Billy el títere (Saw)" data-code="ML-11" data-image="assets/latex/latex-11.webp" data-desc="Billy el títere, la marioneta de la saga de terror Saw: rostro blanco, mejillas con espirales rojas, ojos rojos y cabello negro rizado.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" data-name="Máscara de látex Billy el títere (Saw)" data-code="ML-11" data-image="assets/latex/latex-11.webp" data-desc="Billy el títere, la marioneta de la saga de terror Saw: rostro blanco, mejillas con espirales rojas, ojos rojos y cabello negro rizado.">
 <div class="image-wrap"><img src="assets/latex/latex-11.webp" alt="Máscara de látex de Billy el títere de la saga Saw" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-11</span></div>
 <div class="details"><div><h3>Billy el títere (Saw)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Billy el títere (Saw)"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Billy el títere (Saw)">+</button></div>
 </article>
-<article class="card latex-card" data-category="Zombis y monstruos" data-name="Máscara de látex Zombie herido" data-code="ML-12" data-image="assets/latex/latex-12.webp" data-desc="Máscara de zombie con piel descompuesta, ojos amarillos, dientes expuestos y herida abierta.">
+<article class="card latex-card mask-card" data-category="Zombis y monstruos" data-material="Látex" data-name="Máscara de látex Zombie herido" data-code="ML-12" data-image="assets/latex/latex-12.webp" data-desc="Máscara de zombie con piel descompuesta, ojos amarillos, dientes expuestos y herida abierta.">
 <div class="image-wrap"><img src="assets/latex/latex-12.webp" alt="Máscara de látex de zombie herido con dientes expuestos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-12</span></div>
 <div class="details"><div><h3>Zombie herido</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Zombie herido"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Zombie herido">+</button></div>
 </article>
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Payaso fucsia" data-code="ML-13" data-image="assets/latex/latex-13.webp" data-desc="Payaso de terror con diseños fucsia y morado, nariz roja, cabello morado y sonrisa llena de dientes.">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Payaso fucsia" data-code="ML-13" data-image="assets/latex/latex-13.webp" data-desc="Payaso de terror con diseños fucsia y morado, nariz roja, cabello morado y sonrisa llena de dientes.">
 <div class="image-wrap"><img src="assets/latex/latex-13.webp" alt="Máscara de látex de payaso fucsia y morado" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-13</span></div>
 <div class="details"><div><h3>Payaso fucsia</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso fucsia"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Payaso fucsia">+</button></div>
 </article>
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Payaso azul" data-code="ML-14" data-image="assets/latex/latex-14.webp" data-desc="Payaso con antifaz azul, nariz en espiral roja, sonrisa negra y cabello largo en naranja y rosado.">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Payaso azul" data-code="ML-14" data-image="assets/latex/latex-14.webp" data-desc="Payaso con antifaz azul, nariz en espiral roja, sonrisa negra y cabello largo en naranja y rosado.">
 <div class="image-wrap"><img src="assets/latex/latex-14.webp" alt="Máscara de látex de payaso azul con cabello naranja y rosado" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-14</span></div>
 <div class="details"><div><h3>Payaso azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso azul"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Payaso azul">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" data-name="Máscara de látex Bruja siniestra" data-code="ML-15" data-image="assets/latex/latex-15.webp" data-desc="Bruja de nariz alargada, piel arrugada y cabello castaño largo para un look clásico de Halloween.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" data-name="Máscara de látex Bruja siniestra" data-code="ML-15" data-image="assets/latex/latex-15.webp" data-desc="Bruja de nariz alargada, piel arrugada y cabello castaño largo para un look clásico de Halloween.">
 <div class="image-wrap"><img src="assets/latex/latex-15.webp" alt="Máscara de látex de bruja siniestra con nariz alargada" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-15</span></div>
 <div class="details"><div><h3>Bruja siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Bruja siniestra"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Bruja siniestra">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" data-name="Máscara de látex Ghostface (Scream)" data-code="ML-16" data-image="assets/latex/latex-16.webp" data-desc="Ghostface, el asesino enmascarado de la saga de terror Scream, en versión envejecida con costuras, grietas y ojos y boca de malla.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" data-name="Máscara de látex Ghostface (Scream)" data-code="ML-16" data-image="assets/latex/latex-16.webp" data-desc="Ghostface, el asesino enmascarado de la saga de terror Scream, en versión envejecida con costuras, grietas y ojos y boca de malla.">
 <div class="image-wrap"><img src="assets/latex/latex-16.webp" alt="Máscara de látex de Ghostface de la saga Scream en versión envejecida" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-16</span></div>
 <div class="details"><div><h3>Ghostface (Scream)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Ghostface (Scream)"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Ghostface (Scream)">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" data-name="Máscara de látex Michael Myers (Halloween)" data-code="ML-17" data-image="assets/latex/latex-17.webp" data-desc="Máscara inspirada en Michael Myers, el asesino de la saga de terror Halloween: rostro pálido envejecido, mitad amarillento, con cabello castaño.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" data-name="Máscara de látex Michael Myers (Halloween)" data-code="ML-17" data-image="assets/latex/latex-17.webp" data-desc="Máscara inspirada en Michael Myers, el asesino de la saga de terror Halloween: rostro pálido envejecido, mitad amarillento, con cabello castaño.">
 <div class="image-wrap"><img src="assets/latex/latex-17.webp" alt="Máscara de látex inspirada en Michael Myers de la saga Halloween" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-17</span></div>
 <div class="details"><div><h3>Michael Myers (Halloween)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Michael Myers (Halloween)"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Michael Myers (Halloween)">+</button></div>
 </article>
-<article class="card latex-card" data-category="Payasos" data-name="Máscara de látex Payaso rizado" data-code="ML-18" data-image="assets/latex/latex-18.webp" data-desc="Payaso con cabello rizado amarillo y rojo, rostro bicolor, nariz en espiral y sonrisa roja.">
+<article class="card latex-card mask-card" data-category="Payasos" data-material="Látex" data-name="Máscara de látex Payaso rizado" data-code="ML-18" data-image="assets/latex/latex-18.webp" data-desc="Payaso con cabello rizado amarillo y rojo, rostro bicolor, nariz en espiral y sonrisa roja.">
 <div class="image-wrap"><img src="assets/latex/latex-18.webp" alt="Máscara de látex de payaso con cabello rizado amarillo y rojo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-18</span></div>
 <div class="details"><div><h3>Payaso rizado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Payaso rizado"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Payaso rizado">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" style="--zoom:1" data-name="Máscara de látex Hockey sangrienta" data-code="ML-19" data-image="assets/latex/latex-19.webp" data-desc="Máscara de hockey oscura con perforaciones, detalles metálicos y marcas rojas de sangre.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" style="--zoom:1" data-name="Máscara de látex Hockey sangrienta" data-code="ML-19" data-image="assets/latex/latex-19.webp" data-desc="Máscara de hockey oscura con perforaciones, detalles metálicos y marcas rojas de sangre.">
 <div class="image-wrap"><img src="assets/latex/latex-19.webp" alt="Máscara de látex de hockey oscura con detalles rojos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-19</span></div>
 <div class="details"><div><h3>Hockey sangrienta</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Hockey sangrienta"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Hockey sangrienta">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" style="--zoom:1" data-name="Máscara de látex Rostro envejecido" data-code="ML-20" data-image="assets/latex/latex-20.webp" data-desc="Rostro envejecido y desgastado, con cabello oscuro y expresión de terror.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" style="--zoom:1" data-name="Máscara de látex Rostro envejecido" data-code="ML-20" data-image="assets/latex/latex-20.webp" data-desc="Rostro envejecido y desgastado, con cabello oscuro y expresión de terror.">
 <div class="image-wrap"><img src="assets/latex/latex-20.webp" alt="Máscara de látex de rostro envejecido y desgastado" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-20</span></div>
 <div class="details"><div><h3>Rostro envejecido</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Rostro envejecido"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Rostro envejecido">+</button></div>
 </article>
-<article class="card latex-card" data-category="Animales y criaturas" style="--zoom:1" data-name="Máscara de látex Flor siniestra" data-code="ML-21" data-image="assets/latex/latex-21.webp" data-desc="Flor de aspecto siniestro con pétalos rojos decorados y centro oscuro.">
+<article class="card latex-card mask-card" data-category="Animales y criaturas" data-material="Látex" style="--zoom:1" data-name="Máscara de látex Flor siniestra" data-code="ML-21" data-image="assets/latex/latex-21.webp" data-desc="Flor de aspecto siniestro con pétalos rojos decorados y centro oscuro.">
 <div class="image-wrap"><img src="assets/latex/latex-21.webp" alt="Máscara de látex con forma de flor siniestra roja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-21</span></div>
 <div class="details"><div><h3>Flor siniestra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Flor siniestra"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Flor siniestra">+</button></div>
 </article>
-<article class="card latex-card" data-category="Zombis y monstruos" style="--zoom:1" data-name="Máscara de látex Cadáver gris" data-code="ML-22" data-image="assets/latex/latex-22.webp" data-desc="Rostro gris de apariencia cadavérica, con ojos oscuros y rasgos marcados.">
+<article class="card latex-card mask-card" data-category="Zombis y monstruos" data-material="Látex" style="--zoom:1" data-name="Máscara de látex Cadáver gris" data-code="ML-22" data-image="assets/latex/latex-22.webp" data-desc="Rostro gris de apariencia cadavérica, con ojos oscuros y rasgos marcados.">
 <div class="image-wrap"><img src="assets/latex/latex-22.webp" alt="Máscara de látex de cadáver gris" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-22</span></div>
 <div class="details"><div><h3>Cadáver gris</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Cadáver gris"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Cadáver gris">+</button></div>
 </article>
-<article class="card latex-card" data-category="Zombis y monstruos" style="--zoom:1" data-name="Máscara de látex Demonio rojo" data-code="ML-23" data-image="assets/latex/latex-23.webp" data-desc="Máscara de criatura roja con rasgos demoníacos y cuello integrado.">
+<article class="card latex-card mask-card" data-category="Zombis y monstruos" data-material="Látex" style="--zoom:1" data-name="Máscara de látex Demonio rojo" data-code="ML-23" data-image="assets/latex/latex-23.webp" data-desc="Máscara de criatura roja con rasgos demoníacos y cuello integrado.">
 <div class="image-wrap"><img src="assets/latex/latex-23.webp" alt="Máscara de látex de demonio rojo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-23</span></div>
 <div class="details"><div><h3>Demonio rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Demonio rojo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Demonio rojo">+</button></div>
 </article>
-<article class="card latex-card" data-category="Terror de películas" style="--zoom:1" data-name="Máscara de látex Rostro rojo" data-code="ML-24" data-image="assets/latex/latex-24.webp" data-desc="Máscara roja de rostro completo con ojos negros y cuello decorativo integrado.">
+<article class="card latex-card mask-card" data-category="Terror de películas" data-material="Látex" style="--zoom:1" data-name="Máscara de látex Rostro rojo" data-code="ML-24" data-image="assets/latex/latex-24.webp" data-desc="Máscara roja de rostro completo con ojos negros y cuello decorativo integrado.">
 <div class="image-wrap"><img src="assets/latex/latex-24.webp" alt="Máscara de látex roja de rostro completo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-24</span></div>
 <div class="details"><div><h3>Rostro rojo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Rostro rojo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Rostro rojo">+</button></div>
 </article>
-<article class="card latex-card" data-category="Animales y criaturas" style="--zoom:1" data-name="Máscara de látex Mutante" data-code="ML-25" data-image="assets/latex/latex-25.webp" data-desc="Rostro deformado con múltiples rasgos y bocas superpuestas para un efecto de horror.">
+<article class="card latex-card mask-card" data-category="Animales y criaturas" data-material="Látex" style="--zoom:1" data-name="Máscara de látex Mutante" data-code="ML-25" data-image="assets/latex/latex-25.webp" data-desc="Rostro deformado con múltiples rasgos y bocas superpuestas para un efecto de horror.">
 <div class="image-wrap"><img src="assets/latex/latex-25.webp" alt="Máscara de látex de rostro mutante con múltiples bocas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">ML-25</span></div>
 <div class="details"><div><h3>Mutante</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara Mutante"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara Mutante">+</button></div>
 </article>
-</div>
-</section>
-<section class="material-catalog" id="mascaras-peluche" aria-labelledby="peluche-title">
-<div class="section-heading">
-<div>
-<p>Máscaras de peluche</p>
-<h2 id="peluche-title">Terror con textura</h2>
-</div>
-<span>Máscaras suaves y llamativas para complementar tu personaje.</span>
-</div>
-<div class="grid">
-<article class="card plush-card" data-name="Máscara de peluche Conejo siniestro" data-code="MPe-01" data-image="assets/plush-mask-01.png" data-desc="Máscara de peluche negro con orejas largas, ojos amarillos y sonrisa de terror.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Conejo siniestro" data-code="MPe-01" data-image="assets/plush-mask-01.png" data-desc="Máscara de peluche negro con orejas largas, ojos amarillos y sonrisa de terror.">
 <div class="image-wrap"><img src="assets/plush-mask-01.png" alt="Máscara de peluche de conejo negro siniestro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-01</span></div>
 <div class="details"><div><h3>Conejo siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Conejo siniestro"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Conejo siniestro">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Conejo luminoso blanco y rosa" data-code="MPe-02" data-image="assets/plush-mask-02.png" data-desc="Conejo de peluche blanco con orejas rosadas, tiras luminosas verde-amarillas y sonrisa ensangrentada.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Conejo luminoso blanco y rosa" data-code="MPe-02" data-image="assets/plush-mask-02.png" data-desc="Conejo de peluche blanco con orejas rosadas, tiras luminosas verde-amarillas y sonrisa ensangrentada.">
 <div class="image-wrap"><img src="assets/plush-mask-02.png" alt="Máscara de peluche de conejo blanco y rosa luminoso" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-02</span></div>
 <div class="details"><div><h3>Conejo blanco luminoso</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Conejo blanco luminoso"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Conejo blanco luminoso">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Conejo luminoso azul" data-code="MPe-03" data-image="assets/plush-mask-03.png" data-desc="Conejo de peluche azul con tiras luminosas blancas y verde-amarillas, ojos con manchas de sangre.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Conejo luminoso azul" data-code="MPe-03" data-image="assets/plush-mask-03.png" data-desc="Conejo de peluche azul con tiras luminosas blancas y verde-amarillas, ojos con manchas de sangre.">
 <div class="image-wrap"><img src="assets/plush-mask-03.png" alt="Máscara de peluche de conejo azul luminoso" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-03</span></div>
 <div class="details"><div><h3>Conejo azul luminoso</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Conejo azul luminoso"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Conejo azul luminoso">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Conejo luminoso negro" data-code="MPe-04" data-image="assets/plush-mask-04.png" data-desc="Conejo de peluche negro con tiras luminosas naranja-rojas en orejas y ojos, nariz rosada.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Conejo luminoso negro" data-code="MPe-04" data-image="assets/plush-mask-04.png" data-desc="Conejo de peluche negro con tiras luminosas naranja-rojas en orejas y ojos, nariz rosada.">
 <div class="image-wrap"><img src="assets/plush-mask-04.png" alt="Máscara de peluche de conejo negro luminoso rojo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-04</span></div>
 <div class="details"><div><h3>Conejo negro luminoso</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Conejo negro luminoso"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Conejo negro luminoso">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Conejo luminoso gris bicolor" data-code="MPe-05" data-image="assets/plush-mask-05.png" data-desc="Conejo de peluche gris con tiras luminosas rojas y verdes, ojos en X de dos colores.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Conejo luminoso gris bicolor" data-code="MPe-05" data-image="assets/plush-mask-05.png" data-desc="Conejo de peluche gris con tiras luminosas rojas y verdes, ojos en X de dos colores.">
 <div class="image-wrap"><img src="assets/plush-mask-05.png" alt="Máscara de peluche de conejo gris bicolor luminoso" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-05</span></div>
 <div class="details"><div><h3>Conejo gris bicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Conejo gris bicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Conejo gris bicolor">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Oso blanco sonrisa rosa" data-code="MPe-06" data-image="assets/plush-mask-06.png" data-desc="Oso de peluche blanco con ojos verde-rojo y una amplia sonrisa rosa con colmillos amarillos.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Oso blanco sonrisa rosa" data-code="MPe-06" data-image="assets/plush-mask-06.png" data-desc="Oso de peluche blanco con ojos verde-rojo y una amplia sonrisa rosa con colmillos amarillos.">
 <div class="image-wrap"><img src="assets/plush-mask-06.png" alt="Máscara de peluche de oso blanco con sonrisa rosa" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-06</span></div>
 <div class="details"><div><h3>Oso blanco sonrisa rosa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Oso blanco sonrisa rosa"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Oso blanco sonrisa rosa">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Oso negro colmillos verdes" data-code="MPe-07" data-image="assets/plush-mask-07.png" data-desc="Oso de peluche negro con ojos verdes salpicados de sangre y colmillos verde-amarillos con remaches.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Oso negro colmillos verdes" data-code="MPe-07" data-image="assets/plush-mask-07.png" data-desc="Oso de peluche negro con ojos verdes salpicados de sangre y colmillos verde-amarillos con remaches.">
 <div class="image-wrap"><img src="assets/plush-mask-07.png" alt="Máscara de peluche de oso negro con colmillos verdes" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-07</span></div>
 <div class="details"><div><h3>Oso negro colmillos verdes</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Oso negro colmillos verdes"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Oso negro colmillos verdes">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Oso canela ojos verdes" data-code="MPe-08" data-image="assets/plush-mask-08.png" data-desc="Oso de peluche color canela con ojos verdes desiguales, nariz morada y sonrisa afilada.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Oso canela ojos verdes" data-code="MPe-08" data-image="assets/plush-mask-08.png" data-desc="Oso de peluche color canela con ojos verdes desiguales, nariz morada y sonrisa afilada.">
 <div class="image-wrap"><img src="assets/plush-mask-08.png" alt="Máscara de peluche de oso canela con ojos verdes" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-08</span></div>
 <div class="details"><div><h3>Oso canela ojos verdes</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Oso canela ojos verdes"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Oso canela ojos verdes">+</button></div>
 </article>
-<article class="card plush-card" data-name="Máscara de peluche Conejo beige siniestro" data-code="MPe-09" data-image="assets/plush-mask-09.png" data-desc="Conejo de peluche beige con ojos amarillos manchados de sangre y sonrisa negra siniestra.">
+<article data-category="Animales y criaturas" data-material="Peluche" class="card plush-card mask-card" data-name="Máscara de peluche Conejo beige siniestro" data-code="MPe-09" data-image="assets/plush-mask-09.png" data-desc="Conejo de peluche beige con ojos amarillos manchados de sangre y sonrisa negra siniestra.">
 <div class="image-wrap"><img src="assets/plush-mask-09.png" alt="Máscara de peluche de conejo beige siniestro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MPe-09</span></div>
 <div class="details"><div><h3>Conejo beige siniestro</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de máscara de peluche Conejo beige siniestro"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: máscara de peluche Conejo beige siniestro">+</button></div>
 </article>
-</div>
-</section>
-<section class="material-catalog" id="mascaras-pasta" aria-labelledby="pasta-title">
-<div class="section-heading">
-<div>
-<p>Máscaras de pasta</p>
-<h2 id="pasta-title">Luz, carácter y terror</h2>
-</div>
-<span>Máscaras rígidas y luminosas para destacar en cualquier fiesta.</span>
-</div>
-<div class="catalog-filter" data-smart-filter="mascaras-pasta" aria-label="Filtrar máscaras de pasta"><span class="filter-label">Filtrar por:</span><div class="filter-chips" role="group" aria-label="Categoría de máscara"></div></div>
-<div class="grid">
-<article class="card pasta-card" data-name="Máscara de pasta Payaso puntadas rojas" data-code="MP-01" data-image="assets/pasta-01.jpg" data-desc="Máscara de pasta de payaso blanco con mechones rojos, nariz roja y ojos y sonrisa con puntadas.">
+<article data-category="Payasos" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Payaso puntadas rojas" data-code="MP-01" data-image="assets/pasta-01.jpg" data-desc="Máscara de pasta de payaso blanco con mechones rojos, nariz roja y ojos y sonrisa con puntadas.">
 <div class="image-wrap"><img src="assets/pasta-01.jpg" alt="Máscara de pasta de payaso blanco con mechones rojos y sonrisa cosida" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-01</span></div>
 <div class="details"><div><h3>Payaso puntadas rojas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Payaso puntadas rojas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Payaso puntadas rojas">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Grito plateado con velo" data-code="MP-02" data-image="assets/pasta-02.jpg" data-desc="Máscara de pasta de rostro gritando en acabado plateado con detalles rojos y velo negro.">
+<article data-category="Terror" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Grito plateado con velo" data-code="MP-02" data-image="assets/pasta-02.jpg" data-desc="Máscara de pasta de rostro gritando en acabado plateado con detalles rojos y velo negro.">
 <div class="image-wrap"><img src="assets/pasta-02.jpg" alt="Máscara de pasta plateada con boca abierta, ojos rojos y velo negro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-02</span></div>
 <div class="details"><div><h3>Grito plateado con velo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Grito plateado con velo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Grito plateado con velo">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Conejo LED azul" data-code="MP-03" data-image="assets/pasta-03.jpg" data-desc="Máscara de pasta negra brillante de conejo con orejas largas y luz LED azul.">
+<article data-category="Animales y criaturas" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Conejo LED azul" data-code="MP-03" data-image="assets/pasta-03.jpg" data-desc="Máscara de pasta negra brillante de conejo con orejas largas y luz LED azul.">
 <div class="image-wrap"><img src="assets/pasta-03.jpg" alt="Máscara de pasta negra de conejo con luz LED azul" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-03</span></div>
 <div class="details"><div><h3>Conejo LED azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Conejo LED azul"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Conejo LED azul">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Zorro demoníaco LED naranja" data-code="MP-04" data-image="assets/pasta-04.jpg" data-desc="Máscara de pasta negra brillante de zorro con orejas puntiagudas y luz LED naranja.">
+<article data-category="Animales y criaturas" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Zorro demoníaco LED naranja" data-code="MP-04" data-image="assets/pasta-04.jpg" data-desc="Máscara de pasta negra brillante de zorro con orejas puntiagudas y luz LED naranja.">
 <div class="image-wrap"><img src="assets/pasta-04.jpg" alt="Máscara de pasta negra de zorro demoníaco con luz LED naranja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-04</span></div>
 <div class="details"><div><h3>Zorro demoníaco LED naranja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Zorro demoníaco LED naranja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Zorro demoníaco LED naranja">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Payaso sonrisa LED verde" data-code="MP-05" data-image="assets/pasta-05.jpg" data-desc="Máscara de pasta de payaso blanco con cabello verde, cejas rojas y luz LED verde en ojos y sonrisa.">
+<article data-category="Payasos" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Payaso sonrisa LED verde" data-code="MP-05" data-image="assets/pasta-05.jpg" data-desc="Máscara de pasta de payaso blanco con cabello verde, cejas rojas y luz LED verde en ojos y sonrisa.">
 <div class="image-wrap"><img src="assets/pasta-05.jpg" alt="Máscara de pasta de payaso con cabello verde y luz LED verde" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-05</span></div>
 <div class="details"><div><h3>Payaso sonrisa LED verde</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Payaso sonrisa LED verde"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Payaso sonrisa LED verde">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Casco DJ LED rosa" data-code="MP-06" data-image="assets/pasta-06.jpg" data-desc="Máscara de pasta blanca tipo casco con ojos en X y sonrisa con luz LED rosa.">
+<article data-category="Personajes y cascos" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Casco DJ LED rosa" data-code="MP-06" data-image="assets/pasta-06.jpg" data-desc="Máscara de pasta blanca tipo casco con ojos en X y sonrisa con luz LED rosa.">
 <div class="image-wrap"><img src="assets/pasta-06.jpg" alt="Máscara de pasta blanca tipo casco con luz LED rosa" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-06</span></div>
 <div class="details"><div><h3>Casco DJ LED rosa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Casco DJ LED rosa"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Casco DJ LED rosa">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Payaso LED azul" data-code="MP-07" data-image="assets/pasta-07.jpg" data-desc="Máscara de pasta de payaso blanco con cuernos rojos, detalles verdes, nariz roja y luz LED azul.">
+<article data-category="Payasos" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Payaso LED azul" data-code="MP-07" data-image="assets/pasta-07.jpg" data-desc="Máscara de pasta de payaso blanco con cuernos rojos, detalles verdes, nariz roja y luz LED azul.">
 <div class="image-wrap"><img src="assets/pasta-07.jpg" alt="Máscara de pasta de payaso con detalles verdes y luz LED azul" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-07</span></div>
 <div class="details"><div><h3>Payaso LED azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Payaso LED azul"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Payaso LED azul">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Sonrisa LED verde" data-code="MP-08" data-image="assets/pasta-08.jpg" data-desc="Máscara de pasta negra brillante con ojos en X, nariz roja, manchas rojas y luz LED verde.">
+<article data-category="Terror" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Sonrisa LED verde" data-code="MP-08" data-image="assets/pasta-08.jpg" data-desc="Máscara de pasta negra brillante con ojos en X, nariz roja, manchas rojas y luz LED verde.">
 <div class="image-wrap"><img src="assets/pasta-08.jpg" alt="Máscara de pasta negra con luz LED verde en ojos y sonrisa" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-08</span></div>
 <div class="details"><div><h3>Sonrisa LED verde</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Sonrisa LED verde"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Sonrisa LED verde">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Grito bronce con velo" data-code="MP-09" data-image="assets/pasta-09.jpg" data-desc="Máscara de pasta de rostro gritando en acabado bronce envejecido con velo negro.">
+<article data-category="Terror" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Grito bronce con velo" data-code="MP-09" data-image="assets/pasta-09.jpg" data-desc="Máscara de pasta de rostro gritando en acabado bronce envejecido con velo negro.">
 <div class="image-wrap"><img src="assets/pasta-09.jpg" alt="Máscara de pasta bronce con boca abierta y velo negro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-09</span></div>
 <div class="details"><div><h3>Grito bronce con velo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Grito bronce con velo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Grito bronce con velo">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Grito blanco con velo" data-code="MP-10" data-image="assets/pasta-10.jpg" data-desc="Máscara de pasta blanca de rostro gritando con velo negro.">
+<article data-category="Terror" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Grito blanco con velo" data-code="MP-10" data-image="assets/pasta-10.jpg" data-desc="Máscara de pasta blanca de rostro gritando con velo negro.">
 <div class="image-wrap"><img src="assets/pasta-10.jpg" alt="Máscara de pasta blanca con boca abierta y velo negro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-10</span></div>
 <div class="details"><div><h3>Grito blanco con velo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Grito blanco con velo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Grito blanco con velo">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Rostro pálido lágrimas de sangre" data-code="MP-11" data-image="assets/pasta-11.jpg" data-desc="Máscara de pasta de rostro pálido con cabello oscuro y lágrimas rojas.">
+<article data-category="Terror" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Rostro pálido lágrimas de sangre" data-code="MP-11" data-image="assets/pasta-11.jpg" data-desc="Máscara de pasta de rostro pálido con cabello oscuro y lágrimas rojas.">
 <div class="image-wrap"><img src="assets/pasta-11.jpg" alt="Máscara de pasta de rostro pálido con lágrimas rojas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-11</span></div>
 <div class="details"><div><h3>Rostro pálido lágrimas de sangre</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Rostro pálido lágrimas de sangre"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Rostro pálido lágrimas de sangre">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara Capucha araña negra" data-code="MP-12" data-image="assets/pasta-12.jpg" data-desc="Capucha ajustada negra con telaraña morada y lentes con marco rígido.">
+<article data-category="Animales y criaturas" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara Capucha araña negra" data-code="MP-12" data-image="assets/pasta-12.jpg" data-desc="Capucha ajustada negra con telaraña morada y lentes con marco rígido.">
 <div class="image-wrap"><img src="assets/pasta-12.jpg" alt="Capucha negra con telaraña morada y lentes rígidos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-12</span></div>
 <div class="details"><div><h3>Capucha araña negra</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara Capucha araña negra"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara Capucha araña negra">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara Capucha araña roja" data-code="MP-13" data-image="assets/pasta-13.jpg" data-desc="Capucha ajustada roja con telaraña negra y lentes con marco rígido.">
+<article data-category="Animales y criaturas" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara Capucha araña roja" data-code="MP-13" data-image="assets/pasta-13.jpg" data-desc="Capucha ajustada roja con telaraña negra y lentes con marco rígido.">
 <div class="image-wrap"><img src="assets/pasta-13.jpg" alt="Capucha roja con telaraña negra y lentes rígidos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-13</span></div>
 <div class="details"><div><h3>Capucha araña roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara Capucha araña roja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara Capucha araña roja">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Casco soldado blanco" data-code="MP-14" data-image="assets/pasta-14.jpg" data-desc="Casco de pasta blanco brillante con visor negro para personaje espacial.">
+<article data-category="Personajes y cascos" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Casco soldado blanco" data-code="MP-14" data-image="assets/pasta-14.jpg" data-desc="Casco de pasta blanco brillante con visor negro para personaje espacial.">
 <div class="image-wrap"><img src="assets/pasta-14.jpg" alt="Casco de pasta blanco brillante con visor negro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-14</span></div>
 <div class="details"><div><h3>Casco soldado blanco</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Casco soldado blanco"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Casco soldado blanco">+</button></div>
 </article>
-<article class="card pasta-card" data-name="Máscara de pasta Casco guerrero oscuro" data-code="MP-15" data-image="assets/pasta-15.jpg" data-desc="Casco de pasta negro mate con visor oscuro y detalles plateados.">
+<article data-category="Personajes y cascos" data-material="Pasta" class="card pasta-card mask-card" data-name="Máscara de pasta Casco guerrero oscuro" data-code="MP-15" data-image="assets/pasta-15.jpg" data-desc="Casco de pasta negro mate con visor oscuro y detalles plateados.">
 <div class="image-wrap"><img src="assets/pasta-15.jpg" alt="Casco de pasta negro mate con visor oscuro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">MP-15</span></div>
 <div class="details"><div><h3>Casco guerrero oscuro</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Máscara de pasta Casco guerrero oscuro"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Máscara de pasta Casco guerrero oscuro">+</button></div>
 </article>
 </div>
+<p class="filter-empty mask-filter-empty" hidden>No encontramos máscaras con esa combinación. Prueba otro material o estilo.</p>
 </section>
 
 <section class="accessory-catalog" id="accesorios" aria-labelledby="accesorios-title">
@@ -3135,9 +3128,7 @@ body.kalu-ready>.shell{opacity:1}
 <h2 id="volver-mascaras-title">Descubre todo lo que tenemos para tu personaje</h2>
 <div class="mask-return-copy">Desliza para recorrer las categorías y toca una para ir directo a sus productos. Puedes agregar varios a tu selección y pedirlos juntos por WhatsApp.</div>
 <div class="explore-track">
-<a class="explore-item" href="#mascaras"><img src="assets/latex/latex-01.webp" alt="Máscaras de látex" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de látex</h3><span class="explore-desc">Modelos de terror y personajes para destacar.</span><span class="explore-go">Ver productos →</span></div></a>
-<a class="explore-item" href="#mascaras-peluche"><img src="assets/plush-mask-01.png" alt="Máscaras de peluche" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de peluche</h3><span class="explore-desc">Suaves, divertidas y muy llamativas.</span><span class="explore-go">Ver productos →</span></div></a>
-<a class="explore-item" href="#mascaras-pasta"><img src="assets/pasta-01.jpg" alt="Máscaras de pasta" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de pasta</h3><span class="explore-desc">Acabados artesanales con mucho detalle.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#mascaras"><img src="assets/latex/latex-01.webp" alt="Máscaras" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras</h3><span class="explore-desc">Látex, pasta y peluche, filtradas por material y estilo.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#pelucas"><img src="assets/wig-long-blue-corner.png" alt="Pelucas" loading="lazy" draggable="false" /><div class="explore-info"><h3>Pelucas</h3><span class="explore-desc">Estilos largos y colores que roban miradas.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#accesorios"><img src="assets/accesorios/acc-02.webp" alt="Accesorios" loading="lazy" draggable="false" /><div class="explore-info"><h3>Accesorios</h3><span class="explore-desc">Diademas, medias, guantes, utilería y accesorios para completar tu disfraz.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#sombreros-catalogo"><img src="assets/sombreros/so-14.webp" alt="Sombreros" loading="lazy" draggable="false" /><div class="explore-info"><h3>Sombreros</h3><span class="explore-desc">Brujas, piratas, vaqueros, magos y más.</span><span class="explore-go">Ver productos →</span></div></a>
@@ -3170,7 +3161,7 @@ body.kalu-ready>.shell{opacity:1}
 </a>
 </div>
 <p>Accesorios para celebrar, crear y destacar. · WhatsApp Accesorios 311 757 0138 · Disfraces 321 505 5733</p>
-<p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
+<p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras">Filtrar por material y estilo</a></p>
 </footer>
 </div>
 <a class="back-top" id="backTop" href="#inicio" aria-label="Volver al inicio de la página"><span aria-hidden="true">↑</span>Volver arriba</a>
@@ -4070,10 +4061,9 @@ loadStock();
   });
 })();
 
-// Filtros de catálogo unificados: una sola fila de chips, contador y limpiar.
+// Filtros de catálogo unificados: una sola lógica visual; máscaras admiten dos criterios combinables.
 (function () {
   const configs = [
-    { selector: '#mascaras', card: '.latex-card', label: 'máscaras', title: 'Filtrar máscaras de látex', min: 16 },
     { selector: '#sombreros-catalogo', card: '.hat-card', label: 'sombreros', title: 'Filtrar sombreros', min: 16 },
     { selector: '#accesorios', card: '.accessory-card', label: 'accesorios', title: 'Filtrar accesorios', min: 16 },
     { selector: '#alquiler-nino', card: '.rental-card', label: 'disfraces', title: 'Filtrar disfraces de niño', min: 16 },
@@ -4121,6 +4111,47 @@ loadStock();
     clear.addEventListener('click',()=>apply('Todos'));
     apply('Todos');
   });
+
+  const maskGrid = document.querySelector('#mascaras .mask-grid');
+  const maskBar = document.querySelector('#mascaras .mask-filter');
+  if (!maskGrid || !maskBar) return;
+  const cards = [...maskGrid.querySelectorAll('.mask-card')];
+  const materialChips = maskBar.querySelector('[data-filter-group="material"]');
+  const categoryChips = maskBar.querySelector('[data-filter-group="category"]');
+  const count = maskBar.querySelector('.mask-filter-count');
+  const clear = maskBar.querySelector('.mask-filter-clear');
+  const empty = document.querySelector('#mascaras .mask-filter-empty');
+  const materials = ['Todos', ...new Set(cards.map(c => c.dataset.material).filter(Boolean))];
+  const categories = ['Todos', ...new Set(cards.map(c => c.dataset.category).filter(Boolean))];
+  let activeMaterial='Todos', activeCategory='Todos';
+  const makeChip = (parent, value) => {
+    const b=document.createElement('button'); b.type='button'; b.className='filter-chip'; b.dataset.value=value; b.textContent=value; b.setAttribute('aria-pressed','false'); parent.appendChild(b); return b;
+  };
+  materials.forEach(v => makeChip(materialChips,v));
+  categories.forEach(v => makeChip(categoryChips,v));
+  const render = () => {
+    let visible=0;
+    cards.forEach(card => {
+      const okMaterial=activeMaterial==='Todos'||card.dataset.material===activeMaterial;
+      const okCategory=activeCategory==='Todos'||card.dataset.category===activeCategory;
+      const show=okMaterial&&okCategory;
+      card.hidden=!show; if(show) visible++;
+    });
+    materialChips.querySelectorAll('.filter-chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===activeMaterial)));
+    categoryChips.querySelectorAll('.filter-chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===activeCategory)));
+    count.textContent=`${visible} ${visible===1?'máscara':'máscaras'}`;
+    clear.disabled=activeMaterial==='Todos'&&activeCategory==='Todos';
+    empty.hidden=visible!==0;
+    maskGrid.scrollLeft=0; maskGrid.dispatchEvent(new Event('scroll'));
+  };
+  materialChips.addEventListener('click', e => { const b=e.target.closest('.filter-chip'); if(!b)return; activeMaterial=b.dataset.value; render(); });
+  categoryChips.addEventListener('click', e => { const b=e.target.closest('.filter-chip'); if(!b)return; activeCategory=b.dataset.value; render(); });
+  clear.addEventListener('click', () => { activeMaterial='Todos'; activeCategory='Todos'; render(); });
+  cards.forEach(card => {
+    const badge=document.createElement('span'); badge.className='material-badge'; badge.textContent=card.dataset.material || '';
+    const wrap=card.querySelector('.image-wrap'); if(wrap && badge.textContent) wrap.appendChild(badge);
+  });
+  render();
 })();
 
 // Precarga inteligente sin competir con el cliente mientras está haciendo scroll.
