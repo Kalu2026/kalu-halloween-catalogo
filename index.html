@@ -1453,41 +1453,6 @@ body.kalu-ready>.shell{opacity:1}
   background:transparent;
   filter:drop-shadow(0 28px 26px rgba(0,0,0,.38));
 }
-.halloween-hero-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  background:transparent;
-  filter:drop-shadow(0 28px 26px rgba(0,0,0,.38));
-  transition:opacity .45s ease, visibility .45s ease, transform .45s cubic-bezier(.2,1.2,.3,1);
-  transform:scale(.985);
-}
-.halloween-3d-stage .halloween-3d-model{
-  transition:opacity .45s ease, visibility .45s ease, transform .45s cubic-bezier(.2,1.2,.3,1), filter .45s ease;
-}
-.halloween-3d-stage.is-video .halloween-3d-model{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-.halloween-3d-stage.is-video .halloween-hero-video{
-  opacity:1;
-  visibility:visible;
-  transform:scale(1);
-}
-.halloween-3d-stage.is-video .halloween-3d-badge{
-  opacity:.82;
-}
-@media (prefers-reduced-motion: reduce){
-  .halloween-hero-video,.halloween-3d-stage .halloween-3d-model{transition:none}
-}
-
 .halloween-3d-model::part(default-progress-bar){
   height:3px;
   border-radius:999px;
@@ -1656,6 +1621,12 @@ body.kalu-ready>.shell{opacity:1}
 </style>
 
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+
+<style id="kalu-visibility-animation-pause">
+/* Pausa las animaciones CSS de elementos fuera de pantalla para ahorrar recursos. */
+.kalu-animation-paused{animation-play-state:paused !important;}
+</style>
+
 </head>
 <body class="kalu-loading">
 <!-- Capa de carga: evita mostrar el contenido entrecortado mientras se prepara la página -->
@@ -1722,7 +1693,7 @@ body.kalu-ready>.shell{opacity:1}
   </div>
   <div class="season-hero-art halloween-art">
     <div class="halloween-glow" aria-hidden="true"></div>
-    <div class="halloween-3d-stage" aria-label="Modelo 3D para la colección Halloween">
+    <div class="halloween-3d-stage" aria-label="Modelo 3D para la colección Halloween" role="button" tabindex="0">
       <div class="halloween-particles" aria-hidden="true">
         <span class="halloween-particle"></span><span class="halloween-particle"></span><span class="halloween-particle"></span>
         <span class="halloween-particle"></span><span class="halloween-particle"></span><span class="halloween-particle"></span>
@@ -1746,16 +1717,6 @@ body.kalu-ready>.shell{opacity:1}
         loading="eager"
         reveal="auto">
       </model-viewer>
-      <video
-        class="halloween-hero-video"
-        src="assets/hero/halloween.webm"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        aria-label="Animación Halloween de Kalú">
-      </video>
       <span class="halloween-3d-badge" aria-hidden="true">✦ HALLOWEEN ✦</span>
     </div>
   </div>
@@ -4381,7 +4342,7 @@ loadStock();
   addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   update();
 })();
-</script>
+
 <script>
 (() => {
   const links = [...document.querySelectorAll('.season-link')];
@@ -4400,22 +4361,15 @@ loadStock();
   targets.forEach(t => { const el = document.getElementById(t.id); if (el) observer.observe(el); });
 })();
 </script>
+</script>
 <script>
 (function(){
   const stage=document.querySelector('.halloween-3d-stage');
   const model=document.querySelector('.halloween-3d-model');
-  const video=document.querySelector('.halloween-hero-video');
-  if(!stage||!model||!video) return;
+  if(!stage||!model) return;
 
-  /*
-    Interacción del Hero Halloween:
-    - Arrastre horizontal: gira el gato 3D.
-    - Movimiento vertical: queda libre para desplazar la página.
-    - Clic sin arrastre: alterna gato 3D <-> animación WebM.
-  */
-  let dragging=false, moved=false, horizontalDrag=false;
-  let startX=0, startY=0, lastX=0, theta=0;
-
+  /* Giro SOLO horizontal: el movimiento vertical queda completamente libre para el scroll. */
+  let timer, dragging=false, startX=0, lastX=0, theta=0, horizontalDrag=false;
   const getTheta=()=>{
     const orbit=(model.getAttribute('camera-orbit')||'0deg 82deg 105%').split(/\s+/);
     const raw=parseFloat(orbit[0]);
@@ -4427,45 +4381,19 @@ loadStock();
     model.setAttribute('camera-orbit', `${theta}deg 82deg 105%`);
   };
 
-  const showVideo=()=>{
-    stage.classList.add('is-video');
-    stage.setAttribute('aria-label','Animación Halloween de Kalú. Haz clic para volver al gato 3D.');
-    video.currentTime=0;
-    const play=video.play();
-    if(play && typeof play.catch==='function') play.catch(()=>{});
-  };
-
-  const showModel=()=>{
-    stage.classList.remove('is-video');
-    stage.setAttribute('aria-label','Modelo 3D para la colección Halloween. Haz clic para ver la animación.');
-    video.pause();
-    video.currentTime=0;
-  };
-
-  const toggleHero=()=>{
-    if(stage.classList.contains('is-video')) showModel();
-    else showVideo();
-  };
-
   stage.addEventListener('pointerdown',e=>{
     if(e.pointerType==='mouse' && e.button!==0) return;
-    dragging=true;
-    moved=false;
-    horizontalDrag=false;
-    startX=lastX=e.clientX;
-    startY=e.clientY;
+    dragging=true; horizontalDrag=false; startX=lastX=e.clientX;
     stage.setPointerCapture?.(e.pointerId);
   });
 
   stage.addEventListener('pointermove',e=>{
-    if(!dragging || stage.classList.contains('is-video')) return;
+    if(!dragging) return;
     const dx=e.clientX-lastX;
     const totalX=e.clientX-startX;
-    const totalY=e.clientY-startY;
-    if(Math.abs(totalX)>6 || Math.abs(totalY)>6) moved=true;
-    if(Math.abs(totalX)>6) horizontalDrag=Math.abs(totalX)>Math.abs(totalY);
+    if(Math.abs(totalX)>6) horizontalDrag=Math.abs(totalX)>Math.abs(e.clientY-(stage._startY??e.clientY));
+    if(Math.abs(totalX)>6 && Math.abs(totalX)>Math.abs((e.clientY-(stage._startY??e.clientY)))) e.preventDefault();
     if(horizontalDrag){
-      e.preventDefault();
       theta-=dx*0.55;
       if(theta>180) theta-=360;
       if(theta<-180) theta+=360;
@@ -4474,37 +4402,85 @@ loadStock();
     lastX=e.clientX;
   });
 
+  stage.addEventListener('pointerdown',e=>{stage._startY=e.clientY;});
   const endDrag=e=>{
-    const wasClick=!moved && !horizontalDrag;
-    dragging=false;
-    horizontalDrag=false;
+    dragging=false; horizontalDrag=false;
     try{stage.releasePointerCapture?.(e.pointerId)}catch(_){}
-    if(wasClick) toggleHero();
   };
-
   stage.addEventListener('pointerup',endDrag);
-  stage.addEventListener('pointercancel',()=>{
-    dragging=false;
-    horizontalDrag=false;
-  });
+  stage.addEventListener('pointercancel',endDrag);
 
-  /* Teclado: Enter/Espacio también permite alternar el Hero. */
-  stage.tabIndex=0;
-  stage.setAttribute('role','button');
-  stage.setAttribute('aria-pressed','false');
+  const pop=()=>{
+    stage.classList.remove('is-popping');
+    void stage.offsetWidth;
+    stage.classList.add('is-popping');
+    clearTimeout(timer);
+    timer=setTimeout(()=>stage.classList.remove('is-popping'),760);
+  };
+  stage.addEventListener('click',e=>{
+    if(horizontalDrag) return;
+    pop();
+  });
   stage.addEventListener('keydown',e=>{
-    if(e.key==='Enter' || e.key===' '){
-      e.preventDefault();
-      toggleHero();
-      stage.setAttribute('aria-pressed',String(stage.classList.contains('is-video')));
-    }
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();pop();}
   });
-
-  const observer=new MutationObserver(()=>{
-    stage.setAttribute('aria-pressed',String(stage.classList.contains('is-video')));
-  });
-  observer.observe(stage,{attributes:true,attributeFilter:['class']});
 })();
 </script>
+
+<script id="kalu-visibility-animation-controller">
+/* ===== KALÚ: pausar animaciones fuera de pantalla ===== */
+(function(){
+  const selectors = [
+    '.hero *',
+    '.season-hero *',
+    '.hero-social-link',
+    '.halloween-3d-stage',
+    '.halloween-3d-model',
+    '.halloween-particle',
+    '.hero-bats',
+    '.eye-iris',
+    '.headline-logo',
+    '.hero-art img.hero-logo',
+    '.hero-carousel .hero-slide'
+  ];
+  const elements = [...new Set(selectors.flatMap(sel => [...document.querySelectorAll(sel)]))];
+  if(!elements.length) return;
+
+  const pauseCSS = el => {
+    const cs = getComputedStyle(el);
+    if(cs.animationName && cs.animationName !== 'none') el.classList.add('kalu-animation-paused');
+  };
+  elements.forEach(pauseCSS);
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if(entry.isIntersecting){
+        el.classList.remove('kalu-animation-paused');
+        pauseCSS(el);
+      }else{
+        el.classList.add('kalu-animation-paused');
+      }
+    });
+  }, {threshold:0, rootMargin:'80px 0px 80px 0px'});
+
+  elements.forEach(el => observer.observe(el));
+
+  /* El model-viewer tiene su propio auto-rotate, así que también lo detenemos. */
+  const model = document.querySelector('.halloween-3d-model');
+  if(model){
+    const syncModel = entry => {
+      if(entry.isIntersecting){
+        model.setAttribute('auto-rotate','');
+      }else{
+        model.removeAttribute('auto-rotate');
+      }
+    };
+    const modelObserver = new IntersectionObserver(entries => entries.forEach(syncModel), {threshold:0, rootMargin:'80px 0px 80px 0px'});
+    modelObserver.observe(model);
+  }
+})();
+</script>
+
 </body>
 </html>
