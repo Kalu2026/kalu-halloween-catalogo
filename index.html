@@ -1478,8 +1478,9 @@ body.kalu-ready>.shell{opacity:1}
   .halloween-3d-model{width:100%;height:100%}
   .halloween-3d-badge{right:2%;bottom:4%;font-size:9px;padding:7px 10px}
 }
-/* Interacción ligera: el modelo no se arrastra para no interferir con el scroll móvil. */
-.halloween-3d-stage{cursor:pointer;touch-action:manipulation}
+/* Interacción híbrida: arrastre horizontal para girar; el gesto vertical queda libre para el scroll. */
+.halloween-3d-stage{cursor:grab;touch-action:pan-y}
+.halloween-3d-stage:active{cursor:grabbing}
 .halloween-3d-model{transition:transform .46s cubic-bezier(.2,1.5,.3,1),filter .46s ease;will-change:transform}
 .halloween-3d-stage.is-popping .halloween-3d-model{
   transform:translateY(-24px) scale(1.075);
@@ -1696,10 +1697,13 @@ body.kalu-ready>.shell{opacity:1}
         src="assets/hero/cat.glb"
         alt="Modelo 3D de la colección Halloween de Kalú"
         disable-zoom
+        camera-controls
         interaction-prompt="none"
         auto-rotate
         rotation-per-second="12deg"
         camera-orbit="0deg 82deg 105%"
+        min-camera-orbit="auto 82deg auto"
+        max-camera-orbit="auto 82deg auto"
         field-of-view="28deg"
         shadow-intensity="0.75"
         shadow-softness="0.9"
