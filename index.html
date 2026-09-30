@@ -1422,6 +1422,66 @@ body.kalu-ready>.shell{opacity:1}
 .halloween-season-hero .season-hero-copy,.halloween-season-hero .season-hero-art{animation:none!important}
 
 
+
+/* ===== HALLOWEEN HERO — MODELO 3D ===== */
+.halloween-3d-stage{
+  position:relative;
+  width:min(100%,520px);
+  height:clamp(390px,46vw,555px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  isolation:isolate;
+}
+.halloween-3d-stage::before{
+  content:"";
+  position:absolute;
+  width:min(72%,340px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,177,46,.30) 0%,rgba(232,0,126,.13) 44%,transparent 72%);
+  filter:blur(8px);
+  z-index:-1;
+}
+.halloween-3d-model{
+  width:min(100%,500px);
+  height:100%;
+  display:block;
+  --poster-color:transparent;
+  --progress-bar-color:#ff9d24;
+  --progress-mask:transparent;
+  background:transparent;
+  filter:drop-shadow(0 28px 26px rgba(0,0,0,.38));
+}
+.halloween-3d-model::part(default-progress-bar){
+  height:3px;
+  border-radius:999px;
+}
+.halloween-3d-badge{
+  position:absolute;
+  right:4%;
+  bottom:9%;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  background:rgba(17,3,27,.58);
+  color:rgba(255,255,255,.82);
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  font:800 10px/1 Montserrat,Arial,sans-serif;
+  letter-spacing:.12em;
+}
+@media(max-width:760px){
+  .halloween-art{min-height:380px;margin-top:-4px}
+  .halloween-3d-stage{width:min(100%,390px);height:clamp(340px,94vw,440px)}
+  .halloween-3d-model{width:100%;height:100%}
+  .halloween-3d-badge{right:2%;bottom:4%;font-size:9px;padding:7px 10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .halloween-3d-model{--animation-speed:0}
+}
+
 /* ===== REDISEÑO PROFESIONAL DEL MENÚ DE CATEGORÍAS ===== */
 .categories .section-heading{max-width:1250px;margin-left:auto;margin-right:auto;position:relative}
 .categories .section-heading > div{position:relative}
@@ -1530,6 +1590,8 @@ body.kalu-ready>.shell{opacity:1}
 @media (prefers-reduced-motion:reduce){.cat-item,.cat-photo img{transition:none!important}}
 
 </style>
+
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
 </head>
 <body class="kalu-loading">
 <!-- Capa de carga: evita mostrar el contenido entrecortado mientras se prepara la página -->
@@ -1596,7 +1658,27 @@ body.kalu-ready>.shell{opacity:1}
   </div>
   <div class="season-hero-art halloween-art">
     <div class="halloween-glow" aria-hidden="true"></div>
-    <img src="assets/hero-clown-costume.png" alt="Disfraz de Halloween de la colección Kalú" loading="eager" />
+    <div class="halloween-3d-stage" aria-label="Modelo 3D de bruja para la colección Halloween">
+      <model-viewer
+        class="halloween-3d-model"
+        src="assets/hero/bruja.glb"
+        alt="Bruja 3D de la colección Halloween de Kalú"
+        camera-controls
+        disable-zoom
+        interaction-prompt="none"
+        auto-rotate
+        rotation-per-second="12deg"
+        camera-orbit="0deg 82deg 105%"
+        field-of-view="28deg"
+        shadow-intensity="0.75"
+        shadow-softness="0.9"
+        exposure="1.05"
+        environment-image="neutral"
+        loading="eager"
+        reveal="auto">
+      </model-viewer>
+      <span class="halloween-3d-badge" aria-hidden="true">✦ HALLOWEEN ✦</span>
+    </div>
   </div>
 </section>
 <div class="season-divider halloween-divider" aria-hidden="true"><span>🎃 HALLOWEEN</span><i></i></div>
