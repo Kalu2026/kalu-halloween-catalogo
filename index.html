@@ -15,7 +15,7 @@
   name="description"
   content="Catálogo de máscaras de Halloween de Kalú Accesorios."
 />
-<title>Kalú Accesorios | Halloween</title>
+<title>Kalú Accesorios | Halloween, Bailes Típicos y Navidad</title>
 <meta name="theme-color" content="#8a4b2a" />
 <link rel="icon" href="assets/kalu-logo.png" />
 <link rel="apple-touch-icon" href="assets/kalu-logo.png" />
@@ -25,8 +25,8 @@
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="es_CO" />
 <meta property="og:site_name" content="Kalú Accesorios" />
-<meta property="og:title" content="Kalú Accesorios | Máscaras, pelucas y disfraces de Halloween" />
-<meta property="og:description" content="Máscaras, pelucas, accesorios y alquiler de disfraces para niños, niñas y adultos. Pídelos por WhatsApp." />
+<meta property="og:title" content="Kalú Accesorios | Halloween, Bailes Típicos y Navidad" />
+<meta property="og:description" content="Explora las colecciones de temporada de Kalú: Halloween, bailes típicos y Navidad." />
 <meta property="og:image" content="https://kalu2026.github.io/kalu-halloween-catalogo/assets/hero-clown-costume.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Kalú Accesorios","description":"Máscaras, pelucas, accesorios y alquiler de disfraces de Halloween.","telephone":["+573117570138","+573215055733"],"areaServed":"CO"}</script>
@@ -1372,6 +1372,52 @@ body.kalu-ready>.shell{opacity:1}
 .back-top span{font-size:13px; line-height:1}
 @media(max-width:600px){.back-top{right:12px; bottom:76px; padding:7px 11px; font-size:10px}}
 @media(prefers-reduced-motion:reduce){.back-top{transition:none}}
+
+/* =========================================================
+   KALÚ — TEMPORADAS / MULTI-MUNDO (vista previa)
+   ========================================================= */
+.season-nav{position:sticky;top:0;z-index:120;padding:8px 14px;background:rgba(8,2,13,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.09)}
+.season-nav-inner{max-width:1250px;margin:auto;display:flex;align-items:center;justify-content:center;gap:8px}
+.season-brand{font-family:"Baloo 2",sans-serif;font-weight:800;letter-spacing:.12em;margin-right:10px;opacity:.7}
+.season-link{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;color:#fff;text-decoration:none;font-size:.78rem;transition:.25s ease;border:1px solid transparent}
+.season-link span{font-size:1rem}.season-link:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+.season-link.is-active{background:linear-gradient(135deg,#ff8b16,#d90068);box-shadow:0 8px 25px rgba(232,0,126,.22)}
+.season-folk.is-active{background:linear-gradient(135deg,#e4b23c,#c73a38)}
+.season-christmas.is-active{background:linear-gradient(135deg,#bd1e35,#0d7048)}
+.season-hero{position:relative;min-height:590px;display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.9fr);align-items:center;gap:30px;padding:80px clamp(24px,7vw,110px);overflow:hidden}
+.season-hero-copy{position:relative;z-index:3;max-width:650px}.season-kicker{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.16em;margin-bottom:15px;padding:7px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(0,0,0,.12)}
+.season-hero h2{font-family:"Baloo 2",sans-serif;font-size:clamp(3.3rem,8vw,7rem);line-height:.82;margin:0 0 24px;letter-spacing:-.04em}.season-hero p{font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.7;max-width:570px;margin:0 0 28px;color:rgba(255,255,255,.88)}
+.season-actions{display:flex;flex-wrap:wrap;gap:12px}.season-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:14px;background:#fff;color:#241225;text-decoration:none;font-weight:800;box-shadow:0 12px 30px rgba(0,0,0,.18);transition:.25s ease}.season-button:hover{transform:translateY(-3px)}.season-button.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25);box-shadow:none}
+.halloween-season-hero{background:radial-gradient(circle at 78% 48%,rgba(255,164,37,.22),transparent 26%),linear-gradient(120deg,#17051f 0%,#4b0d4f 48%,#8f3008 100%)}
+.halloween-season-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.07) 0 1px,transparent 2px),radial-gradient(circle at 62% 76%,rgba(255,255,255,.05) 0 1px,transparent 2px);background-size:90px 90px,130px 130px;opacity:.45;pointer-events:none}
+.halloween-art{position:relative;min-height:430px;display:flex;align-items:center;justify-content:center;z-index:2}
+.halloween-art img{position:relative;z-index:2;width:min(78%,460px);max-height:500px;object-fit:contain;filter:drop-shadow(0 25px 25px rgba(0,0,0,.4))}
+.halloween-glow{position:absolute;width:min(78%,390px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,170,35,.35),rgba(232,0,126,.12) 45%,transparent 70%);filter:blur(2px)}
+.season-brand-logo{height:clamp(74px,10vw,128px);margin:0 0 18px;justify-content:flex-start;filter:drop-shadow(0 10px 14px rgba(0,0,0,.28))}
+.halloween-season-hero .season-brand-logo{margin-left:0}
+.halloween-season-hero .season-brand-logo .kl-l{height:100%}
+@media(max-width:760px){.season-brand-logo{height:clamp(62px,20vw,98px);margin-bottom:14px}}
+
+
+.folk-season-hero{background:radial-gradient(circle at 75% 50%,rgba(255,221,84,.32),transparent 24%),linear-gradient(120deg,#681b30 0%,#c34435 48%,#e1a72e 100%)}
+.folk-season-hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(125deg,transparent 0 55px,rgba(255,255,255,.05) 56px 58px);opacity:.7}
+.folk-art{position:relative;min-height:430px;display:flex;align-items:center;justify-content:center;z-index:2}.folk-art img{position:relative;z-index:2;width:min(75%,430px);max-height:500px;object-fit:contain;filter:drop-shadow(0 25px 25px rgba(42,8,14,.35));animation:folk-float 5s ease-in-out infinite}.folk-glow{position:absolute;width:330px;height:330px;border-radius:50%;background:rgba(255,239,157,.38);filter:blur(20px)}
+@keyframes folk-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+.folk-ribbon{position:absolute;z-index:3;padding:9px 15px;background:#fff;color:#8c2930;font-size:.7rem;font-weight:900;letter-spacing:.12em;border-radius:4px;box-shadow:0 8px 18px rgba(0,0,0,.16)}.ribbon-one{right:8%;top:20%;transform:rotate(7deg)}.ribbon-two{left:8%;bottom:17%;transform:rotate(-7deg)}
+.christmas-season-hero{background:radial-gradient(circle at 76% 42%,rgba(255,219,115,.22),transparent 22%),linear-gradient(120deg,#071f1a,#0d4c37 48%,#681a28)}
+.christmas-season-hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.8) 0 1px,transparent 2px);background-size:55px 55px;opacity:.25}
+.christmas-stars{position:absolute;inset:0;pointer-events:none}.christmas-stars i{position:absolute;color:#ffe49a;font-style:normal;animation:star-pulse 2.8s ease-in-out infinite}.christmas-stars i:nth-child(1){left:9%;top:20%;font-size:2rem}.christmas-stars i:nth-child(2){left:45%;top:12%;font-size:1.1rem}.christmas-stars i:nth-child(3){right:12%;top:20%;font-size:1.8rem}.christmas-stars i:nth-child(4){right:36%;bottom:18%;font-size:1rem}.christmas-stars i:nth-child(5){left:7%;bottom:22%;font-size:1.5rem}
+@keyframes star-pulse{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
+.christmas-art{position:relative;height:450px;z-index:2}.christmas-moon{position:absolute;width:210px;height:210px;border-radius:50%;right:18%;top:4%;background:rgba(255,232,166,.13);box-shadow:0 0 80px rgba(255,215,110,.13)}
+.christmas-tree{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:260px;height:390px;clip-path:polygon(50% 0,100% 72%,76% 72%,92% 91%,63% 91%,75% 100%,25% 100%,37% 91%,8% 91%,24% 72%,0 72%);background:linear-gradient(150deg,#15905e,#075037);box-shadow:0 20px 60px rgba(0,0,0,.3);display:block}.christmas-tree span{position:absolute;color:#ffe5a0;font-size:1.3rem}.christmas-tree span:nth-child(1){top:10%;left:47%}.christmas-tree span:nth-child(2){top:33%;left:28%}.christmas-tree span:nth-child(3){top:45%;right:25%}.christmas-tree span:nth-child(4){top:61%;left:22%}.christmas-tree span:nth-child(5){top:73%;right:27%}
+.christmas-gift{position:absolute;bottom:4%;width:75px;height:58px;border-radius:5px;background:#b9273d;box-shadow:0 12px 25px rgba(0,0,0,.25)}.christmas-gift:after{content:"";position:absolute;left:50%;top:0;bottom:0;width:12px;transform:translateX(-50%);background:#e8c15d}.christmas-gift:before{content:"";position:absolute;left:50%;top:-14px;width:42px;height:20px;transform:translateX(-50%);border:6px solid #e8c15d;border-radius:50%}.gift-a{left:8%}.gift-b{right:8%;background:#d18b2e}
+@media (max-width:760px){.season-nav-inner{overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.season-nav-inner::-webkit-scrollbar{display:none}.season-brand{display:none}.season-link{white-space:nowrap}.season-hero{grid-template-columns:1fr;min-height:auto;padding:70px 22px 45px}.season-hero-copy{max-width:none}.season-hero h2{font-size:clamp(3.2rem,17vw,5rem)}.folk-art,.christmas-art{min-height:360px;height:360px}.folk-art img{width:min(72%,330px)}.christmas-tree{width:210px;height:320px}.christmas-moon{width:150px;height:150px}.folk-ribbon{font-size:.6rem}.ribbon-one{right:2%;top:14%}.ribbon-two{left:2%;bottom:10%}}
+
+/* Halloween hero is now aligned with the other seasonal heroes. Legacy decorative elements stay disabled. */
+.hero-bats,.hero-sticker,.hero-carousel{display:none!important}
+.hero{min-height:0!important;padding:0!important;background:transparent!important}
+.halloween-season-hero .season-hero-copy,.halloween-season-hero .season-hero-art{animation:none!important}
+
 </style>
 </head>
 <body class="kalu-loading">
@@ -1408,43 +1454,33 @@ body.kalu-ready>.shell{opacity:1}
 <a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
 </div>
 </nav>
+<div class="season-nav" aria-label="Colecciones de temporada">
+  <div class="season-nav-inner">
+    <span class="season-brand">KALÚ</span>
+    <a class="season-link season-halloween is-active" href="#inicio"><span>🎃</span><b>Halloween</b></a>
+    <a class="season-link season-folk" href="#bailes"><span>💃</span><b>Bailes típicos</b></a>
+    <a class="season-link season-christmas" href="#navidad"><span>🎄</span><b>Navidad</b></a>
+  </div>
+</div>
+
 <main>
-<section class="hero" id="inicio">
-<img class="hero-sticker sticker-pumpkin" src="sticker-pumpkin.png" alt="" aria-hidden="true" />
-<img class="hero-sticker sticker-candy" src="sticker-candy.png" alt="" aria-hidden="true" />
-<img class="hero-sticker sticker-skull" src="sticker-skull.png" alt="" aria-hidden="true" />
-<span class="hero-sticker sticker-eye" aria-hidden="true"><img class="eye-base" src="sticker-eye-base.png" alt="" /><img class="eye-iris" src="sticker-eye-iris.png" alt="" /></span>
-<div class="hero-copy-block">
-<p class="eyebrow">Halloween</p>
-<h1>
-<span class="headline-line"><span class="headline-words">Tu personaje<img class="hero-bats" src="assets/contact-bats.png" alt="" aria-hidden="true" /></span></span>
-<span class="headline-line headline-closing"><em>Empieza</em> en</span>
-<span class="headline-line headline-logo-line"><span class="klogo" data-klogo role="img" aria-label="Kalú"><img class="kl-l kl-k" style="--i:0" src="assets/logo/k.png" alt="" draggable="false" /><img class="kl-l kl-a" style="--i:1" src="assets/logo/a.png" alt="" draggable="false" /><img class="kl-l kl-l-new" style="--i:2" src="assets/logo/l.webp" alt="" draggable="false" /><img class="kl-l kl-u" style="--i:3" src="assets/logo/u.png" alt="" draggable="false" /><i class="kl-tw" style="left:14%;top:10%;--d:0s"></i><i class="kl-tw" style="left:48%;top:4%;--d:0.7s"></i><i class="kl-tw" style="left:88%;top:12%;--d:1.4s"></i><i class="kl-tw" style="left:70%;top:58%;--d:2.1s"></i><i class="kl-tw" style="left:30%;top:60%;--d:2.8s"></i><i class="kl-tw" style="left:96%;top:64%;--d:3.5s"></i></span></span>
-</h1>
-<p class="hero-copy">Máscaras, pelucas, sombreros y accesorios para crear tu look de Halloween.</p>
-<div class="actions">
-<a class="button button-primary" href="#mascaras">Explorar catálogo</a>
-<a class="button button-light" href="#categorias-title">Ver categorías</a>
-</div>
-<div class="hero-social-links" aria-label="Redes sociales de Kalú">
-<a class="hero-social-link" href="https://www.facebook.com/share/1Bq4t5wiAB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook — Página de Kalú" title="Facebook — Página">
-<img src="assets/redes/facebook-pagina.webp" alt="Facebook — Página" />
-</a>
-<a class="hero-social-link" href="https://www.facebook.com/share/191ScGM178/" target="_blank" rel="noopener noreferrer" aria-label="Facebook — Perfil de Kalú" title="Facebook — Perfil">
-<img src="assets/redes/facebook-perfil.webp" alt="Facebook — Perfil" />
-</a>
-<a class="hero-social-link" href="https://www.instagram.com/disfraceskalu?stkn=MWppOTQwdzF0dmV5Nw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Kalú" title="Instagram">
-<img src="assets/redes/instagram.webp" alt="Instagram de Kalú" />
-</a>
-</div>
-</div>
-<div class="hero-art hero-carousel" aria-label="Productos destacados de Kalú Accesorios">
-<span class="hero-sticker sticker-eye eye-mobile" aria-hidden="true"><img class="eye-base" src="sticker-eye-base.png" alt="" /><img class="eye-iris" src="sticker-eye-iris.png" alt="" /></span>
-<img class="hero-slide" src="assets/hero-clown-costume.png" alt="Disfraz de payaso de terror" />
-<img class="hero-slide" src="assets/hero-ghost-costume.png" alt="Disfraz negro con máscara de fantasma" />
-<img class="hero-slide" src="assets/hero-wizard-costume.png" alt="Capa y accesorios de mago" />
-</div>
+<section class="season-hero halloween-season-hero" id="inicio" aria-labelledby="halloween-title">
+  <div class="season-hero-copy">
+    <span class="klogo season-brand-logo" data-klogo role="img" aria-label="Kalú"><img class="kl-l kl-k" style="--i:0" src="assets/logo/k.png" alt="" draggable="false" /><img class="kl-l kl-a" style="--i:1" src="assets/logo/a.png" alt="" draggable="false" /><img class="kl-l kl-l-new" style="--i:2" src="assets/logo/l.webp" alt="" draggable="false" /><img class="kl-l kl-u" style="--i:3" src="assets/logo/u.png" alt="" draggable="false" /><i class="kl-tw" style="left:14%;top:10%;--d:0s"></i><i class="kl-tw" style="left:48%;top:4%;--d:0.7s"></i><i class="kl-tw" style="left:88%;top:12%;--d:1.4s"></i><i class="kl-tw" style="left:70%;top:58%;--d:2.1s"></i><i class="kl-tw" style="left:30%;top:60%;--d:2.8s"></i><i class="kl-tw" style="left:96%;top:64%;--d:3.5s"></i></span>
+    <span class="season-kicker">🎃 COLECCIÓN HALLOWEEN</span>
+    <h2 id="halloween-title">Halloween</h2>
+    <p>Máscaras, pelucas, accesorios y disfraces para crear un personaje que destaque en cada celebración.</p>
+    <div class="season-actions">
+      <a class="season-button" href="#categorias">Explorar Halloween</a>
+      <a class="season-button ghost" href="#mascaras">Ver productos</a>
+    </div>
+  </div>
+  <div class="season-hero-art halloween-art">
+    <div class="halloween-glow" aria-hidden="true"></div>
+    <img src="assets/hero-clown-costume.png" alt="Disfraz de Halloween de la colección Kalú" loading="eager" />
+  </div>
 </section>
+<div class="season-divider halloween-divider" aria-hidden="true"><span>🎃 HALLOWEEN</span><i></i></div>
 <section class="categories" id="categorias" aria-labelledby="categorias-title">
 <div class="section-heading">
 <div>
@@ -2719,6 +2755,24 @@ body.kalu-ready>.shell{opacity:1}
 </section>
 </div>
 </section>
+<section class="season-hero folk-season-hero" id="bailes" aria-labelledby="bailes-title">
+  <div class="season-hero-copy">
+    <span class="season-kicker">💃 COLECCIÓN FOLCLÓRICA</span>
+    <h2 id="bailes-title">Bailes típicos</h2>
+    <p>Trajes que llevan el color, el movimiento y la identidad de nuestras danzas al escenario.</p>
+    <div class="season-actions">
+      <a class="season-button" href="#tipicos-baile">Ver trajes típicos</a>
+      <a class="season-button ghost" href="#categorias">Volver a categorías</a>
+    </div>
+  </div>
+  <div class="season-hero-art folk-art">
+    <div class="folk-glow"></div>
+    <img src="assets/tipicos/tb-01.webp" alt="Traje típico de baile de la colección Kalú" loading="lazy" />
+    <span class="folk-ribbon ribbon-one">BAILE</span>
+    <span class="folk-ribbon ribbon-two">TRADICIÓN</span>
+  </div>
+</section>
+
 <section class="folk-catalog" id="tipicos-baile" aria-labelledby="tipicos-title">
 <div class="folk-panel">
 <div class="section-heading">
@@ -2766,6 +2820,24 @@ body.kalu-ready>.shell{opacity:1}
 </div>
 </div>
 </section>
+<section class="season-hero christmas-season-hero" id="navidad" aria-labelledby="navidad-title">
+  <div class="christmas-stars" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i></div>
+  <div class="season-hero-copy">
+    <span class="season-kicker">🎄 PRÓXIMA COLECCIÓN</span>
+    <h2 id="navidad-title">Navidad</h2>
+    <p>Un nuevo mundo de temporada para regalos, celebraciones, disfraces y accesorios navideños.</p>
+    <div class="season-actions">
+      <a class="season-button" href="#pedidos">Consultar novedades</a>
+      <a class="season-button ghost" href="#inicio">Volver al inicio</a>
+    </div>
+  </div>
+  <div class="christmas-art" aria-hidden="true">
+    <div class="christmas-moon"></div>
+    <div class="christmas-tree"><span>✦</span><span>●</span><span>●</span><span>●</span><span>●</span></div>
+    <div class="christmas-gift gift-a"></div><div class="christmas-gift gift-b"></div>
+  </div>
+</section>
+
 <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
 <div class="contact-icon" aria-hidden="true">☏</div>
 <div><h2 id="pedidos-title">¿Ya tienes tu selección?</h2><p>Pide un producto de inmediato desde su detalle o reúne varios artículos en <strong>Mi selección</strong> y envíalos juntos por WhatsApp.</p></div>
@@ -3888,7 +3960,7 @@ loadStock();
 // Logo animado + chispas SOLO en la portada/inicio.
 (function () {
   const logo = document.querySelector("[data-klogo]");
-  const hero = document.querySelector(".hero");
+  const hero = document.querySelector(".halloween-season-hero");
   if (!logo || !hero || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const cv = document.createElement("canvas");
@@ -3908,7 +3980,8 @@ loadStock();
   addEventListener("resize", size, { passive: true });
 
   const updateHomeState = () => {
-    const limit = Math.max(innerHeight * .9, hero.offsetHeight * .72);
+    const rect = hero.getBoundingClientRect();
+    const limit = Math.max(innerHeight * .95, rect.bottom + window.scrollY - rect.height * .28);
     const active = window.scrollY < limit;
     if (active === homeActive) return;
     homeActive = active;
@@ -4027,6 +4100,25 @@ loadStock();
   addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   update();
 })();
+
+<script>
+(() => {
+  const links = [...document.querySelectorAll('.season-link')];
+  const targets = [
+    { id: 'inicio', cls: 'season-halloween' },
+    { id: 'bailes', cls: 'season-folk' },
+    { id: 'navidad', cls: 'season-christmas' }
+  ];
+  const setActive = (cls) => links.forEach(a => a.classList.toggle('is-active', a.classList.contains(cls)));
+  const observer = new IntersectionObserver(entries => {
+    entries.filter(e => e.isIntersecting).forEach(e => {
+      const item = targets.find(t => t.id === e.target.id);
+      if (item) setActive(item.cls);
+    });
+  }, {rootMargin:'-20% 0px -65% 0px', threshold:0});
+  targets.forEach(t => { const el = document.getElementById(t.id); if (el) observer.observe(el); });
+})();
+</script>
 </script>
 </body>
 </html>
