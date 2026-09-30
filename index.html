@@ -855,6 +855,7 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 footer { padding: 33px clamp(18px, 7vw, 110px); text-align: center; color: #fff; background: var(--ink); }
 footer img { width: 210px; max-width: 70vw; height: auto; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
 footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
+.footer-social-title { margin: 16px 0 0 !important; color: var(--yellow); font-family: "Baloo 2", Arial, sans-serif; font-size: 1.05rem !important; font-weight: 800; opacity: 1 !important; }
 /* Redes sociales en la portada y en el pie */
 .social-links {
   display: flex;
@@ -863,6 +864,8 @@ footer p { margin: 10px 0 0; font-size: .82rem; opacity: .88; }
   gap: 16px;
   margin: 22px auto 4px;
 }
+.hero-social-block { margin-top: 20px; }
+.hero-social-label { display:block; margin-bottom:9px; color:rgba(255,255,255,.76); font-size:.72rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
 .hero-social-links {
   display: flex;
   justify-content: flex-start;
@@ -1357,20 +1360,20 @@ body.kalu-ready>.shell{opacity:1}
   .folk-more .folk-button { width: 100%; }
 }
 
-/* ===== BOTÓN VOLVER ARRIBA (a las categorías) ===== */
+/* ===== BOTÓN VOLVER ARRIBA ===== */
 .back-top{
   position:fixed; right:22px; bottom:86px; z-index:24;
-  display:inline-flex; align-items:center; gap:6px; padding:8px 13px; border-radius:999px;
-  background:rgba(17,3,27,.78); color:#fff; border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 8px 22px rgba(0,0,0,.3); backdrop-filter:blur(6px);
-  font:700 11px/1 Montserrat,Arial,sans-serif; letter-spacing:.04em;
-  opacity:0; visibility:hidden; transform:translateY(8px);
+  display:inline-flex; align-items:center; gap:7px; padding:10px 14px; border-radius:999px;
+  background:rgba(17,3,27,.84); color:#fff; border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 12px 30px rgba(0,0,0,.32); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  font:800 11px/1 Montserrat,Arial,sans-serif; letter-spacing:.04em; text-decoration:none;
+  opacity:0; visibility:hidden; transform:translateY(10px) scale(.96);
   transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s ease;
 }
 .back-top.is-visible{opacity:1; visibility:visible; transform:none}
-.back-top:hover{background:var(--orange)}
-.back-top span{font-size:13px; line-height:1}
-@media(max-width:600px){.back-top{right:12px; bottom:76px; padding:7px 11px; font-size:10px}}
+.back-top:hover,.back-top:focus-visible{background:var(--orange); border-color:rgba(255,255,255,.42); outline:none}
+.back-top span{font-size:16px; line-height:1}
+@media(max-width:600px){.back-top{right:12px; bottom:76px; padding:9px 12px; font-size:10px}}
 @media(prefers-reduced-motion:reduce){.back-top{transition:none}}
 
 /* =========================================================
@@ -1417,6 +1420,114 @@ body.kalu-ready>.shell{opacity:1}
 .hero-bats,.hero-sticker,.hero-carousel{display:none!important}
 .hero{min-height:0!important;padding:0!important;background:transparent!important}
 .halloween-season-hero .season-hero-copy,.halloween-season-hero .season-hero-art{animation:none!important}
+
+
+/* ===== REDISEÑO PROFESIONAL DEL MENÚ DE CATEGORÍAS ===== */
+.categories .section-heading{max-width:1250px;margin-left:auto;margin-right:auto;position:relative}
+.categories .section-heading > div{position:relative}
+.categories .section-heading > div:before{content:"";display:block;width:54px;height:4px;margin-bottom:14px;border-radius:999px;background:linear-gradient(90deg,var(--yellow),#ff7a18)}
+.explore{grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);align-items:stretch}
+.explore > div:first-child{padding:22px;border:1px solid rgba(255,255,255,.11);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 18px 42px rgba(0,0,0,.22)}
+.menu-title{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-size:.68rem;letter-spacing:.16em;color:rgba(255,255,255,.55)}
+.menu-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(255,255,255,.18),transparent)}
+.cat-group{gap:9px}
+.cat-group + .cat-group{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
+.cat-group-title{margin:0 2px 4px;padding:0 4px 10px;border-bottom:0}
+.cat-group-icon{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,rgba(255,189,24,.18),rgba(255,255,255,.08));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.cat-group-title strong{font-size:1.3rem}
+.cat-group-title small{font-size:.7rem;opacity:.75}
+.cat-item{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.105);border-radius:16px;background:linear-gradient(120deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:0 7px 20px rgba(0,0,0,.14)}
+.cat-item:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 4px 4px 0;background:linear-gradient(180deg,var(--yellow),#ff6b1a);opacity:.28;transition:opacity .2s ease,transform .2s ease}
+.cat-item:hover:before,.cat-item.open:before{opacity:1;transform:scaleY(1.05)}
+.cat-item.open{border-color:rgba(255,189,24,.42);background:linear-gradient(120deg,rgba(255,189,24,.09),rgba(255,255,255,.045))}
+.cat-head{padding:13px 15px 13px 18px;gap:12px}
+.cat-icon{width:42px;height:42px;border-radius:12px;font-size:1.15rem;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.cat-name{font-size:.98rem;letter-spacing:.01em}
+.cat-desc{font-size:.74rem;color:rgba(255,255,255,.58);margin-top:3px}
+.cat-badge{padding:4px 8px;font-size:.55rem;letter-spacing:.08em;border:1px solid rgba(255,255,255,.08)}
+.cat-caret{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.06);font-size:.58rem}
+.cat-item.open .cat-caret{background:rgba(255,189,24,.14);color:var(--yellow)}
+.cat-sub-list{margin:0 11px 11px 71px;padding:6px;border-radius:12px;background:rgba(7,1,12,.28);border:1px solid rgba(255,255,255,.1)}
+.cat-sub-list a{padding:9px 11px;font-size:.79rem;border-radius:8px}
+.cat-sub-list a:before{content:"↳";margin-right:8px;color:var(--yellow);opacity:.8}
+.cat-sub-list a:hover,.cat-sub-list a:focus-visible{padding-left:13px;background:rgba(255,255,255,.08)}
+.cat-sub-list a small{font-size:.52rem}
+/* numeración visual: ayuda a escanear el menú sin hacerlo pesado */
+.cat-group-sales .cat-item:nth-child(2):after{content:"01"}
+.cat-group-sales .cat-item:nth-child(3):after{content:"02"}
+.cat-group-sales .cat-item:nth-child(4):after{content:"03"}
+.cat-group-sales .cat-item:nth-child(5):after{content:"04"}
+.cat-group-sales .cat-item:nth-child(6):after{content:"05"}
+.cat-group-rental .cat-item:nth-child(2):after{content:"01"}
+.cat-group-rental .cat-item:nth-child(3):after{content:"02"}
+.cat-item:after{position:absolute;right:15px;top:6px;font-size:.5rem;font-weight:800;letter-spacing:.12em;color:rgba(255,255,255,.22);pointer-events:none}
+.cat-item.open:after{color:rgba(255,189,24,.48)}
+@media (max-width:980px){
+  .explore{grid-template-columns:1fr}
+  .explore > div:first-child{padding:18px}
+}
+@media (max-width:560px){
+  .explore > div:first-child{padding:14px;border-radius:18px}
+  .cat-head{padding:12px 11px 12px 14px;gap:10px}
+  .cat-icon{width:39px;height:39px}
+  .cat-badge{display:none}
+  .cat-desc{font-size:.69rem}
+  .cat-sub-list{margin-left:58px}
+  .cat-group-title strong{font-size:1.18rem}
+}
+
+
+/* ===== MENÚ DE CATEGORÍAS — ACABADO PREMIUM ===== */
+.categories .section-heading{position:relative}
+.categories .section-heading:after{content:"CATÁLOGO";position:absolute;right:0;bottom:-13px;font-size:.55rem;letter-spacing:.22em;font-weight:900;color:rgba(255,255,255,.22)}
+.explore{gap:clamp(26px,4vw,54px)}
+.explore>div:first-child{padding:24px;border:1px solid rgba(255,255,255,.12);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));box-shadow:0 22px 55px rgba(0,0,0,.22);position:relative;overflow:hidden}
+.explore>div:first-child:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 0,rgba(255,189,24,.08),transparent 30%),radial-gradient(circle at 100% 100%,rgba(116,19,63,.14),transparent 34%);pointer-events:none}
+.explore>div:first-child>*{position:relative;z-index:1}
+.menu-title{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 2px 13px;border-bottom:1px solid rgba(255,255,255,.1)}
+.menu-title:after{content:"Explora por categoría";font-size:.61rem;letter-spacing:.08em;text-transform:none;color:rgba(255,255,255,.38);font-weight:700}
+.cat-menu{gap:14px}
+.cat-group{gap:11px}
+.cat-group+.cat-group{margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,255,255,.09)}
+.cat-group-title{margin:0 2px 3px;padding:0 4px 12px;border-bottom:0}
+.cat-group-title strong{font-size:1.28rem;letter-spacing:-.02em}
+.cat-group-title small{font-size:.68rem;color:rgba(255,255,255,.46)}
+.cat-group-icon{width:31px;height:31px;font-size:.92rem;background:rgba(255,189,24,.12);border:1px solid rgba(255,189,24,.18)}
+.cat-item{position:relative;overflow:hidden;border-color:rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.045);box-shadow:0 9px 22px rgba(0,0,0,.14)}
+.cat-item:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 4px 4px 0;background:transparent;transition:background .25s ease,box-shadow .25s ease}
+.cat-item:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.065);transform:translateY(-1px)}
+.cat-item.open{border-color:rgba(255,189,24,.5);background:linear-gradient(120deg,rgba(255,189,24,.075),rgba(255,255,255,.055))}
+.cat-item.open:before,.cat-item:hover:before{background:var(--yellow);box-shadow:0 0 12px rgba(255,189,24,.3)}
+.cat-head{min-height:78px;padding:12px 15px 12px 13px;gap:13px}
+.cat-icon{width:51px;height:51px;border-radius:16px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.16);box-shadow:0 7px 16px rgba(0,0,0,.2);font-size:1.2rem}
+.cat-photo{background:#160b1d!important}
+.cat-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;transition:transform .35s ease;filter:saturate(.92) contrast(1.04)}
+.cat-item:hover .cat-photo img,.cat-item.open .cat-photo img{transform:scale(1.08)}
+.cat-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.12),transparent 42%,rgba(0,0,0,.25));pointer-events:none}
+.cat-text{padding-right:5px}
+.cat-name{font-size:1rem;letter-spacing:-.01em}
+.cat-desc{font-size:.72rem;line-height:1.35;margin-top:3px;color:rgba(255,255,255,.55)}
+.cat-badge{padding:5px 8px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.62);font-size:.55rem;white-space:nowrap}
+.cat-badge.soon{background:rgba(255,189,24,.09);border-color:rgba(255,189,24,.18);color:#ffd36b}
+.cat-caret{width:27px;height:27px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:50%;background:rgba(255,255,255,.035);font-size:.55rem;color:rgba(255,255,255,.62)}
+.cat-item.open .cat-caret{background:rgba(255,189,24,.12);border-color:rgba(255,189,24,.25);color:var(--yellow)}
+.cat-sub{position:relative}
+.cat-sub-inner{padding-top:1px}
+.cat-sub-list{margin:0 13px 13px 77px;padding:6px;border-radius:14px;background:rgba(5,1,10,.28);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px rgba(255,255,255,.03)}
+.cat-sub-list a{min-height:39px;padding:9px 11px;border-radius:9px;font-size:.76rem;color:rgba(255,255,255,.82)}
+.cat-sub-list a:before{content:"";width:5px;height:5px;flex:none;margin-right:9px;border-radius:50%;background:rgba(255,189,24,.65);box-shadow:0 0 7px rgba(255,189,24,.22)}
+.cat-sub-list a:hover,.cat-sub-list a:focus-visible{padding-left:13px;background:rgba(255,255,255,.07);color:#fff}
+.cat-sub-list a small{padding:3px 7px;font-size:.5rem}
+.cat-item:after{right:13px;top:7px;font-size:.47rem}
+/* Estados de temporada: el menú acompaña visualmente a cada colección */
+.cat-menu .cat-item.is-folk{background:linear-gradient(120deg,rgba(91,107,58,.18),rgba(181,83,44,.1));border-color:rgba(214,170,90,.28)}
+.cat-menu .cat-item.is-folk:before{background:rgba(214,170,90,.65)}
+.cat-menu .cat-item.is-folk .cat-badge{background:rgba(226,184,98,.12);border-color:rgba(226,184,98,.2);color:#e9c979}
+/* Accesibilidad y tacto */
+.cat-head:focus-visible,.cat-sub-list a:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+@media (max-width:980px){.explore>div:first-child{padding:20px}.categories .section-heading:after{display:none}}
+@media (max-width:560px){.explore>div:first-child{padding:15px;border-radius:22px}.menu-title:after{display:none}.cat-group+.cat-group{margin-top:20px;padding-top:19px}.cat-head{min-height:72px;padding:10px 10px 10px 11px;gap:10px}.cat-icon{width:45px;height:45px;border-radius:14px}.cat-name{font-size:.91rem}.cat-desc{font-size:.65rem}.cat-badge{display:none}.cat-caret{width:24px;height:24px}.cat-sub-list{margin-left:65px;margin-right:10px}.cat-sub-list a{font-size:.7rem;min-height:36px}.cat-group-title strong{font-size:1.13rem}.cat-group-title small{font-size:.62rem}}
+@media (prefers-reduced-motion:reduce){.cat-item,.cat-photo img{transition:none!important}}
 
 </style>
 </head>
@@ -1474,6 +1585,14 @@ body.kalu-ready>.shell{opacity:1}
       <a class="season-button" href="#categorias">Explorar Halloween</a>
       <a class="season-button ghost" href="#mascaras">Ver productos</a>
     </div>
+    <div class="hero-social-block" aria-label="Redes sociales de Kalú">
+      <span class="hero-social-label">Síguenos en redes</span>
+      <div class="hero-social-links">
+        <a class="hero-social-link" href="https://www.facebook.com/share/1Bq4t5wiAB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook — Página de Kalú" title="Facebook — Página"><img src="assets/redes/facebook-pagina.webp" alt="Facebook — Página" /></a>
+        <a class="hero-social-link" href="https://www.facebook.com/share/191ScGM178/" target="_blank" rel="noopener noreferrer" aria-label="Facebook — Perfil de Kalú" title="Facebook — Perfil"><img src="assets/redes/facebook-perfil.webp" alt="Facebook — Perfil" /></a>
+        <a class="hero-social-link" href="https://www.instagram.com/disfraceskalu?stkn=MWppOTQwdzF0dmV5Nw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Kalú" title="Instagram"><img src="assets/redes/instagram.webp" alt="Instagram" /></a>
+      </div>
+    </div>
   </div>
   <div class="season-hero-art halloween-art">
     <div class="halloween-glow" aria-hidden="true"></div>
@@ -1499,7 +1618,7 @@ body.kalu-ready>.shell{opacity:1}
 
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-mascaras">
-<span class="cat-icon" aria-hidden="true">☠</span>
+<span class="cat-icon cat-photo"><img src="assets/latex/latex-01.webp" alt="" loading="lazy" /></span>
 <span class="cat-text"><span class="cat-name">Máscaras</span><span class="cat-desc">Modelos de látex, peluche y pasta para destacar.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
@@ -1512,7 +1631,7 @@ body.kalu-ready>.shell{opacity:1}
 
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-pelucas">
-<span class="cat-icon" aria-hidden="true">✦</span>
+<span class="cat-icon cat-photo"><img src="assets/wig-long-blue-corner.png" alt="" loading="lazy" /></span>
 <span class="cat-text"><span class="cat-name">Pelucas</span><span class="cat-desc">Estilos largos y próximamente también cortos.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
@@ -1524,7 +1643,7 @@ body.kalu-ready>.shell{opacity:1}
 
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-accesorios">
-<span class="cat-icon" aria-hidden="true">🦇</span>
+<span class="cat-icon cat-photo"><img src="assets/prop-machete.jpg" alt="" loading="lazy" /></span>
 <span class="cat-text"><span class="cat-name">Accesorios de personaje</span><span class="cat-desc">Utilería para completar tu disfraz.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
@@ -1562,7 +1681,7 @@ body.kalu-ready>.shell{opacity:1}
 
 <div class="cat-item" id="cat-alquiler">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-alquiler">
-<span class="cat-icon" aria-hidden="true">🎭</span>
+<span class="cat-icon cat-photo"><img src="assets/rental/dfa-01.jpg" alt="" loading="lazy" /></span>
 <span class="cat-text"><span class="cat-name">Disfraces de Halloween</span><span class="cat-desc">Para niños, niñas y adultos, con accesorios incluidos.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
@@ -1575,7 +1694,7 @@ body.kalu-ready>.shell{opacity:1}
 
 <div class="cat-item is-folk" id="cat-tipicos">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-tipicos">
-<span class="cat-icon" aria-hidden="true">💃</span>
+<span class="cat-icon cat-photo"><img src="assets/tipicos/tb-01.webp" alt="" loading="lazy" /></span>
 <span class="cat-text"><span class="cat-name">Típicos de baile</span><span class="cat-desc">Trajes folclóricos para danzas, presentaciones y eventos.</span></span>
 <span class="cat-badge">Nuevo</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
@@ -2802,6 +2921,24 @@ body.kalu-ready>.shell{opacity:1}
 </div>
 </div>
 </section>
+
+<section class="season-hero christmas-season-hero" id="navidad" aria-labelledby="navidad-title">
+  <div class="christmas-stars" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i></div>
+  <div class="season-hero-copy">
+    <span class="season-kicker">🎄 PRÓXIMA COLECCIÓN</span>
+    <h2 id="navidad-title">Navidad</h2>
+    <p>Un nuevo mundo de temporada para regalos, celebraciones, disfraces y accesorios navideños.</p>
+    <div class="season-actions">
+      <a class="season-button" href="#pedidos">Consultar novedades</a>
+      <a class="season-button ghost" href="#inicio">Volver al inicio</a>
+    </div>
+  </div>
+  <div class="christmas-art" aria-hidden="true">
+    <div class="christmas-moon"></div>
+    <div class="christmas-tree"><span>✦</span><span>●</span><span>●</span><span>●</span><span>●</span></div>
+    <div class="christmas-gift gift-a"></div><div class="christmas-gift gift-b"></div>
+  </div>
+</section>
 <section class="mask-return" aria-labelledby="volver-mascaras-title">
 <div class="mask-return-inner">
 <p>¿Quieres seguir explorando?</p>
@@ -2820,23 +2957,6 @@ body.kalu-ready>.shell{opacity:1}
 </div>
 </div>
 </section>
-<section class="season-hero christmas-season-hero" id="navidad" aria-labelledby="navidad-title">
-  <div class="christmas-stars" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i></div>
-  <div class="season-hero-copy">
-    <span class="season-kicker">🎄 PRÓXIMA COLECCIÓN</span>
-    <h2 id="navidad-title">Navidad</h2>
-    <p>Un nuevo mundo de temporada para regalos, celebraciones, disfraces y accesorios navideños.</p>
-    <div class="season-actions">
-      <a class="season-button" href="#pedidos">Consultar novedades</a>
-      <a class="season-button ghost" href="#inicio">Volver al inicio</a>
-    </div>
-  </div>
-  <div class="christmas-art" aria-hidden="true">
-    <div class="christmas-moon"></div>
-    <div class="christmas-tree"><span>✦</span><span>●</span><span>●</span><span>●</span><span>●</span></div>
-    <div class="christmas-gift gift-a"></div><div class="christmas-gift gift-b"></div>
-  </div>
-</section>
 
 <section class="contact" id="pedidos" aria-labelledby="pedidos-title">
 <div class="contact-icon" aria-hidden="true">☏</div>
@@ -2846,6 +2966,7 @@ body.kalu-ready>.shell{opacity:1}
 </main>
 <footer>
 <img src="assets/logo/kalu-disfraces-logo.webp" alt="Kalú Accesorios" />
+<p class="footer-social-title">Encuéntranos en redes</p>
 <div class="social-links" aria-label="Redes sociales de Kalú">
 <a class="social-link" href="https://www.facebook.com/share/1Bq4t5wiAB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook — Página de Kalú" title="Facebook — Página">
 <img src="assets/redes/facebook-pagina.webp" alt="Facebook — Página" />
@@ -2861,7 +2982,7 @@ body.kalu-ready>.shell{opacity:1}
 <p><a href="#mascaras">Ver máscaras</a> · <a href="#mascaras-peluche">Ver máscaras de peluche</a></p>
 </footer>
 </div>
-<a class="back-top" id="backTop" href="#categorias" aria-label="Volver arriba a las categorías"><span aria-hidden="true">↑</span>Volver arriba</a>
+<a class="back-top" id="backTop" href="#inicio" aria-label="Volver al inicio de la página"><span aria-hidden="true">↑</span>Volver arriba</a>
 <button class="selection-fab" id="selection-button" type="button" aria-haspopup="dialog" aria-label="Abrir mi selección">
 Mi selección <span class="selection-count" id="selection-count">0</span>
 </button>
@@ -4090,12 +4211,11 @@ loadStock();
 /* ===== KALÚ: botón volver arriba ===== */
 (function(){
   const btn=document.getElementById('backTop');
-  const cat=document.getElementById('categorias');
-  if(!btn||!cat) return;
+  if(!btn) return;
   let ticking=false;
   const update=()=>{
     ticking=false;
-    btn.classList.toggle('is-visible', cat.getBoundingClientRect().bottom < 0);
+    btn.classList.toggle('is-visible', window.scrollY > 520);
   };
   addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   update();
