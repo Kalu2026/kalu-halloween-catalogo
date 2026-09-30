@@ -1479,7 +1479,7 @@ body.kalu-ready>.shell{opacity:1}
   .halloween-3d-badge{right:2%;bottom:4%;font-size:9px;padding:7px 10px}
 }
 /* Interacción híbrida: arrastre horizontal para girar; el gesto vertical queda libre para el scroll. */
-.halloween-3d-stage{cursor:grab;touch-action:pan-y}
+.halloween-3d-stage{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .halloween-3d-stage:active{cursor:grabbing}
 .halloween-3d-model{transition:transform .46s cubic-bezier(.2,1.5,.3,1),filter .46s ease;will-change:transform}
 .halloween-3d-stage.is-popping .halloween-3d-model{
@@ -1687,7 +1687,7 @@ body.kalu-ready>.shell{opacity:1}
   </div>
   <div class="season-hero-art halloween-art">
     <div class="halloween-glow" aria-hidden="true"></div>
-    <div class="halloween-3d-stage" aria-label="Modelo 3D para la colección Halloween" role="button" tabindex="0">
+    <div class="halloween-3d-stage" aria-label="Modelo 3D para la colección Halloween">
       <div class="halloween-particles" aria-hidden="true">
         <span class="halloween-particle"></span><span class="halloween-particle"></span><span class="halloween-particle"></span>
         <span class="halloween-particle"></span><span class="halloween-particle"></span><span class="halloween-particle"></span>
@@ -1697,7 +1697,6 @@ body.kalu-ready>.shell{opacity:1}
         src="assets/hero/cat.glb"
         alt="Modelo 3D de la colección Halloween de Kalú"
         disable-zoom
-        camera-controls
         interaction-prompt="none"
         auto-rotate
         rotation-per-second="12deg"
@@ -4360,19 +4359,52 @@ loadStock();
 <script>
 (function(){
   const stage=document.querySelector('.halloween-3d-stage');
-  if(!stage) return;
-  let timer;
-  const pop=()=>{
-    stage.classList.remove('is-popping');
-    void stage.offsetWidth;
-    stage.classList.add('is-popping');
-    clearTimeout(timer);
-    timer=setTimeout(()=>stage.classList.remove('is-popping'),760);
+  const model=document.querySelector('.halloween-3d-model');
+  if(!stage||!model) return;
+
+  /* Giro SOLO horizontal: el movimiento vertical queda completamente libre para el scroll. */
+  let dragging=false, startX=0, lastX=0, theta=0, horizontalDrag=false;
+  const getTheta=()=>{
+    const orbit=(model.getAttribute('camera-orbit')||'0deg 82deg 105%').split(/\s+/);
+    const raw=parseFloat(orbit[0]);
+    return Number.isFinite(raw)?raw:0;
   };
-  stage.addEventListener('click',pop);
-  stage.addEventListener('keydown',e=>{
-    if(e.key==='Enter'||e.key===' '){e.preventDefault();pop();}
+  theta=getTheta();
+
+  const setTheta=()=>{
+    model.setAttribute('camera-orbit', `${theta}deg 82deg 105%`);
+  };
+
+  stage.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='mouse' && e.button!==0) return;
+    dragging=true; horizontalDrag=false; startX=lastX=e.clientX;
+    stage.setPointerCapture?.(e.pointerId);
   });
+
+  stage.addEventListener('pointermove',e=>{
+    if(!dragging) return;
+    const dx=e.clientX-lastX;
+    const totalX=e.clientX-startX;
+    if(Math.abs(totalX)>6) horizontalDrag=Math.abs(totalX)>Math.abs(e.clientY-(stage._startY??e.clientY));
+    if(Math.abs(totalX)>6 && Math.abs(totalX)>Math.abs((e.clientY-(stage._startY??e.clientY)))) e.preventDefault();
+    if(horizontalDrag){
+      theta-=dx*0.55;
+      if(theta>180) theta-=360;
+      if(theta<-180) theta+=360;
+      setTheta();
+    }
+    lastX=e.clientX;
+  });
+
+  stage.addEventListener('pointerdown',e=>{stage._startY=e.clientY;});
+  const endDrag=e=>{
+    dragging=false; horizontalDrag=false;
+    try{stage.releasePointerCapture?.(e.pointerId)}catch(_){}
+  };
+  stage.addEventListener('pointerup',endDrag);
+  stage.addEventListener('pointercancel',endDrag);
+
+  /* Sin clic ni foco interactivo: el objeto solo responde al arrastre horizontal. */
 })();
 </script>
 </body>
