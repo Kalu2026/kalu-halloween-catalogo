@@ -4336,7 +4336,7 @@ loadStock();
   addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   update();
 })();
-
+</script>
 <script>
 (() => {
   const links = [...document.querySelectorAll('.season-link')];
@@ -4354,7 +4354,6 @@ loadStock();
   }, {rootMargin:'-20% 0px -65% 0px', threshold:0});
   targets.forEach(t => { const el = document.getElementById(t.id); if (el) observer.observe(el); });
 })();
-</script>
 </script>
 <script>
 (function(){
