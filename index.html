@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Catálogo de máscaras de Halloween de Kalú Accesorios."
+  content="Kalú Accesorios: máscaras, pelucas, accesorios y alquiler de disfraces de Halloween, bailes típicos y Navidad."
 />
 <title>Kalú Accesorios | Halloween, Bailes Típicos y Navidad</title>
 <meta name="theme-color" content="#8a4b2a" />
@@ -192,113 +192,7 @@ img {
   z-index: 1;
 }
 
-/* Un solo fondo continuo: se eliminan los bloques de fondo de las secciones. */
-.hero,
-.categories,
-.catalog,
-.material-catalog,
-.accessory-catalog,
-.wig-catalog,
-.rental-catalog,
-.mask-return,
-.contact {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-.hero::before,
-.hero::after,
-.categories::before,
-.categories::after,
-.catalog::before,
-.catalog::after,
-.material-catalog::before,
-.material-catalog::after,
-.accessory-catalog::before,
-.accessory-catalog::after,
-.wig-catalog::before,
-.wig-catalog::after,
-.rental-catalog::before,
-.rental-catalog::after,
-.mask-return::before,
-.mask-return::after,
-.contact::before,
-.contact::after {
-  background-image: none !important;
-}
-
-/* El menú permanece perfectamente legible sobre el fondo superior. */
-.nav {
-  position: relative;
-  z-index: 30;
-}
-
-.card,
-.product-card,
-.category-card,
-.contact-card,
-.modal,
-.search-panel,
-.filter-panel {
-  position: relative;
-  z-index: 2;
-}
-
-.shell {
-  position: relative;
-  z-index: 1;
-}
-
-/* Eliminamos los fondos propios de las secciones para que NO haya cortes. */
-.hero,
-.categories,
-.catalog,
-.material-catalog,
-.accessory-catalog,
-.wig-catalog,
-.rental-catalog,
-.mask-return,
-.contact {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-/* También anulamos overlays decorativos que puedan formar bloques de color. */
-.hero::before,
-.hero::after,
-.categories::before,
-.categories::after,
-.catalog::before,
-.catalog::after,
-.material-catalog::before,
-.material-catalog::after,
-.accessory-catalog::before,
-.accessory-catalog::after,
-.wig-catalog::before,
-.wig-catalog::after,
-.rental-catalog::before,
-.rental-catalog::after,
-.mask-return::before,
-.mask-return::after,
-.contact::before,
-.contact::after {
-  background-image: none !important;
-}
-
-/* Tarjetas y elementos que sí deben conservar su propio fondo. */
-.nav,
-.card,
-.product-card,
-.category-card,
-.contact-card,
-.modal,
-.search-panel,
-.filter-panel {
-  position: relative;
-  z-index: 2;
-}
-
-.shell { overflow: hidden; }
+.shell { overflow: hidden; overflow: clip; }
 .nav {
   position: absolute;
   top: 0;
@@ -1486,6 +1380,10 @@ body.kalu-ready>.shell{opacity:1}
   transform:translateY(-24px) scale(1.075);
   filter:drop-shadow(0 38px 30px rgba(0,0,0,.32)) drop-shadow(0 0 22px rgba(255,157,36,.18));
 }
+/* Video del gato: al hacer clic reemplaza al modelo 3D y al terminar vuelve a él */
+.halloween-3d-video{position:absolute;left:50%;top:0;height:100%;width:min(100%,500px);transform:translateX(-50%);object-fit:contain;background:transparent;opacity:0;pointer-events:none;z-index:2;transition:opacity .25s ease}
+.halloween-3d-stage.is-video .halloween-3d-video{opacity:1}
+.halloween-3d-stage.is-video .halloween-3d-model{opacity:0;transition:opacity .25s ease}
 .halloween-particles{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:4}
 .halloween-particle{
   position:absolute;left:50%;top:52%;width:6px;height:6px;border-radius:50%;
@@ -1656,7 +1554,7 @@ body.kalu-ready>.shell{opacity:1}
 #tipicos-baile .zoom-button:hover, #alquiler .zoom-button:hover, #pelucas .zoom-button:hover { background:#f8f1f8; }
 
 /* Ficha de producto: aspecto de tienda online. */
-#product-modal { border: 0; border-radius: 28px; overflow: hidden; background: #fff; box-shadow: 0 30px 90px rgba(0,0,0,.42); }
+#product-modal { border: 0; border-radius: 28px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; max-height: 92vh; max-height: 92dvh; background: #fff; box-shadow: 0 30px 90px rgba(0,0,0,.42); }
 #product-modal::backdrop { background: rgba(18,7,24,.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 #product-modal .modal { background: #fff; color: #28192d; min-height: 500px; }
 #product-modal .modal img { padding: 0; background: #f7f3f7; min-height: 500px; }
@@ -1778,6 +1676,7 @@ body.kalu-ready>.shell{opacity:1}
         loading="eager"
         reveal="auto">
       </model-viewer>
+      <video class="halloween-3d-video" id="cat-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="assets/hero/halloween.webm"></video>
       <span class="halloween-3d-badge" aria-hidden="true">✦ HALLOWEEN ✦</span>
     </div>
   </div>
@@ -4372,9 +4271,6 @@ loadStock();
 })();
 </script>
 
-<script>
-
-</script>
 
 <script>
 /* ===== KALÚ: FONDO ESTÁTICO CONTINUO ===== */
@@ -4422,7 +4318,7 @@ loadStock();
   addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   update();
 })();
-
+</script>
 <script>
 (() => {
   const links = [...document.querySelectorAll('.season-link')];
@@ -4440,7 +4336,6 @@ loadStock();
   }, {rootMargin:'-20% 0px -65% 0px', threshold:0});
   targets.forEach(t => { const el = document.getElementById(t.id); if (el) observer.observe(el); });
 })();
-</script>
 </script>
 <script>
 (function(){
@@ -4497,12 +4392,33 @@ loadStock();
     clearTimeout(timer);
     timer=setTimeout(()=>stage.classList.remove('is-popping'),760);
   };
+  /* Video webm del gato: se carga en reposo y se reproduce al hacer clic */
+  const video=document.getElementById('cat-video');
+  let videoReady=false;
+  const showModel=()=>{ stage.classList.remove('is-video'); try{video.pause();}catch(_){} };
+  if(video){
+    video.addEventListener('canplay',()=>{ videoReady=true; },{once:true});
+    video.addEventListener('ended',showModel);
+    video.addEventListener('error',()=>{ videoReady=false; showModel(); });
+    const loadVideo=()=>{ if(!video.getAttribute('src')){ video.src=video.dataset.src; video.load(); } };
+    const idle=window.requestIdleCallback||(fn=>setTimeout(fn,1500));
+    if(document.readyState==='complete') idle(loadVideo); else addEventListener('load',()=>idle(loadVideo),{once:true});
+  }
+  const playVideo=()=>{
+    if(!video||!videoReady||stage.classList.contains('is-video')) return false;
+    video.currentTime=0;
+    const pr=video.play();
+    stage.classList.add('is-video');
+    if(pr&&pr.catch) pr.catch(showModel);
+    return true;
+  };
+  const activate=()=>{ if(!playVideo()) pop(); };
   stage.addEventListener('click',e=>{
     if(horizontalDrag) return;
-    pop();
+    activate();
   });
   stage.addEventListener('keydown',e=>{
-    if(e.key==='Enter'||e.key===' '){e.preventDefault();pop();}
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}
   });
 })();
 </script>
