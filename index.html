@@ -1478,8 +1478,36 @@ body.kalu-ready>.shell{opacity:1}
   .halloween-3d-model{width:100%;height:100%}
   .halloween-3d-badge{right:2%;bottom:4%;font-size:9px;padding:7px 10px}
 }
+/* Interacción ligera: el modelo no se arrastra para no interferir con el scroll móvil. */
+.halloween-3d-stage{cursor:pointer;touch-action:manipulation}
+.halloween-3d-model{transition:transform .46s cubic-bezier(.2,1.5,.3,1),filter .46s ease;will-change:transform}
+.halloween-3d-stage.is-popping .halloween-3d-model{
+  transform:translateY(-24px) scale(1.075);
+  filter:drop-shadow(0 38px 30px rgba(0,0,0,.32)) drop-shadow(0 0 22px rgba(255,157,36,.18));
+}
+.halloween-particles{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:4}
+.halloween-particle{
+  position:absolute;left:50%;top:52%;width:6px;height:6px;border-radius:50%;
+  background:#ff9d24;box-shadow:0 0 10px rgba(255,157,36,.72);
+  opacity:0;transform:translate(-50%,-50%) scale(.35);
+}
+.halloween-particle:nth-child(even){background:#ffd15a;box-shadow:0 0 10px rgba(255,209,90,.7);border-radius:2px}
+.halloween-3d-stage.is-popping .halloween-particle{animation:halloween-particle-pop .72s cubic-bezier(.18,.72,.25,1) forwards}
+.halloween-particle:nth-child(1){--dx:-78px;--dy:-56px;animation-delay:0ms!important}
+.halloween-particle:nth-child(2){--dx:72px;--dy:-62px;animation-delay:45ms!important}
+.halloween-particle:nth-child(3){--dx:-96px;--dy:8px;animation-delay:25ms!important}
+.halloween-particle:nth-child(4){--dx:92px;--dy:5px;animation-delay:70ms!important}
+.halloween-particle:nth-child(5){--dx:-42px;--dy:72px;animation-delay:55ms!important}
+.halloween-particle:nth-child(6){--dx:48px;--dy:68px;animation-delay:85ms!important}
+@keyframes halloween-particle-pop{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.25)}
+  18%{opacity:1}
+  100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.08)}
+}
 @media(prefers-reduced-motion:reduce){
-  .halloween-3d-model{--animation-speed:0}
+  .halloween-3d-model{--animation-speed:0;transition:none}
+  .halloween-3d-stage.is-popping .halloween-3d-model{transform:none}
+  .halloween-particle{animation:none!important;display:none}
 }
 
 /* ===== REDISEÑO PROFESIONAL DEL MENÚ DE CATEGORÍAS ===== */
@@ -1658,12 +1686,15 @@ body.kalu-ready>.shell{opacity:1}
   </div>
   <div class="season-hero-art halloween-art">
     <div class="halloween-glow" aria-hidden="true"></div>
-    <div class="halloween-3d-stage" aria-label="Modelo 3D para la colección Halloween">
+    <div class="halloween-3d-stage" aria-label="Modelo 3D para la colección Halloween" role="button" tabindex="0">
+      <div class="halloween-particles" aria-hidden="true">
+        <span class="halloween-particle"></span><span class="halloween-particle"></span><span class="halloween-particle"></span>
+        <span class="halloween-particle"></span><span class="halloween-particle"></span><span class="halloween-particle"></span>
+      </div>
       <model-viewer
         class="halloween-3d-model"
         src="assets/hero/cat.glb"
         alt="Modelo 3D de la colección Halloween de Kalú"
-        camera-controls
         disable-zoom
         interaction-prompt="none"
         auto-rotate
@@ -4321,6 +4352,24 @@ loadStock();
   targets.forEach(t => { const el = document.getElementById(t.id); if (el) observer.observe(el); });
 })();
 </script>
+</script>
+<script>
+(function(){
+  const stage=document.querySelector('.halloween-3d-stage');
+  if(!stage) return;
+  let timer;
+  const pop=()=>{
+    stage.classList.remove('is-popping');
+    void stage.offsetWidth;
+    stage.classList.add('is-popping');
+    clearTimeout(timer);
+    timer=setTimeout(()=>stage.classList.remove('is-popping'),760);
+  };
+  stage.addEventListener('click',pop);
+  stage.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();pop();}
+  });
+})();
 </script>
 </body>
 </html>
