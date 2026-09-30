@@ -29,7 +29,7 @@
 <meta property="og:description" content="Explora las colecciones de temporada de Kalú: Halloween, bailes típicos y Navidad." />
 <meta property="og:image" content="https://kalu2026.github.io/kalu-halloween-catalogo/assets/hero-clown-costume.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Kalú Accesorios","description":"Máscaras, pelucas, accesorios y alquiler de disfraces de Halloween.","telephone":["+573117570138","+573215055733"],"areaServed":"CO"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Kalú Accesorios","description":"Máscaras, pelucas, accesorios y alquiler de disfraces de Halloween.","telephone":["+573117570138","+573215055733"],"areaServed":"CO","url":"https://kalu2026.github.io/kalu-halloween-catalogo/","image":"https://kalu2026.github.io/kalu-halloween-catalogo/assets/hero-clown-costume.png"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -1434,7 +1434,6 @@ body.kalu-ready>.shell{opacity:1}
 .cat-group-sales .cat-item:nth-child(3):after{content:"02"}
 .cat-group-sales .cat-item:nth-child(4):after{content:"03"}
 .cat-group-sales .cat-item:nth-child(5):after{content:"04"}
-.cat-group-sales .cat-item:nth-child(6):after{content:"05"}
 .cat-group-rental .cat-item:nth-child(2):after{content:"01"}
 .cat-group-rental .cat-item:nth-child(3):after{content:"02"}
 .cat-item:after{position:absolute;right:15px;top:6px;font-size:.5rem;font-weight:800;letter-spacing:.12em;color:rgba(255,255,255,.22);pointer-events:none}
@@ -1505,6 +1504,36 @@ body.kalu-ready>.shell{opacity:1}
 @media (max-width:980px){.explore>div:first-child{padding:20px}.categories .section-heading:after{display:none}}
 @media (max-width:560px){.explore>div:first-child{padding:15px;border-radius:22px}.menu-title:after{display:none}.cat-group+.cat-group{margin-top:20px;padding-top:19px}.cat-head{min-height:72px;padding:10px 10px 10px 11px;gap:10px}.cat-icon{width:45px;height:45px;border-radius:14px}.cat-name{font-size:.91rem}.cat-desc{font-size:.65rem}.cat-badge{display:none}.cat-caret{width:24px;height:24px}.cat-sub-list{margin-left:65px;margin-right:10px}.cat-sub-list a{font-size:.7rem;min-height:36px}.cat-group-title strong{font-size:1.13rem}.cat-group-title small{font-size:.62rem}}
 @media (prefers-reduced-motion:reduce){.cat-item,.cat-photo img{transition:none!important}}
+
+/* ===== SOMBREROS: foto vertical completa 9:16 ===== */
+.hat-catalog .section-heading p { color: var(--yellow); }
+.hat-card { max-width: 390px; }
+.hat-card .image-wrap { aspect-ratio: 9 / 16; background: #2a1408; }
+.hat-card .image-wrap img { padding: 0; object-fit: cover; object-position: center; transform: scale(1); }
+.hat-card:hover .image-wrap img { transform: scale(1.025); }
+.hat-grid { align-items: start; }
+#sombreros-catalogo .mini-button { background: linear-gradient(145deg,#32103f,#5a174f); border-color: rgba(90,23,79,.3); }
+#sombreros-catalogo .zoom-button { color:#32103f; background:#fff; border-color:rgba(50,16,63,.14); }
+#sombreros-catalogo .zoom-button:hover { background:#f8f1f8; }
+
+/* ===== MENÚ: VENTAS / ALQUILER — títulos grandes y claros ===== */
+.cat-menu .cat-group-title{position:relative;display:flex;align-items:center;gap:16px;margin:0 0 6px;padding:16px 20px;border-radius:20px;border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.22);overflow:hidden}
+.cat-menu .cat-group-title:after{content:"";position:absolute;right:-28px;top:-40px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12);pointer-events:none}
+.cat-menu .cat-group-sales .cat-group-title{background:linear-gradient(120deg,#ff9f14,#e8590c 62%,#b8350a)}
+.cat-menu .cat-group-rental .cat-group-title{background:linear-gradient(120deg,#e8007e,#a3126b 58%,#5a174f)}
+.cat-menu .cat-group-title .cat-group-icon{width:58px;height:58px;flex:none;border-radius:18px;font-size:1.9rem;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);box-shadow:0 6px 14px rgba(0,0,0,.2)}
+.cat-menu .cat-group-title strong{font-size:clamp(2rem,4.6vw,2.7rem);font-weight:800;line-height:.95;letter-spacing:.02em;text-transform:uppercase;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.3)}
+.cat-menu .cat-group-title small{margin-top:7px;font-size:.88rem;font-weight:700;line-height:1.3;color:rgba(255,255,255,.95);opacity:1}
+.cat-menu .cat-group-title > div{position:relative;z-index:1}
+.cat-menu .cat-group-title .cat-group-icon{position:relative;z-index:1}
+.cat-menu .cat-group + .cat-group{margin-top:30px;padding-top:0;border-top:0}
+@media (max-width:560px){
+  .cat-menu .cat-group-title{gap:12px;padding:14px 14px;border-radius:18px}
+  .cat-menu .cat-group-title .cat-group-icon{width:48px;height:48px;font-size:1.5rem;border-radius:15px}
+  .cat-menu .cat-group-title strong{font-size:1.85rem}
+  .cat-menu .cat-group-title small{font-size:.78rem}
+  .cat-menu .cat-group + .cat-group{margin-top:24px}
+}
 
 </style>
 
@@ -1600,6 +1629,7 @@ body.kalu-ready>.shell{opacity:1}
 <a href="#mascaras">Máscaras</a>
 <a href="#pelucas">Pelucas</a>
 <a href="#accesorios">Accesorios</a>
+<a href="#sombreros-catalogo">Sombreros</a>
 <a href="#pedidos">Cómo pedir</a>
 <a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20conocer%20las%20m%C3%A1scaras%20de%20Halloween." target="_blank" rel="noopener">WhatsApp ↗</a>
 </div>
@@ -1679,7 +1709,7 @@ body.kalu-ready>.shell{opacity:1}
 <div class="cat-menu" id="cat-menu">
 
 <div class="cat-group cat-group-sales">
-<div class="cat-group-title"><span class="cat-group-icon" aria-hidden="true">🛍️</span><div><strong>Ventas</strong><small>Productos para llevarte a casa</small></div></div>
+<div class="cat-group-title"><span class="cat-group-icon" aria-hidden="true">🛍️</span><div><strong>Ventas</strong><small>Compra y llévate tus productos a casa</small></div></div>
 
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-mascaras">
@@ -1697,52 +1727,40 @@ body.kalu-ready>.shell{opacity:1}
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-pelucas">
 <span class="cat-icon cat-photo"><img src="assets/wig-long-blue-corner.png" alt="" loading="lazy" /></span>
-<span class="cat-text"><span class="cat-name">Pelucas</span><span class="cat-desc">Estilos largos y próximamente también cortos.</span></span>
+<span class="cat-text"><span class="cat-name">Pelucas</span><span class="cat-desc">Estilos y colores para completar tu personaje.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-pelucas"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="#pelucas-largas-title">Pelucas largas</a>
-<a href="#pelucas-cortas-title">Pelucas cortas <small>Muy pronto</small></a>
+<a href="#pelucas">Ver todas las pelucas</a>
 </div></div></div>
 </div>
 
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-accesorios">
 <span class="cat-icon cat-photo"><img src="assets/prop-machete.jpg" alt="" loading="lazy" /></span>
-<span class="cat-text"><span class="cat-name">Accesorios de personaje</span><span class="cat-desc">Utilería para completar tu disfraz.</span></span>
+<span class="cat-text"><span class="cat-name">Accesorios para disfraz</span><span class="cat-desc">Diademas, guantes, utilería y más, para niños y adultos.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-accesorios"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="#accesorios">Machetes y utilería</a>
-</div></div></div>
-</div>
-
-<div class="cat-item" id="ninas">
-<button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-ninas">
-<span class="cat-icon" aria-hidden="true">★</span>
-<span class="cat-text"><span class="cat-name">Accesorios para niñas</span><span class="cat-desc">Ideas mágicas, coloridas y llenas de brillo.</span></span>
-<span class="cat-badge soon">Muy pronto</span><span class="cat-caret" aria-hidden="true">▼</span>
-</button>
-<div class="cat-sub" id="sub-ninas"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20accesorios%20para%20ni%C3%B1as." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
+<a href="#accesorios">Ver todos los accesorios</a>
 </div></div></div>
 </div>
 
 <div class="cat-item" id="sombreros">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-sombreros">
-<span class="cat-icon" aria-hidden="true">🎩</span>
+<span class="cat-icon cat-photo"><img src="assets/sombreros/so-14.webp" alt="" loading="lazy" /></span>
 <span class="cat-text"><span class="cat-name">Sombreros</span><span class="cat-desc">El toque final para celebrar con mucho estilo.</span></span>
-<span class="cat-badge soon">Muy pronto</span><span class="cat-caret" aria-hidden="true">▼</span>
+<span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
 <div class="cat-sub" id="sub-sombreros"><div class="cat-sub-inner"><div class="cat-sub-list">
-<a href="https://wa.me/573117570138?text=Hola%20Kal%C3%BA%2C%20quiero%20consultar%20por%20los%20sombreros." target="_blank" rel="noopener">Consultar por WhatsApp <small>Muy pronto</small></a>
+<a href="#sombreros-catalogo">Ver todos los sombreros</a>
 </div></div></div>
 </div>
 
 </div>
 
 <div class="cat-group cat-group-rental">
-<div class="cat-group-title"><span class="cat-group-icon" aria-hidden="true">🎭</span><div><strong>Alquiler</strong><small>Disfraces y trajes típicos por días</small></div></div>
+<div class="cat-group-title"><span class="cat-group-icon" aria-hidden="true">🎭</span><div><strong>Alquiler</strong><small>Alquila disfraces y trajes típicos por días</small></div></div>
 
 <div class="cat-item" id="cat-alquiler">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-alquiler">
@@ -2030,7 +2048,7 @@ body.kalu-ready>.shell{opacity:1}
 <section class="accessory-catalog" id="accesorios" aria-labelledby="accesorios-title">
 <div class="section-heading">
 <div>
-<p>Accesorios de personaje</p>
+<p>Accesorios para disfraz</p>
 <h2 id="accesorios-title">Accesorios para completar tu disfraz</h2>
 </div>
 <span>Explora diademas, medias, guantes, utilería, maquillaje, joyería y accesorios inspirados en personajes. Filtra por tipo y encuentra rápido lo que buscas.</span>
@@ -2332,33 +2350,133 @@ body.kalu-ready>.shell{opacity:1}
 </article>
 </div>
 </section>
+<section class="material-catalog hat-catalog" id="sombreros-catalogo" aria-labelledby="sombreros-title">
+<div class="section-heading">
+<div>
+<p>Sombreros</p>
+<h2 id="sombreros-title">El toque final para tu disfraz</h2>
+</div>
+<span>Sombreros, cascos y gorras para piratas, vaqueros, brujas, magos y más. Toca <strong>+</strong> para agregarlos a Mi pedido y consultarlos por WhatsApp.</span>
+</div>
+<div class="grid hat-grid">
+<article class="card hat-card" data-name="Sombrero de paja Luffy (One Piece)" data-code="SO-01" data-image="assets/sombreros/so-01.webp" data-desc="Sombreros de paja con cinta roja, en amarillo y en color natural, inspirados en Luffy de One Piece.">
+<div class="image-wrap"><img src="assets/sombreros/so-01.webp" alt="Sombrero de paja Luffy (One Piece)" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-01</span></div>
+<div class="details"><div><h3>Sombrero de paja Luffy (One Piece)</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de paja Luffy (One Piece)"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de paja Luffy (One Piece)">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero sheriff" data-code="SO-02" data-image="assets/sombreros/so-02.webp" data-desc="Sombreros vaqueros con estrella plateada de sheriff, en rojo y en café, con cordón ajustable.">
+<div class="image-wrap"><img src="assets/sombreros/so-02.webp" alt="Sombrero sheriff" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-02</span></div>
+<div class="details"><div><h3>Sombrero sheriff</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero sheriff"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero sheriff">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero vaquero" data-code="SO-03" data-image="assets/sombreros/so-03.webp" data-desc="Sombreros vaqueros, uno rojo con cinta blanca y otro negro con costuras decorativas.">
+<div class="image-wrap"><img src="assets/sombreros/so-03.webp" alt="Sombrero vaquero" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-03</span></div>
+<div class="details"><div><h3>Sombrero vaquero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero vaquero"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero vaquero">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero mexicano" data-code="SO-04" data-image="assets/sombreros/so-04.webp" data-desc="Sombreros de ala ancha en negro con bordes y cintas decorativas, para bailes y disfraces típicos.">
+<div class="image-wrap"><img src="assets/sombreros/so-04.webp" alt="Sombrero mexicano" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-04</span></div>
+<div class="details"><div><h3>Sombrero mexicano</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero mexicano"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero mexicano">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero vaquero" data-code="SO-05" data-image="assets/sombreros/so-05.webp" data-desc="Sombreros vaqueros, uno rosado con plumas y cadena de brillos, y otro con los colores de la bandera de México.">
+<div class="image-wrap"><img src="assets/sombreros/so-05.webp" alt="Sombrero vaquero" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-05</span></div>
+<div class="details"><div><h3>Sombrero vaquero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero vaquero"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero vaquero">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de copa conejo" data-code="SO-06" data-image="assets/sombreros/so-06.webp" data-desc="Sombrero de copa negro con orejas de conejo y moño de cuadros, ideal para magos y cuentos.">
+<div class="image-wrap"><img src="assets/sombreros/so-06.webp" alt="Sombrero de copa conejo" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-06</span></div>
+<div class="details"><div><h3>Sombrero de copa conejo</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de copa conejo"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de copa conejo">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero" data-code="SO-07" data-image="assets/sombreros/so-07.webp" data-desc="Sombreros de fieltro, uno negro con pompones rojos y cinta, y otro con estampado de vaca.">
+<div class="image-wrap"><img src="assets/sombreros/so-07.webp" alt="Sombrero" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-07</span></div>
+<div class="details"><div><h3>Sombrero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero vaquero con flecos" data-code="SO-08" data-image="assets/sombreros/so-08.webp" data-desc="Sombreros vaqueros con brillos y flecos de lentejuelas, en rosado y en negro.">
+<div class="image-wrap"><img src="assets/sombreros/so-08.webp" alt="Sombrero vaquero con flecos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-08</span></div>
+<div class="details"><div><h3>Sombrero vaquero con flecos</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero vaquero con flecos"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero vaquero con flecos">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de lentejuelas" data-code="SO-09" data-image="assets/sombreros/so-09.webp" data-desc="Sombreros de lentejuelas con flores, en dorado, rosado, rojo y negro.">
+<div class="image-wrap"><img src="assets/sombreros/so-09.webp" alt="Sombrero de lentejuelas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-09</span></div>
+<div class="details"><div><h3>Sombrero de lentejuelas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de lentejuelas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de lentejuelas">+</button></div>
+</article>
+<article class="card hat-card" data-name="Casco" data-code="SO-10" data-image="assets/sombreros/so-10.webp" data-desc="Casco militar negro con águila dorada y casco camuflado, para disfraces de soldado.">
+<div class="image-wrap"><img src="assets/sombreros/so-10.webp" alt="Casco" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-10</span></div>
+<div class="details"><div><h3>Casco</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Casco"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Casco">+</button></div>
+</article>
+<article class="card hat-card" data-name="Tocado egipcio" data-code="SO-11" data-image="assets/sombreros/so-11.webp" data-desc="Tocados de faraón, uno azul y dorado con rayas y otro blanco con detalle dorado.">
+<div class="image-wrap"><img src="assets/sombreros/so-11.webp" alt="Tocado egipcio" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-11</span></div>
+<div class="details"><div><h3>Tocado egipcio</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Tocado egipcio"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Tocado egipcio">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de mago" data-code="SO-12" data-image="assets/sombreros/so-12.webp" data-desc="Sombreros puntiagudos de mago con estrellas, con ala dorada y plateada.">
+<div class="image-wrap"><img src="assets/sombreros/so-12.webp" alt="Sombrero de mago" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-12</span></div>
+<div class="details"><div><h3>Sombrero de mago</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de mago"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de mago">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero Seleccionador" data-code="SO-13" data-image="assets/sombreros/so-13.webp" data-desc="Sombrero de tela café arrugado con costura y cinta, inspirado en el Sombrero Seleccionador de Harry Potter.">
+<div class="image-wrap"><img src="assets/sombreros/so-13.webp" alt="Sombrero Seleccionador" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-13</span></div>
+<div class="details"><div><h3>Sombrero Seleccionador</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero Seleccionador"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero Seleccionador">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de bruja" data-code="SO-14" data-image="assets/sombreros/so-14.webp" data-desc="Sombreros de bruja en cuatro estilos: telaraña, naranja con estrellas, morado con estrellas y negro brillante.">
+<div class="image-wrap"><img src="assets/sombreros/so-14.webp" alt="Sombrero de bruja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-14</span></div>
+<div class="details"><div><h3>Sombrero de bruja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de bruja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de bruja">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de payaso" data-code="SO-15" data-image="assets/sombreros/so-15.webp" data-desc="Sombrero de payaso alto en verde y naranja con volante rojo.">
+<div class="image-wrap"><img src="assets/sombreros/so-15.webp" alt="Sombrero de payaso" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-15</span></div>
+<div class="details"><div><h3>Sombrero de payaso</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de payaso"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de payaso">+</button></div>
+</article>
+<article class="card hat-card" data-name="Cascos de guerrero" data-code="SO-16" data-image="assets/sombreros/so-16.webp" data-desc="Cascos de guerrero: espartano, vikingo con cuernos y romano, en acabado dorado envejecido.">
+<div class="image-wrap"><img src="assets/sombreros/so-16.webp" alt="Cascos de guerrero" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-16</span></div>
+<div class="details"><div><h3>Cascos de guerrero</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Cascos de guerrero"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Cascos de guerrero">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero pirata" data-code="SO-17" data-image="assets/sombreros/so-17.webp" data-desc="Pañoleta y tricornio pirata con calavera, en negro.">
+<div class="image-wrap"><img src="assets/sombreros/so-17.webp" alt="Sombrero pirata" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-17</span></div>
+<div class="details"><div><h3>Sombrero pirata</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero pirata"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero pirata">+</button></div>
+</article>
+<article class="card hat-card" data-name="Gorra boina" data-code="SO-18" data-image="assets/sombreros/so-18.webp" data-desc="Gorras boina en beige, blanco y negro, para looks clásicos y de época.">
+<div class="image-wrap"><img src="assets/sombreros/so-18.webp" alt="Gorra boina" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-18</span></div>
+<div class="details"><div><h3>Gorra boina</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gorra boina"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Gorra boina">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de safari" data-code="SO-19" data-image="assets/sombreros/so-19.webp" data-desc="Sombrero de safari beige con cubrenuca y cordón ajustable.">
+<div class="image-wrap"><img src="assets/sombreros/so-19.webp" alt="Sombrero de safari" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-19</span></div>
+<div class="details"><div><h3>Sombrero de safari</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de safari"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de safari">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero pirata con rastas" data-code="SO-20" data-image="assets/sombreros/so-20.webp" data-desc="Tricornio pirata café con cabello de rastas.">
+<div class="image-wrap"><img src="assets/sombreros/so-20.webp" alt="Sombrero pirata con rastas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-20</span></div>
+<div class="details"><div><h3>Sombrero pirata con rastas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero pirata con rastas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero pirata con rastas">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero vaquero metalizado" data-code="SO-21" data-image="assets/sombreros/so-21.webp" data-desc="Sombreros vaqueros metalizados, en dorado y en plateado, con cordón ajustable.">
+<div class="image-wrap"><img src="assets/sombreros/so-21.webp" alt="Sombrero vaquero metalizado" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-21</span></div>
+<div class="details"><div><h3>Sombrero vaquero metalizado</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero vaquero metalizado"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero vaquero metalizado">+</button></div>
+</article>
+<article class="card hat-card" data-name="Gorra de lentejuelas" data-code="SO-22" data-image="assets/sombreros/so-22.webp" data-desc="Gorra de lentejuelas en colores arcoíris.">
+<div class="image-wrap"><img src="assets/sombreros/so-22.webp" alt="Gorra de lentejuelas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-22</span></div>
+<div class="details"><div><h3>Gorra de lentejuelas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gorra de lentejuelas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Gorra de lentejuelas">+</button></div>
+</article>
+<article class="card hat-card" data-name="Casco de construcción" data-code="SO-23" data-image="assets/sombreros/so-23.webp" data-desc="Casco de construcción en verde neón, ideal para disfraces de obrero.">
+<div class="image-wrap"><img src="assets/sombreros/so-23.webp" alt="Casco de construcción" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-23</span></div>
+<div class="details"><div><h3>Casco de construcción</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Casco de construcción"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Casco de construcción">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de bruja iridiscente" data-code="SO-24" data-image="assets/sombreros/so-24.webp" data-desc="Sombrero de bruja con brillo iridiscente y flor negra.">
+<div class="image-wrap"><img src="assets/sombreros/so-24.webp" alt="Sombrero de bruja iridiscente" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-24</span></div>
+<div class="details"><div><h3>Sombrero de bruja iridiscente</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de bruja iridiscente"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de bruja iridiscente">+</button></div>
+</article>
+<article class="card hat-card" data-name="Sombrero de lentejuelas negro" data-code="SO-25" data-image="assets/sombreros/so-25.webp" data-desc="Sombrero estilo fedora negro cubierto de lentejuelas.">
+<div class="image-wrap"><img src="assets/sombreros/so-25.webp" alt="Sombrero de lentejuelas negro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-25</span></div>
+<div class="details"><div><h3>Sombrero de lentejuelas negro</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrero de lentejuelas negro"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrero de lentejuelas negro">+</button></div>
+</article>
+</div>
+</section>
 <section class="wig-catalog" id="pelucas" aria-labelledby="pelucas-title">
 <div class="section-heading">
 <div>
 <p>Pelucas</p>
 <h2 id="pelucas-title">Elige tu nuevo look</h2>
 </div>
-<span>Explora las pelucas por largo y toca <strong>+</strong> para agregarlas a Mi pedido y consultarlas por WhatsApp.</span>
+<span>Explora nuestras pelucas y toca <strong>+</strong> para agregarlas a Mi pedido y consultarlas por WhatsApp.</span>
 </div>
 <div class="wig-groups">
-<section class="wig-group" aria-labelledby="pelucas-largas-title">
-<div class="wig-group-heading">
-<h3 id="pelucas-largas-title">Pelucas largas</h3>
-<p>Color, estilo y diversión para tu personaje.</p>
-</div>
+<section class="wig-group" aria-labelledby="pelucas-title">
 <div class="grid">
-<article class="card wig-card" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue-corner.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
+<article class="card wig-card" data-length="Larga" data-name="Peluca larga azul con coletas" data-code="PL-01" data-image="assets/wig-long-blue-corner.png" data-desc="Peluca larga azul con coletas y lazos rojos, ideal para un look colorido y llamativo.">
 <div class="image-wrap"><img src="assets/wig-long-blue-corner.png" alt="Peluca larga azul con coletas y lazos rojos" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">PL-01</span></div>
 <div class="details"><div><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de peluca larga azul"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: peluca larga azul">+</button></div>
 </article>
 </div>
-</section>
-<section class="wig-group" aria-labelledby="pelucas-cortas-title">
-<div class="wig-group-heading">
-<h3 id="pelucas-cortas-title">Pelucas cortas</h3>
-<p>Esta sección queda lista para las próximas pelucas.</p>
-</div>
-<div class="wig-empty"><div><strong>Muy pronto</strong>Agrega aquí las fotos de las pelucas cortas para mantenerlas separadas de las largas.</div></div>
 </section>
 </div>
 </section>
@@ -3015,6 +3133,7 @@ body.kalu-ready>.shell{opacity:1}
 <a class="explore-item" href="#mascaras-pasta"><img src="assets/pasta-01.jpg" alt="Máscaras de pasta" loading="lazy" draggable="false" /><div class="explore-info"><h3>Máscaras de pasta</h3><span class="explore-desc">Acabados artesanales con mucho detalle.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#pelucas"><img src="assets/wig-long-blue-corner.png" alt="Pelucas" loading="lazy" draggable="false" /><div class="explore-info"><h3>Pelucas</h3><span class="explore-desc">Estilos largos y colores que roban miradas.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item" href="#accesorios"><img src="assets/accesorios/acc-02.webp" alt="Accesorios" loading="lazy" draggable="false" /><div class="explore-info"><h3>Accesorios</h3><span class="explore-desc">Diademas, medias, guantes, utilería y accesorios para completar tu disfraz.</span><span class="explore-go">Ver productos →</span></div></a>
+<a class="explore-item" href="#sombreros-catalogo"><img src="assets/sombreros/so-14.webp" alt="Sombreros" loading="lazy" draggable="false" /><div class="explore-info"><h3>Sombreros</h3><span class="explore-desc">Brujas, piratas, vaqueros, magos y más.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-nino"><img src="assets/rental/dfn-01.jpg" alt="Disfraces de niño" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niño</h3><span class="explore-desc">Alquila disfraces completos con accesorios.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-nina"><img src="assets/rental/dfna-01.jpg" alt="Disfraces de niña" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de niña</h3><span class="explore-desc">Princesas, personajes y más para ellas.</span><span class="explore-go">Ver productos →</span></div></a>
 <a class="explore-item is-rental" href="#alquiler-adulto"><img src="assets/rental/dfa-01.jpg" alt="Disfraces de adulto" loading="lazy" draggable="false" /><div class="explore-info"><h3>Disfraces de adulto</h3><span class="explore-desc">Disfraces para fiestas y eventos.</span><span class="explore-go">Ver productos →</span></div></a>
@@ -3673,7 +3792,8 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
     if (card.classList.contains("plush-card")) return { label: "Máscara de peluche", kw: "mascara mascaras peluche disfraz terror" };
     if (card.classList.contains("pasta-card")) return { label: "Máscara de pasta", kw: "mascara mascaras pasta disfraz terror" };
     if (card.classList.contains("wig-card")) return { label: "Peluca", kw: "peluca pelucas pelo cabello disfraz" };
-    if (card.classList.contains("prop-card")) return { label: "Accesorio de personaje", kw: "accesorio accesorios utileria disfraz personaje " + (card.dataset.category || "") + " " + (card.dataset.series || "") };
+    if (card.classList.contains("prop-card")) return { label: "Accesorio", kw: "accesorio accesorios utileria disfraz personaje nina ninas nino ninos infantil " + (card.dataset.category || "") + " " + (card.dataset.series || "") };
+    if (card.classList.contains("hat-card")) return { label: "Sombrero", kw: "sombrero sombreros gorro gorra casco bruja vaquero pirata mago cachucha" };
     if (card.classList.contains("folk-card")) return { label: "Traje típico de baile", kw: "tipico tipicos baile danza folclor folclorico traje vestido falda alquiler" };
     return { label: "Producto", kw: "" };
   };
@@ -3686,9 +3806,6 @@ document.querySelectorAll(".top-card").forEach((topCard) => {
 
   const wa = (t) => waLink(SEDES.principal.numero, "Hola Kalú, quiero consultar por " + t + ".");
   const soon = [
-    { name: "Sombreros", icon: "🎩", kw: "sombrero sombreros gorro", href: wa("los sombreros") },
-    { name: "Accesorios para niñas", icon: "★", kw: "nina ninas accesorio accesorios brillo infantil", href: wa("accesorios para niñas") },
-    { name: "Pelucas cortas", icon: "✦", kw: "peluca pelucas corta cortas pelo", href: wa("pelucas cortas") },
   ].map((i) => ({ ...i, hay: norm(i.name + " " + i.kw) }));
 
   // Miniaturas: se recorta el espacio blanco y el producto queda centrado
