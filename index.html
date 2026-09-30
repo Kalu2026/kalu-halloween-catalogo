@@ -1630,6 +1630,63 @@ body.kalu-ready>.shell{opacity:1}
 <style id="kalu-order-drawer">
 .selection-dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0;overflow:hidden}.selection-dialog::backdrop{background:rgba(10,4,16,.58);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}.selection-panel{position:absolute;top:0;right:0;width:min(470px,100%);height:100%;box-sizing:border-box;overflow:auto;padding:30px 28px 24px;background:linear-gradient(180deg,#fff 0%,#fffafc 100%);border-left:1px solid rgba(30,12,39,.1);box-shadow:-22px 0 60px rgba(0,0,0,.2);color:#25182a}.selection-heading{display:flex;align-items:center;gap:13px;padding-right:35px;margin-bottom:10px}.selection-bag{width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:rgba(255,157,36,.13);font-size:21px}.selection-heading .eyebrow{margin:0 0 2px}.selection-heading h2{margin:0;font-size:28px;line-height:1.05}.selection-intro{margin:0 0 17px;color:#65566a;font-size:13px;line-height:1.55}.selection-panel .close{position:absolute;right:18px;top:17px;width:38px;height:38px;border:1px solid rgba(40,20,48,.12);border-radius:50%;background:#fff;color:#35223c;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.08)}.selection-panel .close:hover,.selection-panel .close:focus-visible{background:#f7edf6;outline:none}.selection-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}.selection-item{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px;border:1px solid rgba(45,20,54,.09);border-radius:16px;background:#fff;box-shadow:0 8px 22px rgba(30,12,39,.06)}.selection-item::before{content:"";width:58px;height:58px;grid-column:1;grid-row:1;background:var(--selection-image,linear-gradient(135deg,#f4edf4,#fff));background-size:cover;background-position:center;border-radius:12px}.selection-item>div{grid-column:2;grid-row:1;min-width:0}.selection-item strong{display:block;font-size:13px;line-height:1.25}.selection-item span{display:block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.08em;color:#89758d}.selection-item .sel-out{display:inline-block;margin-left:7px;color:#b22;font-style:normal;font-size:9px;text-transform:uppercase}.remove-selection{grid-column:3;grid-row:1;border:0;background:transparent;color:#8b687f;font-weight:900;font-size:20px;cursor:pointer;padding:7px;line-height:1}.remove-selection:hover,.remove-selection:focus-visible{color:#b51f52;outline:none}.selection-empty{display:grid;gap:6px;place-items:center;text-align:center;padding:34px 20px;border:1px dashed rgba(70,35,80,.16);border-radius:18px;background:rgba(250,246,250,.8);color:#766679}.selection-empty[hidden]{display:none}.selection-empty strong{color:#3a2840;font-size:14px}.selection-empty span:last-child{font-size:12px;line-height:1.45}.selection-empty-icon{font-size:22px;color:#d98925}.selection-summary{display:grid;gap:4px;margin:15px 0 10px;padding:14px 15px;border-radius:14px;background:#f8f0f7;border:1px solid rgba(70,35,80,.08)}.selection-summary[hidden]{display:none}.selection-summary strong{font-size:13px}.selection-summary span{font-size:11px;color:#766679}.selection-actions{display:grid;gap:9px;margin-top:14px}.selection-actions .button{width:100%;box-sizing:border-box;text-align:center}.selection-footnote{margin:13px 4px 0;text-align:center;color:#8a7b8e;font-size:10px;line-height:1.45}.selection-panel .modal-note{margin:0 0 13px;padding:12px 13px;border-radius:13px;background:#fff6df;border:1px solid rgba(224,153,36,.25);color:#76551c;font-size:11px;line-height:1.45}.selection-actions a[aria-disabled="true"]{opacity:.5;pointer-events:none}@media(max-width:600px){.selection-panel{width:100%;padding:22px 17px 20px}.selection-heading h2{font-size:24px}.selection-panel .close{right:12px;top:12px}.selection-item{grid-template-columns:52px minmax(0,1fr) auto}.selection-item::before{width:52px;height:52px}}
 </style>
+<style>
+/* ===== Refinamiento visual Kalú · controles y ficha de producto ===== */
+.mini-button {
+  position: relative; width: 44px; height: 44px; min-width: 44px; padding: 0; border: 1px solid rgba(255,255,255,.42);
+  border-radius: 50%; color: #fff; background: linear-gradient(145deg, #a87917, #76520d);
+  font-size: 0; font-weight: 800; cursor: pointer; display: grid; place-items: center;
+  box-shadow: 0 7px 16px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.25);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.mini-button::before, .mini-button::after { content: ""; position: absolute; left: 50%; top: 50%; width: 16px; height: 2px; border-radius: 99px; background: currentColor; transform: translate(-50%,-50%); }
+.mini-button::after { transform: translate(-50%,-50%) rotate(90deg); }
+.mini-button:hover, .mini-button:focus-visible { transform: translateY(-2px) scale(1.05); box-shadow: 0 11px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.3); filter: brightness(1.08); outline: none; }
+.zoom-button {
+  width: 44px; height: 44px; min-width: 44px; border-radius: 50%; background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.34); box-shadow: 0 7px 16px rgba(0,0,0,.16);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.zoom-button:hover, .zoom-button:focus-visible { transform: translateY(-2px); background: rgba(255,255,255,.2); box-shadow: 0 11px 22px rgba(0,0,0,.25); outline: none; }
+.zoom-icon { width: 25px; height: 25px; }
+
+/* En Bailes, Alquiler y Pelucas usamos el mismo lenguaje limpio, pero sin alterar Halloween. */
+#tipicos-baile .mini-button, #alquiler .mini-button, #pelucas .mini-button { background: linear-gradient(145deg,#32103f,#5a174f); border-color: rgba(90,23,79,.3); }
+#tipicos-baile .zoom-button, #alquiler .zoom-button, #pelucas .zoom-button { color:#32103f; background:#fff; border-color:rgba(50,16,63,.14); }
+#tipicos-baile .zoom-button:hover, #alquiler .zoom-button:hover, #pelucas .zoom-button:hover { background:#f8f1f8; }
+
+/* Ficha de producto: aspecto de tienda online. */
+#product-modal { border: 0; border-radius: 28px; overflow: hidden; background: #fff; box-shadow: 0 30px 90px rgba(0,0,0,.42); }
+#product-modal::backdrop { background: rgba(18,7,24,.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+#product-modal .modal { background: #fff; color: #28192d; min-height: 500px; }
+#product-modal .modal img { padding: 0; background: #f7f3f7; min-height: 500px; }
+#product-modal .modal-copy { padding: clamp(28px,5vw,54px); }
+#product-modal .modal-copy .eyebrow { color: #8b6b91; font-size: .72rem; letter-spacing: .16em; }
+#product-modal .modal-copy h2 { color: #28192d; font-size: clamp(1.65rem,3vw,2.25rem); line-height: 1.05; }
+#product-modal .modal-copy > #modal-desc { color: #65566a; }
+#product-modal .modal-price { display:inline-flex; width:max-content; padding:7px 11px; border-radius:999px; background:#f6edf5; color:#5a174f; }
+#product-modal .modal-note { padding:11px 13px; border:1px solid rgba(224,153,36,.25); border-radius:13px; background:#fff8e9; color:#76551c; font-size:.78rem; }
+#product-modal .modal-actions { margin-top: 14px; }
+#product-modal .modal-actions .button { width:100%; box-sizing:border-box; text-align:center; border-radius:13px; min-height:46px; }
+#product-modal .modal-actions:first-of-type .button { background:linear-gradient(145deg,#32103f,#5a174f); border-color:#32103f; color:#fff; box-shadow:0 8px 18px rgba(50,16,63,.22); }
+#product-modal .modal-actions:first-of-type .button:hover { transform:translateY(-1px); filter:brightness(1.07); }
+#product-modal .close { width:42px; height:42px; right:14px; top:14px; background:rgba(40,25,45,.9); box-shadow:0 6px 18px rgba(0,0,0,.18); }
+#product-modal .modal-actions-wpp .button { font-size:.9rem; }
+
+/* Confirmación al agregar: pequeña, elegante y no bloquea la navegación. */
+.kalu-toast { position:fixed; left:50%; bottom:28px; z-index:9999; display:flex; align-items:center; gap:11px; min-width:min(330px,calc(100vw - 32px)); padding:12px 15px; border:1px solid rgba(50,16,63,.1); border-radius:16px; background:rgba(255,255,255,.97); color:#2d2032; box-shadow:0 18px 45px rgba(20,7,27,.22); transform:translate(-50%,18px); opacity:0; pointer-events:none; transition:opacity .22s ease, transform .22s ease; }
+.kalu-toast.show { opacity:1; transform:translate(-50%,0); }
+.kalu-toast-icon { width:28px; height:28px; display:grid; place-items:center; border-radius:50%; background:#32103f; color:#fff; font-weight:900; }
+.kalu-toast strong, .kalu-toast small { display:block; }
+.kalu-toast strong { font-size:.86rem; }
+.kalu-toast small { margin-top:2px; color:#766679; font-size:.72rem; }
+@media (max-width:700px) {
+  #product-modal .modal { grid-template-columns:1fr; }
+  #product-modal .modal img { height:42vh; min-height:280px; }
+  #product-modal .modal-copy { padding:24px 22px 28px; }
+  .kalu-toast { bottom:18px; }
+}
+</style>
 </head>
 <!-- KALU: pedido profesional aplicado sobre el original + últimos ajustes -->
 <body class="kalu-loading">
@@ -3112,6 +3169,10 @@ body.kalu-ready>.shell{opacity:1}
 <button class="selection-fab" id="selection-button" type="button" aria-haspopup="dialog" aria-label="Abrir mi selección">
 Mi selección <span class="selection-count" id="selection-count">0</span>
 </button>
+<div class="kalu-toast" id="kalu-toast" role="status" aria-live="polite" aria-atomic="true">
+  <span class="kalu-toast-icon" aria-hidden="true">✓</span>
+  <span><strong>Agregado a tu selección</strong><small>Ya puedes continuar explorando.</small></span>
+</div>
 <dialog id="product-modal" aria-labelledby="modal-title">
 <div class="modal">
 <button class="close" id="close-modal" aria-label="Cerrar detalle">×</button>
@@ -3588,6 +3649,14 @@ function flyBubble(imgSrc, fromRect, toRect, container) {
   }));
   setTimeout(() => bubble.remove(), 700);
 }
+const kaluToast = document.getElementById("kalu-toast");
+let kaluToastTimer = null;
+function showKaluToast() {
+  if (!kaluToast) return;
+  kaluToast.classList.add("show");
+  clearTimeout(kaluToastTimer);
+  kaluToastTimer = setTimeout(() => kaluToast.classList.remove("show"), 2200);
+}
 modalAddSelection.addEventListener("click", () => {
   if (!activeProduct || isSelected(activeProduct)) return;
   const modalEl = document.querySelector(".modal");
@@ -3599,6 +3668,7 @@ modalAddSelection.addEventListener("click", () => {
   selectedProducts.push(activeProduct);
   saveSelection();
   updateSelection();
+  showKaluToast();
 
   modalAddSelection.classList.add("added");
   modalAddSelection.disabled = true;
@@ -4352,7 +4422,7 @@ loadStock();
   addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   update();
 })();
-</script>
+
 <script>
 (() => {
   const links = [...document.querySelectorAll('.season-link')];
@@ -4370,6 +4440,7 @@ loadStock();
   }, {rootMargin:'-20% 0px -65% 0px', threshold:0});
   targets.forEach(t => { const el = document.getElementById(t.id); if (el) observer.observe(el); });
 })();
+</script>
 </script>
 <script>
 (function(){
