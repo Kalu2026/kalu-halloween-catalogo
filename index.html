@@ -556,8 +556,8 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 /* Accesorios: foto vertical completa 9:16, sin recorte ni bordes blancos (esta regla va después del 4:5 general) */
 .accessory-card .image-wrap { aspect-ratio: 9 / 16; background: #2a1408; }
 .accessory-card .image-wrap img { padding: 0; object-fit: cover; object-position: center; transform: scale(1); }
-.accessory-card[data-code="AP-01"] .image-wrap { aspect-ratio: 4 / 5; background: #fff; }
-.accessory-card[data-code="AP-01"] .image-wrap img { object-fit: contain; }
+.accessory-card[data-code="AP-01"] .image-wrap { aspect-ratio: 9 / 16; background: #2a1408; }
+.accessory-card[data-code="AP-01"] .image-wrap img { object-fit: cover; object-position: center; }
 .wig-empty { min-height: 182px; display: grid; place-items: center; padding: 28px; border: 1px dashed rgba(80, 162, 255, .64); border-radius: 18px; color: #d8c3d5; text-align: center; background: linear-gradient(135deg, rgba(38, 15, 64, .76), rgba(12, 5, 22, .9)); }
 .wig-empty strong { display: block; margin-bottom: 8px; color: #fff; font-size: 1.24rem; }
 .categories { padding: 78px clamp(18px, 7vw, 110px); color: #fff; background: linear-gradient(125deg, #08010f, #2b082f 54%, #19040f); }
@@ -1773,7 +1773,7 @@ body.kalu-ready>.shell{opacity:1}
 
 <div class="cat-item">
 <button class="cat-head" type="button" aria-expanded="false" aria-controls="sub-accesorios">
-<span class="cat-icon cat-photo"><img src="assets/prop-machete.jpg" alt="" loading="lazy" /></span>
+<span class="cat-icon cat-photo"><img src="assets/accesorios/acc-01.webp" alt="" loading="lazy" /></span>
 <span class="cat-text"><span class="cat-name">Accesorios para disfraz</span><span class="cat-desc">Diademas, guantes, utilería y más, para niños y adultos.</span></span>
 <span class="cat-badge">Disponible</span><span class="cat-caret" aria-hidden="true">▼</span>
 </button>
@@ -1844,7 +1844,7 @@ body.kalu-ready>.shell{opacity:1}
 <div class="top-info"><span class="top-code">PL-01 · Peluca</span><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
 </article>
 <article class="top-card" data-top-code="AP-01" tabindex="0" role="button" aria-label="Ver Machete de utilería">
-<div class="top-thumb"><img src="assets/thumbs/prop-machete.jpg" onerror="this.onerror=null;this.src='assets/prop-machete.jpg'" alt="Machete de utilería con mango envuelto y detalles rojos" /></div>
+<div class="top-thumb"><img src="assets/accesorios/acc-01.webp" onerror="this.onerror=null;this.src='assets/accesorios/acc-01.webp'" alt="Machete de utilería con mango envuelto y detalles rojos" /></div>
 <div class="top-info"><span class="top-code">AP-01 · Accesorio</span><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
 </article>
 </div>
@@ -2075,8 +2075,8 @@ body.kalu-ready>.shell{opacity:1}
 <span>Explora diademas, medias, guantes, utilería, maquillaje, joyería y accesorios inspirados en personajes. Filtra por tipo y encuentra rápido lo que buscas.</span>
 </div>
 <div class="grid accessory-grid">
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete de utilería" data-code="AP-01" data-image="assets/prop-machete.jpg" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
-<div class="image-wrap"><img src="assets/prop-machete.jpg" alt="Machete de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-01</span></div>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete de utilería" data-code="AP-01" data-image="assets/accesorios/acc-01.webp" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-01.webp" alt="Machete de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-01</span></div>
 <div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen del machete de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: machete de utilería">+</button></div>
 </article>
 <article class="card prop-card accessory-card" data-category="Cabeza" data-series="" data-name="Diadema floral con flores y perlas" data-code="AP-02" data-image="assets/accesorios/acc-02.webp" data-desc="Diadema de flores en tonos pastel con detalles decorativos, ideal para hadas, princesas, primavera o disfraces de fantasía.">
@@ -2346,6 +2346,30 @@ body.kalu-ready>.shell{opacity:1}
 <article class="card prop-card accessory-card" data-category="Cuerpo" data-series="" data-name="Traje de esqueleto" data-code="AP-68" data-image="assets/accesorios/acc-68.webp" data-desc="Traje completo de esqueleto con estampado óseo para complementar disfraces de Halloween y personajes de terror.">
 <div class="image-wrap"><img src="assets/accesorios/acc-68.webp" alt="Traje de esqueleto" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-68</span></div>
 <div class="details"><div><h3>Traje de esqueleto</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Traje de esqueleto"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Traje de esqueleto">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Daga medieval de utilería" data-code="AP-69" data-image="assets/accesorios/acc-69.webp" data-desc="Daga decorativa de utilería con diseño medieval para disfraces y personajes de fantasía o terror.">
+<div class="image-wrap"><img src="assets/accesorios/acc-69.webp" alt="Daga medieval de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-69</span></div>
+<div class="details"><div><h3>Daga medieval de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Daga medieval de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Daga medieval de utilería">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete negro con hoja roja" data-code="AP-70" data-image="assets/accesorios/acc-70.webp" data-desc="Machete decorativo de utilería con mango negro y hoja con efecto rojo para disfraces y personajes de Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-70.webp" alt="Machete negro con hoja roja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-70</span></div>
+<div class="details"><div><h3>Machete negro con hoja roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Machete negro con hoja roja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Machete negro con hoja roja">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete plateado con efecto de sangre" data-code="AP-71" data-image="assets/accesorios/acc-71.webp" data-desc="Machete decorativo de utilería con hoja plateada y efecto de sangre para disfraces y personajes de terror.">
+<div class="image-wrap"><img src="assets/accesorios/acc-71.webp" alt="Machete plateado con efecto de sangre" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-71</span></div>
+<div class="details"><div><h3>Machete plateado con efecto de sangre</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Machete plateado con efecto de sangre"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Machete plateado con efecto de sangre">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Varita mágica con accesorios" data-code="AP-72" data-image="assets/accesorios/acc-72.webp" data-desc="Varita decorativa acompañada de accesorios de fantasía para complementar disfraces de magia y personajes.">
+<div class="image-wrap"><img src="assets/accesorios/acc-72.webp" alt="Varita mágica con accesorios" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-72</span></div>
+<div class="details"><div><h3>Varita mágica con accesorios</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Varita mágica con accesorios"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Varita mágica con accesorios">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Set de varitas mágicas" data-code="AP-73" data-image="assets/accesorios/acc-73.webp" data-desc="Set de varitas decorativas de distintos diseños para disfraces de magia, fantasía y personajes.">
+<div class="image-wrap"><img src="assets/accesorios/acc-73.webp" alt="Set de varitas mágicas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-73</span></div>
+<div class="details"><div><h3>Set de varitas mágicas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de varitas mágicas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Set de varitas mágicas">+</button></div>
+</article>
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete zombie de utilería" data-code="AP-74" data-image="assets/accesorios/acc-74.webp" data-desc="Machete decorativo de utilería con mango envuelto y hoja con efecto de sangre para disfraces de terror y Halloween.">
+<div class="image-wrap"><img src="assets/accesorios/acc-74.webp" alt="Machete zombie de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-74</span></div>
+<div class="details"><div><h3>Machete zombie de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Machete zombie de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Machete zombie de utilería">+</button></div>
 </article>
 </div>
 </section>
@@ -4065,7 +4089,7 @@ loadStock();
 (function () {
   const configs = [
     { selector: '#sombreros-catalogo', card: '.hat-card', label: 'sombreros', title: 'Filtrar sombreros', min: 16 },
-    { selector: '#accesorios', card: '.accessory-card', label: 'accesorios', title: 'Filtrar accesorios', min: 16 },
+    { selector: '#accesorios', card: '.accessory-card', label: 'accesorios', title: 'Filtrar accesorios', min: 16, subfilter: { label: 'Tipo de utilería', data: 'series', values: ['Machetes', 'Espadas', 'Varitas', 'Utilería'] } },
     { selector: '#alquiler-nino', card: '.rental-card', label: 'disfraces', title: 'Filtrar disfraces de niño', min: 16 },
     { selector: '#alquiler-nina', card: '.rental-card', label: 'disfraces', title: 'Filtrar disfraces de niña', min: 16 },
     { selector: '#alquiler-adulto', card: '.rental-card', label: 'disfraces', title: 'Filtrar disfraces de adulto', min: 16 }
@@ -4078,38 +4102,82 @@ loadStock();
     if (cards.length < cfg.min) return;
     const categories = [...new Set(cards.map(c => c.dataset.category).filter(Boolean))];
     if (!categories.length) return;
-    const bar = document.createElement('div');
-    bar.className = 'catalog-filters';
-    bar.setAttribute('aria-label', cfg.title);
-    const chips = document.createElement('div');
-    chips.className = 'filter-chips catalog-filter-chips';
-    chips.setAttribute('role','group');
-    chips.setAttribute('aria-label',cfg.title);
-    const count = document.createElement('span');
-    count.className = 'catalog-filter-count';
-    const clear = document.createElement('button');
-    clear.type='button'; clear.className='filter-clear'; clear.textContent='Limpiar';
-    bar.append(chips, count, clear);
+
+    const makeBar = (title, extraClass='') => {
+      const bar = document.createElement('div');
+      bar.className = `catalog-filters ${extraClass}`.trim();
+      bar.setAttribute('aria-label', title);
+      const chips = document.createElement('div');
+      chips.className = 'filter-chips catalog-filter-chips';
+      chips.setAttribute('role','group');
+      chips.setAttribute('aria-label',title);
+      const count = document.createElement('span');
+      count.className = 'catalog-filter-count';
+      const clear = document.createElement('button');
+      clear.type='button'; clear.className='filter-clear'; clear.textContent='Limpiar';
+      bar.append(chips, count, clear);
+      return {bar,chips,count,clear};
+    };
+
+    const primary = makeBar(cfg.title);
     const anchor = grid.closest('.carousel-wrap') || grid;
-    anchor.parentNode.insertBefore(bar, anchor);
+    anchor.parentNode.insertBefore(primary.bar, anchor);
+
+    let secondary = null;
+    if (cfg.subfilter) {
+      secondary = makeBar(cfg.subfilter.label, 'catalog-filters-secondary');
+      anchor.parentNode.insertBefore(secondary.bar, anchor);
+    }
+
     let active='Todos';
-    const apply = (value) => {
+    let activeSub='Todos';
+    const apply = (value=active, subValue=activeSub) => {
       active=value;
+      activeSub=subValue;
       let visible=0;
-      cards.forEach(card => { const show=value==='Todos'||card.dataset.category===value; card.hidden=!show; if(show) visible++; });
-      chips.querySelectorAll('.filter-chip').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.value===active)));
-      count.textContent=`${visible} ${cfg.label}`;
-      clear.disabled=active==='Todos';
+      cards.forEach(card => {
+        const okCategory = value==='Todos' || card.dataset.category===value;
+        const okSub = !cfg.subfilter || subValue==='Todos' || card.dataset[cfg.subfilter.data]===subValue;
+        const show=okCategory && okSub;
+        card.hidden=!show;
+        if(show) visible++;
+      });
+      primary.chips.querySelectorAll('.filter-chip').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.value===active)));
+      primary.count.textContent=`${visible} ${cfg.label}`;
+      primary.clear.disabled=active==='Todos' && (!secondary || activeSub==='Todos');
+      if (secondary) {
+        secondary.chips.querySelectorAll('.filter-chip').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.value===activeSub)));
+        secondary.count.textContent = activeSub==='Todos' ? '' : `${visible} ${cfg.label}`;
+        secondary.clear.disabled=activeSub==='Todos';
+      }
       grid.scrollLeft=0; grid.dispatchEvent(new Event('scroll'));
       let empty=anchor.parentNode.querySelector(':scope > .filter-empty');
       if(!empty){ empty=document.createElement('p'); empty.className='filter-empty'; empty.textContent='No encontramos productos con ese filtro.'; anchor.parentNode.insertBefore(empty,anchor); }
       empty.hidden=visible!==0;
     };
+
     [['Todos','Todos'],...categories.map(c=>[c,c])].forEach(([value,label])=>{
-      const b=document.createElement('button'); b.type='button'; b.className='filter-chip'; b.dataset.value=value; b.textContent=label; b.setAttribute('aria-pressed',String(value==='Todos')); b.addEventListener('click',()=>apply(value)); chips.appendChild(b);
+      const b=document.createElement('button');
+      b.type='button'; b.className='filter-chip'; b.dataset.value=value; b.textContent=label;
+      b.setAttribute('aria-pressed',String(value==='Todos'));
+      b.addEventListener('click',()=>apply(value, activeSub));
+      primary.chips.appendChild(b);
     });
-    clear.addEventListener('click',()=>apply('Todos'));
-    apply('Todos');
+    primary.clear.addEventListener('click',()=>apply('Todos','Todos'));
+
+    if (secondary) {
+      const subValues = ['Todos', ...cfg.subfilter.values.filter(v => cards.some(c => c.dataset[cfg.subfilter.data]===v))];
+      subValues.forEach(value=>{
+        const b=document.createElement('button');
+        b.type='button'; b.className='filter-chip'; b.dataset.value=value; b.textContent=value;
+        b.setAttribute('aria-pressed',String(value==='Todos'));
+        b.addEventListener('click',()=>apply(active, value));
+        secondary.chips.appendChild(b);
+      });
+      secondary.clear.addEventListener('click',()=>apply(active,'Todos'));
+    }
+
+    apply('Todos','Todos');
   });
 
   const maskGrid = document.querySelector('#mascaras .mask-grid');
