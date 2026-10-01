@@ -1638,33 +1638,57 @@ body.kalu-ready>.shell{opacity:1}
 @media(max-width:700px){.catalog-filters{gap:8px;padding:9px 10px}.catalog-filter-count{font-size:.7rem}.filter-clear{padding:8px 11px}.catalog-filter-chips{overflow-x:auto;scrollbar-width:none}.catalog-filter-chips::-webkit-scrollbar{display:none}}
 </style>
 
-/* ===== Accesorios: acabado uniforme y compacto ===== */
-.accessory-catalog .accessory-grid > .accessory-card { width: clamp(210px, 24vw, 270px); }
-.accessory-catalog .accessory-card .image-wrap,
-.accessory-catalog .accessory-card[data-code="AP-01"] .image-wrap { aspect-ratio: 5 / 7; background: #fff; }
-.accessory-catalog .accessory-card .image-wrap img,
-.accessory-catalog .accessory-card[data-code="AP-01"] .image-wrap img { padding: 10px; object-fit: contain; object-position: center; transform: scale(1); }
+
+<style id="kalu-catalog-polish">
+/* ===== Tarjetas: mismo tamaño, más compactas ===== */
+.grid, .accessory-grid { align-items: stretch; }
+.accessory-catalog .accessory-grid > .accessory-card { width: clamp(210px, 22vw, 250px); }
+.accessory-catalog .accessory-card .image-wrap { aspect-ratio: 5 / 7; background: #fff; }
+.accessory-catalog .accessory-card .image-wrap img { padding: 8px; object-fit: contain; object-position: center; transform: scale(1); }
 .accessory-catalog .accessory-card:hover .image-wrap img { transform: scale(1.015); }
-.accessory-catalog .accessory-card .details { grid-template-rows: minmax(52px, auto) 42px; align-items: stretch; }
-.accessory-catalog .accessory-card .mini-button,
-.accessory-catalog .accessory-card .zoom-button { width: 100%; height: 42px; min-width: 0; border-radius: 10px; }
-.accessory-catalog .accessory-card .mini-button { border: 1px solid rgba(255,255,255,.38); background: linear-gradient(145deg,#b8881c,#8a6210); }
-.accessory-catalog .accessory-card .zoom-button { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.30); }
-.accessory-catalog .accessory-card .zoom-icon { width: 23px; height: 23px; }
-@media (max-width:700px) {
-  .accessory-catalog .accessory-grid > .accessory-card { width: min(72vw, 250px); }
-  .accessory-catalog .accessory-card .image-wrap,
-  .accessory-catalog .accessory-card[data-code="AP-01"] .image-wrap { aspect-ratio: 5 / 7; }
+.accessory-card .details { grid-template-rows: auto 40px; align-content: start; gap: 10px 8px; padding: 12px 12px 14px; }
+.accessory-card .details > div:first-child { min-height: calc(2 * 1.15em + 8px + 2 * 1.35 * .78rem); }
+.accessory-card .details h3 { font-size: 1.05rem; line-height: 1.15; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.accessory-card .details p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 8px; }
+.accessory-card .code { left: 10px; bottom: 10px; }
+
+/* ===== Botones + y lupa: rectangulares, iguales y centrados ===== */
+.details > .mini-button, .details > .zoom-button {
+  display: grid; place-items: center; width: 100%; height: 40px; min-height: 40px; min-width: 0; padding: 0;
+  border-radius: 8px !important; box-sizing: border-box; line-height: 1; align-self: center; justify-self: stretch;
 }
+.details > .mini-button { position: relative; font-size: 0; color: #16031e; background: var(--yellow); border: 1px solid rgba(255,255,255,.28); box-shadow: 0 4px 10px rgba(0,0,0,.18); }
+.details > .mini-button::before, .details > .mini-button::after { content: ""; position: absolute; left: 50%; top: 50%; background: currentColor; border-radius: 1px; transform: translate(-50%, -50%); }
+.details > .mini-button::before { width: 16px; height: 2.5px; }
+.details > .mini-button::after { width: 2.5px; height: 16px; }
+.details > .mini-button:hover { color: #fff; background: var(--orange); }
+.accessory-catalog .accessory-card .details > .mini-button { color: #fff; background: linear-gradient(145deg,#b8881c,#8a6210); }
+.details > .zoom-button { border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.10); box-shadow: 0 4px 10px rgba(0,0,0,.14); }
+.details > .zoom-button .zoom-icon { width: 26px; height: 26px; margin: 0; }
+.details > .mini-button:hover, .details > .zoom-button:hover { transform: translateY(-1px); }
+.details > .mini-button:focus-visible, .details > .zoom-button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
 
-
-/* ===== Filtros: alineación profesional ===== */
-.catalog-filter-prefix { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 40px; margin-right: 2px; color: #f2dfed; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
-.catalog-filters .filter-chip { border-radius: 10px; padding: 9px 13px; min-height: 40px; }
+/* ===== Filtros: "Filtrar por:" a la izquierda, botones alineados ===== */
+.catalog-filters { position: relative; z-index: 3; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; box-sizing: border-box; width: min(1250px, 100%); margin: 0 auto 12px; padding: 11px 14px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(20,4,30,.46); }
+.catalog-filter-prefix { order: 0; flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 40px; margin: 0; color: #f2dfed; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.catalog-filters .catalog-filter-chips { order: 1; flex: 1 1 0; min-width: 0; margin: 0; padding: 0; flex-wrap: wrap; overflow: visible; }
+.catalog-filters .filter-chip { border-radius: 8px; padding: 0 13px; min-height: 40px; display: inline-flex; align-items: center; }
 .catalog-filters .filter-chip[aria-pressed="true"] { box-shadow: 0 5px 14px rgba(255,189,24,.16); }
-.catalog-filters .filter-chip:focus-visible, .accessory-card .mini-button:focus-visible, .accessory-card .zoom-button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
-@media(max-width:700px){ .catalog-filter-prefix { min-height: 36px; } .catalog-filters .filter-chip { min-height: 36px; padding: 8px 11px; } }
-
+.catalog-filter-count { order: 2; margin: 0 0 0 auto; color: #cdb6ca; font-size: .76rem; font-weight: 700; white-space: nowrap; }
+.catalog-filters .filter-clear { order: 3; min-height: 40px; padding: 0 14px; border-radius: 8px; }
+.catalog-filters .filter-chip:focus-visible, .catalog-filters .filter-clear:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.catalog-filters-secondary { margin-top: -4px; }
+.catalog-filter-count:empty { display: none; }
+.filter-empty { margin-top: 0; }
+@media (max-width: 700px) {
+  .accessory-catalog .accessory-grid > .accessory-card { width: min(68vw, 240px); }
+  .catalog-filters { padding: 9px 10px; }
+  .catalog-filter-prefix { flex: 1 0 100%; min-height: 24px; }
+  .catalog-filters .catalog-filter-chips { flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .catalog-filters .filter-chip { flex: none; min-height: 36px; padding: 0 11px; }
+  .catalog-filter-count { margin-left: 0; }
+}
+</style>
 </head>
 <!-- KALU: pedido profesional aplicado sobre el original + últimos ajustes -->
 <body class="kalu-loading">
@@ -2412,7 +2436,6 @@ body.kalu-ready>.shell{opacity:1}
 </div>
 <span>Sombreros, cascos y gorras para piratas, vaqueros, brujas, magos y más. Toca <strong>+</strong> para agregarlos a Mi pedido y consultarlos por WhatsApp.</span>
 </div>
-<div class="catalog-filter" data-smart-filter="sombreros" aria-label="Filtrar sombreros"><span class="filter-label">Filtrar por:</span><div class="filter-chips" role="group" aria-label="Categoría de sombrero"></div></div>
 <div class="grid hat-grid">
 <article class="card hat-card" data-category="Vaqueros y típicos" data-name="Sombrero de paja Luffy (One Piece)" data-code="SO-01" data-image="assets/sombreros/so-01.webp" data-desc="Sombreros de paja con cinta roja, en amarillo y en color natural, inspirados en Luffy de One Piece.">
 <div class="image-wrap"><img src="assets/sombreros/so-01.webp" alt="Sombrero de paja Luffy (One Piece)" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">SO-01</span></div>
@@ -4154,7 +4177,8 @@ loadStock();
     };
 
     const primary = makeBar(cfg.title);
-    const anchor = grid.closest('.carousel-wrap') || grid;
+    const scroller = grid.matches('.grid') ? grid : grid.querySelector('.grid');
+    const anchor = grid.matches('.grid') ? (grid.closest('.carousel-wrap') || grid) : (grid.querySelector('.carousel-wrap') || scroller);
     anchor.parentNode.insertBefore(primary.bar, anchor);
 
     let secondary = null;
@@ -4184,7 +4208,7 @@ loadStock();
         secondary.count.textContent = activeSub==='Todos' ? '' : `${visible} ${cfg.label}`;
         secondary.clear.disabled=activeSub==='Todos';
       }
-      grid.scrollLeft=0; grid.dispatchEvent(new Event('scroll'));
+      scroller.scrollLeft=0; scroller.dispatchEvent(new Event('scroll'));
       let empty=anchor.parentNode.querySelector(':scope > .filter-empty');
       if(!empty){ empty=document.createElement('p'); empty.className='filter-empty'; empty.textContent='No encontramos productos con ese filtro.'; anchor.parentNode.insertBefore(empty,anchor); }
       empty.hidden=visible!==0;
