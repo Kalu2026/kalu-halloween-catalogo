@@ -510,10 +510,13 @@ h2 { margin: 0; font-size: clamp(2.35rem, 4vw, 4.25rem); line-height: .9; letter
 .filter-label { margin: 0 0 7px 2px; color: #f2dfed; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .accessory-series-label { margin-top: 10px; }
 .accessory-filter-count { margin-top: 8px; color: #cdb6ca; font-size: .76rem; font-weight: 700; }
-.accessory-card .image-wrap { aspect-ratio: 9 / 16; background: #fff; }
-.accessory-card .image-wrap img { padding: 0; object-fit: cover; object-position: center; transform: scale(1); }
-.accessory-card:hover .image-wrap img { transform: scale(1.025); }
+.accessory-card .image-wrap { aspect-ratio: 5 / 7; background: #fff; }
+.accessory-card .image-wrap img { padding: 10px; object-fit: contain; object-position: center; transform: scale(1); }
+.accessory-card:hover .image-wrap img { transform: scale(1.015); }
 .accessory-grid { align-items: start; }
+.accessory-grid > .accessory-card { width: clamp(210px, 24vw, 270px); }
+.accessory-card .details { grid-template-rows: minmax(52px, auto) 42px; align-items: stretch; }
+.accessory-card .details > div:first-child { min-width: 0; }
 .catalog-filter { max-width:1250px; margin:-8px auto 24px; padding:12px 14px; display:flex; align-items:center; gap:9px; flex-wrap:wrap; border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(20,4,30,.46); box-shadow:0 10px 26px rgba(0,0,0,.14); }
 .catalog-filter .filter-label { margin:0 3px 0 0; }
 .catalog-filter .filter-chips { flex:1 1 520px; margin:0; padding:0; }
@@ -1634,6 +1637,34 @@ body.kalu-ready>.shell{opacity:1}
 .card[hidden]{display:none!important}
 @media(max-width:700px){.catalog-filters{gap:8px;padding:9px 10px}.catalog-filter-count{font-size:.7rem}.filter-clear{padding:8px 11px}.catalog-filter-chips{overflow-x:auto;scrollbar-width:none}.catalog-filter-chips::-webkit-scrollbar{display:none}}
 </style>
+
+/* ===== Accesorios: acabado uniforme y compacto ===== */
+.accessory-catalog .accessory-grid > .accessory-card { width: clamp(210px, 24vw, 270px); }
+.accessory-catalog .accessory-card .image-wrap,
+.accessory-catalog .accessory-card[data-code="AP-01"] .image-wrap { aspect-ratio: 5 / 7; background: #fff; }
+.accessory-catalog .accessory-card .image-wrap img,
+.accessory-catalog .accessory-card[data-code="AP-01"] .image-wrap img { padding: 10px; object-fit: contain; object-position: center; transform: scale(1); }
+.accessory-catalog .accessory-card:hover .image-wrap img { transform: scale(1.015); }
+.accessory-catalog .accessory-card .details { grid-template-rows: minmax(52px, auto) 42px; align-items: stretch; }
+.accessory-catalog .accessory-card .mini-button,
+.accessory-catalog .accessory-card .zoom-button { width: 100%; height: 42px; min-width: 0; border-radius: 10px; }
+.accessory-catalog .accessory-card .mini-button { border: 1px solid rgba(255,255,255,.38); background: linear-gradient(145deg,#b8881c,#8a6210); }
+.accessory-catalog .accessory-card .zoom-button { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.30); }
+.accessory-catalog .accessory-card .zoom-icon { width: 23px; height: 23px; }
+@media (max-width:700px) {
+  .accessory-catalog .accessory-grid > .accessory-card { width: min(72vw, 250px); }
+  .accessory-catalog .accessory-card .image-wrap,
+  .accessory-catalog .accessory-card[data-code="AP-01"] .image-wrap { aspect-ratio: 5 / 7; }
+}
+
+
+/* ===== Filtros: alineación profesional ===== */
+.catalog-filter-prefix { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 40px; margin-right: 2px; color: #f2dfed; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.catalog-filters .filter-chip { border-radius: 10px; padding: 9px 13px; min-height: 40px; }
+.catalog-filters .filter-chip[aria-pressed="true"] { box-shadow: 0 5px 14px rgba(255,189,24,.16); }
+.catalog-filters .filter-chip:focus-visible, .accessory-card .mini-button:focus-visible, .accessory-card .zoom-button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+@media(max-width:700px){ .catalog-filter-prefix { min-height: 36px; } .catalog-filters .filter-chip { min-height: 36px; padding: 8px 11px; } }
+
 </head>
 <!-- KALU: pedido profesional aplicado sobre el original + últimos ajustes -->
 <body class="kalu-loading">
@@ -1844,7 +1875,7 @@ body.kalu-ready>.shell{opacity:1}
 <div class="top-info"><span class="top-code">PL-01 · Peluca</span><h3>Peluca larga azul</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
 </article>
 <article class="top-card" data-top-code="AP-01" tabindex="0" role="button" aria-label="Ver Machete de utilería">
-<div class="top-thumb"><img src="assets/accesorios/acc-01.webp" onerror="this.onerror=null;this.src='assets/accesorios/acc-01.webp'" alt="Machete de utilería con mango envuelto y detalles rojos" /></div>
+<div class="top-thumb"><img src="assets/accesorios/acc-01.webp" onerror="this.onerror=null;this.style.display='none'" alt="Machete de utilería con mango envuelto y detalles rojos" /></div>
 <div class="top-info"><span class="top-code">AP-01 · Accesorio</span><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p><button class="top-cta" type="button">Ver producto +</button></div>
 </article>
 </div>
@@ -2075,7 +2106,7 @@ body.kalu-ready>.shell{opacity:1}
 <span>Explora diademas, medias, guantes, utilería, maquillaje, joyería y accesorios inspirados en personajes. Filtra por tipo y encuentra rápido lo que buscas.</span>
 </div>
 <div class="grid accessory-grid">
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete de utilería" data-code="AP-01" data-image="assets/accesorios/acc-01.webp" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Machetes" data-name="Machete de utilería" data-code="AP-01" data-image="assets/accesorios/acc-01.webp" data-desc="Machete de utilería para complementar disfraces y personajes de Halloween.">
 <div class="image-wrap"><img src="assets/accesorios/acc-01.webp" alt="Machete de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-01</span></div>
 <div class="details"><div><h3>Machete de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen del machete de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: machete de utilería">+</button></div>
 </article>
@@ -2083,7 +2114,7 @@ body.kalu-ready>.shell{opacity:1}
 <div class="image-wrap"><img src="assets/accesorios/acc-02.webp" alt="Diadema floral con flores y perlas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-02</span></div>
 <div class="details"><div><h3>Diadema floral con flores y perlas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diadema floral con flores y perlas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Diadema floral con flores y perlas">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Pipa de utilería clásica" data-code="AP-03" data-image="assets/accesorios/acc-03.webp" data-desc="Pipa decorativa de utilería para personajes elegantes, detectives, profesores o disfraces de época.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Pipa de utilería clásica" data-code="AP-03" data-image="assets/accesorios/acc-03.webp" data-desc="Pipa decorativa de utilería para personajes elegantes, detectives, profesores o disfraces de época.">
 <div class="image-wrap"><img src="assets/accesorios/acc-03.webp" alt="Pipa de utilería clásica" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-03</span></div>
 <div class="details"><div><h3>Pipa de utilería clásica</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Pipa de utilería clásica"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Pipa de utilería clásica">+</button></div>
 </article>
@@ -2107,7 +2138,7 @@ body.kalu-ready>.shell{opacity:1}
 <div class="image-wrap"><img src="assets/accesorios/acc-08.webp" alt="Set Mujer Maravilla — DC" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-08</span></div>
 <div class="details"><div><h3>Set Mujer Maravilla — DC</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set Mujer Maravilla — DC"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Set Mujer Maravilla — DC">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Sombrilla blanca de encaje" data-code="AP-09" data-image="assets/accesorios/acc-09.webp" data-desc="Sombrilla blanca decorativa con encaje y detalles ornamentales, ideal para personajes vintage, góticos o de fantasía.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Sombrilla blanca de encaje" data-code="AP-09" data-image="assets/accesorios/acc-09.webp" data-desc="Sombrilla blanca decorativa con encaje y detalles ornamentales, ideal para personajes vintage, góticos o de fantasía.">
 <div class="image-wrap"><img src="assets/accesorios/acc-09.webp" alt="Sombrilla blanca de encaje" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-09</span></div>
 <div class="details"><div><h3>Sombrilla blanca de encaje</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Sombrilla blanca de encaje"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Sombrilla blanca de encaje">+</button></div>
 </article>
@@ -2191,7 +2222,7 @@ body.kalu-ready>.shell{opacity:1}
 <div class="image-wrap"><img src="assets/accesorios/acc-29.webp" alt="Diademas de diablita y bruja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-29</span></div>
 <div class="details"><div><h3>Diademas de diablita y bruja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diademas de diablita y bruja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Diademas de diablita y bruja">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Estetoscopios rojo y negro" data-code="AP-30" data-image="assets/accesorios/acc-30.webp" data-desc="Estetoscopios de utilería en rojo y negro con detalle de cruz roja para disfraces de doctor, enfermera y personajes médicos.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Estetoscopios rojo y negro" data-code="AP-30" data-image="assets/accesorios/acc-30.webp" data-desc="Estetoscopios de utilería en rojo y negro con detalle de cruz roja para disfraces de doctor, enfermera y personajes médicos.">
 <div class="image-wrap"><img src="assets/accesorios/acc-30.webp" alt="Estetoscopios rojo y negro" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-30</span></div>
 <div class="details"><div><h3>Estetoscopios rojo y negro</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Estetoscopios rojo y negro"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Estetoscopios rojo y negro">+</button></div>
 </article>
@@ -2287,27 +2318,27 @@ body.kalu-ready>.shell{opacity:1}
 <div class="image-wrap"><img src="assets/accesorios/acc-53.webp" alt="Diademas de orejas de conejo LED rosa y multicolor" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-53</span></div>
 <div class="details"><div><h3>Diademas de orejas de conejo LED rosa y multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Diademas de orejas de conejo LED rosa y multicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Diademas de orejas de conejo LED rosa y multicolor">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Bate de utilería" data-code="AP-54" data-image="assets/accesorios/acc-54.webp" data-desc="Bate de utilería decorativo para complementar disfraces de béisbol, personajes y looks de Halloween.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Bate de utilería" data-code="AP-54" data-image="assets/accesorios/acc-54.webp" data-desc="Bate de utilería decorativo para complementar disfraces de béisbol, personajes y looks de Halloween.">
 <div class="image-wrap"><img src="assets/accesorios/acc-54.webp" alt="Bate de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-54</span></div>
 <div class="details"><div><h3>Bate de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Bate de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Bate de utilería">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Hacha doble de utilería" data-code="AP-55" data-image="assets/accesorios/acc-55.webp" data-desc="Hacha doble de utilería con diseño oscuro y detalles decorativos para personajes de guerrero, terror y Halloween.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Hacha doble de utilería" data-code="AP-55" data-image="assets/accesorios/acc-55.webp" data-desc="Hacha doble de utilería con diseño oscuro y detalles decorativos para personajes de guerrero, terror y Halloween.">
 <div class="image-wrap"><img src="assets/accesorios/acc-55.webp" alt="Hacha doble de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-55</span></div>
 <div class="details"><div><h3>Hacha doble de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Hacha doble de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Hacha doble de utilería">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Bastón luminoso multicolor" data-code="AP-56" data-image="assets/accesorios/acc-56.webp" data-desc="Bastón luminoso de utilería con iluminación multicolor para complementar disfraces, fiestas y personajes de fantasía.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Bastón luminoso multicolor" data-code="AP-56" data-image="assets/accesorios/acc-56.webp" data-desc="Bastón luminoso de utilería con iluminación multicolor para complementar disfraces, fiestas y personajes de fantasía.">
 <div class="image-wrap"><img src="assets/accesorios/acc-56.webp" alt="Bastón luminoso multicolor" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-56</span></div>
 <div class="details"><div><h3>Bastón luminoso multicolor</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Bastón luminoso multicolor"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Bastón luminoso multicolor">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Personajes" data-series="" data-name="Espada de princesa" data-code="AP-57" data-image="assets/accesorios/acc-57.webp" data-desc="Espada decorativa de fantasía con diseño de fantasía y detalles de colores para completar disfraces infantiles y personajes mágicos.">
+<article class="card prop-card accessory-card" data-category="Personajes" data-series="Espadas" data-name="Espada de princesa" data-code="AP-57" data-image="assets/accesorios/acc-57.webp" data-desc="Espada decorativa de fantasía con diseño de fantasía y detalles de colores para completar disfraces infantiles y personajes mágicos.">
 <div class="image-wrap"><img src="assets/accesorios/acc-57.webp" alt="Espada de princesa" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-57</span></div>
 <div class="details"><div><h3>Espada de princesa</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Espada de princesa"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Espada de princesa">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Guadaña de utilería" data-code="AP-58" data-image="assets/accesorios/acc-58.webp" data-desc="Guadaña de utilería de mango negro y hoja decorativa para personajes de terror, muerte y Halloween.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Guadaña de utilería" data-code="AP-58" data-image="assets/accesorios/acc-58.webp" data-desc="Guadaña de utilería de mango negro y hoja decorativa para personajes de terror, muerte y Halloween.">
 <div class="image-wrap"><img src="assets/accesorios/acc-58.webp" alt="Guadaña de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-58</span></div>
 <div class="details"><div><h3>Guadaña de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Guadaña de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Guadaña de utilería">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Martillos de utilería" data-code="AP-59" data-image="assets/accesorios/acc-59.webp" data-desc="Set de martillos de utilería en diferentes tamaños y acabados para completar disfraces de personajes y Halloween.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Martillos de utilería" data-code="AP-59" data-image="assets/accesorios/acc-59.webp" data-desc="Set de martillos de utilería en diferentes tamaños y acabados para completar disfraces de personajes y Halloween.">
 <div class="image-wrap"><img src="assets/accesorios/acc-59.webp" alt="Martillos de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-59</span></div>
 <div class="details"><div><h3>Martillos de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Martillos de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Martillos de utilería">+</button></div>
 </article>
@@ -2327,11 +2358,11 @@ body.kalu-ready>.shell{opacity:1}
 <div class="image-wrap"><img src="assets/accesorios/acc-63.webp" alt="Gafas de estrella" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-63</span></div>
 <div class="details"><div><h3>Gafas de estrella</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Gafas de estrella"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Gafas de estrella">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Katanas de utilería" data-code="AP-64" data-image="assets/accesorios/acc-64.webp" data-desc="Set de katanas decorativas de utilería con diseños de colores para personajes de guerrero, ninja y anime.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Espadas" data-name="Katanas de utilería" data-code="AP-64" data-image="assets/accesorios/acc-64.webp" data-desc="Set de katanas decorativas de utilería con diseños de colores para personajes de guerrero, ninja y anime.">
 <div class="image-wrap"><img src="assets/accesorios/acc-64.webp" alt="Katanas de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-64</span></div>
 <div class="details"><div><h3>Katanas de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Katanas de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Katanas de utilería">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Espadas luminosas" data-code="AP-65" data-image="assets/accesorios/acc-65.webp" data-desc="Set de espadas luminosas con iluminación multicolor para disfraces, fiestas y personajes de fantasía.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Espadas" data-name="Espadas luminosas" data-code="AP-65" data-image="assets/accesorios/acc-65.webp" data-desc="Set de espadas luminosas con iluminación multicolor para disfraces, fiestas y personajes de fantasía.">
 <div class="image-wrap"><img src="assets/accesorios/acc-65.webp" alt="Espadas luminosas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-65</span></div>
 <div class="details"><div><h3>Espadas luminosas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Espadas luminosas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Espadas luminosas">+</button></div>
 </article>
@@ -2347,27 +2378,27 @@ body.kalu-ready>.shell{opacity:1}
 <div class="image-wrap"><img src="assets/accesorios/acc-68.webp" alt="Traje de esqueleto" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-68</span></div>
 <div class="details"><div><h3>Traje de esqueleto</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Traje de esqueleto"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Traje de esqueleto">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Daga medieval de utilería" data-code="AP-69" data-image="assets/accesorios/acc-69.webp" data-desc="Daga decorativa de utilería con diseño medieval para disfraces y personajes de fantasía o terror.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Utilería" data-name="Daga medieval de utilería" data-code="AP-69" data-image="assets/accesorios/acc-69.webp" data-desc="Daga decorativa de utilería con diseño medieval para disfraces y personajes de fantasía o terror.">
 <div class="image-wrap"><img src="assets/accesorios/acc-69.webp" alt="Daga medieval de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-69</span></div>
 <div class="details"><div><h3>Daga medieval de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Daga medieval de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Daga medieval de utilería">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete negro con hoja roja" data-code="AP-70" data-image="assets/accesorios/acc-70.webp" data-desc="Machete decorativo de utilería con mango negro y hoja con efecto rojo para disfraces y personajes de Halloween.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Machetes" data-name="Machete negro con hoja roja" data-code="AP-70" data-image="assets/accesorios/acc-70.webp" data-desc="Machete decorativo de utilería con mango negro y hoja con efecto rojo para disfraces y personajes de Halloween.">
 <div class="image-wrap"><img src="assets/accesorios/acc-70.webp" alt="Machete negro con hoja roja" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-70</span></div>
 <div class="details"><div><h3>Machete negro con hoja roja</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Machete negro con hoja roja"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Machete negro con hoja roja">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete plateado con efecto de sangre" data-code="AP-71" data-image="assets/accesorios/acc-71.webp" data-desc="Machete decorativo de utilería con hoja plateada y efecto de sangre para disfraces y personajes de terror.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Machetes" data-name="Machete plateado con efecto de sangre" data-code="AP-71" data-image="assets/accesorios/acc-71.webp" data-desc="Machete decorativo de utilería con hoja plateada y efecto de sangre para disfraces y personajes de terror.">
 <div class="image-wrap"><img src="assets/accesorios/acc-71.webp" alt="Machete plateado con efecto de sangre" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-71</span></div>
 <div class="details"><div><h3>Machete plateado con efecto de sangre</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Machete plateado con efecto de sangre"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Machete plateado con efecto de sangre">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Varita mágica con accesorios" data-code="AP-72" data-image="assets/accesorios/acc-72.webp" data-desc="Varita decorativa acompañada de accesorios de fantasía para complementar disfraces de magia y personajes.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Varitas" data-name="Varita mágica con accesorios" data-code="AP-72" data-image="assets/accesorios/acc-72.webp" data-desc="Varita decorativa acompañada de accesorios de fantasía para complementar disfraces de magia y personajes.">
 <div class="image-wrap"><img src="assets/accesorios/acc-72.webp" alt="Varita mágica con accesorios" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-72</span></div>
 <div class="details"><div><h3>Varita mágica con accesorios</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Varita mágica con accesorios"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Varita mágica con accesorios">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Set de varitas mágicas" data-code="AP-73" data-image="assets/accesorios/acc-73.webp" data-desc="Set de varitas decorativas de distintos diseños para disfraces de magia, fantasía y personajes.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Varitas" data-name="Set de varitas mágicas" data-code="AP-73" data-image="assets/accesorios/acc-73.webp" data-desc="Set de varitas decorativas de distintos diseños para disfraces de magia, fantasía y personajes.">
 <div class="image-wrap"><img src="assets/accesorios/acc-73.webp" alt="Set de varitas mágicas" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-73</span></div>
 <div class="details"><div><h3>Set de varitas mágicas</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Set de varitas mágicas"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Set de varitas mágicas">+</button></div>
 </article>
-<article class="card prop-card accessory-card" data-category="Utilería" data-series="" data-name="Machete zombie de utilería" data-code="AP-74" data-image="assets/accesorios/acc-74.webp" data-desc="Machete decorativo de utilería con mango envuelto y hoja con efecto de sangre para disfraces de terror y Halloween.">
+<article class="card prop-card accessory-card" data-category="Utilería" data-series="Machetes" data-name="Machete zombie de utilería" data-code="AP-74" data-image="assets/accesorios/acc-74.webp" data-desc="Machete decorativo de utilería con mango envuelto y hoja con efecto de sangre para disfraces de terror y Halloween.">
 <div class="image-wrap"><img src="assets/accesorios/acc-74.webp" alt="Machete zombie de utilería" loading="lazy" decoding="async" fetchpriority="low" /><span class="code">AP-74</span></div>
 <div class="details"><div><h3>Machete zombie de utilería</h3><p>Consulta disponibilidad y precio.</p></div><button class="zoom-button" type="button" aria-label="Ampliar imagen de Machete zombie de utilería"><span class="zoom-icon" aria-hidden="true"></span></button><button class="mini-button" aria-label="Agregar a Mi pedido: Machete zombie de utilería">+</button></div>
 </article>
@@ -4107,6 +4138,9 @@ loadStock();
       const bar = document.createElement('div');
       bar.className = `catalog-filters ${extraClass}`.trim();
       bar.setAttribute('aria-label', title);
+      const prefix = document.createElement('span');
+      prefix.className = 'catalog-filter-prefix';
+      prefix.textContent = extraClass ? 'Tipo:' : 'Filtrar por:';
       const chips = document.createElement('div');
       chips.className = 'filter-chips catalog-filter-chips';
       chips.setAttribute('role','group');
@@ -4115,7 +4149,7 @@ loadStock();
       count.className = 'catalog-filter-count';
       const clear = document.createElement('button');
       clear.type='button'; clear.className='filter-clear'; clear.textContent='Limpiar';
-      bar.append(chips, count, clear);
+      bar.append(prefix, chips, count, clear);
       return {bar,chips,count,clear};
     };
 
