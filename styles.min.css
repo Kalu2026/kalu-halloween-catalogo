@@ -521,3 +521,122 @@ footer{background:linear-gradient(135deg,#2f6f49 0%,#532064 56%,#8b2e72 100%)!im
   .kalu-product-wa,.kalu-product-add{min-height:43px!important}
   .kalu-product-close{width:36px!important;height:36px!important;right:8px!important;top:8px!important;font-size:1.3rem!important}
 }
+
+/* KALÚ V4 — ajustes finos de legibilidad, modal y carruseles móviles */
+:root{
+  --kalu-v4-green:#2f7b50;
+  --kalu-v4-purple:#532064;
+  --kalu-v4-orange:#ef7824;
+  --kalu-v4-fuchsia:#c72f7b;
+  --kalu-v4-gold:#d8ad35;
+}
+
+/* Título principal: naranja con borde/halo morado suave para destacar */
+#halloween-title{
+  color:var(--kalu-v4-orange)!important;
+  -webkit-text-stroke:1.25px rgba(83,32,100,.82);
+  text-shadow:0 2px 0 rgba(255,255,255,.12),0 5px 18px rgba(83,32,100,.26)!important;
+}
+
+/* Modal: la fotografía siempre queda completa dentro de su propio espacio */
+.kalu-product-media{
+  overflow:hidden!important;
+  min-height:520px!important;
+}
+.kalu-product-media img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+
+/* Carrusel compacto: menos ancho por tarjeta, especialmente en móvil */
+@media (max-width:700px){
+  .kalu-carousel-track>.card{
+    flex:0 0 min(62vw,214px)!important;
+    width:min(62vw,214px)!important;
+  }
+  .kalu-carousel-track{gap:10px!important;padding-left:12px!important;padding-right:12px!important}
+  .kalu-carousel-bar{padding:0 12px!important;margin-top:6px!important}
+
+  /* Modal móvil: caja de imagen más baja pero con la foto íntegra */
+  .kalu-product-dialog{
+    width:min(94vw,520px)!important;
+    max-height:94vh!important;
+    border-radius:22px!important;
+    overflow:auto!important;
+  }
+  .kalu-product-panel{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+  }
+  .kalu-product-media{
+    height:min(52vh,360px)!important;
+    min-height:250px!important;
+    max-height:none!important;
+    padding:10px!important;
+    flex:none!important;
+    background:linear-gradient(145deg,#f2e4ee,#f7dfd0)!important;
+  }
+  .kalu-product-media img{
+    height:100%!important;
+    width:100%!important;
+    max-height:100%!important;
+    object-fit:contain!important;
+  }
+  .kalu-product-info{padding:20px 18px 22px!important}
+  .kalu-product-info h2{font-size:1.72rem!important;line-height:1.02!important;margin:9px 0 9px!important}
+
+  /* Las pestañas Niño / Niña / Adulto dejan de depender de texto blanco para leerse. */
+  .rental-window-tabs{
+    background:linear-gradient(90deg,rgba(47,123,80,.08),rgba(199,47,123,.06),rgba(239,120,36,.07));
+    border-radius:18px!important;
+    padding:5px!important;
+  }
+  .rental-window-tab{
+    background:#fff7f1!important;
+    color:var(--kalu-v4-purple)!important;
+    border:1px solid rgba(83,32,100,.2)!important;
+    text-shadow:none!important;
+    box-shadow:0 7px 16px rgba(83,32,100,.08)!important;
+  }
+  .rental-window-tab::before{color:var(--kalu-v4-orange)!important}
+  .rental-window-tab.is-active{
+    background:linear-gradient(135deg,var(--kalu-v4-purple),var(--kalu-v4-fuchsia))!important;
+    color:#fff!important;
+    border-color:var(--kalu-v4-fuchsia)!important;
+    text-shadow:0 1px 8px rgba(0,0,0,.25)!important;
+  }
+
+  /* Filtros: contraste alto y tacto fiable */
+  .section-filter-pill{
+    background:#fff4ed!important;
+    color:var(--kalu-v4-purple)!important;
+    border-color:rgba(83,32,100,.2)!important;
+    font-weight:900!important;
+  }
+  .section-filter-pill.is-active{
+    background:linear-gradient(135deg,var(--kalu-v4-orange),var(--kalu-v4-fuchsia))!important;
+    color:#fff!important;
+    border-color:transparent!important;
+    box-shadow:0 8px 16px rgba(199,47,123,.2)!important;
+  }
+
+  /* Títulos y textos de los bloques de alquiler: siempre legibles */
+  .rental-catalog .section-heading h2,
+  .rental-catalog .rental-group h2,
+  .rental-catalog .rental-group h3,
+  .rental-catalog .rental-group p,
+  .rental-catalog .rental-group .section-heading>span{
+    color:var(--kalu-v4-purple)!important;
+    text-shadow:none!important;
+  }
+  .rental-catalog .rental-group .business-kicker,
+  .rental-catalog .rental-group .section-filter-label{
+    color:var(--kalu-v4-orange)!important;
+  }
+}
