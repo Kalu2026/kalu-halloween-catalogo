@@ -49,3 +49,16 @@
 }
 @keyframes navSearchDrop{from{opacity:0;transform:translateY(-7px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.search-results:not([hidden]){animation:none}}
+
+/* Categorías por sección — primero visuales, listas para convertir en filtros */
+.section-category-nav{position:relative;z-index:3;display:flex;align-items:center;gap:12px;width:min(1250px,100%);margin:2px auto 0;padding:10px 0 2px;border-top:1px solid rgba(255,255,255,.10)}
+.section-category-label{flex:none;color:#f1dfeb;font-size:.72rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.section-category-list{display:flex;align-items:center;gap:8px;min-width:0;overflow-x:auto;scrollbar-width:none;padding:2px 2px 5px}
+.section-category-list::-webkit-scrollbar{display:none}
+.section-category-pill{flex:none;display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border:1px solid rgba(255,189,24,.30);border-radius:999px;background:rgba(255,255,255,.055);color:#ead8e7;font-size:.72rem;font-weight:800;white-space:nowrap}
+.section-category-pill:first-child{border-color:rgba(255,189,24,.48);background:rgba(255,189,24,.10);color:#ffe7a1}
+/* Tarjetas menos altas: conservan la foto completa con object-fit contain */
+.grid>.card .image-wrap{aspect-ratio:4 / 5}
+.mask-grid>.mask-card .image-wrap,.accessory-catalog .accessory-card .image-wrap{aspect-ratio:4 / 5}
+.grid>.card .image-wrap img{object-fit:contain}
+@media(max-width:700px){.section-category-nav{align-items:flex-start;flex-direction:column;gap:6px;margin-top:0;padding-top:9px}.section-category-list{width:100%;padding-bottom:6px}.section-category-pill{min-height:32px;padding:0 11px;font-size:.68rem}.grid>.card{width:min(62vw,230px)}}
