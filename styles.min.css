@@ -179,3 +179,20 @@ main > section.catalog-window-active.folk-catalog .section-heading{max-width:non
     border-radius:0 0 18px 18px;
   }
 }
+
+/* KALU — ventanas de catálogo: presencia mayor también en móvil. No modifica las tarjetas. */
+.catalog-window-shell{width:min(1380px,calc(100% - 28px));margin-top:22px}
+.catalog-window-tabs{gap:9px}
+.catalog-window-tab{min-height:94px;padding:14px 20px;font-size:1.18rem;letter-spacing:.015em}
+.rental-window-tabs{gap:9px;margin:14px 0 9px}
+.rental-window-tab{min-height:82px;padding:12px 16px;font-size:1rem}
+@media(max-width:700px){
+  .catalog-window-shell{width:calc(100% - 10px);margin-top:16px}
+  .catalog-window-tabs{gap:8px;padding:0 2px;overflow-x:auto;scroll-snap-type:x proximity}
+  .catalog-window-tab{flex:0 0 76vw;min-width:76vw;min-height:104px;padding:14px 15px;border-radius:18px 18px 9px 9px;font-size:1.08rem;line-height:1.08;scroll-snap-align:start}
+  .catalog-window-tab::before{font-size:.82rem;margin-bottom:7px}
+  .rental-window-tabs{gap:8px;margin:12px 0 8px;padding:0 2px;overflow-x:auto;scroll-snap-type:x proximity}
+  .rental-window-tab{flex:0 0 70vw;min-width:70vw;min-height:92px;padding:13px 13px;border-radius:17px 17px 8px 8px;font-size:.98rem;line-height:1.1;scroll-snap-align:start}
+  .section-heading p{font-size:clamp(2.5rem,11vw,3.55rem);line-height:.9}
+  .section-heading h2{font-size:1.12rem;line-height:1.18}
+}
