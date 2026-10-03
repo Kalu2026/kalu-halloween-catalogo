@@ -1497,3 +1497,110 @@ footer{background:linear-gradient(125deg,#21152a,#3d2354 46%,#3f2741 72%,#244331
   .section-heading p{font-weight:900!important;font-size:1.75rem!important}
   .section-filter-label{font-weight:900!important}
 }
+
+
+/* ================= KALÚ V13 — CARRUSELES LIMPIOS + TÍPICOS AL MISMO TAMAÑO ================= */
+.section-filter-label{
+  color:#35243c!important;
+  font-weight:900!important;
+  text-shadow:none!important;
+}
+.section-filter-list{scrollbar-width:none!important;-ms-overflow-style:none!important}
+.section-filter-list::-webkit-scrollbar{display:none!important}
+
+/* Cada carrusel ocupa su propio escenario; las flechas quedan en las esquinas. */
+.kalu-carousel-shell{
+  position:relative!important;
+  width:100%!important;
+  max-width:1192px!important;
+  margin:0 auto!important;
+  overflow:visible!important;
+}
+.kalu-carousel-toolbar{
+  display:flex!important;
+  justify-content:flex-end!important;
+  align-items:center!important;
+  min-height:0!important;
+  padding:0 22px 6px!important;
+}
+.kalu-carousel-toolbar .kalu-view-all{
+  margin:0!important;
+  border:1px solid rgba(83,32,100,.18)!important;
+  background:rgba(255,245,232,.82)!important;
+  color:#4a2458!important;
+  font-weight:900!important;
+  border-radius:999px!important;
+  padding:6px 12px!important;
+  font-size:.68rem!important;
+}
+.kalu-carousel-controls{
+  position:absolute!important;
+  inset:0!important;
+  z-index:40!important;
+  pointer-events:none!important;
+}
+.kalu-carousel-corner-btn{
+  position:absolute!important;
+  top:50%!important;
+  width:38px!important;
+  height:38px!important;
+  transform:translateY(-50%)!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid rgba(255,245,232,.58)!important;
+  border-radius:50%!important;
+  background:rgba(52,25,64,.88)!important;
+  color:#fff!important;
+  font:900 1.65rem/1 Arial,sans-serif!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.24)!important;
+  cursor:pointer!important;
+  pointer-events:auto!important;
+  transition:opacity .2s ease,transform .2s ease,background .2s ease!important;
+}
+.kalu-carousel-corner-btn.is-prev{left:4px!important}
+.kalu-carousel-corner-btn.is-next{right:4px!important}
+.kalu-carousel-corner-btn:hover{background:linear-gradient(135deg,#ef7824,#c72f7b)!important}
+.kalu-carousel-corner-btn.is-disabled{opacity:.28!important;pointer-events:none!important}
+.kalu-carousel-track{
+  scrollbar-width:none!important;
+  -ms-overflow-style:none!important;
+  overscroll-behavior-inline:contain!important;
+}
+.kalu-carousel-track::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+/* Típicos: mismo ancho visual de tarjeta que los demás carruseles. */
+.folk-catalog .kalu-carousel-track>.card{flex:0 0 clamp(235px,23vw,285px)!important;width:clamp(235px,23vw,285px)!important;max-width:none!important}
+
+@media (max-width:700px){
+  .kalu-carousel-toolbar{padding:0 10px 5px!important}
+  .kalu-carousel-toolbar .kalu-view-all{font-size:.62rem!important;padding:5px 10px!important}
+  .kalu-carousel-corner-btn{
+    width:32px!important;height:32px!important;font-size:1.3rem!important;
+    border-color:rgba(255,245,232,.72)!important;
+  }
+  .kalu-carousel-corner-btn.is-prev{left:3px!important}
+  .kalu-carousel-corner-btn.is-next{right:3px!important}
+  .kalu-carousel-track,.grid.kalu-carousel-track{
+    padding:4px 22px 10px!important;
+    gap:10px!important;
+    scroll-padding-inline:22px!important;
+  }
+  .kalu-carousel-track>.card,.grid.kalu-carousel-track>.card,
+  .folk-catalog .kalu-carousel-track>.card{
+    flex:0 0 min(62vw,214px)!important;
+    width:min(62vw,214px)!important;
+    max-width:214px!important;
+  }
+  .kalu-carousel-track>.card .image-wrap{aspect-ratio:9 / 12.5!important}
+  .folk-catalog .kalu-carousel-track>.card .image-wrap{aspect-ratio:9 / 12.5!important}
+  .kalu-carousel-track>.card .details{min-height:68px!important}
+  .section-filter-label{color:#35243c!important;background:#f2e5d6!important;border-left-color:#ef7824!important}
+}
+@media (max-width:430px){
+  .kalu-carousel-corner-btn{width:30px!important;height:30px!important}
+  .kalu-carousel-track,.grid.kalu-carousel-track{padding-left:20px!important;padding-right:20px!important}
+  .kalu-carousel-track>.card,.grid.kalu-carousel-track>.card,
+  .folk-catalog .kalu-carousel-track>.card{
+    flex-basis:min(63vw,206px)!important;
+    width:min(63vw,206px)!important;
+  }
+}
