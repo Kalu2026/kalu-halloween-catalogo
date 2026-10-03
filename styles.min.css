@@ -20,3 +20,7 @@
 .mask-grid>.mask-card .image-wrap img{width:100%;height:100%;padding:0;object-fit:contain;object-position:center;transform:none}
 .mask-grid>.mask-card:hover .image-wrap img{transform:none}
 @media(max-width:700px){.mask-grid>.mask-card{width:min(68vw,240px)}}
+
+/* Ajuste específico ML-23: llenar todo el recuadro vertical sin recortar la fotografía */
+.mask-grid>.mask-card[data-code="ML-23"] .image-wrap img{width:100%;height:100%;padding:0;object-fit:fill;object-position:center;transform:none}
+.mask-grid>.mask-card[data-code="ML-23"]:hover .image-wrap img{transform:none}
