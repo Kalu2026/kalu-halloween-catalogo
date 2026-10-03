@@ -105,3 +105,77 @@ main > section.catalog,main > section.accessory-catalog,main > section.material-
   .rental-window-tabs{gap:3px;margin-bottom:1px}
   .rental-window-tab{min-width:31%;min-height:40px;padding:0 9px;font-size:.65rem}
 }
+
+/* KALU — ajuste visual final de ventanas y encabezados */
+.catalog-window-shell{width:min(1250px,calc(100% - 24px));margin:24px auto 0}
+.catalog-window-tabs{gap:7px;border-bottom:0;padding:0;overflow-x:auto;align-items:stretch}
+.catalog-window-tab{flex:1 1 0;min-width:150px;min-height:78px;padding:10px 18px;border:1px solid rgba(255,255,255,.18);border-bottom:3px solid rgba(255,189,24,.22);border-radius:18px 18px 8px 8px;background:linear-gradient(145deg,rgba(49,12,59,.96),rgba(91,23,63,.78));color:#f5eaf3;font:800 1.08rem/1.05 Montserrat,sans-serif;letter-spacing:.01em;white-space:normal;cursor:pointer;box-shadow:0 10px 24px rgba(15,4,24,.18),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.catalog-window-tab::before{content:"✦";display:block;margin-bottom:6px;color:#ffbd18;font-size:.75rem;line-height:1}
+.catalog-window-tab:hover{transform:translateY(-3px);background:linear-gradient(145deg,rgba(104,25,82,.98),rgba(119,37,67,.9));color:#fff;box-shadow:0 14px 28px rgba(15,4,24,.24)}
+.catalog-window-tab.is-active{background:linear-gradient(145deg,#a62f62 0%,#641844 72%,#451033 100%);border-color:rgba(255,209,91,.68);border-bottom-color:#ffbd18;color:#fff1bd;box-shadow:0 15px 32px rgba(55,9,43,.28),inset 0 1px 0 rgba(255,255,255,.18);transform:translateY(-2px)}
+.catalog-window-tab.is-active::before{content:"✦";color:#fff0a8}
+.section-heading{margin-bottom:22px}
+.section-heading p{font-size:clamp(2.8rem,5.2vw,4.8rem);line-height:.9;letter-spacing:-.035em;text-shadow:0 7px 24px rgba(38,7,43,.22);font-weight:800}
+.section-heading h2{font-size:clamp(1.2rem,2.2vw,1.7rem);margin-top:8px}
+.section-filter{margin-top:4px;padding:9px 0 10px;background:linear-gradient(90deg,rgba(255,189,24,.055),rgba(255,255,255,.025),rgba(255,189,24,.055));border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.12);border-radius:10px}
+.section-filter-label{font-size:.7rem;color:#ffdc73}
+.section-filter-pill{min-height:34px;padding:0 13px;font-size:.7rem;background:rgba(52,14,59,.68);box-shadow:0 4px 10px rgba(15,4,24,.12)}
+.section-filter-pill.is-active{background:linear-gradient(135deg,rgba(255,189,24,.28),rgba(176,40,94,.38));border-color:rgba(255,211,91,.78);color:#fff3bd;box-shadow:0 5px 15px rgba(255,189,24,.1),inset 0 0 0 1px rgba(255,255,255,.08)}
+.rental-window-tabs{gap:7px;border-bottom:0;margin:10px 0 7px;padding:0;overflow-x:auto}
+.rental-window-tab{min-height:64px;border:1px solid rgba(255,255,255,.17);border-bottom:3px solid rgba(255,189,24,.22);border-radius:16px 16px 8px 8px;background:linear-gradient(145deg,rgba(49,12,59,.96),rgba(91,23,63,.78));font-size:.92rem;box-shadow:0 9px 22px rgba(15,4,24,.16),inset 0 1px 0 rgba(255,255,255,.1)}
+.rental-window-tab::before{content:"✦";display:block;margin-bottom:5px;color:#ffbd18;font-size:.68rem}
+.rental-window-tab.is-active{background:linear-gradient(145deg,#a62f62,#5b163f);border-color:rgba(255,209,91,.68);border-bottom-color:#ffbd18;color:#fff1bd;box-shadow:0 13px 28px rgba(55,9,43,.25)}
+
+@media(max-width:700px){
+  .catalog-window-shell{width:calc(100% - 16px);margin-top:18px}
+  .catalog-window-tabs{gap:6px;padding:0 1px}
+  .catalog-window-tab{flex:0 0 43vw;min-width:43vw;min-height:68px;padding:9px 12px;border-radius:15px 15px 7px 7px;font-size:.84rem;box-shadow:0 8px 18px rgba(15,4,24,.18),inset 0 1px 0 rgba(255,255,255,.1)}
+  .catalog-window-tab::before{margin-bottom:5px;font-size:.65rem}
+  .catalog-window-tab.is-active{transform:none}
+  .section-heading{margin-bottom:16px}
+  .section-heading p{font-size:clamp(2.35rem,10vw,3.35rem);line-height:.88;margin-bottom:8px}
+  .section-heading h2{font-size:1.05rem;line-height:1.18}
+  .section-heading>span{font-size:.82rem;line-height:1.45;margin-top:10px}
+  .section-filter{width:100%;box-sizing:border-box;margin-top:3px;padding:8px 7px 9px;border-radius:12px}
+  .section-filter-label{font-size:.66rem}
+  .section-filter-list{width:100%;gap:7px;padding:3px 1px 4px}
+  .section-filter-pill{min-height:34px;padding:0 12px;font-size:.67rem}
+  .rental-window-tabs{gap:6px;margin:9px 0 6px;padding:0 1px}
+  .rental-window-tab{flex:0 0 42vw;min-width:42vw;min-height:60px;padding:8px 10px;border-radius:14px 14px 7px 7px;font-size:.76rem;white-space:normal;line-height:1.1}
+}
+/* Marco de ventana activa: hace que cada catálogo se perciba como un panel único. */
+main > section.catalog-window-active.catalog,
+main > section.catalog-window-active.accessory-catalog,
+main > section.catalog-window-active.material-catalog,
+main > section.catalog-window-active.wig-catalog,
+main > section.catalog-window-active.rental-catalog,
+main > section.catalog-window-active.folk-catalog{
+  width:min(1250px,calc(100% - 24px));
+  margin:0 auto 30px;
+  padding:28px clamp(18px,3vw,34px) 34px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,.12);
+  border-top:0;
+  border-radius:0 0 24px 24px;
+  background:linear-gradient(180deg,rgba(48,10,55,.72),rgba(24,7,30,.58));
+  box-shadow:0 22px 48px rgba(10,2,17,.18),inset 0 1px 0 rgba(255,255,255,.04);
+}
+main > section.catalog-window-active.catalog .section-heading,
+main > section.catalog-window-active.accessory-catalog .section-heading,
+main > section.catalog-window-active.material-catalog .section-heading,
+main > section.catalog-window-active.wig-catalog .section-heading,
+main > section.catalog-window-active.rental-catalog .section-heading,
+main > section.catalog-window-active.folk-catalog .section-heading{max-width:none}
+@media(max-width:700px){
+  main > section.catalog-window-active.catalog,
+  main > section.catalog-window-active.accessory-catalog,
+  main > section.catalog-window-active.material-catalog,
+  main > section.catalog-window-active.wig-catalog,
+  main > section.catalog-window-active.rental-catalog,
+  main > section.catalog-window-active.folk-catalog{
+    width:calc(100% - 12px);
+    margin-bottom:22px;
+    padding:20px 11px 24px;
+    border-radius:0 0 18px 18px;
+  }
+}
