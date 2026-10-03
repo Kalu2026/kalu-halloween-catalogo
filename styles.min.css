@@ -1172,3 +1172,132 @@ footer{
   .kalu-product-panel{background:linear-gradient(145deg,var(--v6-purple-deep),var(--v6-fuchsia-deep))!important}
   .kalu-product-info{background:linear-gradient(145deg,#3a1949,#2c1237)!important}
 }
+
+
+/* ================= KALÚ V7 — PALETA INTEGRADA Y ELEGANTE =================
+   Base ciruela profunda + halos de verde, morado, fucsia y naranja.
+   Los colores se funden; el crema queda solo para lectura/acento.
+   ===================================================================== */
+:root{
+  --v7-bg:#17101d;
+  --v7-surface:#21152a;
+  --v7-surface-2:#281a32;
+  --v7-cream:#fff5e8;
+  --v7-green:#2f8b59;
+  --v7-green-2:#205d40;
+  --v7-purple:#59306f;
+  --v7-purple-2:#3d2354;
+  --v7-fuchsia:#b83273;
+  --v7-fuchsia-2:#812354;
+  --v7-orange:#ec7d26;
+  --v7-orange-2:#b95217;
+  --v7-muted:#d9c9d4;
+}
+html,body{background:var(--v7-bg)!important;color:var(--v7-cream)!important}
+body{background:
+  radial-gradient(ellipse 90% 55% at 8% 8%,rgba(47,139,89,.20),transparent 62%),
+  radial-gradient(ellipse 80% 58% at 92% 16%,rgba(184,50,115,.20),transparent 60%),
+  radial-gradient(ellipse 75% 60% at 14% 88%,rgba(236,125,38,.16),transparent 62%),
+  radial-gradient(ellipse 90% 60% at 88% 86%,rgba(89,48,111,.18),transparent 64%),
+  var(--v7-bg)!important}
+.scroll-gradient-bg{background:
+  radial-gradient(ellipse 70% 46% at 10% 8%,rgba(47,139,89,.22),transparent 68%),
+  radial-gradient(ellipse 72% 48% at 88% 20%,rgba(184,50,115,.20),transparent 70%),
+  radial-gradient(ellipse 78% 52% at 17% 86%,rgba(236,125,38,.16),transparent 72%),
+  radial-gradient(ellipse 80% 54% at 90% 84%,rgba(89,48,111,.20),transparent 74%),
+  linear-gradient(135deg,#17101d 0%,#1f1426 40%,#201529 66%,#17101d 100%)!important}
+.nav{background:linear-gradient(90deg,rgba(29,18,37,.97),rgba(48,24,59,.94),rgba(29,49,39,.96))!important;border-bottom:1px solid rgba(236,125,38,.65)!important;box-shadow:0 10px 28px rgba(0,0,0,.28)!important}
+.nav-links>a{color:var(--v7-cream)!important}.nav-links>a:hover{color:#ffd2ae!important;background:rgba(236,125,38,.10)!important}
+.nav-toggle{color:var(--v7-cream)!important}
+/* Héroe: continuidad cromática, nada de franjas. */
+.halloween-season-hero,.hero{background:
+  radial-gradient(ellipse 70% 80% at 15% 25%,rgba(236,125,38,.42),transparent 55%),
+  radial-gradient(ellipse 70% 80% at 82% 30%,rgba(184,50,115,.34),transparent 57%),
+  radial-gradient(ellipse 72% 72% at 48% 90%,rgba(47,139,89,.30),transparent 58%),
+  linear-gradient(125deg,#472253 0%,#652a62 34%,#71405f 58%,#415339 100%)!important;color:var(--v7-cream)!important}
+.halloween-season-hero h2#halloween-title{color:#f39a4b!important;-webkit-text-stroke:1.5px rgba(53,20,64,.92)!important;text-shadow:0 4px 0 rgba(41,15,49,.38),0 12px 28px rgba(0,0,0,.18)!important}
+.halloween-season-hero p,.halloween-season-hero .season-kicker{color:rgba(255,245,232,.94)!important}
+.halloween-season-hero .season-button{background:linear-gradient(135deg,var(--v7-green),var(--v7-green-2))!important;color:#fff!important;border-color:rgba(255,245,232,.22)!important}
+.halloween-season-hero .season-button.ghost{background:rgba(52,25,64,.38)!important;color:var(--v7-cream)!important;border-color:rgba(255,245,232,.45)!important}
+/* Puertas de negocio: misma atmósfera, diferencias por luz/acento. */
+.kalu-doors-section{background:
+  radial-gradient(circle at 8% 38%,rgba(47,139,89,.28),transparent 36%),
+  radial-gradient(circle at 92% 14%,rgba(236,125,38,.20),transparent 30%),
+  linear-gradient(135deg,#21152a,#412149 48%,#2d1a33 100%)!important;color:var(--v7-cream)!important}
+.kalu-business-card{background:rgba(24,14,31,.48)!important;border:1px solid rgba(255,245,232,.13)!important;box-shadow:0 20px 42px rgba(0,0,0,.24)!important;backdrop-filter:blur(7px)}
+.kalu-business-card.sale{background:linear-gradient(145deg,rgba(89,48,111,.66),rgba(184,50,115,.40))!important}
+.kalu-business-card.rental{background:linear-gradient(145deg,rgba(47,139,89,.54),rgba(89,48,111,.46))!important}
+.kalu-business-card.folk{background:linear-gradient(145deg,rgba(236,125,38,.50),rgba(184,50,115,.42))!important}
+.kalu-business-card b,.kalu-business-card small,.kalu-business-card strong,.kalu-business-card .kbc-eyebrow,.kalu-business-card .kbc-number{color:var(--v7-cream)!important}.kalu-business-card .kbc-eyebrow{color:#ffbd84!important}
+/* Secciones: oscuro elegante con halos que conectan una con otra. */
+.business-line,.catalog,.material-catalog,.accessory-catalog,.wig-catalog,.rental-catalog,.folk-catalog,.mask-return,.categories,.contact{color:var(--v7-cream)!important}
+.business-line{border:1px solid rgba(255,245,232,.10)!important;box-shadow:0 24px 56px rgba(0,0,0,.23)!important}
+.business-line-sale{background:
+  radial-gradient(circle at 9% 16%,rgba(236,125,38,.18),transparent 32%),
+  radial-gradient(circle at 90% 78%,rgba(47,139,89,.16),transparent 35%),
+  linear-gradient(140deg,#21152a,#3d2354 42%,#56254d 76%,#2a1a31 100%)!important}
+.business-line-rental{background:
+  radial-gradient(circle at 12% 14%,rgba(47,139,89,.21),transparent 34%),
+  radial-gradient(circle at 88% 82%,rgba(184,50,115,.16),transparent 36%),
+  linear-gradient(140deg,#21152a,#3b274b 42%,#47254e 70%,#173c2b 100%)!important}
+.business-line-folk{background:
+  radial-gradient(circle at 88% 12%,rgba(236,125,38,.20),transparent 34%),
+  radial-gradient(circle at 14% 82%,rgba(184,50,115,.14),transparent 34%),
+  linear-gradient(140deg,#3d2354,#552548 43%,#6c3a35 68%,#234632 100%)!important}
+.business-line-head h2,.folk-line-intro h2,.business-line .section-heading h2{color:var(--v7-cream)!important}
+.business-line-head>p:not(.business-kicker),.folk-line-intro>p,.business-line .section-heading>span{color:rgba(255,245,232,.80)!important}.business-kicker,.business-line .section-heading p{color:#ffb77f!important}
+/* Tarjetas de producto: mini-superficies para que la foto respire. */
+.card{background:linear-gradient(165deg,#2a1b33,#21152a)!important;border:1px solid rgba(255,245,232,.12)!important;box-shadow:0 14px 30px rgba(0,0,0,.26)!important}
+.card:hover{box-shadow:0 20px 40px rgba(0,0,0,.34)!important;border-color:rgba(236,125,38,.22)!important}
+.card .image-wrap{background:
+  radial-gradient(circle at 50% 16%,rgba(236,125,38,.16),transparent 28%),
+  radial-gradient(circle at 14% 84%,rgba(47,139,89,.14),transparent 34%),
+  linear-gradient(150deg,#29193a,#3d234e 54%,#4a263f)!important}
+.card .details{background:linear-gradient(160deg,#2c1c36,#22152b)!important;color:var(--v7-cream)!important;border-top:1px solid rgba(255,245,232,.07)!important}
+.card .details h3{color:var(--v7-cream)!important}.card .details p{color:rgba(255,245,232,.68)!important}.card .code{background:var(--v7-orange)!important;color:#fff!important}.card .mini-button{background:var(--v7-fuchsia)!important;color:#fff!important}.card .zoom-button{background:var(--v7-green)!important;color:#fff!important;border-color:rgba(255,245,232,.22)!important}
+/* Filtros: integrados, táctiles y muy legibles. */
+.section-filter{position:relative;z-index:20!important;background:linear-gradient(100deg,rgba(47,139,89,.12),rgba(89,48,111,.30) 42%,rgba(184,50,115,.14) 72%,rgba(236,125,38,.10))!important;border:1px solid rgba(255,245,232,.11)!important;border-radius:14px!important;box-shadow:0 10px 24px rgba(0,0,0,.12)!important;overflow:visible!important}
+.section-filter-list{position:relative;z-index:21!important;touch-action:pan-x;overscroll-behavior-x:contain}
+.section-filter-pill{position:relative;z-index:22;min-height:34px!important;background:rgba(27,16,35,.78)!important;color:var(--v7-cream)!important;border-color:rgba(255,245,232,.18)!important;font-weight:800!important;box-shadow:none!important}
+.section-filter-pill:hover{background:rgba(236,125,38,.18)!important;color:#fff!important;border-color:rgba(236,125,38,.44)!important}
+.section-filter-pill.is-active{background:linear-gradient(135deg,var(--v7-orange),var(--v7-fuchsia))!important;color:#fff!important;border-color:rgba(255,245,232,.38)!important;box-shadow:0 6px 16px rgba(184,50,115,.22)!important}
+.section-filter-status{flex:none;margin-left:auto;padding:0 10px;color:rgba(255,245,232,.65);font:800 .62rem/1 Montserrat,sans-serif;white-space:nowrap}
+/* Alquiler: aviso tipo llamada informativa, no tarjeta blanca. */
+.folk-notice,.rental-notice{background:linear-gradient(90deg,rgba(47,139,89,.15),rgba(89,48,111,.18),rgba(236,125,38,.11))!important;color:var(--v7-cream)!important;border:1px solid rgba(255,245,232,.14)!important;border-left:3px solid var(--v7-orange)!important;border-radius:12px!important;box-shadow:none!important}
+.folk-notice strong,.rental-notice strong{color:#ffc184!important}.folk-notice span,.rental-notice span{color:rgba(255,245,232,.84)!important}
+/* Pestañas de alquiler: contraste y profundidad, sin blanco. */
+.rental-window-tabs{background:linear-gradient(90deg,rgba(47,139,89,.16),rgba(89,48,111,.22),rgba(184,50,115,.15))!important;border:1px solid rgba(255,245,232,.12)!important;border-radius:14px 14px 0 0!important}
+.rental-window-tab{background:rgba(29,18,37,.82)!important;color:#f7e8d8!important;border-color:rgba(255,245,232,.15)!important}
+.rental-window-tab.is-active{background:linear-gradient(135deg,var(--v7-green),var(--v7-purple))!important;color:#fff!important;border-color:rgba(255,245,232,.34)!important;box-shadow:0 8px 18px rgba(0,0,0,.18)!important}
+/* Títulos de marca y llamada a la acción. */
+.kalu-business-head p,.business-line .section-heading p{color:#ffb77f!important}
+.contact{background:linear-gradient(110deg,rgba(47,139,89,.38),rgba(89,48,111,.72),rgba(184,50,115,.42))!important;border-color:rgba(255,245,232,.12)!important}.contact h2,.contact p{color:var(--v7-cream)!important}.contact .button{background:linear-gradient(135deg,var(--v7-orange),var(--v7-fuchsia))!important;color:#fff!important}
+footer{background:linear-gradient(125deg,#21152a,#3d2354 46%,#3f2741 72%,#244331)!important;color:var(--v7-cream)!important}
+.selection-fab{background:linear-gradient(135deg,var(--v7-orange),var(--v7-fuchsia))!important;color:#fff!important}
+/* Modal sin superficies blancas y con foto completa. */
+.kalu-product-panel{background:linear-gradient(145deg,#25172e,#3a2148)!important;border:1px solid rgba(255,245,232,.14)!important}
+.kalu-product-media{min-height:500px;background:radial-gradient(circle at 30% 20%,rgba(236,125,38,.15),transparent 30%),linear-gradient(145deg,#21152a,#412549 64%,#2a1a2f)!important}
+.kalu-product-media img{width:100%!important;height:100%!important;max-height:620px!important;object-fit:contain!important;object-position:center!important;background:transparent!important}
+.kalu-product-info{background:linear-gradient(145deg,#2b1a35,#22152a)!important}.kalu-product-info h2,.kalu-product-info p,.kalu-product-code{color:var(--v7-cream)!important}.kalu-product-category{color:#ffb77f!important}.kalu-product-note{background:rgba(47,139,89,.12)!important;color:var(--v7-cream)!important;border:1px solid rgba(255,245,232,.11)!important}.kalu-product-wa{background:var(--v7-green)!important;color:#fff!important}.kalu-product-add{background:var(--v7-fuchsia)!important;color:#fff!important}.kalu-product-close{background:var(--v7-orange)!important;color:#fff!important}
+/* Remueve el último rastro de fondos claros dominantes. */
+.catalog,.material-catalog,.accessory-catalog,.wig-catalog,.rental-catalog,.folk-catalog,.mask-return,.categories,.contact,.selection-panel{background-color:transparent!important}
+.selection-dialog .selection-panel{background:linear-gradient(145deg,#23162b,#3a2148)!important;color:var(--v7-cream)!important}.selection-dialog .selection-item{background:rgba(255,245,232,.06)!important;color:var(--v7-cream)!important;border-color:rgba(255,245,232,.10)!important}
+@media(max-width:700px){
+  body{background:var(--v7-bg)!important}
+  .nav{background:linear-gradient(90deg,rgba(29,18,37,.98),rgba(50,24,59,.96),rgba(28,49,38,.98))!important}
+  .halloween-season-hero{background:
+    radial-gradient(ellipse 90% 58% at 8% 18%,rgba(236,125,38,.38),transparent 64%),
+    radial-gradient(ellipse 90% 58% at 92% 34%,rgba(184,50,115,.32),transparent 64%),
+    radial-gradient(ellipse 90% 64% at 45% 92%,rgba(47,139,89,.25),transparent 66%),
+    linear-gradient(160deg,#4a2452,#6a2c60 48%,#35503e 100%)!important}
+  .kalu-business-grid{gap:12px!important}.kalu-business-card{backdrop-filter:blur(5px)}
+  .section-filter{margin-top:2px!important;padding:7px 6px 8px!important;border-radius:13px!important}
+  .section-filter-list{flex:1 1 auto;min-width:0;padding:1px 2px 4px 2px!important}
+  .section-filter-pill{min-height:36px!important;padding:0 12px!important;font-size:.66rem!important}
+  .section-filter-status{display:block;margin:0 4px 0 auto;font-size:.58rem}
+  .rental-window-tabs{gap:4px!important}
+  .rental-window-tab{min-height:46px!important;font-size:.74rem!important}
+  .folk-notice,.rental-notice{padding:11px 12px!important}
+  .card .details h3{font-size:.94rem!important}.card .details p{font-size:.70rem!important}
+  .kalu-product-media{min-height:280px!important;height:52vh!important;max-height:430px!important}.kalu-product-media img{max-height:100%!important}
+}
