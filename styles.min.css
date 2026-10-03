@@ -403,3 +403,121 @@ footer{margin-top:10px!important;border-radius:30px 30px 0 0!important;backgroun
 .business-line .acc-body,.business-line .acc-inner{background:transparent!important;border:0!important;box-shadow:none!important}
 .business-line .acc-body{padding:0!important;margin:0!important}
 .business-line .acc-toggle{border-color:rgba(77,23,63,.12)!important;background:#fff!important;color:var(--k2-plum)!important}
+
+/* =========================================================
+   KALÚ V3 — CORRECCIÓN VISUAL + MÓVIL
+   Verde · Morado · Naranja · Fucsia
+   ========================================================= */
+:root{
+  --k2-plum:#532064;
+  --k2-violet:#6c2f86;
+  --k2-fuchsia:#c72f7b;
+  --k2-orange:#ef7824;
+  --k2-gold:#d8ad35;
+  --k2-green:#2f7b50;
+  --k2-cream:#f5eee7;
+  --k2-paper:#f8f1ea;
+  --k2-ink:#302034;
+  --k2-muted:#6d5c6c;
+  --k2-line:rgba(83,32,100,.14);
+  --k2-shadow:0 18px 44px rgba(70,32,77,.13);
+  --kalu-plum:#532064;
+  --kalu-violet:#6c2f86;
+  --kalu-orange:#ef7824;
+  --kalu-green:#2f7b50;
+  --kalu-fuchsia:#c72f7b;
+  --kalu-line:rgba(83,32,100,.14);
+  --kalu-ink:#302034;
+}
+body{background:linear-gradient(180deg,#eee4f0 0%,#f6ece5 38%,#e8f0e9 73%,#f4e7ef 100%)!important;color:var(--k2-ink)!important}
+.nav{background:rgba(238,228,240,.96)!important;border-bottom-color:rgba(83,32,100,.14)!important;box-shadow:0 8px 24px rgba(70,32,77,.1)!important}
+.nav-links>a{color:var(--k2-plum)!important}
+.nav-links>a:hover{background:rgba(199,47,123,.11)!important;color:var(--k2-fuchsia)!important}
+.nav-links .nav-wa{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important}
+.nav-social{background:#e7f0e8!important}
+.nav-socials{border-left-color:rgba(47,123,80,.22)!important}
+.kalu-business-nav{background:rgba(232,240,233,.96)!important;border-bottom-color:rgba(47,123,80,.16)!important;box-shadow:0 6px 18px rgba(47,123,80,.07)!important}
+.kalu-business-nav a{color:var(--k2-plum)!important;border:1px solid transparent}
+.kalu-business-nav a:nth-child(1) .kbn-icon{color:var(--k2-fuchsia)!important}
+.kalu-business-nav a:nth-child(2) .kbn-icon{color:var(--k2-orange)!important}
+.kalu-business-nav a:nth-child(3) .kbn-icon{color:var(--k2-green)!important}
+.kalu-business-nav a:hover,.kalu-business-nav a:focus-visible{background:rgba(255,255,255,.5)!important;border-color:rgba(83,32,100,.12)!important}
+.kalu-doors-section{background:linear-gradient(180deg,rgba(239,228,242,.93),rgba(247,237,231,.95))!important;border-top:3px solid transparent;border-image:linear-gradient(90deg,var(--k2-green),var(--k2-purple,var(--k2-plum)),var(--k2-orange),var(--k2-fuchsia)) 1}
+.kalu-business-head h2{color:var(--k2-plum)!important}
+.kalu-business-head p,.business-line-head .business-kicker,.folk-line-intro .business-kicker,.collection-band .business-kicker{color:var(--k2-orange)!important}
+.kalu-business-head span{color:var(--k2-muted)!important}
+.kalu-business-card.sale{background:linear-gradient(135deg,#b82b72 0%,#ef7824 100%)!important}
+.kalu-business-card.rental{background:linear-gradient(135deg,#532064 0%,#8b3a92 100%)!important}
+.kalu-business-card.folk{background:linear-gradient(135deg,#2f6f49 0%,#58a06b 100%)!important}
+.business-line{border:1px solid rgba(83,32,100,.12)!important;box-shadow:0 18px 42px rgba(70,32,77,.08)!important}
+.business-line-sale{background:linear-gradient(180deg,#f7e8ed,#f7eee6)!important}
+.business-line-rental{background:linear-gradient(180deg,#e9e2f1,#f1e9f2)!important}
+.business-line-folk{background:linear-gradient(180deg,#e4eee7,#f1eae2)!important}
+.section-heading h2{color:var(--k2-plum)!important}
+.section-heading>span{color:var(--k2-muted)!important}
+.section-heading p{color:var(--k2-fuchsia)!important}
+.section-filter{background:linear-gradient(90deg,rgba(108,47,134,.10),rgba(239,120,36,.07),rgba(47,123,80,.08))!important;border-color:rgba(83,32,100,.12)!important;box-shadow:0 8px 18px rgba(83,32,100,.055)!important;position:relative!important;z-index:30!important;pointer-events:auto!important}
+.section-filter-list{position:relative!important;z-index:31!important;pointer-events:auto!important;touch-action:pan-x!important}
+.section-filter-pill{position:relative!important;z-index:32!important;pointer-events:auto!important;touch-action:manipulation!important;background:#f5edf6!important;color:var(--k2-plum)!important;border-color:rgba(83,32,100,.14)!important;min-height:38px!important;padding:0 13px!important;font-size:.69rem!important;cursor:pointer!important;-webkit-tap-highlight-color:transparent!important}
+.section-filter-pill:nth-child(3n+2):hover{border-color:rgba(239,120,36,.55)!important}
+.section-filter-pill:nth-child(3n+3):hover{border-color:rgba(47,123,80,.55)!important}
+.section-filter-pill.is-active{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 9px 18px rgba(83,32,100,.18)!important}
+.rental-window-tabs{position:relative!important;z-index:30!important}
+.rental-window-tab{position:relative!important;z-index:31!important;pointer-events:auto!important;touch-action:manipulation!important;background:#f2eaf4!important;color:var(--k2-plum)!important;border-color:rgba(83,32,100,.14)!important}
+.rental-window-tab.is-active{background:linear-gradient(135deg,var(--k2-green),var(--k2-plum))!important;color:#fff!important}
+.card{background:linear-gradient(180deg,#fbf5f4,#f7eee8)!important;border-color:rgba(83,32,100,.12)!important;box-shadow:0 12px 28px rgba(70,32,77,.09)!important}
+.card .image-wrap{background:linear-gradient(145deg,#f0e5f2,#f5e9df)!important}
+.card .details{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(108,47,134,.025))!important}
+.card .details h3{color:var(--k2-plum)!important}
+.card .details p{color:var(--k2-muted)!important}
+.card .code{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important}
+.mini-button{background:linear-gradient(135deg,var(--k2-orange),var(--k2-fuchsia))!important}
+.zoom-button{background:#edf3ed!important;border-color:rgba(47,123,80,.16)!important;color:var(--k2-green)!important}
+.kalu-carousel-bar{position:relative;z-index:20}
+.kalu-carousel-btn,.kalu-view-all{background:#eee3f2!important;color:var(--k2-plum)!important;border-color:rgba(83,32,100,.14)!important}
+.kalu-carousel-btn:hover,.kalu-view-all:hover{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important;color:#fff!important}
+.collection-band{background:linear-gradient(135deg,#2f6f49,#532064 52%,#c72f7b)!important;border-color:rgba(255,255,255,.14)!important}
+.kalu-product-panel{background:linear-gradient(145deg,#f7edf4 0%,#f7eee7 58%,#e8f1e9 100%)!important;border-color:rgba(83,32,100,.12)!important}
+.kalu-product-media{min-height:0!important;height:520px!important;padding:20px!important;overflow:hidden!important;background:radial-gradient(circle at 50% 38%,rgba(199,47,123,.16),transparent 34%),linear-gradient(145deg,#e9def0,#f4e5da 55%,#e2eee5)!important}
+.kalu-product-media img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
+.kalu-product-info{background:rgba(250,245,247,.42)!important}
+.kalu-product-info h2{color:var(--k2-plum)!important}
+.kalu-product-category{color:var(--k2-orange)!important}
+.kalu-product-note{background:#eee8f2!important;color:var(--k2-muted)!important}
+.kalu-product-wa{background:linear-gradient(135deg,var(--k2-green),#235d3d)!important}
+.kalu-product-add{background:linear-gradient(135deg,#f5e8ef,#f2eadf)!important;color:var(--k2-plum)!important;border-color:rgba(83,32,100,.12)!important}
+.kalu-product-close{background:#eaf1eb!important;color:var(--k2-plum)!important;border-color:rgba(47,123,80,.16)!important}
+.mask-return{background:linear-gradient(145deg,#efe4f1,#f7e9e2)!important;border-color:rgba(83,32,100,.12)!important}
+footer{background:linear-gradient(135deg,#2f6f49 0%,#532064 56%,#8b2e72 100%)!important}
+.selection-fab{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important}
+
+@media(max-width:700px){
+  .kalu-business-nav{top:68px!important}
+  .kalu-business-nav-inner{padding:7px 8px!important}
+  .kalu-doors-section{padding-top:34px!important}
+  .business-line{width:calc(100% - 8px)!important;margin-bottom:18px!important;padding:21px 9px 23px!important}
+  .section-filter{margin-top:7px!important;padding:9px 8px 10px!important;border-radius:15px!important}
+  .section-filter-list{overflow-x:auto!important;overflow-y:hidden!important;width:100%!important;min-height:42px!important;padding:2px 1px 5px!important;overscroll-behavior-inline:contain!important;-webkit-overflow-scrolling:touch!important}
+  .section-filter-pill{min-height:38px!important;padding:0 14px!important;font-size:.68rem!important}
+  .rental-window-tabs{overflow-x:auto!important;grid-template-columns:repeat(3,minmax(115px,1fr))!important;gap:8px!important;padding:2px 1px 6px!important;overscroll-behavior-inline:contain!important;-webkit-overflow-scrolling:touch!important}
+  .rental-window-tab{min-width:115px!important;min-height:64px!important}
+  .kalu-carousel-track,.grid.kalu-carousel-track{gap:10px!important;padding:4px 12px 11px!important}
+  .kalu-carousel-track>.card,.grid.kalu-carousel-track>.card{flex:0 0 clamp(190px,62vw,235px)!important;width:clamp(190px,62vw,235px)!important;max-width:235px!important}
+  .kalu-carousel-track>.card .image-wrap{aspect-ratio:9/12!important}
+  .kalu-carousel-track>.card .details{min-height:68px!important;padding:9px 9px 10px!important}
+  .kalu-carousel-track>.card .details h3{font-size:.9rem!important;line-height:1.1!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .kalu-carousel-track>.card .details p{font-size:.63rem!important;line-height:1.25!important}
+  .kalu-carousel-track>.card .zoom-button,.kalu-carousel-track>.card .mini-button{width:31px!important;height:31px!important;min-width:31px!important}
+  .kalu-carousel-track.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .kalu-product-dialog{width:min(94vw,560px)!important;max-height:90dvh!important;margin:auto!important}
+  .kalu-product-panel{grid-template-columns:1fr!important;grid-template-rows:minmax(190px,31dvh) auto!important;max-height:90dvh!important;overflow:hidden!important;border-radius:21px!important}
+  .kalu-product-media{height:auto!important;min-height:190px!important;max-height:none!important;padding:10px!important}
+  .kalu-product-media img{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important}
+  .kalu-product-info{min-height:0!important;padding:18px 17px 19px!important;overflow:auto!important;justify-content:flex-start!important}
+  .kalu-product-info h2{font-size:1.75rem!important;line-height:1!important;margin:9px 0 8px!important}
+  .kalu-product-info>p{font-size:.8rem!important;line-height:1.45!important;margin-top:7px!important}
+  .kalu-product-note{font-size:.72rem!important}
+  .kalu-product-actions{margin-top:11px!important}
+  .kalu-product-wa,.kalu-product-add{min-height:43px!important}
+  .kalu-product-close{width:36px!important;height:36px!important;right:8px!important;top:8px!important;font-size:1.3rem!important}
+}
