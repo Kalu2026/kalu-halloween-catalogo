@@ -223,3 +223,183 @@ body{color:var(--kalu-ink);background:linear-gradient(180deg,#fffaf5 0%,#f8eee9 
 footer{background:#2c1327!important;color:#fff!important}.back-top{background:var(--kalu-plum)!important}.selection-fab{background:var(--kalu-orange)!important}
 @media(max-width:900px){.nav{height:68px!important}.kalu-business-nav{top:68px}.nav-search{order:2;max-width:none!important;flex:1}.nav-links{display:none}.nav-toggle{display:flex!important;order:3}.kalu-business-head{display:block}.kalu-business-head span{display:block;margin-top:10px}.kalu-business-grid{grid-template-columns:1fr}.kalu-business-card{min-height:170px}.season-hero.halloween-season-hero{grid-template-columns:1fr!important;min-height:520px!important;padding-top:90px!important}.halloween-art{max-height:250px}.grid.kalu-carousel-track>.card{flex-basis:78vw!important;max-width:330px}.grid.kalu-carousel-track.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))!important}.kalu-carousel-bar{padding:0 18px}.section-heading{padding-left:18px!important;padding-right:18px!important}.grid{max-width:none!important}.season-hero.folk-season-hero,.season-hero.christmas-season-hero{grid-template-columns:1fr!important;margin-left:18px;margin-right:18px}.season-hero.folk-season-hero .season-hero-art,.season-hero.christmas-season-hero .christmas-art{display:none}.kalu-product-panel{grid-template-columns:1fr}.kalu-product-media{min-height:320px;max-height:48vh}.kalu-product-info{padding:28px 24px}.kalu-product-info h2{font-size:2rem}.kalu-product-dialog{max-height:92vh;overflow:auto}}
 @media(max-width:600px){.kalu-business-nav-inner{padding:7px 10px;gap:6px}.kalu-business-nav a{padding:8px 5px;flex-direction:column;gap:1px}.kbn-icon{font-size:.9rem}.kalu-business-nav b{font-size:.68rem}.kalu-business-nav small{font-size:.56rem}.nav{padding-left:12px!important;padding-right:10px!important}.nav img{width:86px!important}.nav-search{display:none}.season-hero.halloween-season-hero{min-height:545px!important}.season-hero-copy h2{font-size:3.7rem!important}.kalu-business-doors{padding:44px 16px 30px}.kalu-business-head h2{font-size:2.2rem}.grid.kalu-carousel-track{padding-left:16px!important;padding-right:16px!important}.grid.kalu-carousel-track>.card{flex-basis:82vw!important}.grid.kalu-carousel-track.is-expanded{grid-template-columns:1fr!important;padding-left:16px!important;padding-right:16px!important}.kalu-carousel-bar{padding:0 16px}.kalu-product-media{min-height:280px}.kalu-product-actions{flex-direction:column}.kalu-product-wa,.kalu-product-add{text-align:center;width:100%}}
+
+
+/* =========================================================
+   KALÚ — TIENDA PROFESIONAL V2
+   Estructura: header → héroe único → 3 líneas → catálogos
+   ========================================================= */
+:root{--k2-plum:#4d173f;--k2-violet:#68265d;--k2-fuchsia:#8a315e;--k2-orange:#d66a21;--k2-gold:#d7a42a;--k2-cream:#fff8f0;--k2-paper:#fbf6f0;--k2-ink:#271a26;--k2-muted:#6f626c;--k2-line:rgba(77,23,63,.13);--k2-shadow:0 18px 46px rgba(48,18,42,.14)}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(180deg,#fffaf6 0%,#fbf5ef 44%,#fffaf6 100%);color:var(--k2-ink)}
+.shell{overflow:visible!important;background:transparent!important}
+.nav{position:sticky!important;top:0!important;left:auto!important;right:auto!important;height:72px!important;padding:6px clamp(14px,4vw,54px)!important;border-radius:0!important;border-bottom:1px solid rgba(77,23,63,.1)!important;background:rgba(255,250,246,.94)!important;backdrop-filter:blur(16px)!important;box-shadow:0 8px 22px rgba(48,18,42,.08)!important}
+.nav>a:first-child img{width:116px!important;height:62px!important;object-fit:contain!important;object-position:center!important}
+.nav-links{gap:8px!important;font-size:.72rem!important;flex-wrap:nowrap}
+.nav-links>a{padding:9px 10px;border-radius:999px;color:var(--k2-plum);white-space:nowrap}
+.nav-links>a:hover{background:rgba(104,38,93,.08);color:var(--k2-fuchsia)!important}
+.nav-links .nav-wa{padding-inline:14px;background:var(--k2-plum);color:#fff!important;box-shadow:0 8px 18px rgba(77,23,63,.2)}
+.nav-links .nav-wa:hover{background:var(--k2-fuchsia)!important;color:#fff!important}
+.nav-socials{display:inline-flex;align-items:center;gap:5px;margin:0 2px 0 4px;padding-left:6px;border-left:1px solid rgba(77,23,63,.12)}
+.nav-social{display:inline-flex!important;align-items:center;justify-content:center;width:30px;height:30px;padding:0!important;border-radius:50%!important;overflow:hidden;background:#fff}
+.nav-social img{width:22px;height:22px;object-fit:contain}
+.nav-search{min-width:min(33vw,360px)}
+.search-box{border-color:rgba(77,23,63,.14)!important;background:#fff!important;box-shadow:0 8px 18px rgba(48,18,42,.06)!important}
+
+.halloween-season-hero{min-height:490px!important;grid-template-columns:minmax(320px,1fr) minmax(280px,.68fr)!important;padding:94px clamp(22px,7vw,88px) 48px!important;border-radius:0 0 34px 34px!important;background:radial-gradient(circle at 82% 24%,rgba(255,214,111,.18),transparent 30%),linear-gradient(120deg,#5a174f 0%,#74265f 45%,#b04a45 74%,#d66a21 100%)!important}
+.halloween-season-hero .season-hero-copy{max-width:690px!important}
+.halloween-season-hero .season-kicker{letter-spacing:.11em!important;font-size:.75rem!important;color:#ffe5a3!important}
+.halloween-season-hero h2{font-size:clamp(3.1rem,7vw,6.4rem)!important;line-height:.9!important;letter-spacing:-.045em!important;margin:13px 0 18px!important;max-width:710px!important}
+.halloween-season-hero .season-hero-copy>p{font-size:clamp(1rem,1.7vw,1.2rem)!important;line-height:1.55!important;color:rgba(255,255,255,.86)!important;max-width:640px!important}
+.halloween-season-hero .season-actions{margin-top:25px!important}
+.halloween-season-hero .season-button{border-radius:999px!important;padding:12px 18px!important}
+.halloween-season-hero .season-button.ghost{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.28)!important}
+.halloween-art{min-height:390px!important}
+.halloween-3d-stage{border-radius:28px!important;border:1px solid rgba(255,255,255,.14)!important;background:radial-gradient(circle at 50% 42%,rgba(255,226,151,.16),rgba(21,6,25,.1) 56%,transparent 70%)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 24px 50px rgba(20,4,22,.2)!important}
+
+.kalu-doors-section{padding:64px clamp(16px,5vw,72px) 42px!important;background:transparent!important}
+.kalu-business-head{max-width:1000px;margin:0 auto 24px;text-align:center}
+.kalu-business-head p,.business-line-head .business-kicker,.folk-line-intro .business-kicker,.collection-band .business-kicker{margin:0 0 6px;color:var(--k2-orange)!important;font:800 .72rem/1 Montserrat,sans-serif!important;letter-spacing:.16em;text-transform:uppercase}
+.kalu-business-head h2{margin:0;color:var(--k2-plum);font:800 clamp(2rem,4vw,3.35rem)/.98 'Baloo 2',sans-serif!important;letter-spacing:-.035em}
+.kalu-business-head>span{display:block;max-width:760px;margin:11px auto 0;color:var(--k2-muted);font:500 .95rem/1.5 Montserrat,sans-serif}
+.kalu-business-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1220px;margin:0 auto}
+.kalu-business-card{position:relative;display:grid;grid-template-columns:110px 1fr;min-height:180px;overflow:hidden;border:1px solid rgba(77,23,63,.12);border-radius:26px;background:#fff;box-shadow:var(--k2-shadow);text-decoration:none;color:var(--k2-ink)!important;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.kalu-business-card:hover{transform:translateY(-5px);box-shadow:0 26px 58px rgba(48,18,42,.17);border-color:rgba(77,23,63,.22)}
+.kbc-media{overflow:hidden;background:linear-gradient(150deg,#f4e8dc,#ead5c8)}
+.kbc-media img{width:100%;height:100%;object-fit:cover;display:block}
+.kbc-body{padding:19px 18px 17px;display:flex;flex-direction:column;align-items:flex-start}
+.kbc-number{font:800 .66rem/1 Montserrat,sans-serif;color:var(--k2-gold);letter-spacing:.14em}
+.kbc-eyebrow{margin-top:10px;font:800 .68rem/1 Montserrat,sans-serif;color:var(--k2-orange);letter-spacing:.1em;text-transform:uppercase}
+.kalu-business-card b{margin-top:5px;font:800 1.5rem/1.05 'Baloo 2',sans-serif;color:var(--k2-plum)}
+.kalu-business-card small{margin-top:8px;color:var(--k2-muted);font:500 .78rem/1.45 Montserrat,sans-serif}
+.kalu-business-card strong{margin-top:auto;padding-top:12px;color:var(--k2-plum);font:800 .76rem/1 Montserrat,sans-serif}
+.kalu-business-card.sale .kbc-media{background:linear-gradient(150deg,#f1d7a4,#edd3c7)}
+.kalu-business-card.rental .kbc-media{background:linear-gradient(150deg,#d9cadf,#f0d9cb)}
+.kalu-business-card.folk .kbc-media{background:linear-gradient(150deg,#ead8a9,#e8c0b4)}
+
+.business-line{max-width:1240px;margin:0 auto 34px;padding:34px clamp(14px,3vw,30px) 38px;border:1px solid var(--k2-line);border-radius:30px;background:rgba(255,255,255,.72);box-shadow:0 22px 52px rgba(48,18,42,.07)}
+.business-line-head{max-width:900px;margin:0 0 18px}
+.business-line-head h2,.folk-line-intro h2{margin:0;color:var(--k2-plum);font:800 clamp(2.1rem,4vw,3.55rem)/.94 'Baloo 2',sans-serif;letter-spacing:-.04em}
+.business-line-head>p:not(.business-kicker),.folk-line-intro>p{margin:10px 0 0;max-width:760px;color:var(--k2-muted);font:500 .94rem/1.55 Montserrat,sans-serif}
+.business-line .catalog,.business-line .accessory-catalog,.business-line .material-catalog,.business-line .wig-catalog,.business-line .rental-catalog,.business-line .folk-catalog{width:auto!important;margin:0 0 28px!important;padding:20px 0 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.business-line .catalog:last-child,.business-line .accessory-catalog:last-child,.business-line .material-catalog:last-child,.business-line .wig-catalog:last-child{margin-bottom:0!important}
+.business-line .section-heading{margin-bottom:12px!important;padding:0!important}
+.business-line .section-heading p{font-size:clamp(1.35rem,2.4vw,2rem)!important;line-height:1!important;color:var(--k2-plum)!important;text-shadow:none!important}
+.business-line .section-heading h2{margin-top:7px!important;font-size:1rem!important;color:var(--k2-muted)!important}
+.business-line .section-heading>span{font-size:.79rem!important;line-height:1.42!important;color:var(--k2-muted)!important;margin-top:8px!important}
+.business-line .section-filter{background:#fff!important;border:1px solid var(--k2-line)!important;border-radius:16px!important;padding:8px 10px!important;box-shadow:0 8px 18px rgba(48,18,42,.04)!important}
+.business-line .section-filter-pill{background:#faf6f2!important;color:var(--k2-plum)!important;border-color:rgba(77,23,63,.1)!important}
+.business-line .section-filter-pill.is-active{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 8px 18px rgba(77,23,63,.16)!important}
+
+.kalu-carousel-bar{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:9px 0 10px}
+.kalu-carousel-btn,.kalu-view-all{border:1px solid rgba(77,23,63,.12);background:#fff;color:var(--k2-plum);border-radius:999px;min-width:36px;height:36px;padding:0 13px;cursor:pointer;font:800 .72rem/1 Montserrat,sans-serif;box-shadow:0 8px 18px rgba(48,18,42,.05)}
+.kalu-carousel-btn:hover,.kalu-view-all:hover{background:#f5ece6;border-color:rgba(77,23,63,.2)}
+.kalu-carousel-track{display:flex!important;gap:14px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scrollbar-width:thin;padding:2px 2px 12px!important;scroll-padding-inline:2px}
+.kalu-carousel-track>.card{flex:0 0 clamp(220px,22vw,285px)!important;width:clamp(220px,22vw,285px)!important;scroll-snap-align:start!important;margin:0!important}
+.kalu-carousel-track.is-expanded{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important;overflow:visible!important;scroll-snap-type:none!important}
+.kalu-carousel-track.is-expanded>.card{width:auto!important;flex:initial!important}
+.card{border-radius:20px!important;border:1px solid rgba(77,23,63,.1)!important;background:#fff!important;box-shadow:0 13px 30px rgba(48,18,42,.08)!important;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 42px rgba(48,18,42,.12)!important;border-color:rgba(77,23,63,.18)!important}
+.card .image-wrap{border-radius:20px 20px 0 0!important;background:#f7eee8!important}
+.card .details{padding:12px 12px 13px!important}
+.card .details h3{font:800 1.02rem/1.14 'Baloo 2',sans-serif!important;color:var(--k2-plum)!important}
+.card .details p{font:500 .68rem/1.35 Montserrat,sans-serif!important;color:var(--k2-muted)!important}
+.card .code{background:rgba(77,23,63,.9)!important;color:#fff!important;border-radius:999px!important;padding:5px 8px!important;font-size:.62rem!important}
+.zoom-button{background:#fff!important;border-color:rgba(77,23,63,.12)!important;color:var(--k2-plum)!important}
+.mini-button{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important;color:#fff!important;border:0!important;box-shadow:0 7px 14px rgba(77,23,63,.18)!important}
+
+.business-line-rental .rental-notice{margin:8px 0!important;border-color:rgba(214,106,33,.16)!important;background:#fff7ed!important;color:#67535b!important}
+.rental-window-tabs{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px!important;margin:14px 0 14px!important;padding:0!important;border:0!important}
+.rental-window-tab{min-height:70px!important;border:1px solid rgba(77,23,63,.12)!important;border-radius:18px!important;background:#fff!important;color:var(--k2-plum)!important;font:800 .84rem/1.1 Montserrat,sans-serif!important;box-shadow:0 9px 22px rgba(48,18,42,.06)!important}
+.rental-window-tab::before{display:block!important;margin-bottom:7px!important;color:var(--k2-gold)!important}
+.rental-window-tab.is-active{background:linear-gradient(135deg,var(--k2-plum),var(--k2-fuchsia))!important;border-color:transparent!important;color:#fff!important;box-shadow:0 15px 30px rgba(77,23,63,.2)!important}
+.business-line-rental .rental-group{padding-top:3px}
+.business-line-rental .rental-group[hidden]{display:none!important}
+
+.business-line-folk{background:linear-gradient(145deg,#fffdf8,#f9eee8)!important}
+.folk-line-intro{margin-bottom:16px}
+.business-line-folk .folk-catalog{margin-top:4px!important}
+.business-line-folk .folk-panel{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+.business-line-folk .folk-panel .section-heading p{font-size:1.35rem!important}
+.business-line-folk .folk-panel .section-heading>span{display:block;color:var(--k2-muted)!important}
+
+.collection-band{max-width:1240px;margin:0 auto 38px;padding:28px clamp(18px,4vw,42px);border:1px solid rgba(77,23,63,.11);border-radius:26px;box-shadow:var(--k2-shadow);overflow:hidden}
+.christmas-band{background:linear-gradient(120deg,#4d173f,#6d275d 48%,#b35b37)!important;color:#fff}
+.collection-band-copy{max-width:780px}
+.collection-band h2{margin:0;color:#fff;font:800 clamp(2rem,4vw,3.1rem)/1 'Baloo 2',sans-serif}
+.collection-band p{margin:10px 0 14px;color:rgba(255,255,255,.82);font:500 .9rem/1.5 Montserrat,sans-serif}
+.collection-band .business-kicker{color:#ffd78b!important}
+.collection-band-action{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#fff;color:var(--k2-plum);text-decoration:none;font:800 .72rem/1 Montserrat,sans-serif}
+
+.kalu-product-dialog{border:0;padding:0;background:transparent;width:min(920px,calc(100vw - 28px));max-width:920px}
+.kalu-product-dialog::backdrop{background:rgba(27,10,24,.62);backdrop-filter:blur(6px)}
+.kalu-product-panel{position:relative;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,.82fr);overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:28px;background:#fff;box-shadow:0 35px 90px rgba(17,4,15,.3)}
+.kalu-product-media{min-height:520px;background:linear-gradient(145deg,#f8eee7,#f0ded3);display:grid;place-items:center;padding:18px}
+.kalu-product-media img{width:100%;height:100%;max-height:560px;object-fit:contain}
+.kalu-product-info{padding:42px 38px;display:flex;flex-direction:column;justify-content:center}
+.kalu-product-category{color:var(--k2-orange)!important;font:800 .68rem/1 Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.kalu-product-code{display:inline-flex;align-self:flex-start;margin-top:9px;padding:5px 9px;border-radius:999px;background:rgba(77,23,63,.08);color:var(--k2-plum);font:800 .65rem/1 Montserrat,sans-serif}
+.kalu-product-info h2{margin:12px 0 10px;color:var(--k2-plum);font:800 clamp(2rem,4vw,3rem)/.98 'Baloo 2',sans-serif}
+.kalu-product-info>p{color:var(--k2-muted);font:500 .88rem/1.6 Montserrat,sans-serif}
+.kalu-product-note{padding:10px 12px;border-radius:14px;background:#fbf6f1;color:#67535b!important}
+.kalu-product-actions{display:grid;gap:9px;margin-top:16px}
+.kalu-product-wa,.kalu-product-add{min-height:46px;border:0;border-radius:999px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 16px;cursor:pointer;font:800 .76rem/1 Montserrat,sans-serif;text-decoration:none}
+.kalu-product-wa{background:var(--k2-plum);color:#fff!important}
+.kalu-product-add{background:#fff7ec;color:var(--k2-plum);border:1px solid rgba(77,23,63,.12)}
+.kalu-product-close{position:absolute!important;right:12px!important;top:12px!important;width:40px!important;height:40px!important;border-radius:50%!important;border:1px solid rgba(77,23,63,.12)!important;background:#fff!important;color:var(--k2-plum)!important;font-size:1.5rem!important;z-index:4}
+
+footer{margin-top:10px!important;border-radius:30px 30px 0 0!important;background:linear-gradient(135deg,#3f1235,#5f1e55 52%,#8d3d2e)!important}
+.selection-fab{border-radius:999px!important;background:var(--k2-plum)!important;box-shadow:0 18px 35px rgba(77,23,63,.22)!important}
+
+@media(max-width:980px){
+  .nav{height:auto!important;min-height:68px!important}
+  .nav-links{gap:5px!important}
+  .nav-search{min-width:min(30vw,280px)}
+  .nav-links>a{padding-inline:7px}
+  .nav-socials{display:none}
+  .kalu-business-grid{grid-template-columns:1fr;max-width:720px}
+  .kalu-business-card{grid-template-columns:125px 1fr}
+  .halloween-season-hero{grid-template-columns:1fr minmax(230px,.55fr)!important}
+}
+@media(max-width:700px){
+  .nav{padding:7px 10px!important;gap:7px!important}
+  .nav>a:first-child img{width:94px!important;height:56px!important}
+  .nav-search{order:2;min-width:0;flex:1}
+  .nav-toggle{display:flex!important;order:3}
+  .nav-links{position:absolute!important;top:100%;left:8px;right:8px;display:none;flex-direction:column;align-items:stretch;background:rgba(255,250,246,.98);border:1px solid rgba(77,23,63,.1);border-radius:0 0 20px 20px;padding:9px;box-shadow:0 18px 34px rgba(48,18,42,.12)}
+  .nav-links.open,.nav-links.is-open,.nav-links[aria-hidden="false"]{display:flex!important}
+  .nav-links>a{width:100%;box-sizing:border-box}
+  .nav-links .nav-wa{text-align:center}
+  .halloween-season-hero{min-height:unset!important;grid-template-columns:1fr!important;padding:88px 18px 26px!important;border-radius:0 0 24px 24px!important}
+  .halloween-season-hero h2{font-size:clamp(3rem,14vw,4.8rem)!important}
+  .halloween-art{min-height:270px!important;margin-top:8px}
+  .halloween-3d-stage{min-height:270px!important}
+  .hero-social-block{margin-top:16px!important}
+  .kalu-doors-section{padding:38px 12px 26px!important}
+  .kalu-business-head h2{font-size:2.35rem!important}
+  .kalu-business-grid{gap:12px}
+  .kalu-business-card{grid-template-columns:105px 1fr;min-height:160px;border-radius:21px}
+  .kbc-body{padding:15px 14px}
+  .kalu-business-card b{font-size:1.3rem}
+  .kalu-business-card small{font-size:.7rem}
+  .business-line{width:calc(100% - 12px);box-sizing:border-box;margin-bottom:20px;padding:23px 10px 25px;border-radius:22px}
+  .business-line-head h2,.folk-line-intro h2{font-size:2.25rem}
+  .business-line .section-heading p{font-size:1.3rem!important}
+  .kalu-carousel-bar{justify-content:space-between;margin-top:8px}
+  .kalu-carousel-track{gap:11px!important;padding-bottom:10px!important}
+  .kalu-carousel-track>.card{flex-basis:74vw!important;width:74vw!important}
+  .kalu-carousel-track.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .kalu-carousel-track.is-expanded>.card{width:auto!important;min-width:0!important}
+  .kalu-carousel-track.is-expanded .details{padding:10px!important}
+  .rental-window-tabs{grid-template-columns:repeat(3,minmax(108px,1fr));overflow-x:auto!important}
+  .rental-window-tab{min-width:108px!important;min-height:60px!important;font-size:.72rem!important}
+  .kalu-product-panel{grid-template-columns:1fr;max-height:88vh;overflow:auto;border-radius:22px}
+  .kalu-product-media{min-height:300px;height:42vh;padding:12px}
+  .kalu-product-info{padding:22px 18px 24px}
+  .kalu-product-info h2{font-size:2.1rem}
+  .collection-band{width:calc(100% - 12px);box-sizing:border-box;margin-bottom:24px;border-radius:21px;padding:23px 18px}
+}
+
+.business-line .acc-body,.business-line .acc-inner{background:transparent!important;border:0!important;box-shadow:none!important}
+.business-line .acc-body{padding:0!important;margin:0!important}
+.business-line .acc-toggle{border-color:rgba(77,23,63,.12)!important;background:#fff!important;color:var(--k2-plum)!important}
