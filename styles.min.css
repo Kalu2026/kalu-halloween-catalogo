@@ -1604,3 +1604,35 @@ footer{background:linear-gradient(125deg,#21152a,#3d2354 46%,#3f2741 72%,#244331
     width:min(63vw,206px)!important;
   }
 }
+
+/* KALU V16 — carruseles móviles: permitir scroll vertical de la página mientras se recorre horizontalmente el carrusel. */
+.business-line .kalu-carousel-track,
+.business-line .grid.kalu-carousel-track{
+  touch-action:pan-x pan-y!important;
+  overscroll-behavior-x:contain!important;
+  overscroll-behavior-y:auto!important;
+  overflow-y:visible!important;
+}
+/* Pelucas: mismo formato vertical que las demás tarjetas del catálogo. */
+.business-line .wig-catalog .kalu-carousel-track>.wig-card .image-wrap,
+.business-line .wig-catalog .grid.kalu-carousel-track>.wig-card .image-wrap{
+  aspect-ratio:9 / 16!important;
+  min-height:0!important;
+}
+.business-line .wig-catalog .kalu-carousel-track>.wig-card,
+.business-line .wig-catalog .grid.kalu-carousel-track>.wig-card{
+  max-width:none!important;
+}
+@media (max-width:760px){
+  .business-line .wig-catalog .kalu-carousel-track>.wig-card,
+  .business-line .wig-catalog .grid.kalu-carousel-track>.wig-card{
+    flex:0 0 63vw!important;
+    width:63vw!important;
+    max-width:205px!important;
+  }
+  .business-line .kalu-carousel-track,
+  .business-line .grid.kalu-carousel-track{
+    touch-action:pan-x pan-y!important;
+    overflow-y:visible!important;
+  }
+}
