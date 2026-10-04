@@ -214,7 +214,7 @@ body{color:var(--kalu-ink);background:linear-gradient(180deg,#fffaf5 0%,#f8eee9 
 .section-heading{max-width:1240px!important;margin-left:auto!important;margin-right:auto!important;padding-left:24px!important;padding-right:24px!important}.section-heading h2{color:var(--kalu-plum)!important;font-size:clamp(2rem,4vw,3.3rem)!important;line-height:1!important}.section-heading p{color:var(--kalu-orange)!important;font-weight:800!important;letter-spacing:.1em!important;text-transform:uppercase!important;font-size:.72rem!important}.section-heading>span{color:#665c64!important;line-height:1.55!important}
 .catalog,.accessory-catalog,.material-catalog,.wig-catalog,.rental-catalog,.folk-catalog{padding-top:48px!important;padding-bottom:50px!important}.catalog,.accessory-catalog,.material-catalog,.wig-catalog,.rental-catalog{background:rgba(255,255,255,.52)!important;border-top:1px solid rgba(77,23,63,.05)}
 .catalog-filter{max-width:1192px!important;margin:0 auto 20px!important;background:#fff!important;border:1px solid var(--kalu-line)!important;box-shadow:0 10px 30px rgba(44,17,38,.07)!important;border-radius:18px!important}.filter-chips button,.filter-chips .filter-chip,.filter-chip{border-color:var(--kalu-line)!important;color:var(--kalu-plum)!important;background:#fff!important}.filter-chips button.is-active,.filter-chips .filter-chip.is-active{background:var(--kalu-plum)!important;color:#fff!important;border-color:var(--kalu-plum)!important}
-.grid{max-width:1192px!important;margin:0 auto!important}.grid.kalu-carousel-track{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;gap:18px!important;padding:6px 24px 22px!important;scroll-snap-type:x mandatory!important;scrollbar-width:thin!important}.grid.kalu-carousel-track>.card{flex:0 0 clamp(235px,23vw,285px)!important;scroll-snap-align:start!important}.grid.kalu-carousel-track.is-expanded{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;overflow:visible!important;scroll-snap-type:none!important}.kalu-carousel-bar{max-width:1192px;margin:0 auto 10px;padding:0 24px;display:flex;justify-content:flex-end;align-items:center;gap:8px}.kalu-carousel-btn,.kalu-view-all{border:1px solid var(--kalu-line);background:#fff;color:var(--kalu-plum);border-radius:999px;padding:8px 13px;font-size:.72rem;font-weight:800;cursor:pointer}.kalu-carousel-btn:hover,.kalu-view-all:hover{background:var(--kalu-plum);color:#fff}.kalu-carousel-btn{font-size:1rem;padding:5px 11px}.kalu-view-all{margin-left:auto}
+.grid{max-width:1192px!important;margin:0 auto!important}.grid.kalu-carousel-track{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;gap:18px!important;padding:6px 24px 22px!important;scroll-snap-type:x mandatory!important;scrollbar-width:none!important}.grid.kalu-carousel-track>.card{flex:0 0 clamp(235px,23vw,285px)!important;scroll-snap-align:start!important}.grid.kalu-carousel-track.is-expanded{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;overflow:visible!important;scroll-snap-type:none!important}.kalu-carousel-bar{max-width:1192px;margin:0 auto 10px;padding:0 24px;display:flex;justify-content:flex-end;align-items:center;gap:8px}.kalu-carousel-btn,.kalu-view-all{border:1px solid var(--kalu-line);background:#fff;color:var(--kalu-plum);border-radius:999px;padding:8px 13px;font-size:.72rem;font-weight:800;cursor:pointer}.kalu-carousel-btn:hover,.kalu-view-all:hover{background:var(--kalu-plum);color:#fff}.kalu-carousel-btn{font-size:1rem;padding:5px 11px}.kalu-view-all{margin-left:auto}
 .card{border:1px solid rgba(77,23,63,.10)!important;border-radius:20px!important;background:#fff!important;box-shadow:0 10px 28px rgba(44,17,38,.09)!important;overflow:hidden!important;transition:transform .22s ease,box-shadow .22s ease!important}.card:hover{transform:translateY(-4px)!important;box-shadow:0 18px 38px rgba(44,17,38,.15)!important}.card .image-wrap{background:#f7eee8!important}.card .details{padding:14px!important}.card .details h3{color:var(--kalu-ink)!important;font-size:.95rem!important}.card .details p{color:#756a71!important}.card .code{background:var(--kalu-plum)!important;color:#fff!important}.zoom-button,.mini-button{border-radius:50%!important}.mini-button{background:var(--kalu-orange)!important;color:#fff!important}
 .rental-catalog{background:linear-gradient(180deg,#fffaf6,#f7ecea)!important}.rental-tabs{max-width:1192px;margin:0 auto 18px;padding:0 24px}.rental-group{scroll-margin-top:130px}.folk-catalog{background:linear-gradient(180deg,#f4f2e9,#fffaf6)!important}.folk-group .grid>.card{max-width:285px}
 .season-hero.folk-season-hero,.season-hero.christmas-season-hero{min-height:0!important;display:grid!important;grid-template-columns:1fr auto!important;align-items:center!important;padding:34px max(24px,7vw)!important;margin-top:22px;border-radius:22px!important;max-width:1192px;margin-left:auto;margin-right:auto;box-shadow:var(--kalu-shadow);background:linear-gradient(120deg,#4b5b37,#35472f)!important}.season-hero.christmas-season-hero{background:linear-gradient(120deg,#7b285f,#4d173f)!important}.season-hero.folk-season-hero .season-hero-art,.season-hero.christmas-season-hero .christmas-art{max-height:190px;overflow:hidden}.season-hero.folk-season-hero .season-hero-copy h2,.season-hero.christmas-season-hero .season-hero-copy h2{font-size:clamp(2rem,4vw,3.6rem)!important}
@@ -294,7 +294,7 @@ body{background:linear-gradient(180deg,#fffaf6 0%,#fbf5ef 44%,#fffaf6 100%);colo
 .kalu-carousel-bar{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:9px 0 10px}
 .kalu-carousel-btn,.kalu-view-all{border:1px solid rgba(77,23,63,.12);background:#fff;color:var(--k2-plum);border-radius:999px;min-width:36px;height:36px;padding:0 13px;cursor:pointer;font:800 .72rem/1 Montserrat,sans-serif;box-shadow:0 8px 18px rgba(48,18,42,.05)}
 .kalu-carousel-btn:hover,.kalu-view-all:hover{background:#f5ece6;border-color:rgba(77,23,63,.2)}
-.kalu-carousel-track{display:flex!important;gap:14px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scrollbar-width:thin;padding:2px 2px 12px!important;scroll-padding-inline:2px}
+.kalu-carousel-track{display:flex!important;gap:14px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scrollbar-width:none;padding:2px 2px 12px!important;scroll-padding-inline:2px}
 .kalu-carousel-track>.card{flex:0 0 clamp(220px,22vw,285px)!important;width:clamp(220px,22vw,285px)!important;scroll-snap-align:start!important;margin:0!important}
 .kalu-carousel-track.is-expanded{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important;overflow:visible!important;scroll-snap-type:none!important}
 .kalu-carousel-track.is-expanded>.card{width:auto!important;flex:initial!important}
@@ -1605,14 +1605,7 @@ footer{background:linear-gradient(125deg,#21152a,#3d2354 46%,#3f2741 72%,#244331
   }
 }
 
-/* KALU V16 — carruseles móviles: permitir scroll vertical de la página mientras se recorre horizontalmente el carrusel. */
-.business-line .kalu-carousel-track,
-.business-line .grid.kalu-carousel-track{
-  touch-action:pan-x pan-y!important;
-  overscroll-behavior-x:contain!important;
-  overscroll-behavior-y:auto!important;
-  overflow-y:visible!important;
-}
+
 /* Pelucas: mismo formato vertical que las demás tarjetas del catálogo. */
 .business-line .wig-catalog .kalu-carousel-track>.wig-card .image-wrap,
 .business-line .wig-catalog .grid.kalu-carousel-track>.wig-card .image-wrap{
@@ -1634,5 +1627,45 @@ footer{background:linear-gradient(125deg,#21152a,#3d2354 46%,#3f2741 72%,#244331
   .business-line .grid.kalu-carousel-track{
     touch-action:pan-x pan-y!important;
     overflow-y:visible!important;
+  }
+}
+
+
+/* KALÚ V17 — una sola capa final para carruseles: sin barras y con scroll vertical móvil. */
+.kalu-carousel-track,
+.grid.kalu-carousel-track{
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scrollbar-width:none!important;
+  -ms-overflow-style:none!important;
+  overscroll-behavior-x:contain!important;
+}
+.kalu-carousel-track::-webkit-scrollbar,
+.grid.kalu-carousel-track::-webkit-scrollbar{
+  display:none!important;
+  width:0!important;
+  height:0!important;
+  background:transparent!important;
+}
+/* Los accesorios recuperan su proporción propia, independiente del resto de tarjetas. */
+.business-line .accessory-catalog .kalu-carousel-track>.accessory-card .image-wrap{
+  aspect-ratio:9 / 16!important;
+}
+.business-line .accessory-catalog .kalu-carousel-track>.accessory-card .image-wrap img{
+  object-fit:cover!important;
+  object-position:center!important;
+}
+@media (max-width:700px){
+  .business-line .kalu-carousel-track,
+  .business-line .grid.kalu-carousel-track{
+    touch-action:pan-y!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    overscroll-behavior-x:contain!important;
+    overscroll-behavior-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .business-line .accessory-catalog .kalu-carousel-track>.accessory-card .image-wrap{
+    aspect-ratio:9 / 16!important;
   }
 }
