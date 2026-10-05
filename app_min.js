@@ -8,10 +8,6 @@ const selectionEmpty = document.getElementById("selection-empty");
 const selectionWhatsappPrincipal = document.getElementById("selection-whatsapp-principal");
 const selectionWhatsappSecundaria = document.getElementById("selection-whatsapp-secundaria");
 const clearSelection = document.getElementById("clear-selection");
-const zoomModal = document.getElementById("zoom-modal");
-const zoomImage = document.getElementById("zoom-image");
-const zoomCaption = document.getElementById("zoom-caption");
-const closeZoom = document.getElementById("close-zoom");
 const SEDES = {
   principal: { nombre: "Kalú Accesorios", numero: "573117570138" },
   secundaria: { nombre: "Kalú Disfraces", numero: "573215055733" },
@@ -66,22 +62,6 @@ const applyStock = () => {
     card.classList.toggle("sold-out", info.units === 0);
     if (info.units === 0) wrap.insertAdjacentHTML("beforeend", '<span class="stock-badge out">Agotado</span>');
     else if (info.units != null && info.units <= LOW_STOCK) wrap.insertAdjacentHTML("beforeend", `<span class="stock-badge">${info.units === 1 ? "Queda 1" : "Quedan " + info.units}</span>`);
-  });
-  document.querySelectorAll(".top-card[data-top-code]").forEach((card) => {
-    const code = card.dataset.topCode;
-    const info = stockOf(code);
-    const p = card.querySelector(".top-info p");
-    const thumb = card.querySelector(".top-thumb");
-    if (p) {
-      if (!p.dataset.original) p.dataset.original = p.textContent;
-      p.textContent = info.price != null ? fmtPrice(info.price) : p.dataset.original;
-      p.style.color = info.price != null ? "var(--yellow)" : "";
-      p.style.fontWeight = info.price != null ? "800" : "";
-    }
-    thumb.querySelectorAll(".stock-badge").forEach((b) => b.remove());
-    card.classList.toggle("sold-out", info.units === 0);
-    if (info.units === 0) thumb.insertAdjacentHTML("beforeend", '<span class="stock-badge out">Agotado</span>');
-    else if (info.units != null && info.units <= LOW_STOCK) thumb.insertAdjacentHTML("beforeend", `<span class="stock-badge">${info.units === 1 ? "Queda 1" : "Quedan " + info.units}</span>`);
   });
   if (typeof updateSelection === "function") updateSelection();
 };
@@ -158,137 +138,6 @@ const updateSelection = () => {
   selectionWhatsappPrincipal.setAttribute("aria-disabled", String(!available.length));
   selectionWhatsappSecundaria.setAttribute("aria-disabled", String(!available.length));
 };
-let activeZoomCardEl = null;
-let zoomTransitionBusy = false;
-function openZoomModal(card) {
-  const cardImg = card.querySelector(".image-wrap img");
-  const { name, image } = card.dataset;
-  activeZoomCardEl = card;
-  zoomTransitionBusy = true;
-  if (!document.startViewTransition || reduceMotion || !cardImg) {
-    zoomImage.src = image;
-    zoomImage.alt = name;
-    zoomCaption.textContent = name;
-    zoomModal.showModal();
-    zoomTransitionBusy = false;
-    return;
-  }
-  cardImg.style.viewTransitionName = "vt-zoom-img";
-  const transition = document.startViewTransition(() => {
-    zoomImage.src = image;
-    zoomImage.alt = name;
-    zoomCaption.textContent = name;
-    zoomModal.showModal();
-    zoomImage.style.viewTransitionName = "vt-zoom-img";
-    cardImg.style.viewTransitionName = "";
-  });
-  transition.finished.finally(() => {
-    zoomImage.style.viewTransitionName = "";
-    cardImg.style.viewTransitionName = "";
-    zoomTransitionBusy = false;
-  });
-}
-function closeZoomModal() {
-  if (!zoomModal.open || zoomTransitionBusy) return;
-  const cardImg = activeZoomCardEl && activeZoomCardEl.querySelector(".image-wrap img");
-  if (!document.startViewTransition || reduceMotion || !cardImg) {
-    zoomModal.close();
-    return;
-  }
-  zoomTransitionBusy = true;
-  zoomImage.style.viewTransitionName = "vt-zoom-img";
-  const transition = document.startViewTransition(() => {
-    zoomModal.close();
-    cardImg.style.viewTransitionName = "vt-zoom-img";
-    zoomImage.style.viewTransitionName = "";
-  });
-  transition.finished.finally(() => {
-    cardImg.style.viewTransitionName = "";
-    zoomImage.style.viewTransitionName = "";
-    zoomTransitionBusy = false;
-    activeZoomCardEl = null;
-  });
-}
-document.querySelectorAll(".card").forEach((card) => {
-  card.querySelector(".mini-button").addEventListener("click", () => addToOrder(card));
-  const zoomButton = card.querySelector(".zoom-button");
-  if (zoomButton) zoomButton.addEventListener("click", () => { if (window.kaluOpenProduct) window.kaluOpenProduct(card); else openZoomModal(card); });
-});
-closeZoom.addEventListener("click", closeZoomModal);
-zoomModal.addEventListener("click", (event) => {
-  if (event.target === zoomModal) closeZoomModal();
-});
-zoomModal.addEventListener("cancel", (event) => {
-  if (document.startViewTransition && !reduceMotion && activeZoomCardEl) {
-    event.preventDefault();
-    closeZoomModal();
-  }
-});
-(function () {
-  const stage = document.getElementById("zoom-stage");
-  if (!stage) return;
-  const MAX = 4, TAP_ZOOM = 2.5;
-  let z = { s: 1, x: 0, y: 0 };
-  const pts = new Map();
-  let tap = null, lastDist = 0;
-  const apply = () => {
-    const w = stage.clientWidth, h = stage.clientHeight;
-    z.s = Math.min(MAX, Math.max(1, z.s));
-    z.x = Math.min(0, Math.max(w - w * z.s, z.x));
-    z.y = Math.min(0, Math.max(h - h * z.s, z.y));
-    zoomImage.style.transform = `translate(${z.x}px, ${z.y}px) scale(${z.s})`;
-    stage.classList.toggle("is-zoomed", z.s > 1.01);
-  };
-  const zoomAt = (cx, cy, ns) => {
-    ns = Math.min(MAX, Math.max(1, ns));
-    const k = ns / z.s;
-    z.x = cx - (cx - z.x) * k;
-    z.y = cy - (cy - z.y) * k;
-    z.s = ns;
-    apply();
-  };
-  const local = (e) => { const r = stage.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
-  const reset = () => { z = { s: 1, x: 0, y: 0 }; pts.clear(); tap = null; apply(); };
-  stage.addEventListener("pointerdown", (e) => {
-    stage.setPointerCapture(e.pointerId);
-    pts.set(e.pointerId, local(e));
-    tap = pts.size === 1 ? { t: Date.now(), x: e.clientX, y: e.clientY, moved: false } : null;
-    if (pts.size === 2) { const [a, b] = [...pts.values()]; lastDist = Math.hypot(a.x - b.x, a.y - b.y); }
-  });
-  stage.addEventListener("pointermove", (e) => {
-    if (!pts.has(e.pointerId)) return;
-    const prev = pts.get(e.pointerId), cur = local(e);
-    pts.set(e.pointerId, cur);
-    if (tap && Math.hypot(e.clientX - tap.x, e.clientY - tap.y) > 8) tap.moved = true;
-    if (pts.size === 2) {
-      const [a, b] = [...pts.values()];
-      const dist = Math.hypot(a.x - b.x, a.y - b.y);
-      if (lastDist) zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, z.s * (dist / lastDist));
-      lastDist = dist;
-    } else if (pts.size === 1 && z.s > 1) {
-      z.x += cur.x - prev.x;
-      z.y += cur.y - prev.y;
-      apply();
-    }
-  });
-  const end = (e) => {
-    const wasTap = tap && !tap.moved && Date.now() - tap.t < 350 && pts.size === 1 && e.type === "pointerup";
-    const at = local(e);
-    pts.delete(e.pointerId);
-    lastDist = 0;
-    if (wasTap) { if (z.s > 1.01) { z = { s: 1, x: 0, y: 0 }; apply(); } else zoomAt(at.x, at.y, TAP_ZOOM); }
-    tap = null;
-  };
-  stage.addEventListener("pointerup", end);
-  stage.addEventListener("pointercancel", end);
-  stage.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    const at = local(e);
-    zoomAt(at.x, at.y, z.s * (e.deltaY < 0 ? 1.25 : 0.8));
-  }, { passive: false });
-  zoomModal.addEventListener("close", reset);
-  window.addEventListener("resize", apply);
-})();
 const CONFETTI_COLORS = ["#ffbd18", "#f15a0b", "#a71c65", "#74206e", "#ffffff"];
 function spawnConfetti(originX, originY, container) {
   if (reduceMotion) return;
@@ -414,6 +263,7 @@ function focusCard(card) {
     setTimeout(() => card.classList.remove("card-spot"), 1500);
   }, section ? 350 : 0);
 }
+document.querySelectorAll(".card .mini-button").forEach((btn) => btn.addEventListener("click", () => addToOrder(btn.closest(".card"))));
 selectionButton.addEventListener("click", () => { updateSelection(); selectionModal.showModal(); });
 document.getElementById("close-selection").addEventListener("click", () => selectionModal.close());
 selectionModal.addEventListener("click", (event) => {
@@ -459,33 +309,6 @@ updateSelection();
     if (window.innerWidth > 900) closeMobileMenu();
   });
 })();
-(function () {
-  const items = Array.from(document.querySelectorAll("#cat-menu .cat-item"));
-  items.forEach((item) => {
-    const head = item.querySelector(".cat-head");
-    head.addEventListener("click", () => {
-      const willOpen = !item.classList.contains("open");
-      items.forEach((other) => {
-        other.classList.remove("open");
-        other.querySelector(".cat-head").setAttribute("aria-expanded", "false");
-      });
-      if (willOpen) {
-        item.classList.add("open");
-        head.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-})();
-document.querySelectorAll(".top-card").forEach((topCard) => {
-  const open = () => {
-    const original = document.querySelector(`.card[data-code="${topCard.dataset.topCode}"] .mini-button`);
-    if (original) focusCard(original.closest(".card"));
-  };
-  topCard.addEventListener("click", open);
-  topCard.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") { event.preventDefault(); open(); }
-  });
-});
 (function () {
   const sections = document.querySelectorAll(".catalog, .material-catalog, .accessory-catalog, .wig-catalog, .wig-group, .rental-catalog, .rental-group");
   const setState = (section, open) => {
@@ -566,13 +389,6 @@ loadStock();
   let scrollTimer = 0;
   let idleTimer = 0;
   let scrolling = false;
-  let busyCount = 0;
-  const indicator = document.getElementById("kaluScrollLoader");
-  const setBusy = (on) => {
-    if (!indicator) return;
-    busyCount = Math.max(0, busyCount + (on ? 1 : -1));
-    indicator.classList.toggle("is-loading", busyCount > 0);
-  };
   const preload = (img) => new Promise((resolve) => {
     const src = img.currentSrc || img.src;
     if (!src || loaded.has(src)) return resolve();
@@ -590,24 +406,22 @@ loadStock();
   });
   const prepareAhead = () => {
     if (scrolling || document.hidden) return;
-    const y = window.scrollY, h = window.innerHeight;
+    const h = window.innerHeight;
     const imgs = Array.from(document.querySelectorAll("img[loading='lazy']"));
     const targets = imgs.filter(im => {
       const r = im.getBoundingClientRect();
       return r.top > h * 0.65 && r.top < h * 3.2;
     }).slice(0, 2);
     if (!targets.length) return;
-    setBusy(true);
     let i = 0;
     const next = () => {
-      if (scrolling || i >= targets.length) { setBusy(false); return; }
+      if (scrolling || i >= targets.length) return;
       preload(targets[i++]).finally(() => setTimeout(next, 220));
     };
     next();
   };
   const onScroll = () => {
     scrolling = true;
-    if (indicator) indicator.classList.remove("is-loading");
     clearTimeout(scrollTimer);
     clearTimeout(idleTimer);
     scrollTimer = setTimeout(() => {
@@ -672,23 +486,6 @@ loadStock();
   };
   addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
   update();
-})();
-
-(() => {
-  const links = [...document.querySelectorAll('.season-link')];
-  const targets = [
-    { id: 'inicio', cls: 'season-halloween' },
-    { id: 'bailes', cls: 'season-folk' },
-    { id: 'navidad', cls: 'season-christmas' }
-  ];
-  const setActive = (cls) => links.forEach(a => a.classList.toggle('is-active', a.classList.contains(cls)));
-  const observer = new IntersectionObserver(entries => {
-    entries.filter(e => e.isIntersecting).forEach(e => {
-      const item = targets.find(t => t.id === e.target.id);
-      if (item) setActive(item.cls);
-    });
-  }, {rootMargin:'-20% 0px -65% 0px', threshold:0});
-  targets.forEach(t => { const el = document.getElementById(t.id); if (el) observer.observe(el); });
 })();
 
 (function(){
@@ -827,56 +624,8 @@ loadStock();
   }
 })();
 
-/* KALU — imágenes: se usa lazy loading nativo del navegador; no se reemplazan los src. */
-/* KALÚ — navegación de catálogos + filtros por sección: robusto en PC y móvil */
+/* KALÚ — pestañas de alquiler + filtros por sección */
 (function(){
-  const sectionIds = ['mascaras','accesorios','sombreros-catalogo','pelucas','alquiler','tipicos-baile'];
-  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-  const catalogShell = document.getElementById('catalogo-ventanas');
-  const catalogTabs = catalogShell ? Array.from(catalogShell.querySelectorAll('.catalog-window-tab')) : [];
-
-  const activateSection = (id, opts={}) => {
-    const target = document.getElementById(id);
-    if (!target || !sectionIds.includes(id)) return;
-    if (catalogTabs.length) {
-      catalogTabs.forEach(tab => {
-        const on = tab.dataset.catalogTarget === id;
-        tab.classList.toggle('is-active', on);
-        tab.setAttribute('aria-selected', String(on));
-        tab.tabIndex = on ? 0 : -1;
-      });
-      sections.forEach(section => {
-        const on = section.id === id;
-        if (on && window.kaluLoadCatalogImages) window.kaluLoadCatalogImages(section);
-        section.classList.toggle('catalog-window-active', on);
-        section.classList.toggle('catalog-window-hidden', !on);
-        section.hidden = !on;
-      });
-    } else if (window.kaluLoadCatalogImages) {
-      window.kaluLoadCatalogImages(target);
-    }
-    if (opts.scroll && catalogShell && !opts.fromLink) {
-      catalogShell.scrollIntoView({behavior:'smooth', block:'start'});
-    }
-    const activeTab = catalogTabs.find(t => t.dataset.catalogTarget === id);
-    if (activeTab && opts.centerTab) activeTab.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-  };
-
-  catalogTabs.forEach(tab => {
-    tab.addEventListener('click', () => activateSection(tab.dataset.catalogTarget, {centerTab:true}));
-    tab.addEventListener('keydown', e => {
-      if (!['ArrowRight','ArrowLeft','Home','End'].includes(e.key)) return;
-      e.preventDefault();
-      let i = catalogTabs.indexOf(tab);
-      if (e.key === 'ArrowRight') i = (i + 1) % catalogTabs.length;
-      if (e.key === 'ArrowLeft') i = (i - 1 + catalogTabs.length) % catalogTabs.length;
-      if (e.key === 'Home') i = 0;
-      if (e.key === 'End') i = catalogTabs.length - 1;
-      catalogTabs[i].focus();
-      activateSection(catalogTabs[i].dataset.catalogTarget, {centerTab:true});
-    });
-  });
-
   const rentalTabs = Array.from(document.querySelectorAll('.rental-window-tab'));
   const rentalGroups = Array.from(document.querySelectorAll('#alquiler .rental-group'));
   const activateRental = (id, center=true) => {
@@ -889,7 +638,6 @@ loadStock();
     });
     rentalGroups.forEach(group => {
       const on = group.dataset.rentalWindow === id;
-      if (on && window.kaluLoadCatalogImages) window.kaluLoadCatalogImages(group);
       group.classList.toggle('catalog-window-active', on);
       group.classList.toggle('catalog-window-hidden', !on);
       group.hidden = !on;
@@ -986,27 +734,7 @@ loadStock();
     });
   });
 
-  // Abrir la ventana correcta desde enlaces internos cuando el componente exista.
-  document.addEventListener('click', e => {
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
-    const id = link.getAttribute('href').slice(1);
-    if (sectionIds.includes(id)) activateSection(id, {fromLink:true, centerTab:true});
-  }, true);
-
-  if (typeof focusCard === 'function') {
-    const originalFocusCard = focusCard;
-    focusCard = function(card){
-      const owner = card && card.closest ? card.closest('section[id]') : null;
-      if (owner && sectionIds.includes(owner.id)) activateSection(owner.id, {fromLink:true, centerTab:true});
-      const rental = card && card.closest ? card.closest('.rental-group') : null;
-      if (rental && rental.dataset.rentalWindow) activateRental(rental.dataset.rentalWindow, false);
-      originalFocusCard(card);
-    };
-  }
-
-  // Inicialización sin exigir un contenedor de ventanas.
-  if (catalogTabs.length && sections.length) activateSection('mascaras', {centerTab:false});
+  // Estado inicial.
   if (rentalTabs.length) activateRental(rentalTabs[0]?.dataset.rentalTarget || 'alquiler-nino', false);
 
   // Estado inicial de cada filtro + evita cargar contenido de secciones no activas si aplica.
@@ -1032,8 +760,11 @@ loadStock();
       desc: escText(card.dataset.desc || $('p',card)?.textContent),
       category: escText(card.dataset.category || 'Producto Kalú')
     });
-    const openProduct = (card) => {
+    // mode 'quick' (tap en la tarjeta): solo imagen vertical, nombre y descripción.
+    // mode 'full' (lupa): ficha completa con código, categoría y botones.
+    const openProduct = (card, mode = 'full') => {
       const p = productFromCard(card); activeCard = card;
+      dialog.classList.toggle('is-quick', mode === 'quick');
       image.src = p.image; image.alt = p.name; title.textContent = p.name; code.textContent = p.code; desc.textContent = p.desc || 'Consulta disponibilidad y precio.'; cat.textContent = p.category || 'Producto Kalú';
       const msg = `Hola Kalú, quiero consultar por ${p.name} (${p.code}).`;
       const numero = /^DF|^TB/.test(p.code) ? '573215055733' : '573117570138';
@@ -1041,14 +772,14 @@ loadStock();
       const mediaEl = dialog.querySelector('.kalu-product-media'); if (mediaEl) mediaEl.scrollTop = 0;
       if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open','');
     };
-    window.kaluOpenProduct = openProduct;
     $('#kalu-product-close')?.addEventListener('click',()=>dialog.close());
     dialog.addEventListener('click',e=>{ if(e.target===dialog) dialog.close(); });
     $$('.card[data-kalu-product]').forEach(card => {
       card.addEventListener('click', e => {
         if (e.target.closest('button,a,input,select,textarea')) return;
-        openProduct(card);
+        openProduct(card, 'quick');
       });
+      card.querySelector('.zoom-button')?.addEventListener('click', () => openProduct(card, 'full'));
     });
     add?.addEventListener('click',()=>{
       const btn = activeCard?.querySelector('.mini-button');
