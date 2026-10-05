@@ -1669,3 +1669,47 @@ footer{background:linear-gradient(125deg,#21152a,#3d2354 46%,#3f2741 72%,#244331
     aspect-ratio:9 / 16!important;
   }
 }
+
+/* KALÚ V18 — carruseles con arrastre y barra, máscaras uniformes, alquiler ordenado */
+/* 1. Carruseles: el navegador decide el eje en táctil (vertical = página, horizontal = carrusel). */
+.kalu-carousel-track,.grid.kalu-carousel-track,
+.business-line .kalu-carousel-track,.business-line .grid.kalu-carousel-track{touch-action:pan-x pan-y!important;overscroll-behavior-x:contain!important;overscroll-behavior-y:auto!important}
+@media (hover:hover) and (pointer:fine){
+  .kalu-carousel-track:not(.is-expanded){cursor:grab}
+}
+.kalu-carousel-track.is-dragging{cursor:grabbing!important;user-select:none!important;-webkit-user-select:none!important}
+.kalu-carousel-track.is-dragging *{pointer-events:none!important}
+.kalu-carousel-track img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+.kalu-carousel-scrollbar{position:relative;height:8px;margin:2px 24px 16px;border-radius:99px;background:rgba(255,245,232,.16)}
+.kalu-carousel-scrollbar[hidden]{display:none!important}
+.kalu-carousel-thumb{position:absolute;top:0;bottom:0;min-width:36px;border-radius:99px;background:linear-gradient(90deg,#ef7824,#c72f7b);cursor:grab;touch-action:none;box-shadow:0 1px 6px rgba(0,0,0,.35)}
+.kalu-carousel-thumb:active{cursor:grabbing}
+.kalu-carousel-scrollbar::before{content:"";position:absolute;left:0;right:0;top:-8px;bottom:-8px}
+.kalu-carousel-thumb{z-index:1}
+@media (max-width:700px){.kalu-carousel-scrollbar{margin:0 22px 14px;height:6px}}
+
+/* 2. Máscaras: mismo marco vertical 9:16 en todas, foto completa, sin recortes. */
+#mascaras .grid .mask-card .image-wrap,
+#mascaras .grid .antifaz-card .image-wrap{aspect-ratio:9 / 16!important;height:auto!important;min-height:0!important;background:#fff!important;overflow:hidden!important;padding:0!important}
+#mascaras .grid .mask-card .image-wrap img,
+#mascaras .grid .antifaz-card .image-wrap img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;padding:0!important;object-fit:contain!important;object-position:center!important;transform:none!important}
+#mascaras .grid .mask-card:hover .image-wrap img,
+#mascaras .grid .antifaz-card:hover .image-wrap img{transform:none!important}
+
+/* 3. Alquiler: selector de tipo de disfraz claro sobre los artículos. */
+#alquiler .rental-tabs-label{margin:22px 0 10px!important;text-align:center;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffc184}
+#alquiler .rental-window-tabs{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;max-width:760px!important;margin:0 auto 24px!important;padding:8px!important;overflow:visible!important;border-radius:22px!important;background:rgba(255,245,232,.08)!important;border:1px solid rgba(255,245,232,.14)!important}
+#alquiler .rental-window-tabs .rental-window-tab{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;min-height:68px!important;padding:10px 8px!important;border-radius:15px!important;border:2px solid transparent!important;font-size:1rem!important;font-weight:800!important;line-height:1.15!important;text-align:center!important;white-space:normal!important}
+#alquiler .rental-window-tabs .rental-tab-ico{font-size:1.5rem;line-height:1}
+#alquiler .rental-window-tabs .rental-window-tab.is-active{background:linear-gradient(135deg,#ef7824,#c72f7b)!important;color:#fff!important;border-color:rgba(255,245,232,.55)!important;box-shadow:0 8px 20px rgba(199,47,123,.38)!important;transform:translateY(-1px)}
+#alquiler .rental-group .wig-group-heading{margin:0 0 14px!important;text-align:center}
+@media (max-width:700px){
+  #alquiler .rental-window-tabs{gap:6px!important;padding:6px!important;border-radius:18px!important}
+  #alquiler .rental-window-tabs .rental-window-tab{min-height:62px!important;padding:8px 4px!important;font-size:.76rem!important}
+  #alquiler .rental-window-tabs .rental-tab-ico{font-size:1.3rem}
+}
+
+/* 4. Avisos de alquiler y depósito: debajo de los artículos, en dos columnas. */
+#alquiler .rental-group .rental-notes{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;max-width:1192px;margin:6px auto 0!important;padding:0 24px}
+#alquiler .rental-group .rental-notes .rental-notice{margin:0!important;max-width:none!important}
+@media (max-width:760px){#alquiler .rental-group .rental-notes{grid-template-columns:1fr!important;gap:8px!important;padding:0 14px}}
