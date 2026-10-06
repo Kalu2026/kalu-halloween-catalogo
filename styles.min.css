@@ -21,6 +21,25 @@ dialog.kalu-product-dialog.is-quick .kalu-product-panel{display:flex!important;f
 dialog.kalu-product-dialog.is-quick .kalu-product-media{flex:0 0 auto!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;padding:0!important;overflow:hidden!important}
 dialog.kalu-product-dialog.is-quick .kalu-product-media img{width:auto!important;height:auto!important;max-width:100%!important;max-height:68vh!important;max-height:68dvh!important;object-fit:contain!important;padding:0!important}
 dialog.kalu-product-dialog.is-quick .kalu-product-info{flex:1 1 auto!important;display:block!important;min-height:0!important;padding:14px 18px 18px!important;overflow-y:auto!important}
-dialog.kalu-product-dialog.is-quick :is(.kalu-product-category,.kalu-product-code,.kalu-product-note,.kalu-product-actions){display:none!important}
+dialog.kalu-product-dialog.is-quick :is(.kalu-product-category,.kalu-product-code,.kalu-product-note,.kalu-product-actions){display:none!important;visibility:hidden!important;pointer-events:none!important}
 dialog.kalu-product-dialog.is-quick .kalu-product-info h2{margin:0 0 6px!important;font-size:1.3rem!important;line-height:1.1!important}
 dialog.kalu-product-dialog.is-quick .kalu-product-info>p:not(.kalu-product-note){display:block!important;margin:0!important;overflow:visible!important;-webkit-line-clamp:unset!important;font-size:.9rem!important;line-height:1.5!important}
+
+/* KALÚ V21 — buscador global de productos */
+.site-search{position:relative;flex:0 1 340px;min-width:180px;z-index:45}
+.site-search-box{display:flex;align-items:center;gap:8px;height:42px;padding:0 13px;border:1px solid rgba(77,23,63,.16);border-radius:999px;background:rgba(255,250,246,.9);box-shadow:0 8px 18px rgba(48,18,42,.08);color:var(--k2-plum)}
+.site-search-box>span{font-size:1.2rem;line-height:1;transform:translateY(-1px)}
+.site-search-box input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--k2-ink);font:700 .78rem/1 Montserrat,sans-serif}
+.site-search-box input::placeholder{color:#8a7b84;font-weight:600}
+.site-search-results{position:absolute;top:calc(100% + 9px);left:0;right:0;max-height:min(68vh,520px);overflow:auto;padding:7px;border:1px solid rgba(77,23,63,.12);border-radius:18px;background:rgba(255,250,246,.98);box-shadow:0 18px 34px rgba(48,18,42,.18);backdrop-filter:blur(10px)}
+.site-search-results[hidden]{display:none!important}
+.site-search-result{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:10px;width:100%;padding:7px;border:0;border-radius:13px;background:transparent;color:var(--k2-ink);text-align:left;cursor:pointer}
+.site-search-result:hover,.site-search-result:focus-visible{background:rgba(239,120,36,.1);outline:0}
+.site-search-result img{width:46px;height:56px;border-radius:9px;background:#f2e5dc;object-fit:contain}
+.site-search-result-copy{min-width:0;display:flex;flex-direction:column;gap:3px}
+.site-search-result-copy strong{font:800 .76rem/1.15 'Baloo 2',sans-serif;color:var(--k2-plum);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-search-result-copy span{font:600 .62rem/1.2 Montserrat,sans-serif;color:var(--k2-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-search-empty{padding:12px 10px;color:var(--k2-muted);font:600 .72rem/1.35 Montserrat,sans-serif}
+@media(max-width:980px){.nav{flex-wrap:wrap}.site-search{order:2;flex:1 1 260px;min-width:0}.nav-toggle{order:3}.nav-links{order:4}}
+@media(max-width:700px){.nav{flex-wrap:nowrap;min-width:0}.site-search{flex:1 1 auto;min-width:0}.site-search-box{height:40px;padding:0 11px}.site-search-box input{font-size:.7rem}.site-search-results{left:auto;right:-46px;width:min(360px,88vw);max-height:58dvh}.site-search-result{grid-template-columns:42px 1fr}.site-search-result img{width:42px;height:50px}.nav>a:first-child{flex:0 0 auto}.nav>a:first-child img{width:94px!important;height:56px!important}.nav-toggle{flex:0 0 40px}}
+@media(max-width:430px){.site-search-box>span{display:none}.site-search-box{padding:0 10px}.site-search-box input{font-size:.66rem}.site-search-results{right:-42px;width:min(330px,90vw)}}
