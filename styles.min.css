@@ -280,3 +280,6 @@ dialog.kalu-product-dialog.is-quick .kalu-product-info>p:not(.kalu-product-note)
   .site-search-box{min-height:38px!important;height:38px!important;padding-inline:8px!important;grid-template-columns:21px minmax(0,1fr)!important;}
   .site-search-box input{font-size:.72rem!important;}
 }
+
+/* KALÚ — escritorio: conservar la barra de navegación original; el menú móvil sigue intacto. */
+@media (min-width:901px){.nav-desktop-links{display:contents!important}}
