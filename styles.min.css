@@ -283,3 +283,9 @@ dialog.kalu-product-dialog.is-quick .kalu-product-info>p:not(.kalu-product-note)
 
 /* KALÚ — escritorio: conservar la barra de navegación original; el menú móvil sigue intacto. */
 @media (min-width:901px){.nav-desktop-links{display:contents!important}}
+
+/* KALÚ — escritorio: ocultar completamente el menú móvil y mantener intacta la barra original. */
+@media (min-width:901px){
+  .nav-desktop-links{display:contents!important}
+  .nav-mobile-menu{display:none!important}
+}
