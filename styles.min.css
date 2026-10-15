@@ -1822,3 +1822,54 @@ footer{line-height:1.7}
 .unified-store-ready #venta,.unified-store-ready #alquiler,.unified-store-ready #tipicos-linea{display:none!important}
 #shop-catalog [hidden]{display:none!important}
 @media(max-width:720px){#shop-catalog{margin:16px 12px 36px;padding:24px 14px;border-radius:20px;scroll-margin-top:72px}.shop-filter-panel{top:64px;padding:12px}.shop-kind-pill{padding:9px 13px;font-size:.82rem}.shop-select-filters{grid-template-columns:1fr 1fr;gap:8px}.shop-clear-filters{grid-column:1/-1}.#shop-catalog .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#shop-catalog .card{border-radius:12px}.shop-results-status{margin-top:14px}}
+/* Nueva identidad visual: ciruela, lavanda y durazno */
+body{background-color:#efe6f2!important;background-image:radial-gradient(ellipse at 8% 18%,rgba(239,164,112,.2),transparent 32%),radial-gradient(ellipse at 92% 44%,rgba(130,92,157,.14),transparent 34%),linear-gradient(180deg,#f3eaf5 0%,#f5e9df 52%,#eee4f1 100%)!important;color:#2d2033}
+.scroll-gradient-bg{opacity:.26}
+.nav{background:rgba(55,29,68,.97);border-bottom:1px solid rgba(240,174,118,.55);box-shadow:0 10px 28px rgba(43,24,52,.22)}
+.site-search-box{background:#fff2df;border-color:rgba(255,255,255,.2);color:#2d2033}
+.site-search-box input{color:#2d2033}
+.site-search-box input::placeholder{color:#75657b;opacity:1}
+.kalu-business-doors{margin-top:24px;padding-inline:clamp(16px,3vw,36px);border:1px solid #dcc9e3;border-radius:30px;background:linear-gradient(135deg,#e8d8ef 0%,#f8e4d2 100%)!important;box-shadow:0 18px 50px rgba(65,38,74,.08)}
+.kalu-business-head h2{color:#2d2033!important}
+.kalu-business-head>span{color:#55465d!important}
+#categorias .kdoor-group{background:rgba(255,248,237,.72)!important;border-color:rgba(83,32,100,.13)!important}
+#categorias .kdoor{background:#fff4e5;border-color:#e6d7c7;color:#2d2033}
+#categorias .kdoor-body b{color:#2d2033}
+#categorias .kdoor-body small{color:#5c4d62}
+#categorias .kdoor-cta{color:#632f79}
+#shop-catalog{background:linear-gradient(145deg,#f8efe2 0%,#f1e4f3 54%,#f8e8dd 100%);border-color:#d8c4df;box-shadow:0 22px 64px rgba(62,36,72,.12)}
+.shop-eyebrow{color:#743d87}
+.shop-heading h2{color:#2d2033}
+.shop-heading p{color:#584a60}
+.shop-filter-panel{border-color:#684378;background:rgba(62,34,76,.97);box-shadow:0 14px 32px rgba(50,26,61,.2)}
+.shop-kind-filters{padding-bottom:10px}
+.shop-kind-pill{border-color:#d8c4df;background:#f7eddf;color:#432a4a}
+.shop-kind-pill:hover{border-color:#ffc081;color:#532064}
+.shop-kind-pill.is-active{border-color:#f0924c;background:#f0924c;color:#321d3b}
+.shop-audience-filters{display:flex;gap:7px;overflow-x:auto;padding:2px 1px 12px;scrollbar-width:thin}
+.shop-audience-pill{flex:0 0 auto;padding:8px 13px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.09);color:#fff7ed;font:700 .8rem "DM Sans",Arial,sans-serif;cursor:pointer;transition:background .18s ease,color .18s ease,border-color .18s ease}
+.shop-audience-pill:hover{border-color:#ffc081;background:rgba(255,192,129,.15)}
+.shop-audience-pill.is-active{border-color:#ffd1a8;background:#ffe0c0;color:#3d2347}
+.shop-select-filters label{color:#fff4e8}
+.shop-select-filters select{border-color:#d9c6df;background:#fff4e5;color:#302136}
+.shop-clear-filters{border-color:#ffd1a8;background:#f0924c;color:#321d3b}
+.shop-clear-filters:hover{background:#ffb16e}
+.shop-results-status{color:#46344d}
+#shop-catalog .card{border-color:#e2d0bd;background:#fff6e8;color:#302136;box-shadow:0 9px 24px rgba(58,33,66,.1)}
+#shop-catalog .card .image-wrap{aspect-ratio:4/5;overflow:hidden;background:#e8d9ed}
+#shop-catalog .card .image-wrap>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center}
+#shop-catalog .card.mask-card .image-wrap>img{object-position:50% 42%}
+#shop-catalog .card.rental-card .image-wrap>img{object-position:50% 22%}
+#shop-catalog .card .details{padding:12px;background:#fff6e8;color:#302136}
+#shop-catalog .card h3,#shop-catalog .card .details h3{color:#302136!important}
+#shop-catalog .card .details p{color:#5f5062!important}
+#shop-catalog .card .code{background:#522765;color:#fff9ef}
+#shop-catalog .card .mini-button{background:#f0924c;color:#321d3b}
+.shop-load-more{background:#522765;color:#fff7ed;box-shadow:0 8px 20px rgba(82,39,101,.24)}
+.shop-load-more:hover{background:#3d1a4e}
+.shop-empty{border-color:#bda2c8;background:rgba(255,246,232,.7);color:#514259}
+.selection-panel,.kalu-product-panel{background:#fff3e3;color:#302136}
+footer{background:#3d2448;color:#fff3e3}
+footer p,footer a{color:#f6e7d8}
+#shop-catalog [hidden],.shop-audience-filters[hidden]{display:none!important}
+@media(max-width:720px){.kalu-business-doors{margin:16px 10px 0;padding-inline:12px;border-radius:22px}#shop-catalog{background:linear-gradient(160deg,#f8efe2 0%,#f1e4f3 66%,#f8e8dd 100%)}.shop-filter-panel{background:rgba(62,34,76,.98)}.shop-audience-filters{margin-top:2px}.shop-audience-pill{padding:8px 11px;font-size:.76rem}#shop-catalog .card .image-wrap{aspect-ratio:4/5}#shop-catalog .card.rental-card .image-wrap>img{object-position:50% 18%}}
