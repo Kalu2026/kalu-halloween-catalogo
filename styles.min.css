@@ -1904,3 +1904,57 @@ footer p,footer a{color:#f6e7d8}
 @media(max-width:1080px){#shop-catalog .shop-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
 @media(max-width:720px){#shop-catalog{margin:14px 10px 28px;padding:22px 12px;border-radius:25px}.shop-heading{margin-bottom:18px}#shop-catalog .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}#shop-catalog .card{border-radius:19px}#shop-catalog .card .image-wrap{aspect-ratio:4/5;border-radius:18px 18px 14px 14px}#shop-catalog .card .image-wrap>img{padding:6px}#shop-catalog .card .details{gap:7px;padding:11px 10px 12px;border-radius:0 0 19px 19px}#shop-catalog .card .details h3{font-size:.86rem}#shop-catalog .card .details p{font-size:.75rem}#shop-catalog .card .mini-button{width:36px;height:36px;border-radius:12px}#shop-catalog .card .zoom-button{width:32px;height:32px;border-radius:11px}.shop-product-kind{top:8px;left:8px;min-height:25px;padding:4px 8px;font-size:.62rem}#shop-catalog .card .code{top:8px;right:8px;font-size:.65rem}#categorias{margin:28px 10px;padding:22px 12px;border-radius:24px}}
 @media(max-width:430px){#shop-catalog .card .details{grid-template-columns:minmax(0,1fr) 34px}#shop-catalog .card .mini-button{width:34px;height:34px}}
+/* Fixes from visual review: remove image watermark artifact and raise contrast */
+#shop-catalog .card .image-wrap::after{content:none!important;display:none!important}
+#shop-catalog .card .zoom-button{position:absolute;top:10px;left:auto;right:10px;width:36px;height:36px;border:0;border-radius:12px;background:rgba(62,34,76,.88);color:#fff7ed;z-index:4}
+.shop-policy-notes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 10px}
+.shop-policy-notes p{margin:0;padding:12px 14px;border:1px solid #d7c3df;border-radius:16px;background:#ecdfef;color:#3c2a43;font-size:.86rem;line-height:1.5}
+.shop-policy-notes p+ p{border-color:#e9c6a9;background:#f9e5d4}
+.shop-policy-notes strong{color:#522765}
+.kalu-product-dialog{border:1px solid #c9add3;background:#f6e9d8;color:#302136;box-shadow:0 30px 90px rgba(35,18,43,.48)}
+.kalu-product-panel{background:#f6e9d8;color:#302136}
+.kalu-product-media{background:radial-gradient(ellipse at center,#f2e6f4 0%,#ddcce6 100%)}
+.kalu-product-media img{display:block;visibility:visible;opacity:1;object-fit:contain}
+.kalu-product-info{background:#f6e9d8;color:#302136}
+.kalu-product-category{color:#633477!important}
+.kalu-product-code{background:#eadbec;color:#4a2c56}
+.kalu-product-info h2{color:#2d2033!important;font-size:clamp(1.55rem,3vw,2rem);line-height:1.16}
+.kalu-product-info p{color:#514357!important;font-size:.98rem;line-height:1.55}
+.kalu-product-info .kalu-product-note{padding:13px 14px;border:1px solid #c7abd1;border-radius:14px;background:#eadced;color:#382640!important;font-size:.94rem!important;font-weight:650;line-height:1.5}
+.kalu-product-actions{gap:9px}
+.kalu-product-wa,.kalu-product-wa-alt{min-height:54px;padding:10px 14px;border-radius:15px;font-size:.86rem;line-height:1.35;white-space:normal}
+.kalu-product-wa{background:#25875c;color:#fff}
+.kalu-product-wa-alt{border:1px solid #6e4380;background:#efe1f1;color:#482653}
+.kalu-product-add{background:#ec8b4f;color:#321d3b;border-radius:15px}
+.modal-note{border:1px solid #c9a9d2;background:#efe2f1;color:#392642;font-size:.9rem;line-height:1.55}
+.modal-note strong{color:#512765}
+#selection-modal .selection-intro,#selection-modal .selection-footnote{color:#514357}
+#selection-modal .selection-actions .button{min-height:48px;border-radius:15px;font-size:.83rem;line-height:1.35}
+@media(max-width:720px){.shop-policy-notes{grid-template-columns:1fr;gap:8px}.shop-policy-notes p{font-size:.82rem}.kalu-product-info p{font-size:.94rem}.kalu-product-wa,.kalu-product-wa-alt{font-size:.78rem;padding:9px 11px}}
+/* Legibilidad y contenido completo en la ficha de producto */
+#shop-catalog .card .image-wrap::after{content:none!important;display:none!important}
+#shop-catalog .card .zoom-button{position:absolute;top:10px;left:auto;right:10px;width:36px;height:36px;border:0;border-radius:12px;background:rgba(62,34,76,.88);color:#fff7ed;z-index:4}
+.shop-policy-notes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 10px}
+.shop-policy-notes p{margin:0;padding:12px 14px;border:1px solid #d7c3df;border-radius:16px;background:#ecdfef;color:#3c2a43;font-size:.86rem;line-height:1.5}
+.shop-policy-notes p+p{border-color:#e9c6a9;background:#f9e5d4}
+.shop-policy-notes strong{color:#522765}
+.kalu-product-dialog{border:1px solid #c9add3;background:#f6e9d8;color:#302136;box-shadow:0 30px 90px rgba(35,18,43,.48)}
+.kalu-product-panel{background:#f6e9d8;color:#302136}
+.kalu-product-media{background:radial-gradient(ellipse at center,#f2e6f4 0%,#ddcce6 100%)}
+.kalu-product-media img{display:block;visibility:visible;opacity:1;object-fit:contain}
+.kalu-product-info{background:#f6e9d8;color:#302136}
+.kalu-product-category{color:#633477!important}
+.kalu-product-code{background:#eadbec;color:#4a2c56}
+.kalu-product-info h2{color:#2d2033!important;font-size:clamp(1.55rem,3vw,2rem);line-height:1.16}
+.kalu-product-info p{color:#514357!important;font-size:.98rem;line-height:1.55}
+.kalu-product-info .kalu-product-note{padding:13px 14px;border:1px solid #c7abd1;border-radius:14px;background:#eadced;color:#382640!important;font-size:.94rem!important;font-weight:650;line-height:1.5}
+.kalu-product-actions{gap:9px}
+.kalu-product-wa,.kalu-product-wa-alt{min-height:54px;padding:10px 14px;border-radius:15px;font-size:.86rem;line-height:1.35;white-space:normal}
+.kalu-product-wa{background:#25875c;color:#fff}
+.kalu-product-wa-alt{border:1px solid #6e4380;background:#efe1f1;color:#482653}
+.kalu-product-add{background:#ec8b4f;color:#321d3b;border-radius:15px}
+.modal-note{border:1px solid #c9a9d2;background:#efe2f1;color:#392642;font-size:.9rem;line-height:1.55}
+.modal-note strong{color:#512765}
+#selection-modal .selection-intro,#selection-modal .selection-footnote{color:#514357}
+#selection-modal .selection-actions .button{min-height:48px;border-radius:15px;font-size:.83rem;line-height:1.35}
+@media(max-width:720px){.shop-policy-notes{grid-template-columns:1fr;gap:8px}.shop-policy-notes p{font-size:.82rem}.kalu-product-info p{font-size:.94rem}.kalu-product-wa,.kalu-product-wa-alt{font-size:.78rem;padding:9px 11px}}
