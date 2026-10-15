@@ -933,17 +933,7 @@ img { max-width: 100%; display: block; }
   transform: scale(1.03);
 }
 
-.image-wrap::after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 50px;
-  height: 34px;
-  background: url("assets/logo/kalu-disfraces-logo.webp") right top / contain no-repeat;
-  opacity: 0.78;
-  pointer-events: none;
-}
+.image-wrap::after{content:none!important;display:none!important;background:none!important}
 
 .code {
   position: absolute;
@@ -1905,7 +1895,7 @@ footer p,footer a{color:#f6e7d8}
 @media(max-width:720px){#shop-catalog{margin:14px 10px 28px;padding:22px 12px;border-radius:25px}.shop-heading{margin-bottom:18px}#shop-catalog .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}#shop-catalog .card{border-radius:19px}#shop-catalog .card .image-wrap{aspect-ratio:4/5;border-radius:18px 18px 14px 14px}#shop-catalog .card .image-wrap>img{padding:6px}#shop-catalog .card .details{gap:7px;padding:11px 10px 12px;border-radius:0 0 19px 19px}#shop-catalog .card .details h3{font-size:.86rem}#shop-catalog .card .details p{font-size:.75rem}#shop-catalog .card .mini-button{width:36px;height:36px;border-radius:12px}#shop-catalog .card .zoom-button{width:32px;height:32px;border-radius:11px}.shop-product-kind{top:8px;left:8px;min-height:25px;padding:4px 8px;font-size:.62rem}#shop-catalog .card .code{top:8px;right:8px;font-size:.65rem}#categorias{margin:28px 10px;padding:22px 12px;border-radius:24px}}
 @media(max-width:430px){#shop-catalog .card .details{grid-template-columns:minmax(0,1fr) 34px}#shop-catalog .card .mini-button{width:34px;height:34px}}
 /* Fixes from visual review: remove image watermark artifact and raise contrast */
-#shop-catalog .card .image-wrap::after{content:none!important;display:none!important}
+#shop-catalog .card .image-wrap::after{content:none!important;display:none!important;background:none!important}
 #shop-catalog .card .zoom-button{position:absolute;top:10px;left:auto;right:10px;width:36px;height:36px;border:0;border-radius:12px;background:rgba(62,34,76,.88);color:#fff7ed;z-index:4}
 .shop-policy-notes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 10px}
 .shop-policy-notes p{margin:0;padding:12px 14px;border:1px solid #d7c3df;border-radius:16px;background:#ecdfef;color:#3c2a43;font-size:.86rem;line-height:1.5}
@@ -1932,7 +1922,7 @@ footer p,footer a{color:#f6e7d8}
 #selection-modal .selection-actions .button{min-height:48px;border-radius:15px;font-size:.83rem;line-height:1.35}
 @media(max-width:720px){.shop-policy-notes{grid-template-columns:1fr;gap:8px}.shop-policy-notes p{font-size:.82rem}.kalu-product-info p{font-size:.94rem}.kalu-product-wa,.kalu-product-wa-alt{font-size:.78rem;padding:9px 11px}}
 /* Legibilidad y contenido completo en la ficha de producto */
-#shop-catalog .card .image-wrap::after{content:none!important;display:none!important}
+#shop-catalog .card .image-wrap::after{content:none!important;display:none!important;background:none!important}
 #shop-catalog .card .zoom-button{position:absolute;top:10px;left:auto;right:10px;width:36px;height:36px;border:0;border-radius:12px;background:rgba(62,34,76,.88);color:#fff7ed;z-index:4}
 .shop-policy-notes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 10px}
 .shop-policy-notes p{margin:0;padding:12px 14px;border:1px solid #d7c3df;border-radius:16px;background:#ecdfef;color:#3c2a43;font-size:.86rem;line-height:1.5}
@@ -2051,3 +2041,10 @@ footer p,footer a{color:#f6e7d8}
 @media(max-width:720px){html{scroll-padding-top:74px}.nav{grid-template-columns:auto minmax(0,1fr) auto;min-height:68px;padding:8px 13px;gap:9px}.nav>a:first-child img{width:78px;height:48px}.nav>.site-search{grid-column:2;grid-row:1;max-width:none}.nav-toggle{grid-column:3;grid-row:1}.site-search-box{height:40px;padding-inline:10px}.site-search-box input{font-size:.8rem}.nav-desktop-links{display:none!important}#inicio.season-hero{width:calc(100% - 24px);grid-template-columns:1fr;gap:8px;min-height:0;margin-top:12px;padding:31px 23px 18px;border-radius:28px}#inicio .season-hero-copy{max-width:none}#inicio .season-kicker{margin-bottom:17px;padding:7px 10px;font-size:.65rem}#inicio .season-hero-copy h2{max-width:12ch;font-size:clamp(2.75rem,12vw,4.4rem)}#inicio .season-hero-copy>p{max-width:33ch;margin-top:15px;font-size:.95rem}#inicio .season-actions{gap:8px;margin-top:20px}#inicio .season-button{min-height:46px;padding:0 15px;border-radius:14px;font-size:.81rem}#inicio .hero-assurance{margin-top:16px;font-size:.75rem}#inicio .halloween-art{min-height:260px;margin-top:0}#inicio .halloween-glow{width:74vw}#inicio .halloween-3d-stage{max-width:340px;height:clamp(250px,74vw,340px);border-radius:43% 43% 24px 24px}#shop-catalog{width:calc(100% - 24px);margin:18px auto 28px;padding:25px 14px;border-radius:25px;scroll-margin-top:76px}.shop-heading{margin-bottom:18px}.shop-heading h2{font-size:clamp(1.9rem,8vw,2.6rem)}.shop-heading p{font-size:.88rem}.shop-filter-panel{top:66px;padding:11px;border-radius:18px}.shop-kind-pill{padding:9px 12px;font-size:.77rem}.shop-audience-pill{padding:8px 10px;font-size:.73rem}.shop-select-filters{grid-template-columns:1fr 1fr;gap:8px}.shop-clear-filters{grid-column:1/-1}#shop-catalog .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#shop-catalog .card{border-radius:18px}#shop-catalog .card .image-wrap{aspect-ratio:4/5;border-radius:17px 17px 13px 13px}#shop-catalog .card .image-wrap>img{padding:6px}#shop-catalog .card .details{gap:6px;padding:11px 9px 12px;border-radius:0 0 18px 18px}#shop-catalog .card .details h3{font-size:.83rem}#shop-catalog .card .details p{font-size:.71rem}#shop-catalog .card .mini-button{width:34px;height:34px;border-radius:11px}#shop-catalog .card .zoom-button{top:8px;right:8px;width:31px;height:31px;border-radius:10px}.shop-product-kind{top:8px;left:8px;min-height:23px;padding:4px 7px;font-size:.57rem}#shop-catalog .card .code{top:8px;right:8px;font-size:.59rem}.shop-policy-notes{grid-template-columns:1fr;gap:8px}.shop-policy-notes p{padding:10px 11px;font-size:.78rem}#categorias.kalu-business-doors{width:calc(100% - 24px);margin:0 auto 28px;padding:24px 13px;border-radius:25px}#categorias .kalu-business-head h2{font-size:clamp(1.8rem,7vw,2.5rem)!important}#categorias .kdoor-group{padding:13px;border-radius:19px}}
 @media(max-width:390px){#inicio .season-actions{flex-direction:column;align-items:stretch;width:100%}#inicio .season-button{width:100%}#shop-catalog .card .details{grid-template-columns:minmax(0,1fr) 31px}#shop-catalog .card .mini-button{width:31px;height:31px}}
 @media(prefers-reduced-motion:reduce){#shop-catalog .card,#shop-catalog .card .image-wrap>img,#inicio .season-button{transition:none}}
+/* Tarjetas sin marcas sobre la foto y con esquinas más suaves */
+.image-wrap::before,.image-wrap::after,#shop-catalog .card .image-wrap::before,#shop-catalog .card .image-wrap::after{content:none!important;display:none!important;background:none!important}
+#shop-catalog .card .image-wrap>.code{display:none!important}
+#shop-catalog .card{border-radius:32px!important;overflow:hidden}
+#shop-catalog .card .image-wrap{border-radius:31px 31px 23px 23px!important;overflow:hidden}
+#shop-catalog .card .details{border-radius:0 0 32px 32px!important}
+@media(max-width:720px){#shop-catalog .card{border-radius:26px!important}#shop-catalog .card .image-wrap{border-radius:25px 25px 18px 18px!important}#shop-catalog .card .details{border-radius:0 0 26px 26px!important}}
