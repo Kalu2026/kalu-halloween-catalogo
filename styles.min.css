@@ -2048,3 +2048,22 @@ footer p,footer a{color:#f6e7d8}
 #shop-catalog .card .image-wrap{border-radius:31px 31px 23px 23px!important;overflow:hidden}
 #shop-catalog .card .details{border-radius:0 0 32px 32px!important}
 @media(max-width:720px){#shop-catalog .card{border-radius:26px!important}#shop-catalog .card .image-wrap{border-radius:25px 25px 18px 18px!important}#shop-catalog .card .details{border-radius:0 0 26px 26px!important}}
+/* Corrección solicitada: catálogo 9:16, logo proporcional y hero de marca */
+body{background:radial-gradient(ellipse 72% 35% at 8% 8%,rgba(43,138,87,.11),transparent 72%),radial-gradient(ellipse 70% 38% at 92% 20%,rgba(240,146,76,.12),transparent 72%),radial-gradient(ellipse 70% 40% at 50% 86%,rgba(117,69,145,.12),transparent 72%),linear-gradient(180deg,#f0e6f2 0%,#f5e9df 54%,#eee5f1 100%)!important}
+#inicio.season-hero{background:radial-gradient(ellipse 62% 94% at 5% 94%,rgba(43,138,87,.4) 0%,rgba(43,138,87,.18) 34%,transparent 76%),radial-gradient(ellipse 64% 98% at 96% 8%,rgba(240,146,76,.4) 0%,rgba(199,47,123,.25) 40%,transparent 78%),radial-gradient(ellipse 60% 90% at 58% 100%,rgba(122,69,151,.55) 0%,rgba(83,32,100,.28) 48%,transparent 82%),linear-gradient(112deg,#351441 0%,#51205f 46%,#42204f 100%)}
+#inicio .season-brand-logo{height:clamp(72px,8vw,108px);margin:0 0 12px;filter:drop-shadow(0 9px 18px rgba(18,8,23,.32))}
+#inicio .season-brand-logo img{height:100%;width:auto;object-fit:contain}
+#inicio .season-kicker{margin-bottom:17px}
+#inicio .season-hero-copy h2{max-width:12ch;font-size:clamp(2.8rem,5.2vw,4.9rem);line-height:.95;letter-spacing:-.065em}
+#inicio .season-hero-copy>p{margin-top:16px}
+#inicio .hero-social-block{display:flex;align-items:center;gap:12px;margin-top:22px}
+#inicio .hero-social-label{color:#f2e5f3;font-size:.72rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+#inicio .hero-social-links{display:flex;gap:9px}
+#inicio .hero-social-link{width:38px;height:38px;padding:5px;border:1px solid rgba(255,243,228,.35);border-radius:50%;background:rgba(255,243,228,.16);box-shadow:0 4px 12px rgba(20,10,28,.16)}
+#inicio .hero-social-link img{width:100%;height:100%;object-fit:contain}
+#shop-catalog .card{border-radius:18px!important}
+#shop-catalog .card .image-wrap{aspect-ratio:9/16!important;border-radius:16px 16px 11px 11px!important;overflow:hidden;background:#eadced}
+#shop-catalog .card .image-wrap>img{width:100%;height:100%;padding:0!important;object-fit:contain!important;object-position:center center!important}
+#shop-catalog .card .details{border-radius:0 0 18px 18px!important}
+footer>img{display:block;width:min(190px,60vw)!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;margin:0 auto 14px}
+@media(max-width:720px){#inicio .season-brand-logo{height:66px;margin-bottom:8px}#inicio .season-kicker{margin-bottom:14px}#inicio .season-hero-copy h2{font-size:clamp(2.55rem,10.8vw,3.6rem)}#inicio .hero-social-block{gap:9px;margin-top:18px}#inicio .hero-social-label{font-size:.64rem}#inicio .hero-social-link{width:34px;height:34px}#shop-catalog .card{border-radius:15px!important}#shop-catalog .card .image-wrap{aspect-ratio:9/16!important;border-radius:14px 14px 9px 9px!important}#shop-catalog .card .details{border-radius:0 0 15px 15px!important}}
