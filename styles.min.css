@@ -2007,10 +2007,10 @@ footer { padding: 34px 0 45px; color: var(--kalu-ink-soft); border-top: 1px soli
   .details p { font-size: 10px; }
   .mini-button, .zoom-button { min-height: 34px; font-size: 11px; }
   .section-filter { padding: 12px; }
-  .section-filter-list, .rental-window-tabs { gap: 6px; }
-  .section-filter-list button, .rental-window-tabs button { min-height: 34px; padding: 6px 10px; font-size: 10px; }
+  .rental-window-tabs { gap: 6px; }
+  .rental-window-tabs button { min-height: 34px; padding: 6px 10px; font-size: 10px; }
   .collection-band, .contact { align-items: flex-start; flex-direction: column; }
-  .selection-fab { right: 12px; bottom: 14px; }
+
 }
 @media (max-width: 380px) {
   .grid, .mask-grid, .accessory-grid, .folk-grid, .kdoor-cards { grid-template-columns: 1fr; }
@@ -2298,7 +2298,7 @@ main { color:var(--kalu-ink); }
 .card .details h3 { display:-webkit-box !important; overflow:hidden !important; -webkit-box-orient:vertical !important; -webkit-line-clamp:2 !important; min-height:36px !important; padding:8px !important; font-size:12px !important; line-height:1.25 !important; }
 .card .details p { display:-webkit-box !important; overflow:hidden !important; -webkit-box-orient:vertical !important; -webkit-line-clamp:2 !important; font-size:9px !important; line-height:1.4 !important; }
 .card .details .mini-button { min-height:34px !important; }
-@media (max-width:1099px) { .grid.kalu-carousel-track > .card { flex-basis:170px !important; width:170px !important; min-width:170px !important; } }
+
 @media (max-width:760px) {
   .nav { grid-template-columns:72px minmax(0,1fr) 40px !important; gap:8px !important; padding-inline:10px !important; }
   .nav > a:first-child img { width:68px !important; max-height:43px !important; }
@@ -2308,7 +2308,6 @@ main { color:var(--kalu-ink); }
   .site-search-box > .search-icon svg { width:18px !important; height:18px !important; }
   .site-search-box input { height:38px !important; font-size:11px !important; }
   .grid.kalu-carousel-track { gap:10px !important; padding:7px 4px 16px !important; }
-  .grid.kalu-carousel-track > .card { flex-basis:clamp(144px,43vw,166px) !important; width:clamp(144px,43vw,166px) !important; min-width:clamp(144px,43vw,166px) !important; }
   .kalu-carousel-arrows button { width:34px; height:34px; }
   .kalu-carousel-controls { font-size:11px; }
   .card .image-wrap::after { width:38px !important; height:27px !important; }
@@ -2330,44 +2329,15 @@ main { color:var(--kalu-ink); }
     display:block !important; flex:none !important; width:100% !important; margin:0 !important; padding:0 !important;
     color:#344264 !important; text-align:left !important; font-size:10px !important; line-height:1.35 !important; letter-spacing:.07em !important;
   }
-  .section-filter-list {
-    display:flex !important; flex:0 1 auto !important; flex-direction:row !important; flex-wrap:nowrap !important;
-    align-items:center !important; justify-content:flex-start !important; gap:8px !important;
-    box-sizing:border-box !important; width:100% !important; min-width:0 !important; max-width:100% !important; height:auto !important; max-height:none !important;
-    margin:0 !important; padding:1px 2px 9px !important; overflow-x:auto !important; overflow-y:hidden !important;
-    white-space:nowrap !important; touch-action:pan-x !important; -webkit-overflow-scrolling:touch !important;
-    scroll-snap-type:x proximity !important; scrollbar-width:thin !important; scrollbar-color:rgba(47,138,80,.45) transparent !important;
-  }
-  .section-filter-list::-webkit-scrollbar { display:block !important; height:4px !important; }
-  .section-filter-list::-webkit-scrollbar-thumb { background:rgba(47,138,80,.45) !important; border-radius:99px !important; }
-  .section-filter-list button, .section-filter-pill {
-    display:inline-flex !important; flex:0 0 auto !important; flex-direction:row !important; flex-wrap:nowrap !important;
-    align-items:center !important; justify-content:center !important; gap:7px !important;
-    box-sizing:border-box !important; width:max-content !important; min-width:0 !important; max-width:calc(100vw - 58px) !important; overflow:hidden !important; text-overflow:ellipsis !important;
-    height:42px !important; min-height:42px !important; margin:0 !important; padding:0 12px !important;
-    color:#344264 !important; background:#fff !important; border:1px solid rgba(25,38,75,.15) !important; border-radius:999px !important;
-    font-size:11px !important; line-height:1.2 !important; white-space:nowrap !important; scroll-snap-align:start !important;
-  }
-  .section-filter-list button[aria-selected="true"], .section-filter-list button.is-active {
-    color:#19264b !important; background:#ff9a35 !important; border-color:#ff9a35 !important; box-shadow:0 4px 12px rgba(238,116,24,.2) !important;
-  }
-  .section-filter-list .acc-tile-ico { display:inline-flex !important; flex:0 0 auto !important; width:auto !important; font-size:14px !important; }
-  .section-filter-list .acc-tile-name { display:inline-block !important; flex:0 1 auto !important; width:auto !important; max-width:calc(100vw - 118px) !important; overflow:hidden !important; color:inherit !important; text-overflow:ellipsis !important; white-space:nowrap !important; visibility:visible !important; opacity:1 !important; }
   .section-filter-status { display:block !important; flex:none !important; align-self:flex-end !important; margin:0 1px -1px !important; color:#65248f !important; font-size:11px !important; font-weight:800 !important; line-height:1.25 !important; }
   .rental-window-tabs { display:flex !important; flex-wrap:nowrap !important; gap:8px !important; width:100% !important; overflow-x:auto !important; overflow-y:hidden !important; padding:2px 2px 9px !important; -webkit-overflow-scrolling:touch !important; scrollbar-width:thin !important; }
   .rental-window-tabs button { flex:0 0 auto !important; min-height:42px !important; white-space:nowrap !important; }
   .kalu-carousel-controls { margin:12px 0 4px !important; padding:0 4px !important; }
   .kalu-carousel-arrows button { width:36px !important; height:36px !important; }
-  .selection-fab { right:10px !important; bottom:calc(10px + env(safe-area-inset-bottom)) !important; min-height:44px !important; gap:8px !important; padding:0 12px !important; font-size:13px !important; }
   .selection-count { min-width:25px !important; width:25px !important; height:25px !important; font-size:11px !important; }
-  .back-top { right:12px !important; bottom:calc(66px + env(safe-area-inset-bottom)) !important; min-height:36px !important; padding:0 12px !important; font-size:11px !important; box-shadow:0 6px 18px rgba(25,38,75,.18) !important; }
-  main { padding-bottom:132px !important; }
+  main { padding-bottom:100px !important; }
 }
 @media (max-width:380px) {
-  .section-filter { padding:11px !important; }
-  .section-filter-list { gap:6px !important; }
-  .section-filter-list button, .section-filter-pill { height:40px !important; min-height:40px !important; padding-inline:10px !important; font-size:10px !important; }
-  .section-filter-list .acc-tile-name { max-width:calc(100vw - 104px) !important; }
   .kalu-carousel-controls > span { max-width:58vw; }
 }
 
@@ -2440,3 +2410,38 @@ main { color:var(--kalu-ink); }
 .card .details p { font-size:10px !important; }
 .card .details .mini-button { min-height:38px !important; }
 @media (max-width:760px) { .card .details { min-height:142px !important; } .card .details h3 { font-size:13.5px !important; } .card .details p { font-size:10px !important; } }
+/* Accesos móviles y preguntas frecuentes. */
+.mobile-quick-nav { display:none; }
+.kalu-faq { margin:20px auto; padding:clamp(22px,3.5vw,38px); color:#19264b; background:rgba(255,250,243,.97); border:1px solid rgba(25,38,75,.12); border-radius:24px; box-shadow:0 14px 36px rgba(5,29,23,.12); }
+.kalu-faq-heading { max-width:760px; margin:0 auto 22px; text-align:center; }
+.kalu-faq-heading > span { color:#2f8a50; font-size:11px; font-weight:800; letter-spacing:.14em; }
+.kalu-faq-heading h2 { margin:7px 0; color:#19264b; font-size:clamp(25px,3vw,36px); line-height:1.15; }
+.kalu-faq-heading p { margin:0; color:#526078; font-size:14px; }
+.kalu-faq-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.kalu-faq-item { align-self:start; padding:0 16px; color:#19264b; background:rgba(255,255,255,.82); border:1px solid rgba(25,38,75,.12); border-radius:15px; }
+.kalu-faq-item summary { position:relative; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:58px; padding:12px 24px 12px 0; color:#19264b; font-size:14px; font-weight:800; line-height:1.35; cursor:pointer; list-style:none; }
+.kalu-faq-item summary::-webkit-details-marker { display:none; }
+.kalu-faq-item summary::after { content:"+"; position:absolute; right:0; color:#2f8a50; font-size:22px; font-weight:600; }
+.kalu-faq-item[open] summary::after { content:"−"; }
+.kalu-faq-item p { margin:0 0 16px; color:#46536b; font-size:13px; line-height:1.6; }
+.kalu-faq-contacts { display:grid; gap:8px; padding:0 0 15px; }
+.kalu-faq-contacts a { display:inline-flex; justify-content:center; padding:10px 12px; color:#fff; background:#2f8a50; border-radius:10px; font-size:12px; font-weight:800; }
+@media (max-width:760px) {
+  .mobile-quick-nav { position:fixed; right:0; bottom:calc(8px + env(safe-area-inset-bottom)); left:0; z-index:1450; display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,.9fr) minmax(0,1.25fr); gap:5px; width:min(calc(100vw - 14px),430px); min-height:66px; margin-inline:auto; padding:6px; background:rgba(255,250,243,.96); border:1px solid rgba(25,38,75,.14); border-radius:19px; box-shadow:0 8px 28px rgba(10,20,38,.22); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); }
+  .mobile-quick-action { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:3px; min-width:0; min-height:52px; padding:5px 3px; color:#19264b; background:transparent; border:0; border-radius:13px; font-size:10px; font-weight:800; line-height:1.1; cursor:pointer; }
+  .mobile-quick-action > svg { width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .mobile-quick-action:focus-visible { outline:3px solid rgba(47,138,80,.42); outline-offset:1px; }
+  .mobile-quick-nav .mobile-quick-order, .mobile-quick-nav .selection-fab { position:static !important; display:flex !important; flex-direction:row; gap:6px; width:100%; min-width:0; max-width:none; min-height:52px; margin:0; padding:0 8px; color:#19264b; background:#ff9a35; border:0; border-radius:13px; box-shadow:none; font-size:11px; white-space:nowrap; }
+  .mobile-quick-nav .mobile-quick-order > svg { width:18px; height:18px; flex:none; }
+  .mobile-quick-nav .selection-count { flex:none; min-width:22px; width:22px; height:22px; margin:0; font-size:10px; }
+  .back-top { display:none !important; }
+  .kalu-faq { margin:16px 0; padding:20px 14px; border-radius:19px; }
+  .kalu-faq-heading { margin-bottom:16px; text-align:left; }
+  .kalu-faq-heading h2 { font-size:27px; }
+  .kalu-faq-heading p { font-size:13px; }
+  .kalu-faq-list { grid-template-columns:1fr; gap:8px; }
+  .kalu-faq-item { padding:0 12px; border-radius:13px; }
+  .kalu-faq-item summary { min-height:53px; font-size:13px; }
+  .kalu-faq-item p { font-size:12px; }
+  main { padding-bottom:100px !important; }
+}
