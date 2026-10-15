@@ -2315,3 +2315,59 @@ main { color:var(--kalu-ink); }
   .card .image-wrap .code { top:6px !important; left:6px !important; padding:4px 5px !important; font-size:7px !important; }
 }
 @media (prefers-reduced-motion: reduce) { .kalu-carousel-arrows button { transition:none !important; } }
+
+/* Ajuste prioritario para móviles: filtros compactos, categorías legibles y controles sin choques. */
+@media (max-width:760px) {
+  .section-filter {
+    position:relative !important; top:auto !important; z-index:20 !important;
+    display:flex !important; flex-direction:column !important; align-items:stretch !important; justify-content:flex-start !important;
+    box-sizing:border-box !important; width:100% !important; min-width:0 !important; height:auto !important; min-height:0 !important; max-height:none !important;
+    gap:9px !important; margin:14px 0 18px !important; padding:13px !important; overflow:hidden !important;
+    background:#fff !important; border:1px solid rgba(25,38,75,.13) !important; border-radius:18px !important;
+    box-shadow:0 8px 22px rgba(25,38,75,.08) !important;
+  }
+  .section-filter-label {
+    display:block !important; flex:none !important; width:100% !important; margin:0 !important; padding:0 !important;
+    color:#344264 !important; text-align:left !important; font-size:10px !important; line-height:1.35 !important; letter-spacing:.07em !important;
+  }
+  .section-filter-list {
+    display:flex !important; flex:0 1 auto !important; flex-direction:row !important; flex-wrap:nowrap !important;
+    align-items:center !important; justify-content:flex-start !important; gap:8px !important;
+    box-sizing:border-box !important; width:100% !important; min-width:0 !important; max-width:100% !important; height:auto !important; max-height:none !important;
+    margin:0 !important; padding:1px 2px 9px !important; overflow-x:auto !important; overflow-y:hidden !important;
+    white-space:nowrap !important; touch-action:pan-x !important; -webkit-overflow-scrolling:touch !important;
+    scroll-snap-type:x proximity !important; scrollbar-width:thin !important; scrollbar-color:rgba(47,138,80,.45) transparent !important;
+  }
+  .section-filter-list::-webkit-scrollbar { display:block !important; height:4px !important; }
+  .section-filter-list::-webkit-scrollbar-thumb { background:rgba(47,138,80,.45) !important; border-radius:99px !important; }
+  .section-filter-list button, .section-filter-pill {
+    display:inline-flex !important; flex:0 0 auto !important; flex-direction:row !important; flex-wrap:nowrap !important;
+    align-items:center !important; justify-content:center !important; gap:7px !important;
+    box-sizing:border-box !important; width:max-content !important; min-width:0 !important; max-width:calc(100vw - 58px) !important; overflow:hidden !important; text-overflow:ellipsis !important;
+    height:42px !important; min-height:42px !important; margin:0 !important; padding:0 12px !important;
+    color:#344264 !important; background:#fff !important; border:1px solid rgba(25,38,75,.15) !important; border-radius:999px !important;
+    font-size:11px !important; line-height:1.2 !important; white-space:nowrap !important; scroll-snap-align:start !important;
+  }
+  .section-filter-list button[aria-selected="true"], .section-filter-list button.is-active {
+    color:#19264b !important; background:#ff9a35 !important; border-color:#ff9a35 !important; box-shadow:0 4px 12px rgba(238,116,24,.2) !important;
+  }
+  .section-filter-list .acc-tile-ico { display:inline-flex !important; flex:0 0 auto !important; width:auto !important; font-size:14px !important; }
+  .section-filter-list .acc-tile-name { display:inline-block !important; flex:0 1 auto !important; width:auto !important; max-width:calc(100vw - 118px) !important; overflow:hidden !important; color:inherit !important; text-overflow:ellipsis !important; white-space:nowrap !important; visibility:visible !important; opacity:1 !important; }
+  .section-filter-status { display:block !important; flex:none !important; align-self:flex-end !important; margin:0 1px -1px !important; color:#65248f !important; font-size:11px !important; font-weight:800 !important; line-height:1.25 !important; }
+  .rental-window-tabs { display:flex !important; flex-wrap:nowrap !important; gap:8px !important; width:100% !important; overflow-x:auto !important; overflow-y:hidden !important; padding:2px 2px 9px !important; -webkit-overflow-scrolling:touch !important; scrollbar-width:thin !important; }
+  .rental-window-tabs button { flex:0 0 auto !important; min-height:42px !important; white-space:nowrap !important; }
+  .kalu-carousel-controls { margin:12px 0 4px !important; padding:0 4px !important; }
+  .kalu-carousel-arrows button { width:36px !important; height:36px !important; }
+  .selection-fab { right:10px !important; bottom:calc(10px + env(safe-area-inset-bottom)) !important; min-height:44px !important; gap:8px !important; padding:0 12px !important; font-size:13px !important; }
+  .selection-count { min-width:25px !important; width:25px !important; height:25px !important; font-size:11px !important; }
+  .back-top { right:12px !important; bottom:calc(66px + env(safe-area-inset-bottom)) !important; min-height:36px !important; padding:0 12px !important; font-size:11px !important; box-shadow:0 6px 18px rgba(25,38,75,.18) !important; }
+  main { padding-bottom:132px !important; }
+}
+@media (max-width:380px) {
+  .section-filter { padding:11px !important; }
+  .section-filter-list { gap:6px !important; }
+  .section-filter-list button, .section-filter-pill { height:40px !important; min-height:40px !important; padding-inline:10px !important; font-size:10px !important; }
+  .section-filter-list .acc-tile-name { max-width:calc(100vw - 104px) !important; }
+  .kalu-carousel-controls > span { max-width:58vw; }
+}
+
