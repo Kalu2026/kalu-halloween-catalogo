@@ -2371,3 +2371,42 @@ main { color:var(--kalu-ink); }
   .kalu-carousel-controls > span { max-width:58vw; }
 }
 
+
+/* Categorías móviles: cuadrícula compacta, con todas las opciones visibles. */
+@media (max-width:760px) {
+  .section-filter { gap:8px !important; padding:12px !important; overflow:visible !important; }
+  .section-filter-list {
+    display:grid !important; grid-template-columns:repeat(4,minmax(0,1fr)) !important; grid-auto-flow:row !important;
+    grid-auto-rows:52px !important; align-items:stretch !important; justify-content:stretch !important;
+    box-sizing:border-box !important; width:100% !important; min-width:0 !important; max-width:100% !important;
+    height:auto !important; max-height:none !important; margin:0 !important; padding:0 !important; gap:6px !important;
+    overflow:visible !important; white-space:normal !important; touch-action:auto !important; scroll-snap-type:none !important;
+  }
+  .section-filter-list::-webkit-scrollbar { display:none !important; }
+  .section-filter-list button, .section-filter-pill {
+    display:flex !important; flex:initial !important; flex-direction:column !important; flex-wrap:nowrap !important;
+    align-items:center !important; justify-content:center !important; gap:2px !important;
+    box-sizing:border-box !important; width:100% !important; min-width:0 !important; max-width:100% !important;
+    height:52px !important; min-height:52px !important; margin:0 !important; padding:3px 2px !important;
+    overflow:hidden !important; color:#344264 !important; background:#fff !important;
+    border:1px solid rgba(25,38,75,.14) !important; border-radius:11px !important;
+    font-size:9px !important; line-height:1.1 !important; text-align:center !important; white-space:normal !important;
+  }
+  .section-filter-list button[aria-selected="true"], .section-filter-list button.is-active {
+    color:#19264b !important; background:#ff9a35 !important; border-color:#ff9a35 !important;
+    box-shadow:0 3px 9px rgba(238,116,24,.2) !important;
+  }
+  .section-filter-list .acc-tile-ico { display:block !important; flex:none !important; width:auto !important; font-size:13px !important; line-height:1 !important; }
+  .section-filter-list .acc-tile-name {
+    display:-webkit-box !important; flex:none !important; width:100% !important; max-width:100% !important;
+    overflow:hidden !important; color:inherit !important; font-size:8px !important; line-height:1.05 !important;
+    text-align:center !important; text-overflow:clip !important; white-space:normal !important;
+    -webkit-box-orient:vertical !important; -webkit-line-clamp:2 !important;
+  }
+  .section-filter-status { margin:0 !important; align-self:flex-end !important; }
+}
+@media (max-width:380px) {
+  .section-filter-list { gap:5px !important; grid-auto-rows:50px !important; }
+  .section-filter-list button, .section-filter-pill { height:50px !important; min-height:50px !important; }
+  .section-filter-list .acc-tile-name { font-size:7.5px !important; }
+}
