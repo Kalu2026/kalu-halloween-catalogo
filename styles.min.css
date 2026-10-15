@@ -2087,3 +2087,14 @@ footer>img{display:block;width:min(190px,60vw)!important;height:auto!important;m
  .kalu-product-wa,.kalu-product-wa-alt,.kalu-product-add{min-height:42px;padding:8px 10px;border-radius:12px;font-size:.75rem;line-height:1.25}
  .kalu-product-close{z-index:10}
 }
+/* Navegación por pestañas de categoría sobre una cuadrícula mixta */
+.shop-category-tabs{display:flex;align-items:stretch;gap:8px;overflow-x:auto;overflow-y:hidden;padding:3px 2px 12px;scrollbar-width:thin;scrollbar-color:rgba(255,193,141,.6) rgba(255,243,228,.08);overscroll-behavior-x:contain}
+.shop-category-tab{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:space-between;gap:12px;min-width:126px;min-height:46px;padding:8px 12px;border:1px solid rgba(255,243,228,.22);border-radius:13px;background:rgba(255,243,228,.08);color:#fff3e4;font:700 .82rem "DM Sans",Arial,sans-serif;text-align:left;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.shop-category-tab:hover{border-color:#ffc18d;background:rgba(255,193,141,.12);transform:translateY(-1px)}
+.shop-category-tab.is-active{border-color:#f0924c;background:#f0924c;color:#351441;box-shadow:0 5px 14px rgba(21,10,29,.16)}
+.shop-category-name{max-width:190px;white-space:nowrap}
+.shop-category-count{display:grid;min-width:23px;height:23px;place-items:center;padding:0 5px;border-radius:8px;background:rgba(255,243,228,.14);font-size:.68rem;font-weight:800}
+.shop-category-tab.is-active .shop-category-count{background:rgba(53,20,65,.12);color:#351441}
+.shop-select-filters{grid-template-columns:minmax(0,1fr) auto}
+.shop-select-filters label[hidden]{display:none!important}
+@media(max-width:720px){.shop-category-tabs{gap:7px;padding-bottom:10px}.shop-category-tab{min-width:112px;min-height:42px;padding:7px 10px;border-radius:12px;font-size:.75rem}.shop-category-count{min-width:21px;height:21px}.shop-select-filters{grid-template-columns:minmax(0,1fr) auto}}
