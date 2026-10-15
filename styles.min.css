@@ -1738,3 +1738,52 @@ footer p {
     padding: 16px;
   }
 }
+/* Kalú storefront refresh: typography, hierarchy, navigation and responsive category discovery */
+:root{--ink:#241b2b;--paper:#fffaf4;--surface:#fff;--line-soft:rgba(83,32,100,.14);--shadow-soft:0 16px 44px rgba(35,20,43,.1)}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:"DM Sans",Montserrat,Arial,sans-serif;color:var(--ink)}
+h1,h2,h3,.business-kicker,.season-kicker,.kdoor-group-head,.nav-mobile-group-title{font-family:Manrope,"Baloo 2",sans-serif;letter-spacing:-.025em}
+.nav{grid-template-columns:auto minmax(0,1fr) minmax(220px,350px) auto;gap:clamp(10px,1.6vw,22px);padding-inline:clamp(14px,3vw,36px);background:rgba(28,17,35,.96);box-shadow:0 10px 30px rgba(25,12,34,.2)}
+.nav-desktop-links{display:flex!important;align-items:center;justify-content:center;gap:clamp(12px,1.8vw,26px);white-space:nowrap}
+.nav-desktop-links a{color:#fff8f0;text-decoration:none;font-size:.83rem;font-weight:700;transition:color .18s ease}
+.nav-desktop-links a:hover,.nav-desktop-links a:focus-visible{color:#ffc184}
+.nav-toggle{border-radius:13px}
+.site-search{max-width:none}
+.site-search-box{height:44px;background:#fff;border:1px solid rgba(255,255,255,.25)}
+.season-hero{margin-top:20px;padding:clamp(30px,5vw,62px);border-radius:30px;box-shadow:0 24px 70px rgba(36,18,48,.16)}
+.season-hero-copy>p{max-width:58ch;line-height:1.7;font-size:clamp(1rem,1.2vw,1.12rem)}
+.season-hero-copy h2{max-width:13ch;line-height:1.02;letter-spacing:-.045em}
+.hero-route-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.hero-route-links a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid rgba(255,255,255,.32);border-radius:999px;color:#fff;text-decoration:none;font-size:.85rem;font-weight:700;background:rgba(255,255,255,.1);transition:background .18s ease,transform .18s ease}
+.hero-route-links a span{color:#ffc184}
+.hero-route-links a:hover,.hero-route-links a:focus-visible{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.kalu-business-doors{padding-block:clamp(44px,6vw,76px)}
+.kalu-business-head{max-width:760px;margin-inline:auto;margin-bottom:28px;text-align:center}
+.kalu-business-head>p{font-size:.76rem!important;letter-spacing:.13em;text-transform:uppercase;font-weight:800}
+.kalu-business-head h2{font-size:clamp(2rem,4vw,3.1rem)!important;line-height:1.04!important;letter-spacing:-.045em}
+.kalu-business-head>span{max-width:58ch;margin:12px auto 0;line-height:1.65}
+.kdoors{gap:18px}
+#categorias .kdoor-group{padding:18px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(255,255,255,.045)}
+#categorias .kdoor-group-head{font-size:.78rem;letter-spacing:.12em}
+#categorias .kdoor{overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#fff;color:#241b2b;box-shadow:0 8px 22px rgba(0,0,0,.12);transition:transform .2s ease,box-shadow .2s ease}
+#categorias .kdoor:hover,#categorias .kdoor:focus-visible{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.2)}
+#categorias .kdoor-media img{transition:transform .35s ease}
+#categorias .kdoor:hover .kdoor-media img{transform:scale(1.04)}
+.business-line{scroll-margin-top:88px}
+.business-line-head h2,.folk-line-intro h2{font-family:Manrope,"Baloo 2",sans-serif;letter-spacing:-.04em;line-height:1.08}
+.section-heading{align-items:flex-end;margin-bottom:18px}
+.section-heading p{font-family:Manrope,"Baloo 2",sans-serif;letter-spacing:-.02em}
+.section-heading h2{font-family:Manrope,"Baloo 2",sans-serif;line-height:1.3}
+.section-heading>span{line-height:1.65}
+.section-filter{margin-block:16px 20px}
+.section-filter-pill{transition:transform .18s ease,box-shadow .18s ease}
+.section-filter-pill:hover{transform:translateY(-2px)}
+.card{border-radius:18px;overflow:hidden;box-shadow:0 8px 26px rgba(29,15,37,.08);transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(29,15,37,.14)}
+.card h3{font-family:Manrope,"Baloo 2",sans-serif;line-height:1.3;letter-spacing:-.02em}
+.contact{border-radius:24px}
+footer{line-height:1.7}
+:focus-visible{outline:3px solid #f08b35;outline-offset:3px}
+@media(max-width:1080px){.nav{grid-template-columns:auto minmax(0,1fr) auto}.nav-desktop-links{display:none!important}}
+@media(max-width:720px){html{scroll-padding-top:72px}.nav{height:auto;min-height:64px;padding:8px 12px;gap:9px}.nav>.site-search{grid-column:2;grid-row:1}.nav-toggle{grid-column:3;grid-row:1}.nav> a:first-child img{width:74px;height:48px}.site-search-box{height:40px;padding-inline:11px}.season-hero{margin:12px 12px 0;padding:28px 20px;border-radius:23px}.season-hero-copy h2{max-width:15ch;font-size:clamp(2.2rem,10vw,3.2rem)}.season-hero-copy>p{font-size:.98rem}.hero-route-links{gap:7px;margin-top:18px}.hero-route-links a{padding:8px 11px;font-size:.78rem}.kalu-business-head{padding-inline:16px}.kalu-business-doors{padding-block:42px}.kdoors{gap:14px}#categorias .kdoor-group{padding:14px;border-radius:18px}.section-heading{gap:8px}.section-heading>span{font-size:.88rem}.business-line{scroll-margin-top:74px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
