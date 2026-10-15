@@ -2410,3 +2410,33 @@ main { color:var(--kalu-ink); }
   .section-filter-list button, .section-filter-pill { height:50px !important; min-height:50px !important; }
   .section-filter-list .acc-tile-name { font-size:7.5px !important; }
 }
+/* Más espacio útil y componentes de catálogo más cómodos. */
+.shell { width:min(calc(100% - 24px),1760px) !important; max-width:1760px !important; margin-inline:auto !important; }
+.shell > main, .shell > footer { width:100% !important; max-width:none !important; margin-inline:0 !important; }
+.grid.kalu-carousel-track > .card, .mask-grid.kalu-carousel-track > .card, .accessory-grid.kalu-carousel-track > .card, .folk-grid.kalu-carousel-track > .card {
+  flex:0 0 clamp(198px,17vw,236px) !important; width:clamp(198px,17vw,236px) !important; min-width:clamp(198px,17vw,236px) !important;
+}
+@media (min-width:761px) and (max-width:1099px) {
+  .grid.kalu-carousel-track > .card, .mask-grid.kalu-carousel-track > .card, .accessory-grid.kalu-carousel-track > .card, .folk-grid.kalu-carousel-track > .card {
+    flex-basis:205px !important; width:205px !important; min-width:205px !important;
+  }
+}
+@media (max-width:760px) {
+  .shell { width:calc(100% - 10px) !important; }
+  .kalu-doors-section, .business-line, .catalog, .accessory-catalog, .rental-catalog, .folk-catalog, .collection-band, .contact { padding-inline:8px !important; }
+  .grid.kalu-carousel-track, .mask-grid.kalu-carousel-track, .accessory-grid.kalu-carousel-track, .folk-grid.kalu-carousel-track { gap:12px !important; padding-inline:3px !important; }
+  .grid.kalu-carousel-track > .card, .mask-grid.kalu-carousel-track > .card, .accessory-grid.kalu-carousel-track > .card, .folk-grid.kalu-carousel-track > .card {
+    flex-basis:clamp(210px,72vw,286px) !important; width:clamp(210px,72vw,286px) !important; min-width:clamp(210px,72vw,286px) !important;
+  }
+  .section-filter { padding:12px 9px !important; }
+  .section-filter-list { grid-auto-rows:58px !important; gap:5px !important; }
+  .section-filter-list button, .section-filter-list .section-filter-pill { height:58px !important; min-height:58px !important; padding:4px 2px !important; font-size:9.5px !important; }
+  .section-filter-list .acc-tile-ico { font-size:15px !important; }
+  .section-filter-list .acc-tile-name { font-size:9px !important; line-height:1.12 !important; }
+  .section-filter-label { font-size:11px !important; }
+}
+.card .details { min-height:138px !important; padding:10px !important; gap:8px !important; }
+.card .details h3 { min-height:39px !important; padding:9px !important; font-size:14px !important; }
+.card .details p { font-size:10px !important; }
+.card .details .mini-button { min-height:38px !important; }
+@media (max-width:760px) { .card .details { min-height:142px !important; } .card .details h3 { font-size:13.5px !important; } .card .details p { font-size:10px !important; } }
