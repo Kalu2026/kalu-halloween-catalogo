@@ -468,59 +468,6 @@ img { max-width: 100%; display: block; }
   object-fit: contain;
 }
 
-/* 5. MODELO 3D INTERACTIVO */
-.halloween-art {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.halloween-3d-stage {
-  position: relative;
-  width: 100%;
-  max-width: 320px;
-  height: clamp(200px, 25vw, 290px);
-  border-radius: 22px;
-  background: radial-gradient(circle, rgba(255, 189, 24, 0.18), rgba(0, 0, 0, 0.15) 70%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: grab;
-  user-select: none;
-}
-.halloween-3d-model {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.4s ease;
-}
-.halloween-3d-stage.is-popping .halloween-3d-model {
-  transform: translateY(-14px) scale(1.05);
-}
-.halloween-3d-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-.halloween-3d-stage.is-video .halloween-3d-video { opacity: 1; }
-.halloween-3d-stage.is-video .halloween-3d-model { opacity: 0; }
-.halloween-3d-badge {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: rgba(20, 12, 28, 0.75);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-}
-.halloween-particles { display: none; }
-
 /* 6. PUERTAS DE NAVEGACION RAPIDA (COMPRA / ALQUILER / NAVIDAD) */
 .kalu-doors-section {
   max-width: 1280px;
@@ -1697,9 +1644,7 @@ footer p {
     margin: 10px 10px 0;
     gap: 16px;
   }
-  .halloween-3d-stage {
-    height: 210px;
-  }
+
   #categorias .kdoors {
     grid-template-columns: 1fr;
   }
@@ -1860,8 +1805,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-social-link { display: grid; place-items: center; width: 38px; height: 38px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); border-radius: 50%; }
 .hero-social-link img { width: 20px; height: 20px; object-fit: contain; }
 .season-hero-art { position: relative; z-index: 1; min-width: 0; }
-.halloween-glow, .halloween-particles, .halloween-3d-badge { opacity: .42; }
-.halloween-3d-stage { min-height: 320px; }
+
+
 
 /* Secciones de categorías y temporada */
 section { scroll-margin-top: 115px; }
@@ -1990,8 +1935,8 @@ footer { padding: 34px 0 45px; color: var(--kalu-ink-soft); border-top: 1px soli
   .season-actions { margin-top: 22px; }
   .season-button { min-height: 44px; padding-inline: 16px; font-size: 12px; }
   .hero-social-block { margin-top: 20px; }
-  .season-hero-art { min-height: 210px; margin-top: 4px; }
-  .halloween-3d-stage { min-height: 210px; }
+
+
   .kalu-doors-section, .business-line, .catalog, .accessory-catalog, .rental-catalog, .folk-catalog, .collection-band, .contact { margin-block: 18px; padding: 20px 14px; border-radius: 20px; }
   .kalu-business-head, .business-line-head, .section-heading { margin-bottom: 20px; text-align: left; }
   .kalu-business-head h2, .business-line-head h2, .section-heading h2, .folk-catalog h2, .rental-catalog h2 { font-size: clamp(27px,8vw,36px); }
@@ -2444,4 +2389,155 @@ main { color:var(--kalu-ink); }
   .kalu-faq-item summary { min-height:53px; font-size:13px; }
   .kalu-faq-item p { font-size:12px; }
   main { padding-bottom:100px !important; }
+}
+/* Hero centrado: el logotipo de Kalú es el foco principal. */
+.season-hero.halloween-season-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-height: clamp(470px, 68vh, 680px);
+  padding: clamp(42px, 7vw, 82px) 24px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(255, 154, 53, .2), transparent 37%),
+    radial-gradient(circle at 18% 82%, rgba(50, 134, 83, .14), transparent 35%),
+    linear-gradient(125deg, #17254b 0%, #26376a 58%, #4e277a 100%);
+}
+.season-hero.halloween-season-hero .season-hero-copy {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1060px;
+  text-align: center;
+}
+.season-hero.halloween-season-hero .season-brand-logo {
+  --logo-height: clamp(74px, 14vw, 180px);
+  --logo-overlap: clamp(-48px, -3.5vw, -19px);
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: none;
+  width: max-content;
+  max-width: 100%;
+  height: var(--logo-height);
+  margin: 0 0 clamp(22px, 3.5vw, 42px);
+  transform: none;
+  transform-origin: center center;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  appearance: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.season-hero.halloween-season-hero .season-brand-logo:focus-visible {
+  outline: 3px solid rgba(255, 215, 118, .95);
+  outline-offset: 10px;
+}
+.season-hero.halloween-season-hero .season-brand-logo .kl-l {
+  flex: none;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, .28));
+}
+.season-hero.halloween-season-hero .season-brand-logo .kl-a { margin-left: var(--logo-overlap); }
+.season-hero.halloween-season-hero .season-brand-logo .kl-l-new {
+  height: 86%;
+  margin-left: clamp(-32px, -2.3vw, -14px);
+}
+.season-hero.halloween-season-hero .season-brand-logo .kl-u { margin-left: clamp(-40px, -2.9vw, -16px); }
+.season-hero.halloween-season-hero .season-brand-logo::before,
+.season-hero.halloween-season-hero .season-brand-logo::after {
+  position: absolute;
+  z-index: 2;
+  color: #ffdf83;
+  font-size: clamp(19px, 2.6vw, 30px);
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 189, 24, .95), 0 0 24px rgba(255, 255, 255, .6);
+  opacity: 0;
+  pointer-events: none;
+}
+.season-hero.halloween-season-hero .season-brand-logo::before {
+  content: "✦";
+  top: 3%;
+  left: 12%;
+}
+.season-hero.halloween-season-hero .season-brand-logo::after {
+  content: "✧";
+  top: 20%;
+  right: 10%;
+}
+.season-hero.halloween-season-hero .season-brand-logo.is-celebrating .kl-l {
+  animation: kalu-logo-pop .82s cubic-bezier(.2, .8, .25, 1.15) both;
+}
+.season-hero.halloween-season-hero .season-brand-logo.is-celebrating .kl-l:nth-child(1) { animation-delay: 0ms; }
+.season-hero.halloween-season-hero .season-brand-logo.is-celebrating .kl-l:nth-child(2) { animation-delay: 75ms; }
+.season-hero.halloween-season-hero .season-brand-logo.is-celebrating .kl-l:nth-child(3) { animation-delay: 150ms; }
+.season-hero.halloween-season-hero .season-brand-logo.is-celebrating .kl-l:nth-child(4) { animation-delay: 225ms; }
+.season-hero.halloween-season-hero .season-brand-logo.is-celebrating::before {
+  animation: kalu-logo-sparkle .85s ease-out both;
+}
+.season-hero.halloween-season-hero .season-brand-logo.is-celebrating::after {
+  animation: kalu-logo-sparkle .85s .12s ease-out both;
+}
+@keyframes kalu-logo-pop {
+  0%, 100% { transform: translateY(0) scale(1) rotate(0); filter: drop-shadow(0 8px 15px rgba(0, 0, 0, .28)); }
+  28% { transform: translateY(-20px) scale(1.08) rotate(-2deg); filter: drop-shadow(0 0 16px rgba(255, 189, 24, .95)) drop-shadow(0 0 30px rgba(255, 255, 255, .62)); }
+  52% { transform: translateY(2px) scale(.98) rotate(1deg); }
+  72% { transform: translateY(-7px) scale(1.025) rotate(0); filter: drop-shadow(0 0 13px rgba(255, 189, 24, .8)) drop-shadow(0 7px 14px rgba(0, 0, 0, .2)); }
+}
+@keyframes kalu-logo-sparkle {
+  0% { transform: scale(.2) rotate(-30deg); opacity: 0; }
+  35% { transform: scale(1.25) rotate(18deg); opacity: 1; }
+  100% { transform: translateY(-20px) scale(.45) rotate(68deg); opacity: 0; }
+}
+.season-hero.halloween-season-hero h1 {
+  max-width: 940px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(34px, 5.2vw, 68px);
+  letter-spacing: -.06em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.season-hero.halloween-season-hero .season-actions {
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: clamp(25px, 3.8vw, 42px);
+}
+@media (max-width: 760px) {
+  .season-hero.halloween-season-hero {
+    min-height: clamp(440px, 64vh, 590px);
+    margin: 14px 0 28px;
+    padding: 42px 18px;
+    border-radius: 25px;
+  }
+  .season-hero.halloween-season-hero .season-brand-logo { --logo-height: clamp(68px, 18vw, 104px); }
+  .season-hero.halloween-season-hero h1 {
+    max-width: 600px;
+    font-size: clamp(34px, 9vw, 58px);
+  }
+  .season-hero.halloween-season-hero .season-actions {
+    width: 100%;
+    margin-top: 28px;
+    gap: 10px;
+  }
+  .season-hero.halloween-season-hero .season-button { min-height: 46px; padding-inline: 15px; }
+}
+@media (max-width: 400px) {
+  .season-hero.halloween-season-hero .season-actions { flex-direction: column; }
+  .season-hero.halloween-season-hero .season-button { width: min(100%, 260px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .season-hero.halloween-season-hero .season-brand-logo .kl-l,
+  .season-hero.halloween-season-hero .season-brand-logo::before,
+  .season-hero.halloween-season-hero .season-brand-logo::after { animation: none !important; }
 }
