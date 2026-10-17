@@ -2541,3 +2541,37 @@ main { color:var(--kalu-ink); }
   .season-hero.halloween-season-hero .season-brand-logo::before,
   .season-hero.halloween-season-hero .season-brand-logo::after { animation: none !important; }
 }
+/* Logo ampliado y destellos sutiles que solo se animan mientras está visible. */
+.season-hero.halloween-season-hero .season-brand-logo { --logo-height: clamp(90px, 18vw, 230px); }
+@media (max-width: 760px) {
+  .season-hero.halloween-season-hero .season-brand-logo { --logo-height: clamp(82px, 23vw, 132px); }
+}
+@media (max-width: 400px) {
+  .season-hero.halloween-season-hero .season-brand-logo { --logo-height: clamp(72px, 20.5vw, 82px); }
+}
+.season-hero.halloween-season-hero .season-brand-logo .kalu-logo-sparkle {
+  position: absolute;
+  z-index: 3;
+  color: #ffe79b;
+  font-size: clamp(14px, 1.8vw, 21px);
+  line-height: 1;
+  text-shadow: 0 0 9px rgba(255, 215, 118, .95), 0 0 20px rgba(255, 255, 255, .68);
+  opacity: 0;
+  pointer-events: none;
+}
+.season-hero.halloween-season-hero .season-brand-logo .sparkle-a { top: 7%; left: 8%; }
+.season-hero.halloween-season-hero .season-brand-logo .sparkle-b { top: 21%; right: 5%; }
+.season-hero.halloween-season-hero .season-brand-logo .sparkle-c { bottom: 15%; left: 29%; }
+.season-hero.halloween-season-hero .season-brand-logo .sparkle-d { right: 25%; bottom: 4%; }
+.season-hero.halloween-season-hero .season-brand-logo.is-in-view .sparkle-a { animation: kalu-logo-twinkle 5s ease-in-out infinite; }
+.season-hero.halloween-season-hero .season-brand-logo.is-in-view .sparkle-b { animation: kalu-logo-twinkle 5s 1.1s ease-in-out infinite; }
+.season-hero.halloween-season-hero .season-brand-logo.is-in-view .sparkle-c { animation: kalu-logo-twinkle 5s 2.2s ease-in-out infinite; }
+.season-hero.halloween-season-hero .season-brand-logo.is-in-view .sparkle-d { animation: kalu-logo-twinkle 5s 3.3s ease-in-out infinite; }
+@keyframes kalu-logo-twinkle {
+  0%, 100% { transform: scale(.25) rotate(-25deg); opacity: 0; }
+  12%, 25% { transform: scale(1.15) rotate(18deg); opacity: 1; }
+  40% { transform: scale(.55) rotate(60deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .season-hero.halloween-season-hero .season-brand-logo .kalu-logo-sparkle { animation: none !important; }
+}
