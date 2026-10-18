@@ -2575,3 +2575,99 @@ main { color:var(--kalu-ink); }
 @media (prefers-reduced-motion: reduce) {
   .season-hero.halloween-season-hero .season-brand-logo .kalu-logo-sparkle { animation: none !important; }
 }
+/* Panel de navegación fijo sin desplazamiento del contenido al abrir. */
+#nav-links {
+  position: fixed !important;
+  inset: calc(70px + env(safe-area-inset-top)) auto auto 50% !important;
+  transform: translateX(-50%) !important;
+  display: none !important;
+  grid-template-rows: none !important;
+  transition: none !important;
+  width: min(calc(100vw - 24px), 720px) !important;
+  max-height: min(76vh, 650px) !important;
+  overflow: auto !important;
+  margin: 0 !important;
+  padding: 14px !important;
+}
+#nav-links.open { display: block !important; }
+@media (max-width: 1099px) {
+  #nav-links { top: calc(70px + env(safe-area-inset-top)) !important; }
+  #nav-links .nav-mobile-menu { min-height: 0 !important; overflow: visible !important; }
+}
+@media (max-width: 760px) {
+  #nav-links { width: min(calc(100vw - 20px), 520px) !important; max-height: min(78vh, 640px) !important; }
+  #nav-links .nav-mobile-menu { grid-template-columns: 1fr !important; }
+  #nav-links .nav-mobile-group { width: 100% !important; }
+}
+
+/* Redes queda fija justo encima del acceso Mi pedido. */
+.floating-social { display: none; }
+@media (max-width: 760px) {
+  .floating-social {
+    position: fixed;
+    right: max(14px, calc((100vw - 430px) / 2 + 8px));
+    bottom: calc(80px + env(safe-area-inset-bottom));
+    z-index: 1455;
+    display: block;
+  }
+  .floating-social-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 0 12px;
+    color: #fffaf3;
+    background: #173f36;
+    border: 1px solid rgba(255,255,255,.72);
+    border-radius: 999px;
+    box-shadow: 0 7px 22px rgba(10,20,38,.25);
+    font: 800 12px/1 "DM Sans", sans-serif;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .floating-social-toggle svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .floating-social-chevron { color: #ff9a35; font-size: 16px; line-height: 1; transition: transform .18s ease; }
+  .floating-social-toggle[aria-expanded="true"] .floating-social-chevron { transform: rotate(180deg); }
+  .floating-social-toggle:focus-visible,
+  .floating-social-panel a:focus-visible { outline: 3px solid rgba(255,154,53,.72); outline-offset: 3px; }
+  .floating-social-panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 9px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 204px;
+    padding: 9px;
+    background: rgba(255,250,243,.98);
+    border: 1px solid rgba(25,38,75,.14);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(10,20,38,.22);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+  .floating-social-panel[hidden] { display: none !important; }
+  .floating-social-panel a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    padding: 6px 2px;
+    color: #19264b;
+    border-radius: 10px;
+    text-decoration: none;
+    font: 700 9px/1.2 "DM Sans", sans-serif;
+  }
+  .floating-social-panel a:hover { background: rgba(47,138,80,.1); }
+  .floating-social-panel img { width: 28px; height: 28px; object-fit: contain; }
+}
