@@ -11,6 +11,7 @@ buscador "al vuelo", pero ya lista). Si ya existe, se salta; usa --forzar para r
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 from PIL import Image, ImageChops
 
 RAIZ = Path(__file__).resolve().parent
@@ -19,7 +20,7 @@ TAM, MARGEN, UMBRAL = 160, 10, 215
 forzar = "--forzar" in sys.argv
 
 html = (RAIZ / "index.html").read_text(encoding="utf-8")
-rutas = sorted(set(re.findall(r'data-image="([^"]+)"', html)))
+rutas = sorted(set(urlsplit(r).path for r in re.findall(r'data-image="([^"]+)"', html)))
 SALIDA.mkdir(parents=True, exist_ok=True)
 
 
