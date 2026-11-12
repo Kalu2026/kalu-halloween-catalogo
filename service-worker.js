@@ -1,6 +1,6 @@
 const CACHE_PREFIX = "kalu-catalogo-pwa-";
-const SHELL_CACHE = CACHE_PREFIX + "shell-v3";
-const RUNTIME_CACHE = CACHE_PREFIX + "runtime-v3";
+const SHELL_CACHE = CACHE_PREFIX + "shell-v4";
+const RUNTIME_CACHE = CACHE_PREFIX + "runtime-v4";
 const MAX_RUNTIME_ENTRIES = 100;
 const APP_SCOPE = new URL(self.registration.scope);
 const INDEX_URL = new URL("index.html", APP_SCOPE).href;
